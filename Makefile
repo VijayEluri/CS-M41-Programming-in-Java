@@ -11,7 +11,7 @@ endif
 
 directories = $(bin_dir)
 
-programs = HelloWorld UseArgument
+programs = HelloWorld UseArgument TrueBeginning
 executables = $(addprefix $(bin_dir)/, $(programs))
 
 
