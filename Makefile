@@ -11,7 +11,13 @@ endif
 
 directories = $(bin_dir)
 
-programs = HelloWorld UseArgument TrueBeginning
+ifeq ($(language),java)
+programs = $(wildcard *.java)
+programs := $(programs:.java=)
+else
+programs = $(wildcard *.cpp)
+programs := $(programs:.cpp=)
+endif
 executables = $(addprefix $(bin_dir)/, $(programs))
 
 
