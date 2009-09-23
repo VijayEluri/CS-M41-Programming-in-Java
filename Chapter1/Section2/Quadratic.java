@@ -24,7 +24,7 @@ public class Quadratic {
       System.err.println("ERROR[Quadratic]: Two parameter values are expected, the coefficients b and c.");
     }
     catch(RuntimeException e) {
-      System.err.println("The two parameters must be floating point numbers.");
+      System.err.println("ERROR[Quadratic]: The two parameters must be floating point numbers.");
     }
   }
 }
