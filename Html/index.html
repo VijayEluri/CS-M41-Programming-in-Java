@@ -22,6 +22,7 @@
    <li> We will consider the <em>second part</em> of <strong>Section 2.1</strong>
     from the book, so please re-read the chapter before Friday.
    </li>
+   <li> See below for the <strong>first coursework</strong>. </li>
    <li> Friday 30/10/2009 there will be no lecture (we will make up for it
     later), but there will be an (additional) <em>lab session</em>, where you
     have the opportunity to repeat and deepen the material we covered so far.
@@ -29,7 +30,6 @@
    <li> Friday 6/11/2009 we consider Section 2.2 from the book. </li>
    <li> Friday 13/11/2009 we consider Section 2.3 from the book. </li>
    <li> Friday 20/11/2009 we consider Section 3.1 from the book. </li>
-   <li> This week the first coursework will be available. </li>
    <li> Every student needs to make sure he/she has a password for the
     Linux lab (which needs to be mailed to you from the
      technicians). </li>
@@ -325,7 +325,76 @@
   <h2> Coursework </h2>
 
   <ul>
-   <li> First coursework: coming soon. </li>
+   <li> First coursework: <strong>Deadline 9/11/2009.</strong> </li>
+   <li> A program "Poker.java" has to be written, consisting of the class
+    "Poker", and this file has be sent via e-mail to me (just a single file).
+   </li>
+   <li> This program shall take one command line argument N. </li>
+   <li> For N=0 the following should happen:
+    <ol>
+     <li> A hand of (five) cards is read from standard input, where each
+      card comes in the form "Jack of Clubs" etc. (as we had it in the
+      example from the lecture). </li>
+     <li> Additional spaces (or space symbols like end-of-line symbols or
+      tab-symbols) must not matter. </li>
+     <li> The program then determines which of the nine standard hand ranks
+      <ol>
+       <li> Straight flush (a straight and a flush) </li>
+       <li> Four of a kind (four equal card ranks) </li>
+       <li> Full house (two equal card ranks together with three equal card
+       ranks) </li>
+       <li> Flush (all cards of same suit) </li>
+       <li> Straight (cards in rank order, where the ace can be used as
+       the lowest or the highest card rank) </li>
+       <li> Three of a kind (three equal card ranks) </li>
+       <li> Two pair (two times two equal card ranks) </li>
+       <li> One pair (two equal card ranks) </li>
+       <li> High card (none of the above). </li>
+      </ol>
+      applies for the hand, where in case of several possibilities the higher
+      rank has to be output. </li>
+    </ol>
+   </li>
+   <li> For N > 0 the program chooses itself N random hands, counts how often
+    each of the above hand ranks occurs, and outputs the relative frequency of
+    each rank, the quotients (number of occurrences) / N. </li>
+   <li> You need to determine for which N the values are really close to the
+    correct probabilities, and in a comment in your program you need to
+    show such N and the output produced by your program. </li>
+   <li> Very important:
+    <ol>
+     <li> Your program must compile. </li>
+     <li> Your program must run. </li>
+     <li> It must produce correct results. </li>
+     <li> Try to give good error messages in case some user input is wrong.
+     </li>
+     <li> Use good variable names. </li>
+     <li> Declare variables as local as possible. </li>
+     <li> Use many <strong>functions</strong>. </li>
+     <li> Specify the meaning of functions and important variables via
+      comments. </li>
+    </ol>
+   </li>
+   <li> Hints:
+    <ol>
+     <li> Strings are not appropriate data types (except for input and output).
+     </li>
+     <li> Best is to use codes, like 1 .. 52 for the cards, 1 .. 4 for the
+      suites, 1 .. 13 for the card ranks, and 1 .. 9 for the hand ranks. </li>
+     <li> You can use modular arithmetic to handle these codes somewhat more
+      elegantly, but this is not needed. </li>
+     <li> Provide functions for extracting the suit-code and the
+      card-rank-code from a card-code. </li>
+     <li> When reading cards from (standard) input, you read in single strings,
+      and then you need to compare the input string <em>objects</em> to
+      given strings in order to compute the codes. Use the member function
+      "String.equals" for that. </li>
+     <li> Thus provide functions which convert strings for card ranks and
+      strings for suits to the respective codes. </li>
+     <li> Conversely you need functions which convert codes into the strings.
+      </li>
+    </ol>
+   </li>
   </ul>
 
  
@@ -357,7 +426,7 @@
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Wed Oct 21 13:56:04 BST 2009
+Last modified: Thu Oct 22 23:49:42 BST 2009
 <!-- hhmts end -->
 
    </div>
