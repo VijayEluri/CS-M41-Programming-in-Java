@@ -21,7 +21,7 @@
    <li> Next lecture, Friday 6/11/2009, we consider how to write a program,
     in order to prepare you for the coursework. </li>
    <li> The deadline for coursework I is now Monday, 16/11/2009. </li>
-   <li> See below for the <strong>first coursework</strong>. Please read
+   <li> See below for the first coursework (updated). Please read
    carefully the instructions! </li>
    <li> See below for the lecture schedule for the remainder of this course.
    </li>
@@ -353,9 +353,14 @@
       example from the lecture). </li>
      <li> Additional spaces (or space symbols like end-of-line symbols or
       tab-symbols) must not matter. </li>
-     <li> The program then determines which of the nine standard hand ranks
+     <li> The names of suites (for input) are "Clubs, Diamonds, Hearts,
+      Spades". </li>
+     <li> The names of the card ranks (for input) are "2, 3, 4, 5, 6, 7, 8, 9,
+      10, Jack, Queen, King, Ace". </li>
+     <li> The program then determines which of the following nine standard
+      hand ranks (in order from highest to lowest)
       <ol>
-       <li> Straight flush (a straight and a flush) </li>
+       <li> Straight flush (a straight and a flush -- see below) </li>
        <li> Four of a kind (four equal card ranks) </li>
        <li> Full house (two equal card ranks together with three equal card
        ranks) </li>
@@ -373,7 +378,7 @@
    </li>
    <li> For N > 0 the program chooses itself N random hands, counts how often
     each of the above hand ranks occurs, and outputs the relative frequency of
-    each rank, the quotients (number of occurrences) / N. </li>
+    each rank, that is, the quotients (number of occurrences) / N. </li>
    <li> You need to determine for which N the values are really close to the
     correct probabilities, and in a comment in your program you need to
     show such N and the output produced by your program. </li>
@@ -391,16 +396,31 @@
       comments. </li>
      <li> <strong>Important:</strong> The program must be written solely by
       you! I won't accept any two similar programs. </li>
+     <li> If you do not implement the full functinality (for example, you
+      cannot determine all hand ranks), then please state this clearly
+      in your comments. </li>
     </ol>
    </li>
    <li> Hints:
     <ol>
-     <li> Strings are not appropriate data types (except for input and output).
+     <li> Every non-trivial program has to be first <strong>designed</strong>
+      on paper. </li>
+     <li> Of fundamental importance is to determine how to handle the various
+      object classes! Here we have "suites", "card ranks", "cards" (a
+      combination of suit and card rank), "hands" (five cards) and "hand
+      ranks". Perhaps you find it useful to use additional object classes.
+     </li>
+     <li> Strings are <strong>not</strong> appropriate data types (except for
+      input and output).
      </li>
      <li> Best is to use codes, like 1 .. 52 for the cards, 1 .. 4 for the
       suites, 1 .. 13 for the card ranks, and 1 .. 9 for the hand ranks. </li>
+     <li> One could represent cards as pairs of suit and card rank, but yet we
+      don't have the appropriate means for doing so, and using codes 1 .. 52
+      is easiest. </li>
      <li> You can use modular arithmetic to handle these codes somewhat more
       elegantly, but this is not needed. </li>
+     <li> Hands (of cards) are represented as arrays (of five cards). </li>
      <li> Provide functions for extracting the suit-code and the
       card-rank-code from a card-code. </li>
      <li> When reading cards from (standard) input, you read in single strings,
@@ -408,9 +428,15 @@
       given strings in order to compute the codes. Use the member function
       "String.equals" for that. </li>
      <li> Thus provide functions which convert strings for card ranks and
-      strings for suits to the respective codes. </li>
+      strings for suites to the respective codes. </li>
      <li> Conversely you need functions which convert codes into the strings.
-      </li>
+     </li>
+     <li> As said before, don't use strings for computations, but only for
+      input and output. All computations are best performed using
+      "mathematical" representations of the objects, suitable for computation.
+      Strings are just means for input and output, except, of course,
+      the computations are actually computations on strings, as in text or
+      word processing. </li>
     </ol>
    </li>
   </ul>
@@ -444,7 +470,7 @@
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Nov  3 10:14:41 GMT 2009
+Last modified: Tue Nov  3 10:43:55 GMT 2009
 <!-- hhmts end -->
 
    </div>
