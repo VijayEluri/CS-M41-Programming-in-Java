@@ -1,0 +1,25 @@
+#!/bin/bash
+# Oliver Kullmann, 13.11.2009 (Swansea)
+
+set -o errexit
+set -o nounset
+
+script_name="TestPoker"
+
+academic_year="200910"
+
+programs_dir="$HOME/Swansea/Kurse/ProgrammingJava/CS-M41_Programs"
+
+example_dir="${programs_dir}/Courseworks/${academic_year}/Examples"
+
+program="Poker"
+
+javac "${program}.java"
+
+examples=$(ls ${example_dir}/*)
+
+for E in ${examples}; do
+  echo "Example:" ${E}
+  cat ${E} | java ${program} 0
+done
+
