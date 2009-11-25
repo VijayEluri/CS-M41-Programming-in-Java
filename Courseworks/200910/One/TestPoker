@@ -10,7 +10,7 @@ academic_year="200910"
 
 programs_dir="$HOME/Swansea/Kurse/ProgrammingJava/CS-M41_Programs"
 
-example_dir="${programs_dir}/Courseworks/${academic_year}/Examples"
+example_dir="${programs_dir}/Courseworks/${academic_year}/One/Examples"
 
 program="Poker"
 
