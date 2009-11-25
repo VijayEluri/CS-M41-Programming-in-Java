@@ -2,6 +2,8 @@ public class Poker {
 
     // Suites are represented by integers 0,...,3,
     // card ranks by integers 0,...,12, and cards by integers 0,...,51.
+    // And hand ranks are represented by integer 1,...,9 (from highest
+    // to lowest).
 
     static final int num_suites = 4;
     static final int num_ranks = 13;
@@ -9,9 +11,22 @@ public class Poker {
     static final int hand_size = 5;
     static final int num_hand_ranks = 9;
 
+    // The integer-representation of suites and ranks are given as indices of
+    // the following arrays:
     static final String[] suit_names = {"Clubs", "Diamonds", "Hearts", "Spades"};
     static final String[] rank_names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+    // The string representation of hand ranks:
     static final String[] hand_rank_names = {"Straight flush", "Four of a kind", "Full house", "Flush", "Straight", "Three of a kind", "Two pairs", "One pair", "High card"};
+    // Explicit constants for the 9 hand ranks:
+    static final int straight_flush = 1;
+    static final int four_of_a_kind = 2;
+    static final int full_house = 3;
+    static final int flush = 4;
+    static final int straight = 5;
+    static final int three_of_a_kind = 6;
+    static final int two_pairs = 7;
+    static final int one_pair = 8;
+    static final int high_card = 9;
 
     // Converts a string into a suit; returns -1, if the string doesn't
     // represent a suite:
@@ -72,7 +87,7 @@ public class Poker {
         return hand;
     }
 
-    // Check that the cards of a hand are all different:
+    // Check that the cards of a hand are really all different:
     static boolean check_all_different(final int[] hand) {
         for (int i = 0; i < hand_size; ++i)
             for (int j = i+1; j < hand_size; ++j)
@@ -81,14 +96,14 @@ public class Poker {
     }
 
     // Check whether a hand is a flush:
-    static boolean flush(final int[] hand) {
+    static boolean is_flush(final int[] hand) {
         final int first_suit = suit(hand[0]);
         for (int i = 1; i < hand_size; ++i)
             if (suit(hand[i]) != first_suit) return false;
         return true;
     }
     // Check whether a hand is a straight:
-    static boolean straight(final int[] hand) {
+    static boolean is_straight(final int[] hand) {
         boolean[] ranks = new boolean[num_ranks+1];
         // shifting ranks 0..12 to 1..13, and adding new rank 0 for card "1"
         for (int i = 0; i < hand_size; ++i)
@@ -116,18 +131,18 @@ public class Poker {
         int[] count_of_counts = new int[num_suites+1];
         for (int i = 0; i < num_ranks; ++i)
             ++count_of_counts[rank_count[i]];
-        if (count_of_counts[4] == 1) return 2;
+        if (count_of_counts[4] == 1) return four_of_a_kind;
         if (count_of_counts[3] == 1)
-            if (count_of_counts[2] == 1) return 3;
-            else return 6;
-        if (count_of_counts[2] == 2) return 7;
-        if (count_of_counts[2] == 1) return 8;
-        final boolean is_flush = flush(hand);
-        final boolean is_straight = straight(hand);
-        if (is_flush && is_straight) return 1;
-        else if (is_flush) return 4;
-        else if (is_straight) return 5;
-        else return 9;
+            if (count_of_counts[2] == 1) return full_house;
+            else return three_of_a_kind;
+        if (count_of_counts[2] == 2) return two_pairs;
+        if (count_of_counts[2] == 1) return one_pair;
+        final boolean is_flush = is_flush(hand);
+        final boolean is_straight = is_straight(hand);
+        if (is_flush && is_straight) return straight_flush;
+        else if (is_flush) return flush;
+        else if (is_straight) return straight;
+        else return high_card;
     }
 
     public static void main(String[] args) {
