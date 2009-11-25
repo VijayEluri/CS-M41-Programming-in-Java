@@ -110,11 +110,11 @@ public class Poker {
 
     // Determine the hand-rank of a hand:
     static int hand_rank(final int[] hand) {
-        int[] rank_count = new int[num_cards];
+        int[] rank_count = new int[num_ranks];
         for (int i = 0; i < hand_size; ++i)
             ++rank_count[rank(hand[i])];
         int[] count_of_counts = new int[num_suites+1];
-        for (int i = 0; i < num_cards; ++i)
+        for (int i = 0; i < num_ranks; ++i)
             ++count_of_counts[rank_count[i]];
         if (count_of_counts[4] == 1) return 2;
         if (count_of_counts[3] == 1)
