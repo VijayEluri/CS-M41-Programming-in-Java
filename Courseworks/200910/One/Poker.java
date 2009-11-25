@@ -1,5 +1,8 @@
 public class Poker {
 
+    // Suites are represented by integers 0,...,3,
+    // card ranks by integers 0,...,12, and cards by integers 0,...,51.
+
     static final int num_suites = 4;
     static final int num_ranks = 13;
     static final int num_cards = num_suites * num_ranks;
@@ -10,28 +13,37 @@ public class Poker {
     static final String[] rank_names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
     static final String[] hand_rank_names = {"Straight flush", "Four of a kind", "Full house", "Flush", "Straight", "Three of a kind", "Two pairs", "One pair", "High card"};
 
+    // Converts a string into a suit; returns -1, if the string doesn't
+    // represent a suite:
     static int parse_suit(final String s) {
         for (int i = 0; i < num_suites; ++i)
             if (s.equals(suit_names[i])) return i;
         return -1;
     }
+    // Converts a string into a card-rank; returns -1, if the string doesn't
+    // represent a card-rank:
     static int parse_rank(final String s) {
         for (int i = 0; i < num_ranks; ++i)
             if (s.equals(rank_names[i])) return i;
         return -1;
     }
 
+    // For a card, compute its suit:
     static int suit(final int card) {
         return card / num_ranks;
     }
+    // For a card, compute its rank:
     static int rank(final int card) {
         return card % num_ranks;
     }
 
+    // Given card-rank and suit, compute the corresponding card:
     static int card(final int rank, final int suit) {
         return suit * num_ranks + rank;
     }
 
+    // Read a hand (and array of cards) from standard-input; returns null
+    // if some parsing error occurs:
     static int[] read_hand() {
         int[] hand = new int[hand_size];
         for (int i = 0; i < hand_size; ++i) {
@@ -45,6 +57,7 @@ public class Poker {
         return hand;
     }
 
+    // Creates a random hand:
     static int[] random_hand() {
         int[] hand = new int[hand_size];
         int[] cards = new int[num_cards];
@@ -59,6 +72,7 @@ public class Poker {
         return hand;
     }
 
+    // Check that the cards of a hand are all different:
     static boolean check_all_different(final int[] hand) {
         for (int i = 0; i < hand_size; ++i)
             for (int j = i+1; j < hand_size; ++j)
@@ -66,12 +80,14 @@ public class Poker {
         return true;
     }
 
+    // Check whether a hand is a flush:
     static boolean flush(final int[] hand) {
         final int first_suit = suit(hand[0]);
         for (int i = 1; i < hand_size; ++i)
             if (suit(hand[i]) != first_suit) return false;
         return true;
     }
+    // Check whether a hand is a straight:
     static boolean straight(final int[] hand) {
         boolean[] ranks = new boolean[num_ranks+1];
         // shifting ranks 0..12 to 1..13, and adding new rank 0 for card "1"
@@ -86,7 +102,13 @@ public class Poker {
             if (! ranks[i]) return false;
         return true;
     }
+    /* Remark: An alternative algorithm is to first sort the hand by
+       ranks, using the sort-algorithm from the Java-library. This would
+       yield more compact code, however in this module we use only elements
+       from the Java-library as discussed in the lectures.
+    */
 
+    // Determine the hand-rank of a hand:
     static int hand_rank(final int[] hand) {
         int[] rank_count = new int[num_cards];
         for (int i = 0; i < hand_size; ++i)
