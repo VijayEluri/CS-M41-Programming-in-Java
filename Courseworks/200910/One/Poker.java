@@ -1,3 +1,26 @@
+// Oliver Kullmann, 5.11.2009 (Swansea)
+
+/*
+  To be compiled by
+
+    javac Poker.java
+
+  (needs StdIn.java), and to be run by
+
+     java Poker N
+
+  where N >= 0 is an integer. For N = 0, a hand of five cards is read from
+  standard input, and its hand rank (from straight flush to high card) is
+  output, while for N > 0 this number of random hands are drawn, and
+  the statistics on the relative frequency of the nine hand ranks is
+  output.
+
+  The format of a card to to be read is for example "King of Clubs" (that is,
+  card-rank "of" suit), where space-symbols are irrelevant (except of the 
+  separating space-symbols). See below for the exact spelling of card-ranks 
+  and suites.
+*/
+
 public class Poker {
 
     // Suites are represented by integers 0,...,3,
@@ -29,7 +52,7 @@ public class Poker {
     public static static final int high_card = 9;
 
     // Converts a string into a suit; returns -1, if the string doesn't
-    // represent a suite:
+    // represent a suit:
     public static int parse_suit(final String s) {
         for (int i = 0; i < num_suites; ++i)
             if (s.equals(suit_names[i])) return i;
