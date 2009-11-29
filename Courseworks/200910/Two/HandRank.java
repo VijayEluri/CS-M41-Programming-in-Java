@@ -209,16 +209,15 @@ class HandRank {
   
 
   public static boolean is_flush(final Hand h) {
-    final int first_suit = h.get(1).suit;
-    for (int i = 2; i <= Hand.hand_size; ++i)
-      if (h.get(i).suit != first_suit) return false;
-    return true;
+    return h.get(1).suit == h.get(5).suit;
   }
   public static boolean is_straight(final Hand h) {
-    if (h.get(1).rank.index == CardRank.ace && h.get(2).rank.index == CardRank.five && h.get(3).rank.index == CardRank.four && h.get(4).rank.index == CardRank.three && h.get(5).rank.index == CardRank.two) return true;
-    for (int i = 1; i <= Hand.hand_size-1; ++i)
-      if (h.get(i).rank.index + 1 != h.get(i+1).rank.index) return false;
-    return true;
+    if (h.get(1).rank.index == CardRank.ace && h.get(2).rank.index == CardRank.five && h.get(5).rank.index == CardRank.two)
+      return true;
+    else if (h.get(1).rank.index + 5 - 1 == h.get(5).rank.index)
+      return true;
+    else
+      return false;
   }
 
 
