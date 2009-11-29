@@ -10,28 +10,29 @@ class Suit {
 
   public final int index;
 
-  Suit(final int i) {
+  public Suit(final int i) {
     assert(i >= 0);
     assert(i < num_suites);
     index = i;
   }
-  Suit(final String str) {
-    for (int i = 0; i < num_suites; ++i)
-      if (s.equals(suit_names[i])) {
-        index = i;
-        return;
-      }
-    throw new RuntimeException("Does not represent a suit: " + str);
+  public Suit(final String str) {
+    index = determine_index(str);
   }
 
-  String toString() {
+  public String toString() {
     return suit_names[index];
   }
 
-  boolean equals(Suit s) {
+  public boolean equals(Suit s) {
     return s.index == index;
   }
 
   private static final String[] suit_names = {"Clubs", "Spades", "Hearts", "Diamonds" };
 
+  private static int determine_index(final String str) {
+    for (int i = 0; i < num_suites; ++i)
+      if (str.equals(suit_names[i]))
+        return i;
+    throw new RuntimeException("Does not represent a suit: " + str);
+  }
 }

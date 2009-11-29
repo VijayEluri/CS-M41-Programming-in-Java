@@ -15,16 +15,18 @@ class Coursework1 {
     if (N == 0) {
       Hand h = new Hand();
       final HandRank hr = new HandRank(h);
-      System.println(hr);
+      System.out.println(hr);
     }
     else {
       int[] counts = new int[HandRank.num_major_hand_ranks+1];
       for (int i = 1; i <= N; ++i) {
         final Bank b = new Bank(1);
-        final HandRank hr = b.orig_hand(1);
+        final HandRank hr = new HandRank(b.orig_hand(1));
         ++counts[hr.major_rank];
       }
       for (int r = 1; r <= HandRank.num_major_hand_ranks; ++r)
         System.out.println(HandRank.major_hand_rank_names[r-1] + ": " + (double) (counts[r]) / N * 100 + "%");
     }
+  }
+
 }

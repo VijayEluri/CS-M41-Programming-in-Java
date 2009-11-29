@@ -9,6 +9,7 @@ class TwoPlayers {
     ExchangeRequest[] E = new ExchangeRequest[Strategy.number_strategies]; // for the exchange requests (per strategy)
     Bank b = new Bank(2);
     // XXX
+    return R;
   }
 
 }

@@ -15,6 +15,7 @@ class Bank {
     for (int i = 0; i < Card.num_cards; ++i)
       deck[i] = i;
     shuffle_deck();
+    orig_hands = new Hand[number_players];
     set_orig_hands();
   }
 
@@ -25,14 +26,14 @@ class Bank {
   public Hand orig_hand(int player) {
     assert player >= 1;
     assert player <= number_players;
-    return orig_hands[n-1];
+    return orig_hands[player-1];
   }
   // Returns the hand of a player after exchange:
   public Hand new_hand(int player) {
     assert player >= 1;
     assert player <= number_players;
     assert new_hands != null;
-    return new_hands[n-1];
+    return new_hands[player-1];
   }
 
   // Given an array E of exchange-requests (one for each player),
@@ -54,7 +55,6 @@ class Bank {
   }
   // Set orig_hands:
   private void set_orig_hands() {
-    orig_hands = new Hand[number_players];
     // XXX
   }
 }

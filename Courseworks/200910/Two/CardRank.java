@@ -20,21 +20,16 @@ class CardRank {
 
   public final int index;
 
-  CardRank(final int i) {
+  public CardRank(final int i) {
     assert(i >= 0);
     assert(i < num_ranks);
     index = i;
   }
-  CardRank(final String str) {
-    for (int i = 0; i < num_ranks; ++i)
-      if (s.equals(rank_names[i])) {
-        index = i;
-        return;
-      }
-    throw new RuntimeException("Does not represent a card rank: " + str);
+  public CardRank(final String str) {
+    index = determine_index(str);
   }
 
-  String toString() {
+  public String toString() {
     return rank_names[index];
   }
 
@@ -43,4 +38,11 @@ class CardRank {
   }
 
   private static final String[] rank_names = {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
+
+  private static int determine_index(final String str) {
+    for (int i = 0; i < num_ranks; ++i)
+      if (str.equals(rank_names[i]))
+        return i;
+    throw new RuntimeException("Does not represent a card rank: " + str);
+  }
 }

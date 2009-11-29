@@ -19,6 +19,7 @@ class ExchangeRequest {
 
   public ExchangeRequest() {
     number_cards = 0;
+    exchange_indices = null;
   }
   ExchangeRequest(int[] exchange_indices_) {
     assert exchange_indices_ != null;
@@ -27,7 +28,7 @@ class ExchangeRequest {
       assert(exchange_indices_[i] >= 1);
       assert(exchange_indices_[i] <= 5);
     }
-    if (exchange_indices_.length = 2)
+    if (exchange_indices_.length == 2)
       assert exchange_indices_[0] < exchange_indices_[1];
     exchange_indices = exchange_indices_;
     number_cards = exchange_indices.length;

@@ -9,7 +9,9 @@ class Evaluation {
   // as hand-ranks, together with their probabilities, sorted by
   // descending hand-ranks:
   public EvaluatedOutcome[] evaluate(ExchangeRequest e) {
+    EvaluatedOutcome[] result = null;
     // YYY
+    return result;
   }
 
   private final Hand hand;
