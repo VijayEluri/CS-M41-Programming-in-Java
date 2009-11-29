@@ -10,14 +10,14 @@ class HandRank {
 
   public static final int num_major_hand_ranks = 9;
   public static final int straight_flush = 1;
-  public static static final int four_of_a_kind = 2;
-  public static static final int full_house = 3;
-  public static static final int flush = 4;
-  public static static final int straight = 5;
-  public static static final int three_of_a_kind = 6;
-  public static static final int two_pairs = 7;
-  public static static final int one_pair = 8;
-  public static static final int high_card = 9;
+  public static final int four_of_a_kind = 2;
+  public static final int full_house = 3;
+  public static final int flush = 4;
+  public static final int straight = 5;
+  public static final int three_of_a_kind = 6;
+  public static final int two_pairs = 7;
+  public static final int one_pair = 8;
+  public static final int high_card = 9;
 
   // The number of minor ranks in a major rank:
   public static final int num_straight_flush_ranks = 10;
@@ -52,7 +52,7 @@ class HandRank {
   public static final int size_four_of_a_kind_rank = 48;
   public static final int size_full_house_rank = 288;
   public static final int size_flush_rank = 4;
-  public static final int size_straight_rank = 1024;
+  public static final int size_straight_rank = 1020;
   public static final int size_three_of_a_kind_rank = 4224;
   public static final int size_two_pairs_rank = 432;
   public static final int size_one_pair_rank = 1536;
@@ -64,14 +64,14 @@ class HandRank {
 
   // The number of hands of a given major rank:
   public static final int num_straight_flushes = size_straight_flush_rank * num_straight_flush_ranks;
-  public static final int num_four_of_a_kinds = size_four_of_a_kind_rank * num_four_of_a_kind_rank;
-  public static final int num_full_houses = size_full_house_rank * num_full_house_rank;
-  public static final int num_flushes = size_flush_rank * num_flush_rank;
-  public static final int num_straights = size_straight_rank * num_straight_rank;
-  public static final int num_three_of_a_kinds = size_three_of_a_kind_rank * num_three_of_a_kind_rank;
-  public static final int num_two_pairs = size_two_pairs_rank * num_two_pairs_rank;
-  public static final int num_one_pairs = size_one_pair_rank * num_one_pair_rank;
-  public static final int num_high_cards = size_high_card_rank * num_high_card_rank;
+  public static final int num_four_of_a_kinds = size_four_of_a_kind_rank * num_four_of_a_kind_ranks;
+  public static final int num_full_houses = size_full_house_rank * num_full_house_ranks;
+  public static final int num_flushes = size_flush_rank * num_flush_ranks;
+  public static final int num_straights = size_straight_rank * num_straight_ranks;
+  public static final int num_three_of_a_kinds = size_three_of_a_kind_rank * num_three_of_a_kind_ranks;
+  public static final int num_two_pairs = size_two_pairs_rank * num_two_pairs_ranks;
+  public static final int num_one_pairs = size_one_pair_rank * num_one_pair_ranks;
+  public static final int num_high_cards = size_high_card_rank * num_high_card_ranks;
 
   // Access for a given major rank to its size via an array:
   public static final int[] size_major_ranks = {0, num_straight_flushes, num_four_of_a_kinds, num_full_houses, num_flushes, num_straights, num_three_of_a_kinds, num_two_pairs, num_one_pairs, num_high_cards};
@@ -102,16 +102,17 @@ class HandRank {
     assert valid_hand_rank(r);
     for (int i = 1; i <= num_major_hand_ranks; ++i)
       if (r <= cumulated_num_ranks[i]) return i;
+    return -1; // for the compiler; won't be executed for valid r
   }
 
   // Analyses a hand and returns an array with major-rank and minor-rank:
   public static int[] hand_rank(final Hand h) {
-    int[] result = int[2];
+    int[] result = new int[2];
     int[] rank_count = new int[CardRank.num_ranks];
-    for (int i = 0; i < Hand.hand_size; ++i)
-      ++rank_count[hand[i].rank.index];
+    for (int i = 1; i <= Hand.hand_size; ++i)
+      ++rank_count[h.get(i).rank.index];
     int[] count_of_counts = new int[Suit.num_suites+1];
-    for (int i = 0; i < num_ranks; ++i)
+    for (int i = 0; i < CardRank.num_ranks; ++i)
       ++count_of_counts[rank_count[i]];
     if (count_of_counts[4] == 1) { // four of a kind
       result[0] = four_of_a_kind;
@@ -123,7 +124,7 @@ class HandRank {
       return result;
     }
     if (count_of_counts[3] == 1) {
-      final int rank_triple = h.get(3).index;
+      final int rank_triple = h.get(3).index();
       result[1] = rank_triple + 1;
       if (count_of_counts[2] == 1) { // full house
         result[0] = full_house;
@@ -145,7 +146,7 @@ class HandRank {
             ++i;
           }
       }
-      java.util.sort(three_ranks); // ???
+      sort_int(three_ranks); // ???
       // YYY
       return result;
     }
@@ -155,8 +156,8 @@ class HandRank {
       // YYY
       return result;
     }
-    final boolean is_flush = is_flush(hand);
-    final boolean is_straight = is_straight(hand);
+    final boolean is_flush = is_flush(h);
+    final boolean is_straight = is_straight(h);
     if (is_flush && is_straight) { // straight flush
       result[0] = straight_flush;
       // YYY
@@ -175,6 +176,7 @@ class HandRank {
     else { // high_card
       result[0] = high_card;
       // YYY
+      return result;
     }
   }
 
@@ -221,9 +223,34 @@ class HandRank {
   }
 
 
+  // Selection sort:
+  private static void sort_int(final int[] a) {
+    for (int i = 0; i < a.length-1; ++i) {
+      int index_min = i;
+      for (int j = i+1; j < a.length; ++j)
+        if (a[j] < a[index_min])
+          index_min = j;
+      if (index_min != i) {
+        final int temp = a[i];
+        a[i] = a[index_min];
+        a[index_min] = temp;
+      }
+    }
+  }
+
+
   // Tests:
   public static void main(String[] args) {
     assert num_hand_ranks == 3614;
+    assert num_straight_flushes == 40;
+    assert num_four_of_a_kinds == 624;
+    assert num_full_houses == 3744;
+    assert num_flushes == 5108;
+    assert num_straights == 10200;
+    assert num_three_of_a_kinds == 54912;
+    assert num_two_pairs == 123552;
+    assert num_one_pairs == 1098240;
+    assert num_high_cards == 1302540;
     assert cum_num_high_cards == Hand.num_hands;
   }
 }
