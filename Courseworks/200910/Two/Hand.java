@@ -33,6 +33,7 @@ class Hand {
   }
   // Reading from standard input:
   public Hand() {
+    cards = new Card[hand_size];
     for (int i = 0; i < hand_size; ++i) {
       final CardRank rank = new CardRank(StdIn.readString());
       if (! StdIn.readString().equals("of"))
@@ -43,7 +44,7 @@ class Hand {
     prepare_hand();
   }
 
-  public int get(index i) {
+  public Card get(int i) {
     assert i >= 1;
     assert i <= hand_size;
     return cards[i-1];
@@ -71,11 +72,11 @@ class Hand {
   private final Card[] cards;
 
   // Sorting by selection sort:
-  public static void stable_sort_by_ranks(final Card[] h) {
+  private static void sort_by_ranks(final Card[] h) {
     for (int i = 0; i < h.length-1; ++i) {
       int index_min = i;
       for (int j = i+1; j < h.length; ++j)
-        if (h[j].rank < h[index_min].rank)
+        if (h[j].rank.index < h[index_min].rank.index)
           index_min = j;
       if (index_min != i) {
         final Card temp = h[i];
@@ -84,11 +85,11 @@ class Hand {
       }
     }
   }
-  public static void stable_sort_by_suites(final Card[] h) {
+  private static void stable_sort_by_suites(final Card[] h) {
     for (int i = 0; i < h.length-1; ++i) {
       int index_min = i;
       for (int j = i+1; j < h.length; ++j)
-        if (h[j].suit < h[index_min].suit)
+        if (h[j].suit.index < h[index_min].suit.index)
           index_min = j;
       if (index_min != i) {
         final Card temp = h[i];
@@ -97,10 +98,12 @@ class Hand {
       }
     }
   }
-  /* Remarks: Actually we only need sort_by_suites to be stable.
+  /* Remarks: Actually also sort_by_ranks is stable (though not needed).
      If we wanted to use a sorting algorithm from the Java library, then
      we needed some means to "tell" that algorithm the sorting criterions;
      by what we learned in the module, yet we cannot provide such means.
+     By the above private methods we can provide specialised methods,
+     tailored for our needs.
   */
 
   public static void check_all_different(final Card[] h) {
@@ -110,7 +113,7 @@ class Hand {
   }
 
   private void prepare_hand() {
-    stable_sort_by_ranks(cards);
+    sort_by_ranks(cards);
     stable_sort_by_suites(cards);
     check_all_different(cards);
   }
