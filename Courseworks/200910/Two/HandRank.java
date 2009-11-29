@@ -137,45 +137,38 @@ class HandRank {
     }
     if (count_of_counts[2] == 2) { // two pairs
       result[0] = two_pairs;
-      int[] three_ranks = new int[3];
-      {
-        int i = 0;
-        for (int j = 0; j < CardRank.num_ranks; ++j)
-          if (rank_count[j] > 0) {
-            three_ranks[i] = j;
-            ++i;
-          }
-      }
-      sort_int(three_ranks); // ???
-      // YYY
+      int[] ranks = new int[3];
+      transfer_ranks(rank_count, ranks);
+      result[1] = lex_order(ranks[0],ranks[1],ranks[2]);
       return result;
     }
     if (count_of_counts[2] == 1) { // one pair
-      result[0] = two_pairs;
-      int[] four_ranks = new int[4];
-      // YYY
+      result[0] = one_pair;
+      int[] ranks = new int[4];
+      transfer_ranks(rank_count, ranks);
+      result[1] = lex_order(ranks[0],ranks[1],ranks[2],ranks[3]);
       return result;
     }
-    final boolean is_flush = is_flush(h);
-    final boolean is_straight = is_straight(h);
-    if (is_flush && is_straight) { // straight flush
-      result[0] = straight_flush;
-      // YYY
+    if (is_straight(h)) {
+      if (h.get(1).rank.index == CardRank.ace && h.get(2).rank.index == CardRank.five)
+        result[1] = CardRank.five + 1;
+      else
+        result[1] = h.get(1).rank.index + 1;
+      if (is_flush(h))
+        result[0] = straight_flush;
+      else
+        result[0] = straight;
       return result;
     }
-    else if (is_flush) { // flush
-      result[0] = flush;
-      // YYY
-      return result;
-    }
-    else if (is_straight) { // straight
-      result[0] = straight;
-      // YYY
-      return result;
-    }
-    else { // high_card
-      result[0] = high_card;
-      // YYY
+    else {
+      int[] ranks = new int[5];
+      transfer_ranks(rank_count, ranks);
+      result[1] = lex_order(ranks[0],ranks[1],ranks[2],ranks[3],ranks[4]);
+      result[1] -= h.get(1).rank.index+1;
+      if (is_flush(h))
+        result[0] = flush;
+      else
+        result[0] = high_card;
       return result;
     }
   }
@@ -222,22 +215,24 @@ class HandRank {
       return false;
   }
 
-
-  // Selection sort:
-  private static void sort_int(final int[] a) {
-    for (int i = 0; i < a.length-1; ++i) {
-      int index_min = i;
-      for (int j = i+1; j < a.length; ++j)
-        if (a[j] < a[index_min])
-          index_min = j;
-      if (index_min != i) {
-        final int temp = a[i];
-        a[i] = a[index_min];
-        a[index_min] = temp;
+  private static void transfer_ranks(final int[] rank_count, final int[] ranks) {
+    int i = 0;
+    for (int j = 0; j < CardRank.num_ranks; ++j)
+      if (rank_count[j] > 0) {
+        ranks[i] = j;
+        ++i;
       }
-    }
   }
 
+  private static int lex_order(final int x1, final int x2, final int x3) {
+    return 274+(-(10-x1)*(11-x1)*(12-x1))/6-(11-x2)*(12-x2)/2+x3;
+  }
+  private static int lex_order(final int x1, final int x2, final int x3, final int x4) {
+    return 703+(-(9-x1)*(10-x1)*(11-x1)*(12-x1))/24+(-(10-x2)*(11-x2)*(12-x2))/6-(11-x3)*(12-x3)/2+x4;
+  }
+  private static int lex_order(final int x1, final int x2, final int x3, final int x4, final int x5) {
+    return 1275+(-(8-x1)*(9-x1)*(10-x1)*(11-x1)*(12-x1))/120+(-(9-x2)*(10-x2)*(11-x2)*(12-x2))/24+(-(10-x3)*(11-x3)*(12-x3))/6-(11-x4)*(12-x4)/2+x5;
+  }
 
   // Tests:
   public static void main(String[] args) {
@@ -252,5 +247,41 @@ class HandRank {
     assert num_one_pairs == 1098240;
     assert num_high_cards == 1302540;
     assert cum_num_high_cards == Hand.num_hands;
+
+    assert lex_order(0,1,2) == 1;
+    assert lex_order(10,11,12) == 286;
+    assert lex_order(0,1,2,3) == 1;
+    assert lex_order(9,10,11,12) == 715;
+    assert lex_order(0,1,2,3,4) == 1;
+    assert lex_order(8,9,10,11,12) == 1277 + 10;
+
+    int[] statistics_ranks = new int[num_hand_ranks+1];
+    int[] statistics_major_ranks = new int[num_major_hand_ranks+1];
+
+    for (int c1 = 0; c1 < Card.num_cards - 4; ++c1) {
+      final Card C1 = new Card(c1);
+      for (int c2 = c1+1; c2 < Card.num_cards - 3; ++c2) {
+        final Card C2 = new Card(c2);
+        for (int c3 = c2+1; c3 < Card.num_cards - 2; ++c3) {
+          final Card C3 = new Card(c3);
+          for (int c4 = c3+1; c4 < Card.num_cards - 1; ++c4) {
+            final Card C4 = new Card(c4);
+            for (int c5 = c4+1; c5 < Card.num_cards; ++c5) {
+              final Card C5 = new Card(c5);
+              final Hand h = new Hand(C1,C2,C3,C4,C5);
+              final HandRank hr = new HandRank(h);
+              ++statistics_ranks[hr.rank];
+              ++statistics_major_ranks[hr.major_rank];
+            }
+          }
+        }
+      }
+    }
+    statistics_major_ranks[0] = 0;
+    assert statistics_major_ranks.equals(size_major_ranks);
+    for (int rank = 1; rank <= num_hand_ranks; ++rank) {
+      final HandRank hr = new HandRank(rank);
+      assert statistics_ranks[rank] == size_ranks[hr.major_rank];
+    }
   }
 }
