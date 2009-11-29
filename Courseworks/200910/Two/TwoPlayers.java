@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class TwoPlayers {
 
   // Plays a single game between two players, using all available strategies

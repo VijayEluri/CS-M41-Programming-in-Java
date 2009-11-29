@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class Hand {
 
   // Provides poker hands in a standardised form, first sorted by descending

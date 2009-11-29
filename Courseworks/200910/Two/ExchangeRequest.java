@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class ExchangeRequest {
 
   // For an object e of type ExchangeRequest, by e.number_cards we obtain

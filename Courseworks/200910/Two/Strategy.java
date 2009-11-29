@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class Strategy {
 
   // For an object s of type Strategy by s.exchange(i) we obtain

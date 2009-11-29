@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class EvaluatedOutcome {
 
   // For a given hand and an exchange request, an "evaluated outcome"

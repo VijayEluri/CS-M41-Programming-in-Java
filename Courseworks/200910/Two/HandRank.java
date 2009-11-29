@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class HandRank {
 
   // Poker has 3614 ranks, where a rank is a number from 1 to 3614 assigned

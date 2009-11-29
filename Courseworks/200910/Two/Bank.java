@@ -1,3 +1,6 @@
+// Oliver Kullmann, 26.11.2009 (Swansea)
+/* Copyright 2009 Oliver Kullmann */
+
 class Bank {
 
   // By Bank(n) for 0 <= n <= 7 we create n hands, which can be obtained
