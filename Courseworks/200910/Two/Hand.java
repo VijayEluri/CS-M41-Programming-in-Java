@@ -109,7 +109,7 @@ class Hand {
   public static void check_all_different(final Card[] h) {
     for (int i = 0; i < hand_size - 1; ++i)
       if (h[i].equals(h[i+1]))
-        throw RuntimeException("Two identical cards were found in a hand.");
+        throw new RuntimeException("Two identical cards were found in a hand.");
   }
 
   private void prepare_hand() {
