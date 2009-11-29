@@ -1,6 +1,7 @@
 class CardRank {
 
   // Wrapper class around card ranks as integer indices.
+  // Note that a smaller index means a higher card.
 
   public static final int num_ranks = 13;
   public static final int ace = 0;
