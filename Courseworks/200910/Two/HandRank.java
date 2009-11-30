@@ -197,7 +197,11 @@ class HandRank {
   // The probability that a hand as least as good as the given hand
   // occurs for a random hand:
   public double cumulated_probability() {
-    return (double) (cumulated_size_major_ranks[major_rank-1] + minor_rank * size_major_ranks[major_rank]) / Hand.num_hands;
+    return (double) cumulated_count() / Hand.num_hands;
+  }
+  // The number of hands as least as good as the given hand:
+  public int cumulated_count() {
+    return cumulated_size_major_ranks[major_rank-1] + minor_rank * size_ranks[major_rank];
   }
 
   public String toString() {
