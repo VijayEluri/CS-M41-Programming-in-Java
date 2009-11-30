@@ -14,6 +14,8 @@ class Hand {
 
   // Access to cards by get(i), where 1 <= i <= 5.
 
+  // Dependencies: In.java.
+
   public static final int hand_size = 5;
   public static final int num_hands = 2598960; // = binom(52,5)
 
@@ -32,14 +34,14 @@ class Hand {
     cards = h;
     prepare_hand();
   }
-  // Reading from standard input:
-  public Hand() {
+  // Reading from an input stream:
+  public Hand(final In in) {
     cards = new Card[hand_size];
     for (int i = 0; i < hand_size; ++i) {
-      final CardRank rank = new CardRank(StdIn.readString());
-      if (! StdIn.readString().equals("of"))
+      final CardRank rank = new CardRank(in.readString());
+      if (! in.readString().equals("of"))
         throw new RuntimeException("After the card-rank a string different from \"of\" has been found.");
-      final Suit suit = new Suit(StdIn.readString());
+      final Suit suit = new Suit(in.readString());
       cards[i] = new Card(rank, suit);
     }
     prepare_hand();

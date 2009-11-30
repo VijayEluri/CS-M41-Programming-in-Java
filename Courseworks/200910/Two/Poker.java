@@ -16,7 +16,7 @@ class Poker {
       return;
     }
     if (N == 0) {
-      Hand h = new Hand();
+      Hand h = new Hand(new In());
       final HandRank hr = new HandRank(h);
       System.out.println(hr);
       System.out.println("The number of (strictly) better hands: " + hr.cumulated_count());
