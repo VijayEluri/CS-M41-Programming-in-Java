@@ -3,10 +3,8 @@
 
 class Hand {
 
-  // Provides poker hands in a standardised form, first sorted by descending
-  // ranks, and then "sorted" by suites as by the order given implicitly in
-  // class Suit. Thus two objects of type Hand are equal if and only if
-  // the hands are equal as sets.
+  // Provides poker hands in a standardised form, sorted by descending
+  // ranks.
 
   // Three constructors are given, for reading five cards, an array of cards,
   // or for reading from standard input.
@@ -34,6 +32,7 @@ class Hand {
     cards = h;
     prepare_hand();
   }
+/*
   // Reading from standard input:
   public Hand() {
     cards = new Card[hand_size];
@@ -46,7 +45,7 @@ class Hand {
     }
     prepare_hand();
   }
-
+*/
   public Card get(int i) {
     assert i >= 1;
     assert i <= hand_size;
@@ -88,24 +87,10 @@ class Hand {
       }
     }
   }
-  private static void stable_sort_by_suites(final Card[] h) {
-    for (int i = 0; i < h.length-1; ++i) {
-      int index_min = i;
-      for (int j = i+1; j < h.length; ++j)
-        if (h[j].suit.index < h[index_min].suit.index)
-          index_min = j;
-      if (index_min != i) {
-        final Card temp = h[i];
-        h[i] = h[index_min];
-        h[index_min] = temp;
-      }
-    }
-  }
-  /* Remarks: Actually also sort_by_ranks is stable (though not needed).
-     If we wanted to use a sorting algorithm from the Java library, then
-     we needed some means to "tell" that algorithm the sorting criterions;
+  /* Remarks: If we wanted to use a sorting algorithm from the Java library,
+     then we needed some means to "tell" that algorithm the sorting criterions;
      by what we learned in the module, yet we cannot provide such means.
-     By the above private methods we can provide specialised methods,
+     By the above private method we can provide a specialised method,
      tailored for our needs.
   */
 
@@ -117,7 +102,6 @@ class Hand {
 
   private void prepare_hand() {
     sort_by_ranks(cards);
-    stable_sort_by_suites(cards);
     check_all_different(cards);
   }
 
