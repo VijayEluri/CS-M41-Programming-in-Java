@@ -19,6 +19,8 @@ class Poker {
       Hand h = new Hand();
       final HandRank hr = new HandRank(h);
       System.out.println(hr);
+      System.out.println("The number of (strictly) better hands: " + hr.cumulated_count());
+      System.out.println("The probability of a (strictly) better hand: " + (100 * hr.cumulated_probability()) + "%");
     }
     else {
       int[] counts = new int[HandRank.num_major_hand_ranks+1];
