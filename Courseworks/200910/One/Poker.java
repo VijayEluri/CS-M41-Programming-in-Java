@@ -42,14 +42,14 @@ public class Poker {
     public static final String[] hand_rank_names = {"Straight flush", "Four of a kind", "Full house", "Flush", "Straight", "Three of a kind", "Two pairs", "One pair", "High card"};
     // Explicit constants for the 9 hand ranks:
     public static final int straight_flush = 1;
-    public static static final int four_of_a_kind = 2;
-    public static static final int full_house = 3;
-    public static static final int flush = 4;
-    public static static final int straight = 5;
-    public static static final int three_of_a_kind = 6;
-    public static static final int two_pairs = 7;
-    public static static final int one_pair = 8;
-    public static static final int high_card = 9;
+    public static final int four_of_a_kind = 2;
+    public static final int full_house = 3;
+    public static final int flush = 4;
+    public static final int straight = 5;
+    public static final int three_of_a_kind = 6;
+    public static final int two_pairs = 7;
+    public static final int one_pair = 8;
+    public static final int high_card = 9;
 
     // Converts a string into a suit; returns -1, if the string doesn't
     // represent a suit:
