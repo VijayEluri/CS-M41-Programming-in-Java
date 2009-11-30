@@ -32,7 +32,6 @@ class Hand {
     cards = h;
     prepare_hand();
   }
-/*
   // Reading from standard input:
   public Hand() {
     cards = new Card[hand_size];
@@ -45,7 +44,7 @@ class Hand {
     }
     prepare_hand();
   }
-*/
+
   public Card get(int i) {
     assert i >= 1;
     assert i <= hand_size;
