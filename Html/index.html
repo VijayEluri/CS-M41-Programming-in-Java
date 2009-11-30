@@ -18,12 +18,12 @@
   <h2> Messages </h2>
   
   <ul>
+   <li> See below for <strong>Coursework 2</strong>; deadline is Monday,
+    21/12/2009. </li>
    <li> The lecture on Friday, 4/12/2009, is on the second coursework;
     we will discuss the architecture and details of the classes made
     available in the package constituting the second coursework. </li>
    <li> See below for the <strong>solution for Coursework 1</strong>. </li>
-   <li> The second coursework will be made available on Monday, 30/11/2009,
-    while the deadline is Monday, 21/12/2009. </li>
    <li> On <strong>Friday 11/12/2009 from 14-15</strong> we have an additional
     lecture, discussing what to do over the Christmas break (not just
     collecting presents <img src="images/HAPPI_Frown.png" alt="so well"/>). </li>
@@ -588,8 +588,89 @@
   <h3> Second coursework </h3>
 
   <p>
-   This will be about <em>playing</em> poker (the simplest version).
+   Now we <em>play</em> poker (the simplest version).
   </p>
+  <ul>
+   <li> Deadline is Monday, 21/12/2009; submission as before via e-mail. </li>
+   <li> A selection of students will need to demonstrate their code in the
+    beginning of the second semester. </li>
+   <li> The code must be written in all parts solely by you (otherwise zero
+    marks are the result, potentially followed by disciplinary actions). </li>
+   <li> This time you need to add code to a couple of files; send me an
+    archive of the changed files, plus an additional file named
+    "StudNumber_Coursework_2.txt" (plain text), where you state your name
+    (while the student number is in the name of that file), and where
+    you state and explain the places where you added code. </li>
+   <li> We only consider a simple form of "draw poker":
+    <ol>
+     <li> After the cards are dealt, the player can choose up to
+      2 cards to be exchanged. </li>
+     <li> After exchange, all hands are shown (we do not
+      do betting), and the winner is determined. </li>
+     <li> We only consider two players. </li>
+     <li> The task is to complete the framework, to devise some strategies
+      for card exchange, and to play a tournament with your strategies,
+      determining what works best. </li>
+    </ol>
+   </li>
+   <li> No classes (from the Java library or elsewhere) may be used except
+    those provided with the coursework. </li>
+   <li> The code is only to be changed at the marked places (you find "XXX"
+    there), while the rest must remain untouched. </li>
+   <li> <a href="CS-M41_Programs/Courseworks/200910/Two/"> Here </a> are the
+    files you need to consider. </li>
+   <li> Your first task is to study the code carefully! </li>
+   <li> To get into it, start considering
+    <a href="CS-M41_Programs/Courseworks/200910/Two/Poker.java"> Poker.java
+    </a>:
+    <ol>
+     <li> This implements the functionality from the first coursework, now
+      using the new framework. </li>
+     <li> Additionally, while in the first coursework only the "major ranking"
+      of hands into the nine major poker ranks has been considered, now
+      the complete ranking is provided. </li>
+     <li> So now there are 3614 hand ranks (while there are 9 major hand
+      ranks): A hand wins against another hand if and only if its hand rank
+      is (strictly) better, that is, numerically lower, than that of the other
+      hand. </li>
+    </ol>
+   </li>
+   <li> The places where functions have to be completed are the following:
+    <ol>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Bank.java"> Bank.java
+      </a>: functionality regarding dealing and exchanging cards. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Evaluation.java">
+       Evaluation.java </a>: computing all possible outcomes for one exchange
+      request. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/TwoPlayers.java">
+       TwoPlayers.java </a>: Using all available strategies for one play
+      between two players, and determining the results. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Tournament.java">
+       Tournament.java </a>: the main program, letting the strategies play
+     against each other for many rounds, and displaying the results. </li>
+     <li> Completing this functionality can is worth roughly 50-60% of the
+      coursework, while the rest is earned by implement various exchange
+      strategies in
+      <a href="CS-M41_Programs/Courseworks/200910/Two/Strategy.java">
+       Strategy.java </a>. </li>
+     <li> It is your task to determine the precise specifications for all
+      these places. </li>
+     <li> If needed, you may add new private member functions, but no data
+      member (static or non-static) shall be added, and none of the existing
+      code is to be altered. </li>
+    </ol>
+    You will find there already certain code-fragments and hints, to get
+    you started.
+   </li>
+   <li> This exercise is about DESIGN: Yet you cannot create larger systems
+    (with good design), and so the framework is given to you, and you have
+    to grasp it, and to complete it. </li>
+   <li> And regarding the strategies, you can show some creativity. </li>
+   <li> Until Monday, 7/12/2009, there might occur some (small) changes
+    in the framework (if it makes the task easier). </li>
+   <li> In the lecture next Friday (4/12/2009) certain key elements of
+    the framework will be discussed. </li>
+  </ul>
  
 
   <h2> Links </h2>
@@ -619,7 +700,7 @@
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Nov 30 01:11:06 GMT 2009
+Last modified: Mon Nov 30 20:55:04 GMT 2009
 <!-- hhmts end -->
 
    </div>
