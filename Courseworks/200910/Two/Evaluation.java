@@ -6,6 +6,9 @@ class Evaluation {
   public Evaluation(final Hand h) {
     assert h != null;
     hand = h;
+    other_cards = new Card[Card.num_cards - Hand.hand_size];
+    // Set the 47 cards in other_cards to the cards not in h:
+    // XXX
   }
 
   // For an exchange-request e, compute the array of possible outcomes
@@ -25,4 +28,5 @@ class Evaluation {
   }
 
   private final Hand hand;
+  private final Card[] other_cards;
 }
