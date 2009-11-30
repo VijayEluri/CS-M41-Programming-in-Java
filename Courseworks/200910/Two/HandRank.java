@@ -194,6 +194,15 @@ class HandRank {
   public final int major_rank;
   public final int minor_rank;
 
+  public String toString() {
+    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "\nRank: " + rank;
+  }
+
+  public boolean equals(final HandRank hr) {
+    return hr.rank == rank;
+  }
+        
+
   // The probability that a (strictly) better hand than the given hand
   // occurs for a random hand:
   public double cumulated_probability() {
@@ -203,11 +212,6 @@ class HandRank {
   public int cumulated_count() {
     return cumulated_size_major_ranks[major_rank-1] + (minor_rank-1) * size_ranks[major_rank];
   }
-
-  public String toString() {
-    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "\nRank: " + rank;
-  }
-  
 
   public static boolean is_flush(final Hand h) {
     final Suit first = h.get(1).suit;
@@ -225,6 +229,9 @@ class HandRank {
       return false;
   }
 
+  // Transfer the ranks from rank_count to ranks, where rank_count[j] > 0
+  // means that rank j is present, and will be entered into the ordered list
+  // "ranks" of ranks:
   private static void transfer_ranks(final int[] rank_count, final int[] ranks) {
     int i = 0;
     for (int j = 0; j < CardRank.num_ranks; ++j)
@@ -234,6 +241,8 @@ class HandRank {
       }
   }
 
+  // Functions for ranking subsets S of {0,1,...,12} for sizes 3,4,5;
+  // the elements of S are given by x1 < ... < x5:
   private static int lex_order(final int x1, final int x2, final int x3) {
     return 274+(-(10-x1)*(11-x1)*(12-x1))/6-(11-x2)*(12-x2)/2+x3;
   }
@@ -244,7 +253,7 @@ class HandRank {
     return 1275+(-(8-x1)*(9-x1)*(10-x1)*(11-x1)*(12-x1))/120+(-(9-x2)*(10-x2)*(11-x2)*(12-x2))/24+(-(10-x3)*(11-x3)*(12-x3))/6-(11-x4)*(12-x4)/2+x5;
   }
 
-  // Tests:
+  // Tests (run by "java -ea HandRank", enabling assertions):
   public static void main(String[] args) {
     assert num_hand_ranks == 3614;
     assert num_straight_flushes == 40;
@@ -258,6 +267,8 @@ class HandRank {
     assert num_high_cards == 1302540;
     assert cum_num_high_cards == Hand.num_hands;
 
+    // Testing the various functions for ranking subsets according to
+    // lexicographical order:
     assert lex_order(0,1,2) == 1;
     assert lex_order(10,11,12) == 286;
     assert lex_order(0,1,2,3) == 1;
@@ -265,6 +276,7 @@ class HandRank {
     assert lex_order(0,1,2,3,4) == 1;
     assert lex_order(8,9,10,11,12) == 1277 + 10;
 
+    // Running through all possible hands, and detemining the ranks:
     int[] statistics_ranks = new int[num_hand_ranks+1];
     int[] statistics_major_ranks = new int[num_major_hand_ranks+1];
     for (int c1 = 0; c1 < Card.num_cards - 4; ++c1) {
