@@ -119,15 +119,12 @@ class HandRank {
       ++count_of_counts[rank_count[i]];
     if (count_of_counts[4] == 1) { // four of a kind
       result[0] = four_of_a_kind;
-      Card other;
-      if (h.get(1).equals(h.get(2))) other = h.get(5);
-      else other = h.get(1);
-      final int other_rank = other.rank.index;
-      result[1] = other_rank + 1;
+      final int rank_quad = h.get(2).rank.index;
+      result[1] = rank_quad + 1;
       return result;
     }
     if (count_of_counts[3] == 1) {
-      final int rank_triple = h.get(3).index();
+      final int rank_triple = h.get(3).rank.index;
       result[1] = rank_triple + 1;
       if (count_of_counts[2] == 1) { // full house
         result[0] = full_house;
@@ -168,6 +165,8 @@ class HandRank {
       transfer_ranks(rank_count, ranks);
       result[1] = lex_order(ranks[0],ranks[1],ranks[2],ranks[3],ranks[4]);
       result[1] -= h.get(1).rank.index+1;
+      if (h.get(1).rank.index != CardRank.ace) // subtracting the low-ace-case
+        --result[1];
       if (is_flush(h))
         result[0] = flush;
       else
@@ -181,14 +180,14 @@ class HandRank {
     assert valid_hand_rank(r);
     rank = r;
     major_rank = major_rank_(rank);
-    minor_rank = r - size_ranks[major_rank-1];
+    minor_rank = r - cumulated_num_ranks[major_rank-1];
   }
 
   HandRank(final Hand h) {
     final int[] hr = hand_rank(h);
     major_rank = hr[0];
     minor_rank = hr[1];
-    rank = size_ranks[major_rank-1] + minor_rank;
+    rank = cumulated_num_ranks[major_rank-1] + minor_rank;
   }
 
   public final int rank;
@@ -207,7 +206,11 @@ class HandRank {
   
 
   public static boolean is_flush(final Hand h) {
-    return h.get(1).suit == h.get(5).suit;
+    final Suit first = h.get(1).suit;
+    for (int i = 2; i <= 5; ++i)
+      if (! h.get(i).suit.equals(first))
+        return false;
+    return true;
   }
   public static boolean is_straight(final Hand h) {
     if (h.get(1).rank.index == CardRank.ace && h.get(2).rank.index == CardRank.five && h.get(5).rank.index == CardRank.two)
@@ -260,7 +263,6 @@ class HandRank {
 
     int[] statistics_ranks = new int[num_hand_ranks+1];
     int[] statistics_major_ranks = new int[num_major_hand_ranks+1];
-
     for (int c1 = 0; c1 < Card.num_cards - 4; ++c1) {
       final Card C1 = new Card(c1);
       for (int c2 = c1+1; c2 < Card.num_cards - 3; ++c2) {
@@ -281,7 +283,8 @@ class HandRank {
       }
     }
     statistics_major_ranks[0] = 0;
-    assert statistics_major_ranks.equals(size_major_ranks);
+    for (int i = 0; i <= num_major_hand_ranks; ++i)
+      assert statistics_major_ranks[i] == size_major_ranks[i];
     for (int rank = 1; rank <= num_hand_ranks; ++rank) {
       final HandRank hr = new HandRank(rank);
       assert statistics_ranks[rank] == size_ranks[hr.major_rank];
