@@ -29,7 +29,7 @@ class Card {
     return rank.toString() + " of " + suit.toString();
   }
 
-  public boolean equals(Card c) {
+  public boolean equals(final Card c) {
     return c.rank.equals(rank) && c.suit.equals(suit);
   }
 }

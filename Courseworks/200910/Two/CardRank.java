@@ -36,7 +36,7 @@ class CardRank {
     return rank_names[index];
   }
 
-  public boolean equals(CardRank s) {
+  public boolean equals(final CardRank s) {
     return s.index == index;
   }
 

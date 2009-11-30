@@ -26,7 +26,7 @@ class Suit {
     return suit_names[index];
   }
 
-  public boolean equals(Suit s) {
+  public boolean equals(final Suit s) {
     return s.index == index;
   }
 
