@@ -47,7 +47,7 @@ class Hand {
     prepare_hand();
   }
 
-  public Card get(int i) {
+  public Card get(final int i) {
     assert i >= 1;
     assert i <= hand_size;
     return cards[i-1];
