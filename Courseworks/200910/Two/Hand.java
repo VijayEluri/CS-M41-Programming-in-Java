@@ -19,6 +19,7 @@ class Hand {
   public static final int hand_size = 5;
   public static final int num_hands = 2598960; // = binom(52,5)
 
+  // This constructor takes over ownership of c1,...,c5:
   public Hand(final Card c1, final Card c2, final Card c3, final Card c4, final Card c5) {
     cards = new Card[hand_size];
     cards[0] = c1;
@@ -28,10 +29,13 @@ class Hand {
     cards[4] = c5;
     prepare_hand();
   }
+  // This constructor takes over ownership of the five elements of h:
   public Hand(final Card[] h) {
     assert h != null;
     assert h.length == hand_size;
-    cards = h;
+    cards = new Card[hand_size];
+    for (int i = 0; i < hand_size; ++i)
+      cards[i] = h[i];
     prepare_hand();
   }
   // Reading from an input stream:
