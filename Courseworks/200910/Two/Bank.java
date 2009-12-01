@@ -54,10 +54,38 @@ class Bank {
 
   // Random shuffling of the deck of cards:
   private void shuffle_deck() {
-    // XXX
+    for (int i = 0; i < Card.num_cards; ++i) {
+      final int rand = i + (int) (Math.random() * (Card.num_cards-i));
+      final int t = deck[rand];
+      deck[rand] = deck[i];
+      deck[i] = t;
+    }
   }
   // Set orig_hands:
   private void set_orig_hands() {
+    Card[] h = new Card[5];
+    int current_card_index = 0;
+    for (int i = 0; i < number_players; ++i) {
+      for (int c = 0; c < Hand.hand_size; ++c, ++current_card_index)
+        h[c] = new Card(deck[current_card_index]);
+      orig_hands[i] = new Hand(h);
+    }
+  }
+
+
+  // Tests:
+  public static void main(String[] args) {
+    final int num_players = 7;
+    Bank B = new Bank(num_players);
+    assert B.number_players == num_players;
+    assert B.deck.length == 52;
+    assert B.orig_hands.length == num_players;
+    assert B.new_hands == null;
+    Hand[] hands = new Hand[num_players];
+    for (int i = 0; i < num_players; ++i)
+      hands[i] = B.orig_hand(i+1);
+    for (int i = 0; i < num_players; ++i)
+      System.out.println((i+1) + ": " + hands[i]);
     // XXX
   }
 }
