@@ -4,7 +4,7 @@
 class ExchangeRequest {
 
   // For an object e of type ExchangeRequest, by e.number_cards we obtain
-  // the number of cards to be exchanged, while by get_indices(i) for
+  // the number of cards to be exchanged, while by get_index(i) for
   // 1 <= i <= number_cards we get the index of the i-th card to be exchanged.
 
   /*
@@ -14,8 +14,8 @@ class ExchangeRequest {
     ea[1] = 5;
     final ExchangeRequest e = new ExchangeRequest(ea);
     assert e.number_cards == 2;
-    assert e.get_indices(1) == 2;
-    assert e.get_indices(2) == 5;
+    assert e.get_index(1) == 2;
+    assert e.get_index(2) == 5;
   */
 
   public final int number_cards;
@@ -37,7 +37,7 @@ class ExchangeRequest {
     number_cards = exchange_indices.length;
   }
 
-  int get_indices(int i) {
+  int get_index(int i) {
     assert i >= 1;
     assert i <= number_cards;
     return exchange_indices[i-1];
