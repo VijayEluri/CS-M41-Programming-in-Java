@@ -52,7 +52,7 @@ class Bank {
         h[j] = orig_hands[i].get(j+1);
       final ExchangeRequest e = E[i];
       for (int j = 1; j <= e.number_cards; ++j) {
-        h[e.get_indices(j)-1] = new Card(deck[next_card_index]);
+        h[e.get_index(j)-1] = new Card(deck[next_card_index]);
         ++next_card_index;
       }
       new_hands[i] = new Hand(h);
