@@ -45,7 +45,18 @@ class Bank {
   public void perform_exchanges(ExchangeRequest[] E) {
     assert E.length == number_players;
     new_hands = new Hand[number_players];
-    // XXX
+    int next_card_index = number_players * Hand.hand_size;
+    for (int i = 0; i < number_players; ++i) {
+      Card[] h = new Card[5];
+      for (int j = 0; j < Hand.hand_size; ++j)
+        h[j] = orig_hands[i].get(j+1);
+      final ExchangeRequest e = E[i];
+      for (int j = 1; j <= e.number_cards; ++j) {
+        h[e.get_indices(j)-1] = new Card(deck[next_card_index]);
+        ++next_card_index;
+      }
+      new_hands[i] = new Hand(h);
+    }
   }
 
   private final int[] deck; // here the card *indices* are used
@@ -77,16 +88,31 @@ class Bank {
   public static void main(String[] args) {
     final int num_players = 7;
     Bank B = new Bank(num_players);
+    for (int i = 0; i < Card.num_cards; ++i)
+        System.out.println((i+1) + ": " + new Card(B.deck[i]));
     assert B.number_players == num_players;
     assert B.deck.length == 52;
     assert B.orig_hands.length == num_players;
     assert B.new_hands == null;
-    Hand[] hands = new Hand[num_players];
-    for (int i = 0; i < num_players; ++i)
-      hands[i] = B.orig_hand(i+1);
-    for (int i = 0; i < num_players; ++i)
-      System.out.println((i+1) + ": " + hands[i]);
-    // XXX
+    for (int i = 1; i <= num_players; ++i)
+      System.out.println(i + ": " + B.orig_hand(i));
+    ExchangeRequest[] E = new ExchangeRequest[num_players];
+    for (int i = 0; i < num_players; ++i) {
+      int[] e = new int[2];
+      e[0] = 1; e[1] = 3;
+      E[i] = new ExchangeRequest(e);
+    }
+    B.perform_exchanges(E);
+    for (int i = 1; i <= num_players; ++i)
+      System.out.println(i + ": " + B.new_hand(i));
+    for (int i = 0; i < num_players; ++i) {
+      int[] e = new int[0];
+      E[i] = new ExchangeRequest(e);
+    }
+    B.perform_exchanges(E);
+    for (int i = 1; i <= num_players; ++i)
+      System.out.println(i + ": " + B.new_hand(i));
+
   }
 }
  
