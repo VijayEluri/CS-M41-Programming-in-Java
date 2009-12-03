@@ -231,14 +231,16 @@ class HandRank {
 
   // Transfer the ranks from rank_count to ranks, where rank_count[j] > 0
   // means that rank j is present, and will be entered into the ordered list
-  // "ranks" of ranks:
+  // "ranks" of ranks, where pairs come first (no rank occurs more than
+  // twice):
   private static void transfer_ranks(final int[] rank_count, final int[] ranks) {
     int i = 0;
     for (int j = 0; j < CardRank.num_ranks; ++j)
-      if (rank_count[j] > 0) {
-        ranks[i] = j;
-        ++i;
-      }
+      if (rank_count[j] == 2)
+        ranks[i++] = j;
+    for (int j = 0; j < CardRank.num_ranks; ++j)
+      if (rank_count[j] == 1)
+        ranks[i++] = j;
   }
 
   // Functions for ranking subsets S of {0,1,...,12} for sizes 3,4,5;
