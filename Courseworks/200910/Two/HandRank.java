@@ -139,7 +139,8 @@ class HandRank {
       result[0] = two_pairs;
       int[] ranks = new int[3];
       transfer_ranks(rank_count, ranks);
-      result[1] = lex_order(ranks[0],ranks[1],ranks[2]);
+      final int remaining_ranks = CardRank.num_ranks - 2;
+      result[1] = (lex_order(ranks[0],ranks[1])-1)*remaining_ranks+adjusted_rank(ranks[0],ranks[1],ranks[2])+1;
       return result;
     }
     if (count_of_counts[2] == 1) { // one pair
@@ -243,8 +244,19 @@ class HandRank {
         ranks[i++] = j;
   }
 
+  // Determine the adjusted rank of "rank" when p1, p2 are not taken into
+  // account:
+  private static int adjusted_rank(final int p1, final int p2, final int rank) {
+    assert p1 < p2;
+    if (rank <= p1) return rank;
+    if (rank <= p2) return rank - 1;
+    return rank - 2;
+  }
   // Functions for ranking subsets S of {0,1,...,12} for sizes 3,4,5;
   // the elements of S are given by x1 < ... < x5:
+  private static int lex_order(final int x1, final int x2) {
+    return 66-(11-x1)*(12-x1)/2+x2;
+  }
   private static int lex_order(final int x1, final int x2, final int x3) {
     return 274+(-(10-x1)*(11-x1)*(12-x1))/6-(11-x2)*(12-x2)/2+x3;
   }
@@ -271,6 +283,8 @@ class HandRank {
 
     // Testing the various functions for ranking subsets according to
     // lexicographical order:
+    assert lex_order(0,1) == 1;
+    assert lex_order(11,12) == 78;
     assert lex_order(0,1,2) == 1;
     assert lex_order(10,11,12) == 286;
     assert lex_order(0,1,2,3) == 1;
@@ -284,7 +298,23 @@ class HandRank {
       System.out.println(h);
       System.out.println(hr);
       assert hr.major_rank == two_pairs;
-      assert hr.minor_rank != 1;
+      assert hr.minor_rank == 133;
+    }
+    {
+      final Hand h = new Hand(new Card(3), new Card(1), new Card(14), new Card(2), new Card(15));
+      final HandRank hr = new HandRank(h);
+      System.out.println(h);
+      System.out.println(hr);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank == 134;
+    }
+    {
+      final Hand h = new Hand(new Card(0), new Card(13), new Card(2), new Card(15), new Card(1));
+      final HandRank hr = new HandRank(h);
+      System.out.println(h);
+      System.out.println(hr);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank == 12;
     }
     {
       final Hand h = new Hand(new Card(0), new Card(1), new Card(14), new Card(2), new Card(3));
