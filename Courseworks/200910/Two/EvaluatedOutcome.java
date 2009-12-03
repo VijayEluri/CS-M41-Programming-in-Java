@@ -7,7 +7,7 @@ class EvaluatedOutcome {
   // is one of the possible hand-ranks which can arise after exchange,
   // together with the probability that this hand-rank will be obtained.
 
-  public EvaluatedOutcome(HandRank hr, double p) {
+  public EvaluatedOutcome(final HandRank hr, final double p) {
     assert p >= 0;
     assert p <= 1;
     hand_rank = hr;
@@ -16,4 +16,12 @@ class EvaluatedOutcome {
 
   public final HandRank hand_rank;
   public final double prob;
+
+  public String toString() {
+    return hand_rank + ": " + prob;
+  }
+
+  public boolean equals(final EvaluatedOutcome e) {
+    return e.hand_rank.equals(hand_rank) && e.prob == prob;
+  }
 }
