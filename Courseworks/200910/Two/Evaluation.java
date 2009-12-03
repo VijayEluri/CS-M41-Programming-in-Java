@@ -38,7 +38,7 @@ class Evaluation {
       new_hand[i] = hand.get(i+1);
     if (e.number_cards == 1) {
       num_possibilities = num_other_cards;
-      final int exchange_index = e.get_index(1);
+      final int exchange_index = e.get_index(1)-1;
       for (int i = 0; i < num_other_cards; ++i) {
         new_hand[exchange_index] = other_cards[i];
         ++count_outcomes[new HandRank((new Hand(new_hand))).rank];
@@ -46,8 +46,8 @@ class Evaluation {
     }
     else {
       num_possibilities = num_other_cards * (num_other_cards-1);
-      final int exchange_index_1 = e.get_index(1);
-      final int exchange_index_2 = e.get_index(2);
+      final int exchange_index_1 = e.get_index(1)-1;
+      final int exchange_index_2 = e.get_index(2)-1;
       for (int i = 0; i < num_other_cards; ++i) {
         new_hand[exchange_index_1] = other_cards[i];
         for (int j = i+1; j < num_other_cards; ++j) {
@@ -78,11 +78,22 @@ class Evaluation {
     final Hand h = b.orig_hand(1);
     System.out.println(h);
     final Evaluation E = new Evaluation(h);
-    for (int i = 0; i < 47; ++i)
-      System.out.println(E.other_cards[i]);
     {
+      System.out.println("No exchange:");
       final ExchangeRequest e = new ExchangeRequest();
-      
+      final EvaluatedOutcome[] O = E.evaluate(e);
+      assert O.length == 1;
+      for (int i = 0; i < O.length; ++i)
+        System.out.println(O[i]);
+    }
+    {
+      System.out.println("Exchange last card:");
+      final int[] ea = new int[1];
+      ea[0] = 5;
+      final ExchangeRequest e = new ExchangeRequest(ea);
+      final EvaluatedOutcome[] O = E.evaluate(e);
+      for (int i = 0; i < O.length; ++i)
+        System.out.println(O[i]);
     }
   }
 }
