@@ -276,6 +276,23 @@ class HandRank {
     assert lex_order(0,1,2,3,4) == 1;
     assert lex_order(8,9,10,11,12) == 1277 + 10;
 
+    {
+      final Hand h = new Hand(new Card(0), new Card(1), new Card(14), new Card(2), new Card(15));
+      final HandRank hr = new HandRank(h);
+      System.out.println(h);
+      System.out.println(hr);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank != 1;
+    }
+    {
+      final Hand h = new Hand(new Card(0), new Card(1), new Card(14), new Card(2), new Card(3));
+      final HandRank hr = new HandRank(h);
+      System.out.println(h);
+      System.out.println(hr);
+      assert hr.major_rank == one_pair;
+      assert hr.minor_rank != 1;
+    }
+
     // Running through all possible hands, and detemining the ranks:
     int[] statistics_ranks = new int[num_hand_ranks+1];
     int[] statistics_major_ranks = new int[num_major_hand_ranks+1];
