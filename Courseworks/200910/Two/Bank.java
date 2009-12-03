@@ -10,7 +10,7 @@ class Bank {
   // used arbitrarily often (always using the original deck of cards and the
   // original hands).
 
-  public Bank(int n) {
+  public Bank(final int n) {
     assert n >= 0;
     assert n <= max_number_players;
     number_players = n;
@@ -26,13 +26,13 @@ class Bank {
   public final int number_players;
 
   // Returns the hand of a player before exchange:
-  public Hand orig_hand(int player) {
+  public Hand orig_hand(final int player) {
     assert player >= 1;
     assert player <= number_players;
     return orig_hands[player-1];
   }
   // Returns the hand of a player after exchange:
-  public Hand new_hand(int player) {
+  public Hand new_hand(final int player) {
     assert player >= 1;
     assert player <= number_players;
     assert new_hands != null;
@@ -42,7 +42,7 @@ class Bank {
   // Given an array E of exchange-requests (one for each player),
   // set new_hands accordingly; this function can be applied
   // arbitrarily often:
-  public void perform_exchanges(ExchangeRequest[] E) {
+  public void perform_exchanges(final ExchangeRequest[] E) {
     assert E.length == number_players;
     new_hands = new Hand[number_players];
     // XXX
