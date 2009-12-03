@@ -9,9 +9,11 @@ class TwoPlayers {
   // player 1 wins, and 0 means draw:
   public static Storage play() {
     Storage R = new Storage(Strategy.number_strategies); // for the results
-    ExchangeRequest[] E = new ExchangeRequest[Strategy.number_strategies]; // for the exchange requests (per strategy)
     Bank b = new Bank(2);
-    // XXX
+    for (int p1 = 1; p1 < Strategy.number_strategies; ++p1)
+      for (int p2 = p1+1; p2 <= Strategy.number_strategies; ++p2) {
+        // XXX
+      }
     return R;
   }
 
