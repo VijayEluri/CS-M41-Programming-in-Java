@@ -29,8 +29,8 @@ class HandRank {
   public static final int num_flush_ranks = 1277;
   public static final int num_straight_ranks = 10;
   public static final int num_three_of_a_kind_ranks = 13;
-  public static final int num_two_pairs_ranks = 286;
-  public static final int num_one_pair_ranks = 715;
+  public static final int num_two_pairs_ranks = 858;
+  public static final int num_one_pair_ranks = 2860;
   public static final int num_high_card_ranks = 1277;
 
   // The number of ranks up to a major rank:
@@ -47,7 +47,7 @@ class HandRank {
   // Access for a given major rank to the cumulated ranks via an array:
   public static final int[] cumulated_num_ranks = {0, cum_straight_flush_ranks, cum_four_of_a_kind_ranks, cum_full_house_ranks, cum_flush_ranks, cum_straight_ranks, cum_three_of_a_kind_ranks, cum_two_pairs_ranks, cum_one_pair_ranks, cum_high_card_ranks};
 
-  public static final int num_hand_ranks = cum_high_card_ranks; // = 3614
+  public static final int num_hand_ranks = cum_high_card_ranks; // = 6331
 
   // For a given rank, how many hands of that rank are there (this depends
   // only on the major rank):
@@ -57,8 +57,8 @@ class HandRank {
   public static final int size_flush_rank = 4;
   public static final int size_straight_rank = 1020;
   public static final int size_three_of_a_kind_rank = 4224;
-  public static final int size_two_pairs_rank = 432;
-  public static final int size_one_pair_rank = 1536;
+  public static final int size_two_pairs_rank = 144;
+  public static final int size_one_pair_rank = 384;
   public static final int size_high_card_rank = 1020;
 
   // Access for a given rank to the sizes via an array (through the associated
@@ -139,14 +139,16 @@ class HandRank {
       result[0] = two_pairs;
       int[] ranks = new int[3];
       transfer_ranks(rank_count, ranks);
-      result[1] = lex_order(ranks[0],ranks[1],ranks[2]);
+      final int remaining_ranks = CardRank.num_ranks - 2;
+      result[1] = (lex_order_13(ranks[0],ranks[1])-1)*remaining_ranks+adjusted_rank(ranks[0],ranks[1],ranks[2])+1;
       return result;
     }
     if (count_of_counts[2] == 1) { // one pair
       result[0] = one_pair;
       int[] ranks = new int[4];
       transfer_ranks(rank_count, ranks);
-      result[1] = lex_order(ranks[0],ranks[1],ranks[2],ranks[3]);
+      final int num_remaining_triples = 220; // = binom(13-1,3)
+      result[1] = ranks[0]*num_remaining_triples+lex_order_12(adjusted_rank(ranks[0],ranks[1]),adjusted_rank(ranks[0],ranks[2]),adjusted_rank(ranks[0],ranks[3]));
       return result;
     }
     if (is_straight(h)) {
@@ -163,7 +165,7 @@ class HandRank {
     else {
       int[] ranks = new int[5];
       transfer_ranks(rank_count, ranks);
-      result[1] = lex_order(ranks[0],ranks[1],ranks[2],ranks[3],ranks[4]);
+      result[1] = lex_order_13(ranks[0],ranks[1],ranks[2],ranks[3],ranks[4]);
       result[1] -= h.get(1).rank.index+1;
       if (h.get(1).rank.index != CardRank.ace) // subtracting the low-ace-case
         --result[1];
@@ -195,7 +197,7 @@ class HandRank {
   public final int minor_rank;
 
   public String toString() {
-    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "\nRank: " + rank;
+    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "; total rank: " + rank;
   }
 
   public boolean equals(final HandRank hr) {
@@ -231,31 +233,46 @@ class HandRank {
 
   // Transfer the ranks from rank_count to ranks, where rank_count[j] > 0
   // means that rank j is present, and will be entered into the ordered list
-  // "ranks" of ranks:
+  // "ranks" of ranks, where pairs come first (no rank occurs more than
+  // twice):
   private static void transfer_ranks(final int[] rank_count, final int[] ranks) {
     int i = 0;
     for (int j = 0; j < CardRank.num_ranks; ++j)
-      if (rank_count[j] > 0) {
-        ranks[i] = j;
-        ++i;
-      }
+      if (rank_count[j] == 2)
+        ranks[i++] = j;
+    for (int j = 0; j < CardRank.num_ranks; ++j)
+      if (rank_count[j] == 1)
+        ranks[i++] = j;
   }
 
-  // Functions for ranking subsets S of {0,1,...,12} for sizes 3,4,5;
-  // the elements of S are given by x1 < ... < x5:
-  private static int lex_order(final int x1, final int x2, final int x3) {
-    return 274+(-(10-x1)*(11-x1)*(12-x1))/6-(11-x2)*(12-x2)/2+x3;
+  // Determine the adjusted rank of "rank" when p1, p2 are not taken into
+  // account:
+  private static int adjusted_rank(final int p1, final int rank) {
+    if (rank <= p1) return rank;
+    return rank - 1;
   }
-  private static int lex_order(final int x1, final int x2, final int x3, final int x4) {
-    return 703+(-(9-x1)*(10-x1)*(11-x1)*(12-x1))/24+(-(10-x2)*(11-x2)*(12-x2))/6-(11-x3)*(12-x3)/2+x4;
+  private static int adjusted_rank(final int p1, final int p2, final int rank) {
+    assert p1 < p2;
+    if (rank <= p1) return rank;
+    if (rank <= p2) return rank - 1;
+    return rank - 2;
   }
-  private static int lex_order(final int x1, final int x2, final int x3, final int x4, final int x5) {
+  // Functions for ranking subsets S of {0,1,...,12} resp. {0,1,...,11}
+  // for set-sizes 2,3,5; the elements of S are given by x1 < ... < x5:
+  private static int lex_order_13(final int x1, final int x2) {
+    return 66-(11-x1)*(12-x1)/2+x2;
+  }
+  private static int lex_order_12(final int x1, final int x2, final int x3) {
+    return 209+(-(9-x1)*(10-x1)*(11-x1))/6-(10-x2)*(11-x2)/2+x3;
+  }
+  private static int lex_order_13(final int x1, final int x2, final int x3, final int x4, final int x5) {
     return 1275+(-(8-x1)*(9-x1)*(10-x1)*(11-x1)*(12-x1))/120+(-(9-x2)*(10-x2)*(11-x2)*(12-x2))/24+(-(10-x3)*(11-x3)*(12-x3))/6-(11-x4)*(12-x4)/2+x5;
   }
 
   // Tests (run by "java -ea HandRank", enabling assertions):
   public static void main(String[] args) {
-    assert num_hand_ranks == 3614;
+    assert num_hand_ranks == 6331;
+
     assert num_straight_flushes == 40;
     assert num_four_of_a_kinds == 624;
     assert num_full_houses == 3744;
@@ -269,12 +286,37 @@ class HandRank {
 
     // Testing the various functions for ranking subsets according to
     // lexicographical order:
-    assert lex_order(0,1,2) == 1;
-    assert lex_order(10,11,12) == 286;
-    assert lex_order(0,1,2,3) == 1;
-    assert lex_order(9,10,11,12) == 715;
-    assert lex_order(0,1,2,3,4) == 1;
-    assert lex_order(8,9,10,11,12) == 1277 + 10;
+    assert lex_order_13(0,1) == 1;
+    assert lex_order_13(11,12) == 78;
+    assert lex_order_12(0,1,2) == 1;
+    assert lex_order_12(9,10,11) == 220;
+    assert lex_order_13(0,1,2,3,4) == 1;
+    assert lex_order_13(8,9,10,11,12) == 1277 + 10;
+
+    {
+      final Hand h = new Hand(new Card(0), new Card(1), new Card(14), new Card(2), new Card(15));
+      final HandRank hr = new HandRank(h);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank == 133;
+    }
+    {
+      final Hand h = new Hand(new Card(3), new Card(1), new Card(14), new Card(2), new Card(15));
+      final HandRank hr = new HandRank(h);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank == 134;
+    }
+    {
+      final Hand h = new Hand(new Card(0), new Card(13), new Card(2), new Card(15), new Card(1));
+      final HandRank hr = new HandRank(h);
+      assert hr.major_rank == two_pairs;
+      assert hr.minor_rank == 12;
+    }
+    {
+      final Hand h = new Hand(new Card(0), new Card(1), new Card(14), new Card(2), new Card(3));
+      final HandRank hr = new HandRank(h);
+      assert hr.major_rank == one_pair;
+      assert hr.minor_rank == 221;
+    }
 
     // Running through all possible hands, and detemining the ranks:
     int[] statistics_ranks = new int[num_hand_ranks+1];

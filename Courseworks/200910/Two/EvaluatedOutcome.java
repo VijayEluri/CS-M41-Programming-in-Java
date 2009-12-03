@@ -18,10 +18,15 @@ class EvaluatedOutcome {
   public final double prob;
 
   public String toString() {
-    return hand_rank + ": " + prob;
+    return hand_rank + "\nProbability: " + prob;
   }
 
   public boolean equals(final EvaluatedOutcome e) {
     return e.hand_rank.equals(hand_rank) && e.prob == prob;
+  }
+
+
+  public static void main(String[] args) {
+    System.out.println(new EvaluatedOutcome(new HandRank(1), 0.9));
   }
 }
