@@ -195,7 +195,7 @@ class HandRank {
   public final int minor_rank;
 
   public String toString() {
-    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "\nRank: " + rank;
+    return "Major rank: " + major_hand_rank_names[major_rank-1] + "\nMinor rank: " + minor_rank + "; total rank: " + rank;
   }
 
   public boolean equals(final HandRank hr) {
