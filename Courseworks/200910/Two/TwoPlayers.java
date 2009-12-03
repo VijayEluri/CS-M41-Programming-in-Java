@@ -10,8 +10,9 @@ class TwoPlayers {
   public static Storage play() {
     Storage R = new Storage(Strategy.number_strategies); // for the results
     Bank b = new Bank(2);
-    for (int p1 = 1; p1 < Strategy.number_strategies; ++p1)
-      for (int p2 = p1+1; p2 <= Strategy.number_strategies; ++p2) {
+    // XXX
+    for (int s1 = 1; s1 < Strategy.number_strategies; ++s1)
+      for (int s2 = s1+1; s2 <= Strategy.number_strategies; ++s2) {
         // XXX
       }
     return R;
