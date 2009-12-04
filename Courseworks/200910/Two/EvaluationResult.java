@@ -18,7 +18,7 @@ class EvaluationResult {
   public String toString() {
     String res = "";
     for (int i = 0; i < length; ++i)
-      res += i + ":\n" + results[i];
+      res += "\n" + (i+1) + ": " + results[i];
     return res;
   }
 
