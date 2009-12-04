@@ -23,12 +23,12 @@ class Evaluation {
   // For an exchange-request e, compute the array of possible outcomes
   // as hand-ranks, together with their probabilities, sorted by
   // descending hand-ranks:
-  public EvaluatedOutcome[] evaluate(final ExchangeRequest e) {
+  public EvaluationResult evaluate(final ExchangeRequest e) {
     if (e.number_cards == 0) {
       EvaluatedOutcome eo = new EvaluatedOutcome(new HandRank(hand), 1.0);
       EvaluatedOutcome[] result = new EvaluatedOutcome[1];
       result[0] = eo;
-      return result;
+      return new EvaluationResult(result);
     }
     int[] count_outcomes = new int[HandRank.num_hand_ranks+1];
     int num_possibilities;
@@ -66,7 +66,7 @@ class Evaluation {
     for (int i = 1; i <= HandRank.num_hand_ranks; ++i)
       if (count_outcomes[i] != 0)
         result[next_index++] = new EvaluatedOutcome(new HandRank(i), (double) count_outcomes[i] / num_possibilities);
-    return result;
+    return return new EvaluationResult(result);
   }
 
   private final Hand hand;
