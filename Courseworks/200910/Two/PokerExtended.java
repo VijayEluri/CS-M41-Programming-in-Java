@@ -26,11 +26,11 @@ class Poker {
       final Evaluation eval = new Evaluation(h);
       for (int i = 0; i < all.length; ++i) {
         System.out.println("Exchange " + all[i] + " yields:");
-        final EvaluatedOutcome[] result = eval(all[i]);
+        final EvaluationResult result = eval.evaluate(all[i]);
         System.out.println("Best: ");
-        System.out.println(result[0]);
+        System.out.println(result.get(1));
         System.out.println("Worst: ");
-        System.out.println(result[result.length-1]);
+        System.out.println(result.get(result.length));
       }
     }
     else {
