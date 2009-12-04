@@ -66,7 +66,7 @@ class Evaluation {
     for (int i = 1; i <= HandRank.num_hand_ranks; ++i)
       if (count_outcomes[i] != 0)
         result[next_index++] = new EvaluatedOutcome(new HandRank(i), (double) count_outcomes[i] / num_possibilities);
-    return return new EvaluationResult(result);
+    return new EvaluationResult(result);
   }
 
   private final Hand hand;
@@ -81,19 +81,17 @@ class Evaluation {
     {
       System.out.println("No exchange:");
       final ExchangeRequest e = new ExchangeRequest();
-      final EvaluatedOutcome[] O = E.evaluate(e);
-      assert O.length == 1;
-      for (int i = 0; i < O.length; ++i)
-        System.out.println(O[i]);
-    }
+      final EvaluationResult R = E.evaluate(e);
+      assert R.length == 1;
+      System.out.println(R);
+     }
     {
       System.out.println("Exchange last card:");
       final int[] ea = new int[1];
       ea[0] = 5;
       final ExchangeRequest e = new ExchangeRequest(ea);
-      final EvaluatedOutcome[] O = E.evaluate(e);
-      for (int i = 0; i < O.length; ++i)
-        System.out.println(O[i]);
+      final EvaluationResult R = E.evaluate(e);
+      System.out.println(R);
     }
   }
 }
