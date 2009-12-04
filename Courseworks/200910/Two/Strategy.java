@@ -6,7 +6,7 @@ class Strategy {
   // For an object s of type Strategy by s.exchange(i) we obtain
   // the exchange request for the strategy with index i.
 
-  public static final int number_strategies = 2; // to be updated
+  public static final int number_strategies = 3; // to be updated
 
   public Strategy(final Hand h_) {
     h = h_;
@@ -37,6 +37,12 @@ class Strategy {
     int[] e = new int[2];
     e[0] = 1;
     e[1] = 2;
+    return new ExchangeRequest(e);
+  }
+
+  private static ExchangeRequest always_last() {
+    int[] e = new int[1];
+    e[0] = 5;
     return new ExchangeRequest(e);
   }
 
