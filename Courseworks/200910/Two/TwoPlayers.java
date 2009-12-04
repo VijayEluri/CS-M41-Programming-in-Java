@@ -43,6 +43,7 @@ class TwoPlayers {
 
   public static void main(String[] args) {
     final Storage S = TwoPlayers.play();
+    System.out.println(S);
   }
 
 }
