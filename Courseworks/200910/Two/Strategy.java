@@ -6,7 +6,7 @@ class Strategy {
   // For an object s of type Strategy by s.exchange(i) we obtain
   // the exchange request for the strategy with index i.
 
-  public static final int number_strategies = 3; // to be updated
+  public static final int number_strategies = 4; // to be updated
 
   public Strategy(final Hand h_) {
     h = h_;
@@ -18,10 +18,11 @@ class Strategy {
       case 1 : return no_exchange();
       case 2 : return always_first_two();
       case 3 : return always_last();
-      case 4 : return risky();
-      case 5 : return cautious();
+      case 4 : return always_last_two();
+      case 5 : return risky();
+      case 6 : return cautious();
     }
-    return no_exchange(); // for the compiler; does not occur for vaild index
+    return no_exchange(); // for the compiler; does not occur for valid indices
   }
 
   public static boolean valid_index(final int i) {
@@ -46,6 +47,14 @@ class Strategy {
     e[0] = 5;
     return new ExchangeRequest(e);
   }
+
+  private static ExchangeRequest always_last_two() {
+    int[] e = new int[2];
+    e[0] = 4;
+    e[1] = 5;
+    return new ExchangeRequest(e);
+  }
+
 
   // Go for the best hand achievable:
   private static ExchangeRequest risky() {
