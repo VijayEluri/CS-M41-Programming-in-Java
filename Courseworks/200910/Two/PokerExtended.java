@@ -1,7 +1,7 @@
 // Oliver Kullmann, 26.11.2009 (Swansea)
 /* Copyright 2009 Oliver Kullmann */
 
-class Poker {
+class PokerExtended {
 
   // Simulating the behaviour of the Poker-program from the first
   // coursework (with additional information when evaluating a single hand):
