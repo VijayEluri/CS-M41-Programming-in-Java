@@ -32,4 +32,23 @@ class Card {
   public boolean equals(final Card c) {
     return c.rank.equals(rank) && c.suit.equals(suit);
   }
+
+
+  // Demonstration of functionality:
+  public static void main(String[] args) {
+    System.out.println(new Card(0));
+    System.out.println(new Card(51));
+    final Card c1 = new Card(new CardRank("Jack"), new Suit("Spades"));
+    System.out.println(c1);
+    // Demonstration that here references are harmless, since CardRank, Suit
+    // and also Card behave similar to value-types (they are non-mutable):
+    CardRank cr2 = new CardRank("5");
+    Suit s2 = new Suit("Hearts");
+    final Card c2 = new Card(cr2, s2);
+    System.out.println(c2);
+    cr2 = new CardRank("King");
+    s2 = new Suit("Clubs");
+    System.out.println(c2); // still the same, since the old cr2- and s2-objects didn't change
+    System.out.println(new Card(cr2,s2));
+  }
 }
