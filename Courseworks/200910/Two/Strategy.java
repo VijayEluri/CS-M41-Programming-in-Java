@@ -17,8 +17,9 @@ class Strategy {
     switch (index_strategy) {
       case 1 : return no_exchange();
       case 2 : return always_first_two();
-      case 3 : return risky();
-      case 4 : return cautious();
+      case 3 : return always_last();
+      case 4 : return risky();
+      case 5 : return cautious();
     }
     return no_exchange(); // for the compiler; does not occur for vaild index
   }
