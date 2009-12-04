@@ -18,19 +18,39 @@ class Storage {
   public final int number_strategies;
   public final int number_results;
 
-  Storage(final int num_strategies) {
+  public Storage(final int num_strategies) {
     assert num_strategies >= 0;
     number_strategies = num_strategies;
     number_results = (number_strategies * (number_strategies-1)) / 2;
     results = new int[number_results];
   }
 
-  int get(final int i, final int j) {
+  public int get(final int i, final int j) {
     return results[index(i,j)];
   }
 
-  void set(final int i, final int j, final int x) {
+  public void set(final int i, final int j, final int x) {
     results[index(i,j)] = x;
+  }
+
+  public String toString() {
+    String result = "";
+    for (int i = 1; i < number_strategies; ++i) {
+      for (int j = i+1; j <= number_strategies; ++j)
+        result += get(i,j) + " ";
+      result += "\n";
+    }
+    return result;
+  }
+
+  public boolean equals(final Storage S) {
+    if (S.number_strategies != number_strategies)
+      return false;
+    for (int i = 1; i < number_strategies; ++i)
+      for (int j = i+1; j <= number_strategies; ++j)
+        if (S.get(i,j) != get(i,j))
+          return false;
+    return true;
   }
 
   private int[] results;
@@ -43,5 +63,17 @@ class Storage {
     assert j <= number_strategies;
     assert i < j;
     return ((j-2)*(j-1))/2+i-1;
+  }
+
+
+  // Tests:
+  public static void main(String[] args) {
+    final Storage S = new Storage(5);
+    for (int i = 1; i < 5; ++i)
+      for (int j = i+1; j <= 5; ++j)
+        S.set(i,j,i*j);
+    for (int i = 1; i < 5; ++i)
+      for (int j = i+1; j <= 5; ++j)
+        assert(S.get(i,j) == i*j);
   }
 }
