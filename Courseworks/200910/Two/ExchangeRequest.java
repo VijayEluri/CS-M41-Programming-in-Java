@@ -66,10 +66,10 @@ class ExchangeRequest {
 
   public String toString() {
     if (number_cards == 0)
-      return "0:.";
+      return "()";
     if (number_cards == 1)
-      return "1: " + exchange_indices[0] + ".";
-    return "2: " + exchange_indices[0] + ", " + exchange_indices[1] + ".";
+      return "(" + exchange_indices[0] + ")";
+    return "(" + exchange_indices[0] + "," + exchange_indices[1] + ")";
   }
 
   public boolean equals(final ExchangeRequest E) {
