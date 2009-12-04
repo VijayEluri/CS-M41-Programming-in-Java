@@ -79,14 +79,14 @@ class Evaluation {
     System.out.println(h);
     final Evaluation E = new Evaluation(h);
     {
-      System.out.println("No exchange:");
+      System.out.println("\nNo exchange:");
       final ExchangeRequest e = new ExchangeRequest();
       final EvaluationResult R = E.evaluate(e);
       assert R.length == 1;
       System.out.println(R);
      }
     {
-      System.out.println("Exchange last card:");
+      System.out.println("\nExchange last card:");
       final int[] ea = new int[1];
       ea[0] = 5;
       final ExchangeRequest e = new ExchangeRequest(ea);
