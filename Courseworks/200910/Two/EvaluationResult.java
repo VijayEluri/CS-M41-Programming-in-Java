@@ -23,7 +23,7 @@ class EvaluationResult {
   }
 
   private final EvaluatedOutcome[] results;
-  private final int length;
+  public final int length;
 
 }
 
