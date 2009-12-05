@@ -11,7 +11,7 @@ class Strategy {
   public Strategy(final Hand h_) {
     h = h_;
   }
-  public static ExchangeRequest exchange(final int index_strategy) {
+  public ExchangeRequest exchange(final int index_strategy) {
     assert valid_index(index_strategy);
     assert index_strategy <= number_strategies;
     switch (index_strategy) {
@@ -57,13 +57,13 @@ class Strategy {
 
 
   // Go for the best hand achievable:
-  private static ExchangeRequest risky() {
+  private ExchangeRequest risky() {
     // XXX
     return new ExchangeRequest(); // temporarily
   }
 
   // Choose only amongst choices which can not impair the original hand:
-  private static ExchangeRequest cautious() {
+  private ExchangeRequest cautious() {
     // XXX
     return new ExchangeRequest(); // temporarily
   }
