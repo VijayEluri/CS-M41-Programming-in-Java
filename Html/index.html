@@ -466,7 +466,7 @@
       creating some simple turtle-graphics. </li>
     </ol>
    </li>
-   <li> Weed 10, Friday, 4/12/2009: Understanding the (new) Poker
+   <li> Week 10, Friday, 4/12/2009: Understanding the (new) Poker
     class-collection:
     <ol>
      <li> Add to the Card-class a test-function (that is, a "main"-function)
@@ -493,6 +493,55 @@
      <li> Note that this program compiles, but it cannot run succesfully
       until you implement the missing functionality. </li>
     </ol>
+   </li>
+   <li> Week 11, Friday, 4/12/2009: Using and changing some data type.
+    <ul>
+     <li> Consider Storage.java from the Poker class-collection (available
+      <a href="CS-M41_Programs/Courseworks/200910/Two/Storage.java">
+       here </a>).
+     </li>
+     <li> First you need to understand the API; so try to understand
+      the public members of this class.
+     </li>
+     <li> Some examples for using this class are already given in the
+      test function.
+     </li>
+     <li> Write a client program which takes N from the command-line,
+      stores the pairs (i,j) for 1 <= i < j <= N in a Storage-object,
+      and outputs the Storage-object.
+     </li>
+     <li> Now change the implementation (only(!) --- not the interface!),
+      by just using a two-dimensional array (instead of the one-dimensional
+      array as we have it now). </li>
+     <li> For that you just need to change the implementation of the
+      constructor and of the index-function, and, of course, the definition
+      of the instance-variable "results". </li>
+     <li> The main-function as well as your client must work as before,
+      without any need for changing the code, and without changes in the
+      observable behaviour.
+     </li>
+     <li> Recall that a two-dimensional integer array is declared via, e.g.,
+      <code>int[][] a;</code>, initialised via, e.g., <code>a = new int[3][4];
+      </code>, and used by, e.g., <code>a[2][3] = 77</code>.
+     </li>
+     <li> Remark on this alternative implementation: It uses more memory,
+      but access is quicker, since no index-computations are necessary.
+      This is a typical situation, using different implementations for
+      trading time versus space.
+     </li>
+     <li> Since we cannot use inheritance yet, usage of the two implementations
+      is a bit clumsy, since we need to have two files "Storage.java"
+      somewhere (containing the two implementations), and then to copy one or
+      the other into the directory with our application. </li>
+     <li> Inheritance allows one to define one "interface class" "Storage",
+      which is abstract, and then to define various classes implementing
+      this interface, like "StorageFast" and "StorageSmall".
+     </li>
+     <li> Final remark: Of course, for coursework II only the original files
+      are to be used (though it will also work with the alternative
+      implementation, of course).
+     </li>
+    </ul>
    </li>
   </ul>
 
@@ -738,7 +787,7 @@
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Dec 11 07:31:39 GMT 2009
+Last modified: Fri Dec 11 08:01:29 GMT 2009
 <!-- hhmts end -->
 
    </div>
