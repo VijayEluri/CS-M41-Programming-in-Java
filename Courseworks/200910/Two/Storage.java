@@ -10,9 +10,9 @@ class Storage {
   // Remark: One could call this class also "UpperTriangularMatrix".
 
   /*
-    Via Strategy(5) for example storage for 5*4/2 = 10 integers is
+    Via Storage(5) for example storage for 5*4/2 = 10 integers is
     provided. Via set(i,j,x) then for the pairs 1 <= i < j <= 5
-    the value x is stored, and retrieved with get(i,j).
+    the value x is stored, and retrieved by get(i,j).
   */
 
   public final int number_strategies;
@@ -69,11 +69,23 @@ class Storage {
   // Tests:
   public static void main(String[] args) {
     final Storage S = new Storage(5);
+    assert S.number_strategies == 5;
+    assert S.number_results == 10;
+    assert S.equals(S);
     for (int i = 1; i < 5; ++i)
       for (int j = i+1; j <= 5; ++j)
         S.set(i,j,i*j);
+    assert S.equals(S);
     for (int i = 1; i < 5; ++i)
       for (int j = i+1; j <= 5; ++j)
         assert(S.get(i,j) == i*j);
+    final Storage S2 = new Storage(5);
+    assert ! S.equals(S2);
+    for (int i = 1; i < 5; ++i)
+      for (int j = i+1; j <= 5; ++j)
+        S2.set(i,j,i*j);
+    assert S.equals(S2);
+    S2.set(1,2,77);
+    assert ! S.equals(S2);
   }
 }
