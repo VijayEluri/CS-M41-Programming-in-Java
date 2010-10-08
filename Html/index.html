@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB"> 
+ <head>
+  <title>CS-M41 Programming in Java 2010/11</title>
+  <meta name="author" content="Oliver Kullmann" />
+   <meta name="description" content="Home page of module CS-M41 for 2010/11" />
+    <meta name="robot" content="all" />
+     <meta http-equiv="content-type" content="text/html" />
+      <meta http-equiv="charset" content="utf-8" />
+ </head>
+ 
+ <body>
+  <h1>CS-M41 Programming in Java 2010/11</h1>
+  
+  
+  <h2> Messages </h2>
+  
+  <ul>
+   <li> Welcome! </li>
+   <li> In the first week (4/10 - 8/10/2010) we only do some formal preparations.
+    The real work starts in the second week (11/10 - 15/10/2010). </li>
+  </ul>
+
+  
+  <h2> General information </h2>
+  
+  <ul>
+   <li> First week (4/10/2010 - 8/10/2010):
+    <ol>
+     <li> One lecture Friday 11:00 - 12:00 in the Robert Recorde room. </li>
+     <li> One lab sessions Friday 13:00 - 14:00 in the Linux lab (room 217).
+     </li>
+    </ol>
+   </li>
+   <li> From 11/10/2010 to 10/12/2010:
+    <ol>
+     <li> Tuesday, 14:00 - 16:00, support lab session in the Linux lab
+      (room 217). </li>
+     <li> Friday, 11:00 - 12:00, lecture in the Robert Recorde room.
+     </li>
+     <li> Friday 13:00 - 14:00, exercise lab session (Linux lab). </li>
+    </ol>
+   </li>
+   <li> The role of the support lab sessions:
+    <ol>
+     <li> In the support lab sessions a mixture of teaching and programming
+      practice takes place. </li>
+     <li> We will not make use of all support lab sessions. </li>
+    </ol>
+   </li>
+   <li> The role of the exercise lab sessions:
+    <ol>
+     <li> Active participation in all exercise lab session is awarded 10% of
+      the overall module marks. </li>
+     <li> For each exercise lab sessions tasks are distributed, related to the
+      accompanying lecture (from the same day). </li>
+     <li> During the exercise lab session, work on these tasks is expected.
+     </li>
+     <li> "Active participation" means that during the whole lab session
+      reasonable work related to the module is performed, typically related
+      to the current tasks, but possibly also related to previous tasks,
+      or to other questions or problems (of course, related to the module).
+     </li>
+     <li> There are no tests (or exams) in the labs. Every student present for
+      the full time and doing reasonable work gets acknowledged his/her
+      active participation. </li>
+    </ol>
+   </li>
+   <li> Assessment:
+    <ol>
+     <li> 10% is allocated to active participation in the exercise lab
+      sessions. </li>
+     <li> Roughly in week 4 and week 7 two courseworks are handed out,
+      each worth 20%. </li>
+     <li> The remaining 50% is the January exam. </li>
+     <li> The exam is based on what we did in the lectures, the lab sessions,
+      and the coursework. </li>
+    </ol>
+   </li>
+  </ul>
+
+
+  <h2> The textbook </h2>
+
+  <ul>
+   <li> This module is based on the book "Introduction to Programming in Java",
+    from Robert Sedgewick and Kevin Wayne, Addison-Wesley 2007
+    (ISBN-13 978-0-321-49805-2). </li>
+   <li> It is <strong>strongly recommended</strong> that you buy this book
+    (for example at the Campus book shop). </li>
+   <li> The book's home page is
+    <a href="http://www.cs.princeton.edu/introcs/home/"> here </a>. </li>
+   <li> Additional to the book, at this web page a lot of useful information
+    is available. </li>
+   <li> Here is Chapter 1 as <a href="Slides/chapter1.pdf"> pdf-file. </a>
+   </li>
+  </ul>
+  
+  
+  <h2> Slides </h2>
+
+  <p>
+   The additional programs you find <a href="CS-M41_Programs"> here </a>.
+  </p>
+<!--
+  <ul>
+   <li> Week 0:
+    <ol>
+     <li> Tuesday: Section 1.1 <a href="Slides/11hello-2x2.pdf"> First
+       programs </a>. Here <a href="Remarks11.html"> some remarks and
+       corrections. </a>
+     </li>
+     <li> Wednesday: Section 1.2 <a href="Slides/12types-2x2.pdf"> Data types </a>
+     </li>
+     <li> Thursday and Friday: Section 1.3 <a href="Slides/13flow-2x2.pdf"> Program flow </a>. Here <a href="Remarks13.html"> some remarks and
+       corrections. </a>
+     </li>
+    </ol>
+   </li>
+   <li> Week 1, Friday 2/10/2009: Section 1.4
+    <a href="Slides/14array-2x2.pdf"> Arrays </a>.
+   </li>
+   <li> Week 2, Friday 9/10/2009:
+    <ol>
+     <li> Section 1.5 <a href="Slides/15inout-2x2.pdf"> Input and output
+      </a>.
+      </li>
+     <li> And see
+      <a href="CS-M41_Programs/Chapter1/InputOutput"> here </a>
+      for the input-output library we will use from now on.
+      </li>
+     <li> You can either copy the .java-files from this library to the
+      directory with your program-files, or you can precompile the library
+      (by "javac *"), and then just copy the .class-files. </li>
+     <li> Additional material you find
+        <a href="http://www.cs.princeton.edu/introcs/15inout/"> here</a>.
+      </li>
+    </ol>
+   </li>
+   <li> Week 3, Friday 16/10/2009:
+    <ol>
+     <li> Section 2.1 <a href="Slides/21function-2x2.pdf"> Functions </a>.
+     </li>
+    </ol>
+   </li>
+   <li> Week 4, Friday 23/10/2009:
+    <ol>
+     <li> Still Section 2.1 <a href="Slides/21function-2x2.pdf"> Functions
+      </a>.
+     </li>
+    </ol>
+   </li>
+   <li> Friday, 30/10/2009: no lecture (but there is a lab session). </li>
+   <li> Week 5, Friday 6/11/2009: <a href="Slides/CourseworkI"> How to write
+     a program </a> (or, "How to write the Poker-program")
+
+   </li>
+   <li> Week 6, 13/11/2009 (11-12): Section 2.2
+    <a href="Slides/22library-2x2.pdf"> Libraries and Clients </a> </li>
+   <li> Week 7, 13/11/2009 (14-15): Section 2.3
+    <a href="Slides/23recursion-2x2.pdf"> Recursion </a>
+   </li>
+   <li> Week 8, 20/11/2009: Section 3.1
+    <ol>
+     <li> <a href="Slides/31datatype.pdf"> Data Types 1 </a> </li>
+     <li> See
+      <a href="CS-M41_Programs/Chapter3/Section1"> here </a>
+      for the programs discussed in the lecture.
+     </li>
+    </ol>
+   </li>
+   <li> Week 9, 27/11/2009: Section 3.2 ("Creating Data Types")
+    <ol>
+     <li> <a href="Slides/32datatype.pdf"> Data Types 2 </a> </li>
+     <li> See
+      <a href="CS-M41_Programs/Chapter3/Section2"> here </a>
+      for the programs discussed in the lecture.
+     </li>
+    </ol>
+   </li>
+   <li> Week 10, 4/12/2009: The extended Poker package -- an example
+    for concrete class design. </li>
+   <li> Week 11, 11/12/2009: Section 3.3
+    <a href="Slides/33design.pdf"> Designing Data Types </a> </li>
+   <li> Additionally from 14-15 on 11/12/2009 we have a
+    <a href="Slides/Revision.pdf"> revision and exam-preparation lecture </a>
+    for discussing how to continue, what to expect in the exam, ... </li>
+   <li> In January we have an additional exam preparation lecture (date and
+    time to be announced). </li>
+  </ul>
+-->
+
+  <h2> Lab sessions </h2>
+
+  <p>
+   Remark: If some answer is already given, then <em>understand</em> why
+   this is the correct answer.
+  </p>
+<!--
+  <ul>
+   <li> Week 0:
+    <ol>
+     <li> Tuesday: The Exercises from Section 1.1 (see
+      <a href="http://www.cs.princeton.edu/introcs/11hello/"> here </a> at the
+      bottom, Exercises 1 - 5).
+     </li>
+     <li> Wednesday:
+      <ol>
+       <li> Enter the five programs from the lecture, run them with all sorts
+        of different arguments, understand the outcome. </li>
+       <li> Especially try to <em>crash</em> the programs (missing or
+        strange inputs, very large or very small numbers, ...). </li>
+       <li> You might also have a look at the improved programs. </li>
+       <li> After you did this for some time, consider the exercises from
+        Section 1.2 (see
+        <a href="http://www.cs.princeton.edu/introcs/12types/"> here </a>
+        at the bottom, Exercises 1 - 23).
+        <ul>
+         <li> Exercises 1.2.1 - 1.2.14 are about understanding expressions.
+         </li>
+         <li> Write little programs which compute the expressions, possibly
+          for all inputs (especially in the case of boolean expressions).
+          </li>
+          <li> If you wish to write a new program, consider 1.2.14 - 1.2.23.
+          </li>
+         </ul>
+       </li>
+      </ol>
+     </li>
+     <li> Thursday:
+      <ol>
+       <li> Write a program which reads two integers and prints them out sorted
+        in ascending order. </li>
+       <li> Write another program which reads three integers and prints them
+        out sorted in ascending order. </li>
+       <li> Write a better version of "TenHellos.java" (printing "Hello World!"
+        ten times), using a while-loop. </li>
+       <li> Consider exercises 1.3.1 - 1.3.7 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/13flow/"> here</a>);
+        perhaps first considering exercises 1, 3, 4 (perhaps writing a complete
+        program), 6 (again perhaps writing programs to testing your answer)
+        and 7. </li>
+      </ol>
+      See <a href="CS-M41_Programs/Chapter1/Week00_Thursday"> here </a>
+      for solutions.
+     </li>
+     <li> Friday:
+      <ol>
+       <li> Write a program which reads an integer N and computes the sum
+        1 + 2 + ... + N. </li>
+       <li> Write a program which reads an integer N and computes the product
+        1 * 2 * ... * N; choose a suitable data type so that some interesting
+       computations can be performed! </li>
+       <li> Enter the program "Gambler" from the lecture, and play around with
+        it a bit. </li>
+       <li> Improve the output of "Gambler":
+        <ul>
+         <li> Print out the inputs, with additional explanations. </li>
+         <li> Print out the frequency wins/T (where T is the number of
+          trials). </li>
+         <li> Print out the probability stake/goal of winning. </li>
+         <li> Print out the expected number of steps (stake)*(goal-stake).
+         </li>
+         <li> Finally determine the average and the maximum number of steps
+          it took to finish a trial (that is, the number of steps until cash
+          either is 0 or goal), and print it out. </li>
+        </ul>
+       </li>
+       <li> Consider exercises 1.3.8 - 1.3.31 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/13flow/"> here</a>). </li>
+      </ol>
+      See <a href="CS-M41_Programs/Chapter1/Week00_Friday"> here </a>
+      for solutions.
+     </li>
+    </ol>
+   </li>
+   <li> Week 1, Friday, 2/10/2009:
+    <ol>
+     <li> Enter program "Deck" from the lecture, understand it, run it. </li>
+     <li> Write another program, which uses only a deck of 32 cards, where
+      the ranks do not include 2 up to 6. </li>
+     <li> Now combine both programs into one, where via a command-line argument
+      it is decided whether 32 or 52 cards are to be used. </li>
+     <li> Consider exercises 1.4.1 - 1.4.5 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/14array/"> here</a>).
+     </li>
+     <li> Consider exercise 1.4.35 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/14array/"> here</a>).
+     </li>
+    </ol>
+   </li>
+   <li> Week 2, Friday, 9/10/2009:
+    <ol>
+     <li> Today we want mainly learn how to use the three libraries
+      StdIn.java, StdOut.java, and StdDraw.java. </li>
+     <li> Write programs "RandomSeq" for printing out a sequence of N random
+      floating-point numbers (to standard output), and "Average" for reading
+      floating-point numbers from standard input and computing their average.
+      </li>
+     <li> Play a bit around with redirecting input and output, and pipe the
+      two programs together. </li>
+     <li> Consider exercises 1.5.1 - 1.5.3 from the book:
+      <ol>
+       <li> Write a program that reads in integers (as many as the user
+        enters) from standard input and prints out the maximum and minimum
+        values. Before entering the program, make a sketch on paper. </li>
+       <li> Modify this program by rejecting non-positive entries, asking the
+        user to re-enter the input (until he gets it correct). Before
+       entering the program, extend the previous sketch. Hint: a while-loop
+       is appropriate for testing the input values.</li>
+       <li> Read N from the command-line and N floating-point number from
+        standard input, and compute their mean value. Create an error message
+        if not enough numbers were entered. Compute also the standard
+        deviation as the square root of the sum of the squares of the
+        differences from these numbers and the average, the whole then divided
+        by N-1. Hint: For this computation you could store the numbers in
+        an array. </li>
+      </ol>
+      Always test your programs thoroughly!
+     </li>
+     <li> Write  program "SinFunction" that plots the function sin(4x)+sin(20x)
+      (see the lecture script). </li>
+     <li> If you have still time, or as a little home work, consider exercise
+      1.5.7 from the book: Read in N from the command-line plus N-1 integers
+      from 1 to N from standard input, assuming that these numbers are
+      different. Now determine the missing number (from the interval 1 .. N).
+      </li>
+    </ol>
+   </li>
+   <li> Week 3, Friday, 16/10/2009:
+    <ol>
+     <li> Consider exercises 2.1.1 - 2.1.4 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/21function/"> here</a>).
+     </li>
+     <li> As additional exercises you can consider 2.1.13, 2.1.14 and 2.1.17.
+     </li>
+    </ol>
+   </li>
+   <li> Week 4, Friday, 23/10/2009:
+    <ol>
+     <li> If you didn't finish the exercises from last week, you might
+      finish them now. </li>
+     <li> Consider exercises 2.1.18, 2.1.19 and 2.1.20 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/21function/"> here</a>).
+     </li>
+    </ol>
+   </li>
+   <li> Friday, 30/10/2009:
+    <ol>
+     <li> This lab session is for <strong>catching up!</strong> </li>
+     <li> No new exercises --- please consider the exercises from previous
+      weeks you didn't do. </li>
+     <li> Functions are very important, so also if you are doing exercises
+      from previous weeks not involving functions, do them now with functions.
+     </li>
+    </ol>
+   </li>
+   <li> Week 5, Friday, 6/11/2009:
+    <ol>
+     <li> Write a class <code>StringExample</code>:
+      <ul>
+        <li> Containing (static) constants <code>size_a</code> of
+        value 4 and array <code>a</code> containing the four strings "AB",
+        "XYZ", "EFG", "1234". </li>
+        <li> We also have <code>size_b</code> of value 3, and array
+         <code>b</code> containing the three strings "M1", "T3", "y6". </li>
+       <li> Furthermore we have a static function <code>check_a</code> which
+        takes one string argument, and returns integers from 0 to 3 if the
+        string occurs in array <code>a</code> with that index, while otherwise
+        -1 is returned. </li>
+       <li> And in the same vein we have <code>check_b</code>. </li>
+       <li> Both functions must use a loop for checking the membership in the
+        respective array. </li>
+       <li> The main programs reads pairs of strings from standard input (as
+        long as standard input has not been closed), and prints out the results
+        of <code>check_a, check_b</code>. </li>
+       <li> For example "EFG T3" results in "2 1", and "X y6" results in
+        "-1 2". </li>
+      </ul>
+      Here is <a href="CS-M41_Programs/Chapter2/Week05/StringExample.java">
+       the solution </a>.
+     </li>
+     <li> Counting random events:
+      <ol>
+       <li> Write a program (class) "RandomNumbers" which takes two
+        command-line arguments M and N. </li>
+       <li> The program then creates N many random integers in the interval
+        [1, M], counts how often each of these integers occurs, and then
+        prints out the relative frequency for each of these M numbers (that is,
+        the quotient "occurrences / N"). </li>
+       <li> Your program should work for large N, and thus should not store
+        the N random numbers computed. </li>
+       <li> For the creation of the random integer write a function
+        <code>random(M)</code>, which takes M as parameter, and returns a
+        random integer from 1 to M. </li>
+       <li> Hint: you need to use an integer-array of size M for performing
+        the counting. </li>
+      </ol>
+      Here is <a href="CS-M41_Programs/Chapter2/Week05/RandomNumbers.java">
+       the solution </a>.
+     </li>
+    </ol>
+   </li>
+   <li> Week 6+7, Friday 13/11/2009:
+    <ol>
+     <li> Libraries:
+      <ol>
+       <li> Implement the library class StdStats with (just) the static
+        functions "min", "max" and "mean". </li>
+       <li> Write a program "Stats" which is called with floating point
+        numbers as command-line parameters, and which computes their
+        minimum, maximum and average, using your library StdStats. </li>
+       <li> For example, "Stats 4 5.2" would yield min=4, max=5.2,
+        mean=4.6. </li>
+      </ol>
+     </li>
+     <li> Recursion:
+      <ol>
+       <li> Enter the program "Htree" from the lecture. </li>
+       <li> Write a modified program "Htree2", which asks for confirmation
+        before continuing drawing parts of the tree. </li>
+       <li> Also print out appropriate messages, so that you can follow in
+        detail the recursion. </li>
+       <li> Run the program for inputs up to 4, and make sure you understand
+        what's going on! </li>
+      </ol>
+      Here is <a href="CS-M41_Programs/Chapter2/Section3/Htree2.java">
+       a solution </a>.
+     </li>
+    </ol>
+   </li>
+   <li> Week 8, Friday, 20/11/2009:
+    <ol>
+     <li> Use the data types "Color" and "Picture" from the lecture (see
+      above). </li>
+     <li> Exercise 3.1.2 from the book: Write a program that takes from the
+     command-line three integers from 0 to 255 (representing red, green
+     and blue), and then creates and shows a 256-by-256 picture of that
+     colour. </li>
+     <li> Exercise 3.1.3 from the book: Modify program "AlbersSquares" to take
+      nine command-line arguments, representing now three colours, and then
+      draw the 3*2=6 squares showing all the Albers squares with the large
+      square in each colour and the small square in each different colour.
+     </li>
+     <li> Exercise 3.1.6 from the book: Write a program that takes the name of
+     a picture file as a command-line input, and creates three images, one
+     that contains only the red components, one for green, and one for blue.
+     </li>
+     <li> Exercise 3.1.4 from the book:
+      <ul>
+       <li> Write a program that takes the name of a grayscale picture-file
+        as a command-line argument, and plots a histogram of the frequency
+        of occurrences of each of the 256 grayscale intensities. </li>
+       <li> Use the library "StdStats" from Section 2.2 (provided
+        <a href="CS-M41_Programs/Chapter2/Section2"> here </a>). </li>
+      </ul>
+     </li>
+    </ol>
+   </li>
+   <li> Week 9, Friday, 27/11/2009:
+    <ol>
+     <li> Creating and using a trivial class:
+      <ul>
+       <li> Write a class <code>Trivial</code>, which stores two integers (via
+        the constructor), and as member functions ("methods") allows to
+        compute their sum and to translate the object into a string. </li>
+       <li> Write then a program which reads four integers from the
+        command-line, creates two objects of type <code>Trivial</code>
+        accordingly, and outputs their sums and the objects themselves. </li>
+      </ul>
+      Here is <a href="CS-M41_Programs/Chapter3/Week09/Trivial.java">
+       the Trivial-solution </a>, and here is the
+      <a href="CS-M41_Programs/Chapter3/Week09/Client.java"> Client </a>.
+     </li>
+     <li> Study "Charge.java" and "Potential.java", understand how it works,
+      and play a bit around (using for example "charges.txt" as input). </li>
+     <li> Study "Turtle.java" and the application "Spiral.java"; again, play
+      a bit around with it, and write your own clients of class Turtle,
+      creating some simple turtle-graphics. </li>
+    </ol>
+   </li>
+   <li> Week 10, Friday, 4/12/2009: Understanding the (new) Poker
+    class-collection:
+    <ol>
+     <li> Add to the Card-class a test-function (that is, a "main"-function)
+      which creates a couple of cards using the two constructors and
+      prints them out. </li>
+     <li> Here is a possible
+      <a href="CS-M41_Programs/Courseworks/200910/Two/Card.java">
+       solution </a>. </li>
+     <li> Extending the analysis capabilities:
+      <ul>
+       <li> Copy Poker.java to PokerExtended.java (and, of course, update
+        the class-name accordingly). </li>
+       <li> Now for the case N=0 (where an input-hand is to be analysed),
+        add code to show for the 1+5+10=16 exchange possibilities what is
+        the best and the worst case which could arise. </li>
+       <li> Hint: You just need to apply the given capabilities. </li>
+       <li> Evaluation is done by class "Evaluation" (for no big surprise).
+       </li>
+      </ul>
+     </li>
+     <li> Here is the
+      <a href="CS-M41_Programs/Courseworks/200910/Two/PokerExtended.java">
+       extended version </a>. </li>
+     <li> Note that this program compiles, but it cannot run succesfully
+      until you implement the missing functionality. </li>
+    </ol>
+   </li>
+   <li> Week 11, Friday, 4/12/2009: Using and changing some data type.
+    <ul>
+     <li> Consider Storage.java from the Poker class-collection (available
+      <a href="CS-M41_Programs/Courseworks/200910/Two/Storage.java">
+       here </a>).
+     </li>
+     <li> First you need to understand the API; so try to understand
+      the public members of this class.
+     </li>
+     <li> Some examples for using this class are already given in the
+      test function.
+     </li>
+     <li> Write a client program which takes N from the command-line,
+      stores the products i*j for 1 &lt;= i &lt; j &lt;= N in a Storage-object,
+      and outputs the Storage-object.
+     </li>
+     <li> Now change the implementation (only(!) --- not the interface!),
+      by just using a two-dimensional array (instead of the one-dimensional
+      array as we have it now). </li>
+     <li> For that you just need to change the implementations of the
+      constructor and of the get/set-functions, and, of course, the definition
+      of the instance-variable "results". </li>
+     <li> The function "index" is no longer needed. </li>
+     <li> The main-function as well as your client must work as before,
+      without any need for changing the code, and without changes in the
+      observable behaviour.
+     </li>
+     <li> Recall that a two-dimensional integer array is declared via, e.g.,
+      <code>int[][] a;</code>, initialised via, e.g., <code>a = new int[3][4];
+      </code>, and used by, e.g., <code>a[2][3] = 77</code>.
+     </li>
+     <li> Remark on this alternative implementation: It uses more memory,
+      but access is quicker, since no index-computations are necessary.
+      This is a typical situation, using different implementations for
+      trading time versus space.
+     </li>
+     <li> Since we cannot use inheritance yet, usage of the two implementations
+      is a bit clumsy, since we need to have two files "Storage.java"
+      somewhere (containing the two implementations), and then to copy one or
+      the other into the directory with our application. </li>
+     <li> Inheritance allows one to define one "interface class" "Storage",
+      which is abstract, and then to define various classes implementing
+      this interface, like "StorageFast" and "StorageSmall".
+     </li>
+     <li> Final remark: Of course, for coursework II only the original files
+      are to be used (though it will also work with the alternative
+      implementation, of course).
+     </li>
+    </ul>
+    Here is the <a href="CS-M41_Programs/Chapter3/Week11"> solution </a>
+    (see the sub-directories for old and new versions of Storage.java).
+    Altogether 4 programs can be compiled and run:
+    <ol>
+     <li> The two Storage-programs ("New" and "Old", each with its
+      test-program). </li>
+     <li> The two versions of the Client-program, using the two versions of
+      the Storage-class. </li>
+    </ol>
+    See the files for how to compile and run these four programs.
+   </li>
+  </ul>
+-->
+  
+
+  <h2> Coursework </h2>
+<!--
+  <h3> First coursework </h3>
+
+  <ul>
+   <li> A program "Poker.java" has to be written, consisting of the class
+    "Poker", and this file has be sent via e-mail to me (just a single file).
+   </li>
+   <li> You are encouraged to use the libraries <code>StdIn</code> and
+    <code>StdOut</code> (you don't need to include them in your submission).
+   </li>
+   <li> This program shall take one command-line argument N. </li>
+   <li> For N=0 the following should happen:
+    <ol>
+     <li> A hand of (five) cards is read from standard input, where each
+      card comes in the form "Jack of Clubs" etc. (as we had it in the
+      example from the lecture). </li>
+     <li> Additional spaces (or space symbols like end-of-line symbols or
+      tab-symbols) must not matter. </li>
+     <li> The names of suites (for input) are "Clubs, Diamonds, Hearts,
+      Spades". </li>
+     <li> The names of the card ranks (for input) are "2, 3, 4, 5, 6, 7, 8, 9,
+      10, Jack, Queen, King, Ace". </li>
+     <li> The program then determines which of the following nine standard
+      hand ranks (in order from highest to lowest)
+      <ol>
+       <li> Straight flush (a straight and a flush -- see below) </li>
+       <li> Four of a kind (four equal card ranks) </li>
+       <li> Full house (two equal card ranks together with three equal card
+       ranks) </li>
+       <li> Flush (all cards of same suit) </li>
+       <li> Straight (cards in rank order, where the ace can be used as
+       the lowest or the highest card rank) </li>
+       <li> Three of a kind (three equal card ranks) </li>
+       <li> Two pairs (two times two equal card ranks) </li>
+       <li> One pair (two equal card ranks) </li>
+       <li> High card (none of the above). </li>
+      </ol>
+      applies for the hand, where in case of several possibilities the higher
+      rank has to be output. </li>
+    </ol>
+   </li>
+   <li> For N > 0 the program chooses itself N random hands, counts how often
+    each of the above hand ranks occurs, and outputs the relative frequency of
+    each rank, that is, the quotients (number of occurrences) / N. </li>
+   <li> You need to determine for which N the values are really close to the
+    correct probabilities, and in a comment in your program you need to
+    show such N and the output produced by your program. </li>
+   <li> This <a href="Examples/Coursework_I.tar.gz"> archive </a> contains
+    examples --- your program must be able to classify all these hands
+    correctly. </li>
+   <li> Very important:
+    <ol>
+     <li> Your program must compile. </li>
+     <li> Your program must run. </li>
+     <li> It must produce correct results. </li>
+     <li> Try to give good error messages in case some user input is wrong.
+     </li>
+     <li> Use good variable names. </li>
+     <li> Declare variables as local as possible. </li>
+     <li> Use many <strong>functions</strong>. </li>
+     <li> Specify the meaning of functions and important variables via
+      comments. </li>
+     <li> <strong>Important:</strong> The program must be written solely by
+      you! I won't accept any two similar programs. </li>
+     <li> If you do not implement the full functionality (for example, you
+      cannot determine all hand ranks), then please state this clearly
+      in your comments. </li>
+    </ol>
+   </li>
+   <li> Hints:
+    <ol>
+     <li> Every non-trivial program has to be first <strong>designed</strong>
+      on paper. </li>
+     <li> Of fundamental importance is to determine how to handle the various
+      object classes! Here we have "suites", "card ranks", "cards" (a
+      combination of suit and card rank), "hands" (five cards) and "hand
+      ranks". Perhaps you find it useful to use additional object classes.
+     </li>
+     <li> Strings are <strong>not</strong> appropriate data types (except for
+      input and output).
+     </li>
+     <li> Best is to use codes, like 1 .. 52 for the cards, 1 .. 4 for the
+      suites, 1 .. 13 for the card ranks, and 1 .. 9 for the hand ranks. </li>
+     <li> One could represent cards as pairs of suit and card rank, but yet we
+      don't have the appropriate means for doing so, and using codes 1 .. 52
+      is easiest. </li>
+     <li> You can use modular arithmetic to handle these codes somewhat more
+      elegantly, but this is not needed. </li>
+     <li> Hands (of cards) are represented as arrays (of five cards). </li>
+     <li> Provide functions for extracting the suit-code and the
+      card-rank-code from a card-code. </li>
+     <li> When reading cards from (standard) input, you read in single strings,
+      and then you need to compare the input string <em>objects</em> to
+      given strings in order to compute the codes. Use the member function
+      "String.equals" for that. </li>
+     <li> Thus provide functions which convert strings for card ranks and
+      strings for suites to the respective codes. </li>
+     <li> Conversely you need functions which convert codes into the strings.
+     </li>
+     <li> As said before, don't use strings for computations, but only for
+      input and output. All computations are best performed using
+      "mathematical" representations of the objects, suitable for computation.
+      Strings are just means for input and output, except, of course,
+      the computations are actually computations on strings, as in text or
+      word processing. </li>
+    </ol>
+   </li>
+   <li> Here is a <a href="CS-M41_Programs/Courseworks/200910/One/Poker.java">
+     model solution </a>.
+   </li>
+  </ul>
+
+
+  <h3> Second coursework </h3>
+
+  <p>
+   Now we <em>play</em> poker (the simplest version).
+  </p>
+  <ul>
+   <li> Deadline is Monday, 21/12/2009; submission as before via e-mail. </li>
+   <li> The code must be written in all parts solely by you (otherwise zero
+    marks are the result, potentially followed by disciplinary actions). </li>
+   <li> This time you need to add code to a couple of files; send me an
+    archive of the changed files, plus an additional file named
+    "StudNumber_Coursework_2.txt" (plain text), where you state your name
+    (while the student number is in the name of that file), and where
+    you state and explain the places where you added code. </li>
+   <li> Reminder: As usual with electronic submission, your submission of
+    coursework implicitly contains your signature under the following
+    standard phrase from the Coursework Submission Form:
+    <p>
+     <cite> I am aware of the University policy on unfair practice and I
+      certify that this coursework is the result of my own independent work
+      except where otherwise stated, and that all other sources are explicitly
+      acknowledged. </cite>
+    </p>
+   </li>
+   <li> We only consider a simple form of "draw poker":
+    <ol>
+     <li> After the cards are dealt, the player can choose up to
+      2 cards to be exchanged. </li>
+     <li> After exchange, all hands are shown (we do not
+      do betting), and the winner is determined. </li>
+     <li> We only consider two players. </li>
+     <li> The task is to complete the framework, to devise some strategies
+      for card exchange, and to play a tournament with your strategies,
+      determining what works best. </li>
+    </ol>
+   </li>
+   <li> No classes (from the Java library or elsewhere) may be used except
+    those provided with the coursework. </li>
+   <li> The code is only to be changed at the marked places (you find "XXX"
+    there), while the rest must remain untouched. </li>
+   <li> <a href="CS-M41_Programs/Courseworks/200910/Two/"> Here </a> are the
+    files you need to consider. </li>
+   <li> Your first task is to study the code carefully! You need to understand
+   (and partially reconstruct) the API of all classes. </li>
+   <li> To get into it, start considering
+    <a href="CS-M41_Programs/Courseworks/200910/Two/Poker.java"> Poker.java
+    </a>:
+    <ol>
+     <li> This implements the functionality from the first coursework, now
+      using the new framework. </li>
+     <li> Additionally, while in the first coursework only the "major ranking"
+      of hands into the nine major poker ranks has been considered, now
+      the complete ranking is provided. </li>
+     <li> So now there are 6331 hand ranks (while there are 9 major hand
+      ranks): A hand wins against another hand if and only if its hand rank
+      is (strictly) better, that is, numerically lower, than that of the other
+      hand. </li>
+     <li> "java Poker 0" works already, but "java Poker N" for N>0 doesn't work
+      yet, since you have to complete first the
+      <code>Bank</code>-implementation. </li>
+     <li> The code here using <code>Bank</code> is one example for the usage
+      of this class, which you can study, in order to find out what precisely
+      is the API for the <code>Bank</code>-class (in this case). </li>
+    </ol>
+   </li>
+   <li> The places where functions have to be completed are the following
+    (NOW (22/1/2010) these files contain already the solutions):
+    <ol>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Bank.java"> Bank.java
+      </a>: functionality regarding dealing and exchanging cards. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Evaluation.java">
+       Evaluation.java </a>: computing all possible outcomes for one exchange
+      request. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/TwoPlayers.java">
+       TwoPlayers.java </a>: Using all available strategies for one play
+      between two players, and determining the results. </li>
+     <li> <a href="CS-M41_Programs/Courseworks/200910/Two/Tournament.java">
+       Tournament.java </a>: the main program, letting the strategies play
+     against each other for many rounds, and displaying the results. </li>
+     <li> Completing this functionality can is worth roughly 50-60% of the
+      coursework, while the rest is earned by implement various exchange
+      strategies in
+      <a href="CS-M41_Programs/Courseworks/200910/Two/Strategy.java">
+       Strategy.java </a>. </li>
+     <li> It is your task to determine the precise specifications for all
+      these places. </li>
+     <li> If needed, you may add new private member functions, but no data
+      member (static or non-static) shall be added, and none of the existing
+      code is to be altered. </li>
+    </ol>
+    You will find there already certain code-fragments and hints, to get
+    you started.
+   </li>
+   <li> This exercise is about DESIGN: Yet you cannot create larger systems
+    (with good design), and so the framework is given to you, and you have
+    to grasp it, and to complete it. </li>
+   <li> And regarding the strategies, you can show some creativity. </li>
+   <li> Until Monday, 7/12/2009, there might occur some (small) changes
+    in the framework (if it makes the task easier). </li>
+   <li> In the lecture next Friday (4/12/2009) certain key elements of
+    the framework will be discussed. </li>
+  </ul>
+-->
+
+  <h2> Links </h2>
+
+  <ul>
+   <li> A <a href="http://github.com/OKullmann/CS-M41-Programming-in-Java">
+     Git repository </a> is available, where you can download the source
+    code repository. </li>
+   <li> There you also find C++ versions. </li>
+  </ul>
+
+ 
+  <h2> Reading </h2>
+
+
+   <hr />
+
+   <div>
+    <p></p>
+    <span id="validate-picture">
+     <a href="http://validator.w3.org/check?uri=referer">
+      <img src="images/valid-xhtml10"
+       alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+     </a>
+    </span>
+ 
+    <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
+<!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
+<!-- hhmts start -->
+Last modified: Fri Oct  8 10:28:57 BST 2010
+<!-- hhmts end -->
+
+   </div>
+
+  </body>
+</html>
