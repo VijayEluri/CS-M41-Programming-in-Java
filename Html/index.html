@@ -113,11 +113,44 @@
     <ol>
      <li> Tuesday: 
       <ol>
-       <li> We write 4 programs together. </li>
-       <li> Section 1.1 <a href="Slides/11hello-2x2.pdf"> First programs </a>.
-       </li>
-       <li> Here <a href="Remarks11.html"> some remarks and corrections. </a>
-       </li>
+       <li> We write 3 programs together.
+        <ol>
+         <li> Empty program:
+          <code>
+class Empty {
+  public static void main(String[] args) {}
+}
+           </code>
+         </li>
+         <li> Hello-World:
+          <pre>
+class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+          </pre>
+         </li>
+         <li> Hello-World with three further names:
+          <pre>
+class UseArgument {
+  public static void main(String[] args) {
+    System.out.print("Hello, ");
+    System.out.print(args[0]);
+    System.out.print(", ");
+    System.out.print(args[1]);
+    System.out.print(", ");
+    System.out.print(args[2]);
+    System.out.println("!");
+  }
+ }
+          </pre>
+         </li>
+        </ol>
+        <li> Section 1.1 <a href="Slides/11hello-2x2.pdf"> First programs </a>.
+        </li>
+        <li> Here <a href="Remarks11.html"> some remarks. </a>
+        </li>
       </ol>
      </li>
      <li> Friday: Section 1.2 <a href="Slides/12types-2x2.pdf"> Data types </a>.
@@ -840,7 +873,7 @@
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Oct 12 16:34:24 BST 2010
+Last modified: Tue Oct 12 16:48:56 BST 2010
 <!-- hhmts end -->
 
    </div>
