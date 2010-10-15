@@ -254,17 +254,17 @@ class UseArgument {
   <ul>
    <li> Week 2 (15/10/2010):
     <ol>
-     <li> The program "UseArgument.java" is needed again --- rewrite it
-      <strong>from scratch</strong>, not using notes!
+     <li> The program "UseArgument.java" from the book is needed again ---
+      rewrite it <strong>from scratch</strong>, not using notes!
        <ol>
         <li> Recall that it is called with, e.g.,
-	<pre>
+	 <pre>
 > java UseArgument XYZ
-        </pre>
-	and it outputs
-	<pre>
+         </pre>
+	 and it outputs
+	 <pre>
 Hi, XYZ. How are you?
-        </pre>
+         </pre>
 	</li>
         <li> It's really important that you get the syntax into your fingers.
 	</li>
@@ -275,6 +275,24 @@ Hi, XYZ. How are you?
      <li> Do the Exercises from Section 1.1 (see
       <a href="http://www.cs.princeton.edu/introcs/11hello/"> here </a> at the
       bottom, Exercises 1 - 5).
+     </li>
+     <li> Enter the program
+      <pre>
+public class LeftAssociative {
+  public static void main(String[] args) {
+    final int a = Integer.parseInt(args[0]);
+    final int b = Integer.parseInt(args[1]);
+    System.out.println(a + " + " + b + " = " + a + b); // not what is meant
+    System.out.println(a + " + " + b + " = " + (a + b));
+    System.out.println(a + b + " + " + "13" + " = " + (a + b + 13)); // understand this
+  }
+}
+      </pre>
+     </li>
+     <li> Play around with it, and understand what it is doing. </li>
+     <li> The key is to understand that we have variables of two types,
+      <code>int</code> and <code>String</code>, and that automatic conversions
+      are performed from <code>int</code> to <code>String</code> if needed.
      </li>
     </ol>
    </li>
@@ -892,7 +910,7 @@ Hi, XYZ. How are you?
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Oct 15 08:04:26 BST 2010
+Last modified: Fri Oct 15 08:14:39 BST 2010
 <!-- hhmts end -->
 
    </div>
