@@ -16,11 +16,13 @@ endif
 
 directories = $(bin_dir)
 
+source_dir = Chapter$(chapter)/Section$(section)
+
 ifeq ($(language),java)
-programs = $(wildcard Chapter$(chapter)/Section$(section)/*.java)
+programs = $(wildcard $(source_dir)/*.java)
 programs := $(programs:.java=)
 else
-programs = $(wildcard Chapter$(chapter)/Section$(section)/*.cpp)
+programs = $(wildcard $(source_dir)/*.cpp)
 programs := $(programs:.cpp=)
 endif
 programs := $(notdir $(programs))
@@ -30,11 +32,11 @@ executables = $(addprefix $(bin_dir)/, $(programs))
 all : $(executables)
 
 ifeq ($(language),java)
-$(executables) : $(bin_dir)/% : Chapter$(chapter)/Section$(section)/%.java | $(bin_dir)
-	gcj Chapter$(chapter)/Section$(section)/$*.java --main=$* -o $(bin_dir)/$*
+$(executables) : $(bin_dir)/% : $(source_dir)/%.java | $(bin_dir)
+	gcj $(source_dir)/$*.java --main=$* -o $(bin_dir)/$*
 else
-$(executables) : $(bin_dir)/% : Chapter$(chapter)/Section$(section)/%.cpp | $(bin_dir)
-	g++ Chapter$(chapter)/Section$(section)/$*.cpp -o $(bin_dir)/$*
+$(executables) : $(bin_dir)/% : $(source_dir)/%.cpp | $(bin_dir)
+	g++ $(source_dir)/$*.cpp -o $(bin_dir)/$*
 endif
 
 $(directories) :
