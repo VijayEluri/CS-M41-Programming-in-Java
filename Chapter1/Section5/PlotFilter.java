@@ -15,12 +15,12 @@ public class PlotFilter {
     public static void main(final String[] args) {
 
         // read in bounding box and rescale
-        final double x0 = StdIn.readDouble();
-        final double y0 = StdIn.readDouble();
-        final double x1 = StdIn.readDouble();
-        final double y1 = StdIn.readDouble();
-        StdDraw.setXscale(x0, x1);
-        StdDraw.setYscale(y0, y1);
+        final double xmin = StdIn.readDouble();
+        final double ymin = StdIn.readDouble();
+        final double xmax = StdIn.readDouble();
+        final double ymax = StdIn.readDouble();
+        StdDraw.setXscale(xmin, xmax);
+        StdDraw.setYscale(ymin, ymax);
 
         // turn on animation mode to defer displaying all of the points
         // StdDraw.show(0);
