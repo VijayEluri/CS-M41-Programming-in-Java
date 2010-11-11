@@ -33,7 +33,7 @@ all : $(executables)
 
 ifeq ($(language),java)
 $(executables) : $(bin_dir)/% : $(source_dir)/%.java | $(bin_dir)
-	gcj $(source_dir)/$*.java --main=$* -o $(bin_dir)/$* -I Chapter1/InputOutput
+	gcj Chapter1/InputOutput/*.java $(source_dir)/$*.java --main=$* -o $(bin_dir)/$*
 else
 $(executables) : $(bin_dir)/% : $(source_dir)/%.cpp | $(bin_dir)
 	g++ $(source_dir)/$*.cpp -o $(bin_dir)/$*
