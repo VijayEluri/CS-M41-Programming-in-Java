@@ -487,57 +487,36 @@ public class LeftAssociative {
       program), 6 (again perhaps writing programs to testing your answer)
       and 7. </li>
     </ol>
-   </li>
-  </ul>
-  <!--
-     <li> Thursday:
-      <ol>
-       <li> Write a program which reads two integers and prints them out sorted
-        in ascending order. </li>
-       <li> Write another program which reads three integers and prints them
-        out sorted in ascending order. </li>
-       <li> Write a better version of "TenHellos.java" (printing "Hello World!"
-        ten times), using a while-loop. </li>
-       <li> Consider exercises 1.3.1 - 1.3.7 from the book (see
-        <a href="http://www.cs.princeton.edu/introcs/13flow/"> here</a>);
-        perhaps first considering exercises 1, 3, 4 (perhaps writing a complete
-        program), 6 (again perhaps writing programs to testing your answer)
-        and 7. </li>
-      </ol>
-      See <a href="CS-M41_Programs/Chapter1/Week00_Thursday"> here </a>
-      for solutions.
-     </li>
-     <li> Friday:
-      <ol>
-       <li> Write a program which reads an integer N and computes the sum
-        1 + 2 + ... + N. </li>
-       <li> Write a program which reads an integer N and computes the product
-        1 * 2 * ... * N; choose a suitable data type so that some interesting
-       computations can be performed! </li>
-       <li> Enter the program "Gambler" from the lecture, and play around with
-        it a bit. </li>
-       <li> Improve the output of "Gambler":
-        <ul>
-         <li> Print out the inputs, with additional explanations. </li>
-         <li> Print out the frequency wins/T (where T is the number of
-          trials). </li>
-         <li> Print out the probability stake/goal of winning. </li>
-         <li> Print out the expected number of steps (stake)*(goal-stake).
-         </li>
-         <li> Finally determine the average and the maximum number of steps
-          it took to finish a trial (that is, the number of steps until cash
-          either is 0 or goal), and print it out. </li>
-        </ul>
+    See <a href="CS-M41_Programs/Chapter1/Week00_Thursday"> here </a>
+    for solutions. Additional exercises:
+    <ol>
+     <li> Write a program which reads an integer N and computes the sum
+      1 + 2 + ... + N. </li>
+     <li> Write a program which reads an integer N and computes the product
+      1 * 2 * ... * N; choose a suitable data type so that some interesting
+      computations can be performed! </li>
+     <li> Enter the program "Gambler" from the lecture, and play around with
+      it a bit. </li>
+     <li> Improve the output of "Gambler":
+      <ul>
+       <li> Print out the inputs, with additional explanations. </li>
+       <li> Print out the frequency wins/T (where T is the number of
+        trials). </li>
+       <li> Print out the probability stake/goal of winning. </li>
+       <li> Print out the expected number of steps (stake)*(goal-stake).
        </li>
-       <li> Consider exercises 1.3.8 - 1.3.31 from the book (see
-        <a href="http://www.cs.princeton.edu/introcs/13flow/"> here</a>). </li>
-      </ol>
-      See <a href="CS-M41_Programs/Chapter1/Week00_Friday"> here </a>
-      for solutions.
+       <li> Finally determine the average and the maximum number of steps
+        it took to finish a trial (that is, the number of steps until cash
+        either is 0 or goal), and print it out. </li>
+      </ul>
      </li>
+     <li> Consider exercises 1.3.8 - 1.3.31 from the book (see
+      <a href="http://www.cs.princeton.edu/introcs/13flow/"> here</a>). </li>
     </ol>
+    See <a href="CS-M41_Programs/Chapter1/Week00_Friday"> here </a>
+    for solutions.
    </li>
-   <li> Week 1, Friday, 2/10/2009:
+   <li> Week 5 (5/11/2010):
     <ol>
      <li> Enter program "Deck" from the lecture, understand it, run it. </li>
      <li> Write another program, which uses only a deck of 32 cards, where
@@ -552,17 +531,10 @@ public class LeftAssociative {
      </li>
     </ol>
    </li>
-   <li> Week 2, Friday, 9/10/2009:
+   <li> Week 6 (7/11/2010):
     <ol>
-     <li> Today we want mainly learn how to use the three libraries
-      StdIn.java, StdOut.java, and StdDraw.java. </li>
-     <li> Write programs "RandomSeq" for printing out a sequence of N random
-      floating-point numbers (to standard output), and "Average" for reading
-      floating-point numbers from standard input and computing their average.
-      </li>
-     <li> Play a bit around with redirecting input and output, and pipe the
-      two programs together. </li>
-     <li> Consider exercises 1.5.1 - 1.5.3 from the book:
+     <li> Consider exercises 1.5.1 - 1.5.3 from the book (see
+        <a href="http://www.cs.princeton.edu/introcs/15inout/"> here</a>):
       <ol>
        <li> Write a program that reads in integers (as many as the user
         enters) from standard input and prints out the maximum and minimum
@@ -581,15 +553,21 @@ public class LeftAssociative {
       </ol>
       Always test your programs thoroughly!
      </li>
-     <li> Write  program "SinFunction" that plots the function sin(4x)+sin(20x)
-      (see the lecture script). </li>
-     <li> If you have still time, or as a little home work, consider exercise
-      1.5.7 from the book: Read in N from the command-line plus N-1 integers
-      from 1 to N from standard input, assuming that these numbers are
-      different. Now determine the missing number (from the interval 1 .. N).
-      </li>
+     <li> Consider exercise 1.5.7 from the book: Read in N from the
+      command-line plus N-1 integers from 1 to N from standard input, assuming
+      that these numbers are different. Now determine the missing number (from
+      the interval 1 .. N). </li>
+     <li> As an additional exercise, improve
+      <a href="CS-M41_Programs/Chapter1/Section5">PlotFilter.java</a>
+      by not asking for the minimum x/y values, but computing them from
+      the input (so the first four special doubles from standard input are not
+      needed anymore). Test with
+      <a href="CS-M41_Programs/Chapter1/Section5">USA.txt</a>, where you
+      removed the first four numbers.
     </ol>
    </li>
+  </ul>
+  <!--
    <li> Week 3, Friday, 16/10/2009:
     <ol>
      <li> Consider exercises 2.1.1 - 2.1.4 from the book (see
@@ -1146,7 +1124,7 @@ public class LeftAssociative {
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Thu Nov 11 12:41:51 GMT 2010
+Last modified: Thu Nov 11 14:18:48 GMT 2010
 <!-- hhmts end -->
 
    </div>
