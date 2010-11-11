@@ -1,7 +1,7 @@
 // Oliver Kullmann, 8/10/2009 (Swansea)
 
 class SinFunction {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         if (args.length == 0) {
             System.err.println("ERROR[SinFunction]: The number of intervals is needed as parameter.");
             return;
