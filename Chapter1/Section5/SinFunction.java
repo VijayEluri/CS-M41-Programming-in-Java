@@ -1,20 +1,25 @@
 // Oliver Kullmann, 8/10/2009 (Swansea)
 
 class SinFunction {
+    // error codes:
+    static final int err_no_parameters = 1;
+    static final int err_not_int = 2;
+    static final int err_not_pos = 3;
+
     public static void main(final String[] args) {
         if (args.length == 0) {
             System.err.println("ERROR[SinFunction]: The number of intervals is needed as parameter.");
-            return;
+            System.exit(err_no_parameters);
         }
-        int N;
+        int N = 0;
         try { N = Integer.parseInt(args[0]); }
         catch(RuntimeException e) {
             System.err.println("ERROR[SinFunction]: The parameter must be an integer.");
-            return;
+            System.exit(err_not_int);
         }
         if (N <= 0) {
             System.err.println("ERROR[SinFunction]: The parameter must positive.");
-            return;
+            System.exit(err_not_pos);
         }
 
         final double alpha = 4;
