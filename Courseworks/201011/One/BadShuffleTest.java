@@ -43,7 +43,7 @@ class BadShuffleTest {
            a[rand] = a[i];
            a[i] = t;
          }
-         for (int i = 0; i < M; ++i) ++count[i][a[i]];
+         for (int i = 0; i < M; ++i) ++count[a[i]][i];
        }
       }
 
