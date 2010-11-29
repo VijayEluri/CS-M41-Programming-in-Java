@@ -4,7 +4,7 @@
 
      BadShuffleTest M N
 
-   where M, N are integers with M >= 0 will create N random permutation of
+   where M, N are integers with M >= 0, will create N random permutations of
    the sequence 0, ..., M-1, and prints to standard output in line i
    for i = 0, ..., M-1 how often i ended up in position j for j = 0,...,M-1
    (in this order).
