@@ -17,7 +17,7 @@ class Deck {
 
     for (int i = 0; i < nr_cards; ++i) {
       final int rand = i + (int) (Math.random() * (nr_cards-i));
-      String t = deck[rand];
+      final String t = deck[rand];
       deck[rand] = deck[i];
       deck[i] = t;
     }
