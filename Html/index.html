@@ -20,6 +20,8 @@
   <ul>
    <li> You will get the marks for coursework I Tuesday, 30/11/2010,
     per e-mail. </li>
+   <li> See below for an outline of the solution for coursework I. Please
+   study it carefully. </li>
   </ul>
   
   
@@ -1013,13 +1015,9 @@ public class LeftAssociative {
     <a href="CS-M41_Programs/Courseworks/201011/One/ShuffleTest.java"> ShuffleTest </a>,
     <a href="CS-M41_Programs/Courseworks/201011/One/BadShuffleTest.java"> BadShuffleTest </a>.
    </li>
-   <li> A typical output is, where, to show you an alternative, compilation
-    didn't use <code>javac</code> but <code>gcj</code>, via
-    <pre> One> gcj -O3 BadShuffleTest.java --main=BadShuffleTest </pre>
-    (which produces a native(!) binary, just called "a.out", since no other
-    name was specified):
+   <li> A typical output is:
     <pre>
-> time ./a.out 10 1000000000
+One> time ./BadShuffleTest 10 1000000000
 
 99990542 100001086 99994686 100015365 100004098 100006180 100002175 99986321 100015766 99983781
 128730202 94302793 94786849 95308929 95911614 96555099 97301501 98101246 99003398 99998369
@@ -1036,7 +1034,18 @@ real    43m55.808s
 user    26m2.242s
 sys     0m0.352s
     </pre>
+    (the <code>time</code> command allows easy timing; for security reasons
+    "./" is needed to refer to binaries in the current directory).
    </li>
+   <li>
+    To show you an alternative for compiling and running Java, here compilation
+    didn't use <code>javac</code> but <code>gcj</code>, producing via
+    <pre> One> gcj -O3 BadShuffleTest.java --main=BadShuffleTest -o BadShuffleTest </pre>
+    a native(!) binary, called "BadShuffleTest" ("-O3" stands for
+    "optimisation" at highest level).
+   </li>
+   <li> Of course, you get the same using <code>javac</code> (of course, with
+    different numbers, unless the seed gets specified). </li>
   </ul>
 
 <!--
@@ -1283,7 +1292,7 @@ sys     0m0.352s
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Nov 29 20:16:00 GMT 2010
+Last modified: Mon Nov 29 21:03:32 GMT 2010
 <!-- hhmts end -->
 
    </div>
