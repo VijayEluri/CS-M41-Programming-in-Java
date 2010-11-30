@@ -5,7 +5,7 @@
      Shuffle N
 
    where N is a non-negative integer, will create a random permutation of
-   the sequence 0, ..., N-1, and prints it to standard output.
+   the sequence 1, ..., N, and prints it to standard output.
 */
 
 class Shuffle {
@@ -30,7 +30,7 @@ class Shuffle {
         System.exit(error_negative_number);
       }
       final int[] A = new int[N];
-      for (int i = 1; i < N; ++i) A[i] = i;
+      for (int i = 1; i < N; ++i) A[i] = i; // internally using 0,...,N-1
       // shuffling:
       for (int i = 0; i < N; ++i) {
         final int rand = i + (int) (Math.random() * (N-i));
@@ -38,7 +38,7 @@ class Shuffle {
         A[rand] = A[i];
         A[i] = t;
       }
-      for (int i = 0; i < N; ++i) System.out.print(A[i] + " ");
+      for (int i = 0; i < N; ++i) System.out.print((A[i]+1) + " ");
       System.out.println();
     }
     catch (final RuntimeException e) {
