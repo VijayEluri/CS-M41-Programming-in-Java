@@ -3,10 +3,10 @@
  *  Execution:    java AlbersSquares r1 g1 b1 r2 g2 b2
  *  Dependencies: StdDraw.java
  *  
- *  This program displays the colors entered in RGB format
+ *  This program displays the colours entered in RGB format
  *  on the command line in the familiar format developed
- *  in the 1960s by the color theorist Josef Albers that
- *  revolutionized the way that people think about color.
+ *  in the 1960s by the colour theorist Josef Albers that
+ *  influenced the way that people think about colour.
  *
  *  % java Albers 0 174 239  147 149 252
  *
