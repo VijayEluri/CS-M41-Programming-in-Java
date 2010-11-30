@@ -20,13 +20,15 @@ class BadShuffleTest {
 
   public static void main(final String[] args) {
     if (args.length <= 1) {
-      System.err.println(error_header + "Two arguments are needed (the number M of integers to be shuffled, and the number N of trials).");
+      System.err.println(error_header +
+        "Two arguments are needed (the number M of integers to be shuffled, and the number N of trials).");
       System.exit(error_missing_arguments);
     }
     try {
       final int M = Integer.parseInt(args[0]);
       if (M < 0) {
-        System.err.println(error_header + "The number M of items must not be negative.");
+        System.err.println(error_header +
+          "The number M of items must not be negative.");
         System.exit(error_negative_number);
       }
       final int N = Integer.parseInt(args[1]);
@@ -54,7 +56,8 @@ class BadShuffleTest {
       }
     }
     catch (final RuntimeException e) {
-      System.err.println(error_header + "The command-line argument \"" + args[0] + "\" or \"" + args[1] + "\" is not an integer.");
+      System.err.println(error_header + "The command-line argument \"" +
+        args[0] + "\" or \"" + args[1] + "\" is not an integer.");
       System.exit(error_not_an_int);
     }
   }
