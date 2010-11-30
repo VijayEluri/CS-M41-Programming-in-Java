@@ -13,16 +13,16 @@ import java.awt.Color;
 
 public class Grayscale {
 
-    public static void main(String[] args) {
-        Picture pic = new Picture(args[0]);
-        int width  = pic.width();
-        int height = pic.height();
+    public static void main(final String[] args) {
+        final Picture pic = new Picture(args[0]);
+        final int width  = pic.width();
+        final int height = pic.height();
 
         // convert to grayscale
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Color color = pic.get(i, j);
-                Color gray = Luminance.toGray(color);
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                final Color color = pic.get(i, j);
+                final Color gray = Luminance.toGray(color);
                 pic.set(i, j, gray);
             }
         }
