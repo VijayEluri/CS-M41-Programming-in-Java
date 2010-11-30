@@ -27,7 +27,7 @@ class Shuffle {
         System.err.println(error_header + "The number N of items must not be negative.");
         System.exit(error_negative_number);
       }
-      int[] A = new int[N];
+      final int[] A = new int[N];
       for (int i = 1; i < N; ++i) A[i] = i;
       // shuffling:
       for (int i = 0; i < N; ++i) {
