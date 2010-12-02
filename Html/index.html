@@ -1100,117 +1100,6 @@ sys     0m0.352s
   </ul>
 
 <!--
-  <h3> First coursework </h3>
-  
-  <ul>
-   <li> A program "Poker.java" has to be written, consisting of the class
-    "Poker", and this file has be sent via e-mail to me (just a single file).
-   </li>
-   <li> You are encouraged to use the libraries <code>StdIn</code> and
-    <code>StdOut</code> (you don't need to include them in your submission).
-   </li>
-   <li> This program shall take one command-line argument N. </li>
-   <li> For N=0 the following should happen:
-    <ol>
-     <li> A hand of (five) cards is read from standard input, where each
-      card comes in the form "Jack of Clubs" etc. (as we had it in the
-      example from the lecture). </li>
-     <li> Additional spaces (or space symbols like end-of-line symbols or
-      tab-symbols) must not matter. </li>
-     <li> The names of suites (for input) are "Clubs, Diamonds, Hearts,
-      Spades". </li>
-     <li> The names of the card ranks (for input) are "2, 3, 4, 5, 6, 7, 8, 9,
-      10, Jack, Queen, King, Ace". </li>
-     <li> The program then determines which of the following nine standard
-      hand ranks (in order from highest to lowest)
-      <ol>
-       <li> Straight flush (a straight and a flush - see below) </li>
-       <li> Four of a kind (four equal card ranks) </li>
-       <li> Full house (two equal card ranks together with three equal card
-       ranks) </li>
-       <li> Flush (all cards of same suit) </li>
-       <li> Straight (cards in rank order, where the ace can be used as
-       the lowest or the highest card rank) </li>
-       <li> Three of a kind (three equal card ranks) </li>
-       <li> Two pairs (two times two equal card ranks) </li>
-       <li> One pair (two equal card ranks) </li>
-       <li> High card (none of the above). </li>
-      </ol>
-      applies for the hand, where in case of several possibilities the higher
-      rank has to be output. </li>
-    </ol>
-   </li>
-   <li> For N > 0 the program chooses itself N random hands, counts how often
-    each of the above hand ranks occurs, and outputs the relative frequency of
-    each rank, that is, the quotients (number of occurrences) / N. </li>
-   <li> You need to determine for which N the values are really close to the
-    correct probabilities, and in a comment in your program you need to
-    show such N and the output produced by your program. </li>
-   <li> This <a href="Examples/Coursework_I.tar.gz"> archive </a> contains
-    examples - your program must be able to classify all these hands
-    correctly. </li>
-   <li> Very important:
-    <ol>
-     <li> Your program must compile. </li>
-     <li> Your program must run. </li>
-     <li> It must produce correct results. </li>
-     <li> Try to give good error messages in case some user input is wrong.
-     </li>
-     <li> Use good variable names. </li>
-     <li> Declare variables as local as possible. </li>
-     <li> Use many <strong>functions</strong>. </li>
-     <li> Specify the meaning of functions and important variables via
-      comments. </li>
-     <li> <strong>Important:</strong> The program must be written solely by
-      you! I won't accept any two similar programs. </li>
-     <li> If you do not implement the full functionality (for example, you
-      cannot determine all hand ranks), then please state this clearly
-      in your comments. </li>
-    </ol>
-   </li>
-   <li> Hints:
-    <ol>
-     <li> Every non-trivial program has to be first <strong>designed</strong>
-      on paper. </li>
-     <li> Of fundamental importance is to determine how to handle the various
-      object classes! Here we have "suites", "card ranks", "cards" (a
-      combination of suit and card rank), "hands" (five cards) and "hand
-      ranks". Perhaps you find it useful to use additional object classes.
-     </li>
-     <li> Strings are <strong>not</strong> appropriate data types (except for
-      input and output).
-     </li>
-     <li> Best is to use codes, like 1 .. 52 for the cards, 1 .. 4 for the
-      suites, 1 .. 13 for the card ranks, and 1 .. 9 for the hand ranks. </li>
-     <li> One could represent cards as pairs of suit and card rank, but yet we
-      don't have the appropriate means for doing so, and using codes 1 .. 52
-      is easiest. </li>
-     <li> You can use modular arithmetic to handle these codes somewhat more
-      elegantly, but this is not needed. </li>
-     <li> Hands (of cards) are represented as arrays (of five cards). </li>
-     <li> Provide functions for extracting the suit-code and the
-      card-rank-code from a card-code. </li>
-     <li> When reading cards from (standard) input, you read in single strings,
-      and then you need to compare the input string <em>objects</em> to
-      given strings in order to compute the codes. Use the member function
-      "String.equals" for that. </li>
-     <li> Thus provide functions which convert strings for card ranks and
-      strings for suites to the respective codes. </li>
-     <li> Conversely you need functions which convert codes into the strings.
-     </li>
-     <li> As said before, don't use strings for computations, but only for
-      input and output. All computations are best performed using
-      "mathematical" representations of the objects, suitable for computation.
-      Strings are just means for input and output, except, of course,
-      the computations are actually computations on strings, as in text or
-      word processing. </li>
-    </ol>
-   </li>
-   <li> Here is a <a href="CS-M41_Programs/Courseworks/200910/One/Poker.java">
-     model solution </a>.
-   </li>
-  </ul>
-
 
   <h3> Second coursework </h3>
 
@@ -1343,7 +1232,7 @@ sys     0m0.352s
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Wed Dec  1 22:48:27 GMT 2010
+Last modified: Thu Dec  2 10:40:23 GMT 2010
 <!-- hhmts end -->
 
    </div>
