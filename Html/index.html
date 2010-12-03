@@ -1166,7 +1166,27 @@ sys     0m0.352s
      <li> The (final) task is to write a program <code>Chess</code> which
       reads two files, one containing the position, one containing a sequence
       of moves, and then to play this game, checking everything for
-      correctness. </li>
+      correctness.
+      <ol>
+       <li> More precisely, a program call has the form
+        <pre>
+> Chess move_sequence.pgn initial_position.fen
+
+resp.
+
+> java Chess move_sequence.pgn initial_position.fen
+        </pre>
+        specifying the sequence of moves in PGN notation and the initial
+        position in FEN notation (see below). </li>
+       <li> If the initial position is not given, then the standard starting
+        position is used. </li>
+       <li> The program first checks the correctness of the initial position.
+       </li>
+       <li> If there is no error, then it shows the sequence of moves, but
+        checking for errors, and stopping as soon as an illegal move occurs.
+       </li>
+      </ol>
+     </li>
      <li> The details will not be shown all at once, but gradually: This is
       an attempt to make you start working on the coursework by Friday,
       3/12/2010, and gradually making progress. (And we also want to avoid
@@ -1229,7 +1249,7 @@ sys     0m0.352s
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Dec  3 13:30:46 GMT 2010
+Last modified: Fri Dec  3 13:37:34 GMT 2010
 <!-- hhmts end -->
 
    </div>
