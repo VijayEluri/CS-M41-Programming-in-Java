@@ -150,9 +150,10 @@ class Board {
     public String toString() {
         String result = "";
         for (int x = N-1; x >= 0; --x) {
+            result += (x+1) + ":";
             for (int y = 0; y < N; ++y) {
                 final char figure = board[x][y];
-                result += (figure == empty) ? ' ' : figure;
+                result += (figure == empty) ? '.' : figure;
             }
             result += "\n";
         }
