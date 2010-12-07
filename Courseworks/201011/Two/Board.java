@@ -65,8 +65,8 @@ class Board {
         assert(M.check_white_kingside_castling());
         reset('e','1');
         reset('h','1');
-        set('f','1','K');
-        set('g','1','R');
+        set('f','1','R');
+        set('g','1','K');
         active_colour = 'b';
         white_castling = '-';
         ++halfmoves;
@@ -79,8 +79,8 @@ class Board {
         assert(M.check_black_kingside_castling());
         reset('e','8');
         reset('h','8');
-        set('f','8','k');
-        set('h','8','r');
+        set('f','8','r');
+        set('g','8','k');
         active_colour = 'w';
         black_castling = '-';
         ++halfmoves;
