@@ -41,7 +41,7 @@ class Moves {
         if (c == '-' || c == 'q') return false;
         if (B.get_active_colour() == 'w') return false;
         // XXX
-        return false;
+        return true;
     }
     public boolean check_black_queenside_castling() {
         // only demonstration code:
@@ -55,7 +55,7 @@ class Moves {
     // checks whether black doesn't attack the field:
     public boolean black_not_attacking(final char file, final char rank) {
         // XXX
-        return false;
+        return true;
     }
     public boolean free_white(final char file, final char rank) {
         // XXX
@@ -64,7 +64,7 @@ class Moves {
     // checks whether white doesn't attack the field:
     public boolean white_not_attacking(final char file, final char rank) {
         // XXX
-        return false;
+        return true;
     }
     public boolean free_black(final char file, final char rank) {
         // XXX
