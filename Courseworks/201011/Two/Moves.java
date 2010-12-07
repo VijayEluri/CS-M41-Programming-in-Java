@@ -25,7 +25,7 @@ class Moves {
         if (! black_not_attacking('e','1')) return false;
         if (! free_white('f','1')) return false;
         // XXX
-        return false;
+        return true;
     }
     public boolean check_white_queenside_castling() {
         // only demonstration code:
