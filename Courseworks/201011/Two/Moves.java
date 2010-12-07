@@ -59,7 +59,7 @@ class Moves {
     }
     public boolean free_white(final char file, final char rank) {
         // XXX
-        return black_not_attacking(file,rank) && B.get(file,rank) == B.empty;
+        return black_not_attacking(file,rank) && B.get(file,rank) == Board.empty;
     }
     // checks whether white doesn't attack the field:
     public boolean white_not_attacking(final char file, final char rank) {
@@ -68,7 +68,7 @@ class Moves {
     }
     public boolean free_black(final char file, final char rank) {
         // XXX
-        return white_not_attacking(file,rank) && B.get(file,rank) == B.empty;
+        return white_not_attacking(file,rank) && B.get(file,rank) == Board.empty;
     }
 
 }
