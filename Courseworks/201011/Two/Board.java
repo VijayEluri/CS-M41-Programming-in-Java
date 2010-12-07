@@ -204,7 +204,7 @@ class Board {
             // XXX
             // reset some of the fields, and print out board
             // XXX
-            // now do all the four castlings, and print out boards
+            // now do white and black king-side castlings, and print out boards
             // XXX
         }
 

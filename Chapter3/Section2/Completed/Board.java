@@ -202,14 +202,14 @@ class Board {
             System.out.println("First test run.");
 
             final Board B = new Board();
-            // set directly a few field, and print out board
+            // set directly a few fields, and print out board
             B.set('e','1','K');
             B.set('e','8','k');
             System.out.println(B);
             // reset some of the fields, and print out board
             B.reset('a','1');
             System.out.println(B);
-            // now do the white king-side castling, and print out boards
+            // now do white and black king-side castlings, and print out boards
             B.set('h','1','R');
             B.active_colour = 'w';
             B.white_castling = 'k';
