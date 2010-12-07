@@ -211,5 +211,13 @@ class BoardUsage extends Board {
         System.out.println(B);
         B.do_white_kingside_castling();
         System.out.println(B);
+        B.set('h','8','r');
+        B.active_colour = 'b';
+        B.white_castling = 'k';
+        B.halfmoves = 0;
+        B.fullmoves = 1;
+        System.out.println(B);
+        B.do_black_kingside_castling();
+        System.out.println(B);
     }
 }
