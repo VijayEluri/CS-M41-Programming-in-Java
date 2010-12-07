@@ -66,7 +66,7 @@ class Board {
         reset('e','1');
         reset('h','1');
         set('f','1','K');
-        set('h','1','R');
+        set('g','1','R');
         active_colour = 'b';
         white_castling = '-';
         ++halfmoves;
