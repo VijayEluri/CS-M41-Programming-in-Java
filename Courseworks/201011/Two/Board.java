@@ -197,6 +197,15 @@ class Board {
             System.out.println("File: " + file + " has index: " + file2index(file));
         for (char rank = '1'; rank <= '8'; ++rank)
             System.out.println("Rank: " + rank + " has index: " + rank2index(rank));
+        {
+            final Board B = new Board();
+            // set directly a few fields, and print out board
+            // XXX
+            // reset some of the fields, and print out board
+            // XXX
+            // now do all the four castlings, and print out boards
+            // XXX
+        }
 
         {
             final Board B = new Board();
@@ -204,10 +213,10 @@ class Board {
             System.out.println(B.toFEN());
         }
         {
-            final Board B = new Board(initial_position);
+            final Board B = new Board("K7/8/8/8/8/8/8/7K w - - 0 1");
             System.out.println(B);
             System.out.println(B.toFEN());
         }
-        // XXX
+        // to be completed
     }
 }
