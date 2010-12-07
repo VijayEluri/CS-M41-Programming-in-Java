@@ -135,9 +135,7 @@ class Board {
     // set the position according to description in Forsyth-Edwards notation:
     private void fromFEN(final String position) {
         assert(validFEN(position));
-        // the following code is only for demonstration (to be removed):
-        assert(is_valid_figure(position.charAt(0))); // XXX
-        board[0][0] = position.charAt(0); // XXX
+        // XXX
     }
     // describe the position in Forsyth-Edwards notation:
     public String toFEN() {
@@ -204,7 +202,7 @@ class Board {
             System.out.println(B.toFEN());
         }
         {
-            final Board B = new Board("K7/8/8/8/8/8/8/7K w - - 0 1");
+            final Board B = new Board("7k/8/8/8/8/8/8/K7 w - - 0 1");
             System.out.println(B);
             System.out.println(B.toFEN());
         }
