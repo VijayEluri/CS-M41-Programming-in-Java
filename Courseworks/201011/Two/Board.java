@@ -138,6 +138,7 @@ class Board {
       // XXX
       return true;
     }
+    // helper function for valid_placement:
     private static boolean check_fen_row(final String row) {
       assert(! row.isEmpty());
       // XXX
