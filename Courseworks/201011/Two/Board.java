@@ -185,21 +185,27 @@ class Board {
     }
     // auxiliary functions for checking the six fields of a fen-record:
     private static boolean valid_placement(final String p) {
+      // XXX
       return true;
     }
     private static boolean valid_colour(final String c) {
+      // XXX
       return true;
     }
     private static boolean valid_castling(final String c) {
+      // XXX
       return true;
     }
     private static boolean fen_enpassant(final String e) {
+      // XXX
       return true;
     }
     private static boolean fen_halfmoves(final String h) {
+      // XXX
       return true;
     }
     private static boolean fen_fullmoves(final String f) {
+      // XXX
       return true;
     }
 
