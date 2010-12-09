@@ -144,6 +144,7 @@ class Board {
       return true;
     }
     private static boolean check_fen_row(final String row) {
+      assert(! row.isEmpty());
       int num_fields = 0;
       for (int i = 0; i < row.length(); ++i) {
         final char c = row.charAt(i);
