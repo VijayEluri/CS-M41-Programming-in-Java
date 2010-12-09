@@ -285,20 +285,18 @@ class Board {
       }
       // testing validFEN
       {
-        /*
         assert(validFEN("8/8/8/8/8/8/8/8 w - - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w - - 0 0"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w - - -1 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w j - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w QK - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w qk - 0 1"));
-        assert(!validFEN("8/8/8/8/8/8/8/8 w kK - 0 1"));
+        //assert(!validFEN("8/8/8/8/8/8/8/8 w kK - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w KK - 0 1"));
         assert(validFEN("8/8/8/8/8/8/8/8 b - - 6 99"));
         assert(validFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
         assert(validFEN("8/8/bBp5/8/8/2K4p/8/8 b Kq - 0 2"));
         assert(!validFEN("8/8/bBp5/8/8/2K3p/8/8 b Kq - 0 2"));
-        */
       }
       // testing fromFEN
       {
