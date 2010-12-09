@@ -73,7 +73,13 @@ class Board {
     }
     public void do_white_queenside_castling() {
         assert(M.check_white_queenside_castling());
-        // XXX
+        reset('e','1');
+        reset('a','1');
+        set('d','1','R');
+        set('c','1','K');
+        active_colour = 'b';
+        white_castling = '-';
+        ++halfmoves;
     }
     public void do_black_kingside_castling() {
         assert(M.check_black_kingside_castling());
@@ -88,7 +94,14 @@ class Board {
     }
     public void do_black_queenside_castling() {
         assert(M.check_black_queenside_castling());
-        // XXX
+        reset('e','8');
+        reset('a','8');
+        set('d','8','R');
+        set('c','8','K');
+        active_colour = 'w';
+        black_castling = '-';
+        ++halfmoves;
+        ++fullmoves;
     }
 
     public void do_normal_white_move(final char file0, final char rank0,
