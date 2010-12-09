@@ -166,6 +166,7 @@ class Board {
       return true;
     }
     private static boolean valid_fullmoves(final String f) {
+      assert(! f.isEmpty());
       // XXX
       return true;
     }
