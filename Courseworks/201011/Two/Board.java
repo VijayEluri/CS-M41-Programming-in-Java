@@ -193,6 +193,7 @@ class Board {
       return true;
     }
     private static boolean valid_halfmoves(final String h) {
+      assert(! h.isEmpty());
       try { if (Integer.parseInt(h) < 0) return false; }
       catch (RuntimeException e) { return false; }
       return true;
