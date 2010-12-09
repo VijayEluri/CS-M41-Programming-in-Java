@@ -112,15 +112,15 @@ class Board {
         board[rank2index(rank)][file2index(file)] = empty;
     }
 
-    public boolean is_valid_figure(final char figure) {
+    public static boolean is_valid_figure(final char figure) {
         return is_valid_white_figure(figure) || is_valid_black_figure(figure);
     }
-    public boolean is_valid_white_figure(final char figure) {
+    public static boolean is_valid_white_figure(final char figure) {
         return figure == white_king || figure == white_queen ||
             figure == white_rook || figure == white_bishop ||
             figure == white_pawn;
     }
-    public boolean is_valid_black_figure(final char figure) {
+    public static boolean is_valid_black_figure(final char figure) {
         return figure == black_king || figure == black_queen ||
             figure == black_rook || figure == black_bishop ||
             figure == black_pawn;
