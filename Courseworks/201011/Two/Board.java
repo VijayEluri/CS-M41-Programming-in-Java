@@ -128,49 +128,18 @@ class Board {
 
     public static boolean validFEN(final String position) {
         final String[] parts = position.split("\\s+");
-        if (parts.length != 6) return false;
-        final String fields = parts[0];
-        final String colour = parts[1];
-        final String castling = parts[2];
-        final String en_passant = parts[3];
-        final String halfmoves = parts[4];
-        final String fullmoves = parts[5];
-        if (! colour.equals("w") && ! colour.equals("b")) return false;
-        try {
-          final int h = Integer.parseInt(halfmoves);
-          if (h < 0) return false;
-          final int f = Integer.parseInt(fullmoves);
-          if (f <= 0) return false;
-        }
-        catch (RuntimeException e) { return false; }
-        if (! en_passant.equals("-")) {
-          if (en_passant.length() != 2) return false;
-          final char file = en_passant.charAt(0);
-          if (file < 'a' || file > 'h') return false;
-          final char rank = en_passant.charAt(1);
-          if (rank < '1' || rank > '8') return false;
-        }
-        if (! castling.equals("-")) {
-          int count = 0;
-          int max = -1;
-          final int K = castling.indexOf("K");
-          if (K != -1) ++count;
-          max = Math.max(max,K);
-          final int Q = castling.indexOf("Q",max);
-          if (Q != -1) ++count;
-          max = Math.max(max,Q);
-          final int k = castling.indexOf("k",max);
-          if (k != -1) ++count;
-          max = Math.max(max,k);
-          final int q = castling.indexOf("q",max);
-          if (q != -1) ++count;
-          if (count != castling.length()) return false;
-        }
-        final String[] rows = fields.split("/");
-        if (rows.length != N) return false;
-        for (int r = 0; r < N; ++r)
-          if (! check_fen_row(rows[r])) return false;
-        return true;
+        return parts.length == 6 && valid_placement(parts[0]) &&
+          valid_colour(parts[1]) && valid_castling(parts[2]) &&
+          valid_enpassant(parts[3]) && valid_halfmoves(parts[4]) &&
+          valid_fullmoves(parts[5]);
+    }
+    // auxiliary functions for checking the six fields of a fen-record:
+    private static boolean valid_placement(final String p) {
+      final String[] rows = p.split("/");
+      if (rows.length != N) return false;
+      for (int r = 0; r < N; ++r)
+        if (! check_fen_row(rows[r])) return false;
+      return true;
     }
     private static boolean check_fen_row(final String row) {
       int num_fields = 0;
@@ -183,29 +152,46 @@ class Board {
       }
       return num_fields == N;
     }
-    // auxiliary functions for checking the six fields of a fen-record:
-    private static boolean valid_placement(final String p) {
-      // XXX
-      return true;
-    }
     private static boolean valid_colour(final String c) {
-      // XXX
-      return true;
+      return c.equals("w") || c.equals("b");
     }
     private static boolean valid_castling(final String c) {
-      // XXX
+      if (! c.equals("-")) {
+        int count = 0;
+        int max = -1;
+        final int K = c.indexOf("K");
+        if (K != -1) ++count;
+        max = Math.max(max,K);
+        final int Q = c.indexOf("Q",max);
+        if (Q != -1) ++count;
+        max = Math.max(max,Q);
+        final int k = c.indexOf("k",max);
+        if (k != -1) ++count;
+        max = Math.max(max,k);
+        final int q = c.indexOf("q",max);
+        if (q != -1) ++count;
+        if (count != c.length()) return false;
+      }
       return true;
     }
     private static boolean valid_enpassant(final String e) {
-      // XXX
+      if (! e.equals("-")) {
+        if (e.length() != 2) return false;
+        final char file = e.charAt(0);
+        if (file < 'a' || file > 'h') return false;
+        final char rank = e.charAt(1);
+        if (rank < '1' || rank > '8') return false;
+      }
       return true;
     }
     private static boolean valid_halfmoves(final String h) {
-      // XXX
+      try { if (Integer.parseInt(h) < 0) return false; }
+      catch (RuntimeException e) { return false; }
       return true;
     }
     private static boolean valid_fullmoves(final String f) {
-      // XXX
+      try { if (Integer.parseInt(f) <= 0) return false; }
+      catch (RuntimeException e) { return false; }
       return true;
     }
 
