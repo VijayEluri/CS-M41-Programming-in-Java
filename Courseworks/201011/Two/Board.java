@@ -158,6 +158,7 @@ class Board {
       return num_fields == N;
     }
     private static boolean valid_colour(final String c) {
+      assert(! c.isEmpty());
       return c.equals("w") || c.equals("b");
     }
     private static boolean valid_castling(final String c) {
