@@ -229,6 +229,12 @@ class Board {
         assert(rank <= '8');
         return rank - '1';
     }
+    // rank and file together as a string with 2 characters:
+    private static String rankfile(final char rank, final char file) {
+      StringBuffer f = new StringBuffer();
+      f.append(rank); f.append(file);
+      return new String(f);
+    }
 
     // Unit testing:
     public static void main(final String[] args) {
