@@ -137,6 +137,7 @@ class Board {
     }
     // auxiliary functions for checking the six fields of a fen-record:
     private static boolean valid_placement(final String p) {
+      assert(! p.isEmpty());
       final String[] rows = p.split("/");
       if (rows.length != N) return false;
       for (int r = 0; r < N; ++r)
