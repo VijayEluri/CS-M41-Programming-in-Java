@@ -135,6 +135,7 @@ class Board {
     }
     // auxiliary functions for checking the six fields of a fen-record:
     private static boolean valid_placement(final String p) {
+      assert(! p.isEmpty());
       // XXX
       return true;
     }
