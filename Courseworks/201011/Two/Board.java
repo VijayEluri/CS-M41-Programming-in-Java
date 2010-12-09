@@ -161,6 +161,7 @@ class Board {
       return true;
     }
     private static boolean valid_halfmoves(final String h) {
+      assert(! h.isEmpty());
       // XXX
       return true;
     }
