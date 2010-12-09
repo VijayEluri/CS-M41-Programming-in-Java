@@ -162,6 +162,7 @@ class Board {
       return c.equals("w") || c.equals("b");
     }
     private static boolean valid_castling(final String c) {
+      assert(! c.isEmpty());
       if (! c.equals("-")) {
         int count = 0;
         int max = -1;
