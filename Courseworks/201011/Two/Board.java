@@ -123,7 +123,7 @@ class Board {
     public static boolean is_valid_black_figure(final char figure) {
         return figure == black_king || figure == black_queen ||
             figure == black_rook || figure == black_bishop ||
-            figure == white_knight || figure == black_pawn;
+            figure == black_knight || figure == black_pawn;
     }
 
     public static boolean validFEN(final String position) {
