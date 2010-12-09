@@ -199,6 +199,7 @@ class Board {
       return true;
     }
     private static boolean valid_fullmoves(final String f) {
+      assert(! f.isEmpty());
       try { if (Integer.parseInt(f) <= 0) return false; }
       catch (RuntimeException e) { return false; }
       return true;
