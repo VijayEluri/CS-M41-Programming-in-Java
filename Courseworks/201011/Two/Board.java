@@ -192,20 +192,5 @@ class Board {
 
     // for demonstration purposes:
     public static void main(final String[] args) {
-        for (char file = 'a'; file <= 'h'; ++file)
-            System.out.println("File: " + file + " has index: " + file2index(file));
-        for (char rank = '1'; rank <= '8'; ++rank)
-            System.out.println("Rank: " + rank + " has index: " + rank2index(rank));
-        {
-            final Board B = new Board();
-            System.out.println(B);
-            System.out.println(B.toFEN());
-        }
-        {
-            final Board B = new Board("7k/8/8/8/8/8/8/K7 w - - 0 1");
-            System.out.println(B);
-            System.out.println(B.toFEN());
-        }
-        // to be completed
     }
 }
