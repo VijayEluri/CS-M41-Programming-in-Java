@@ -107,7 +107,10 @@ class Board {
     public void do_normal_white_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
         assert(M.check_normal_white_move(file0,rank0,file1,rank1));
-        // XXX
+        final char figure = board[rank2index(rank0)][file2index(file0)];
+        set(file1,rank1,figure);
+        reset(file0,rank0);
+        // XXX en passant handling
     }
     public void do_normal_black_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
