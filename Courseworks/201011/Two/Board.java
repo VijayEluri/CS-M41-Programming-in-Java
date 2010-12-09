@@ -151,8 +151,16 @@ class Board {
           if (rank < '1' || rank > '8') return false;
         }
         if (! castling.equals("-")) {
-          if (castling.length() < 1 || castling.length() > 4) return false;
-          // XXX
+          int count = 0;
+          final int K = castling.indexOf("K");
+          if (K != -1) ++count;
+          final int Q = castling.indexOf("Q",K);
+          if (Q != -1) ++count;
+          final int k = castling.indexOf("k",Q);
+          if (k != -1) ++count;
+          final int q = castling.indexOf("q",k);
+          if (q != -1) ++count;
+          if (count != castling.length()) return false;
         }
         final String[] rows = fields.split("/");
         if (rows.length != N) return false;
