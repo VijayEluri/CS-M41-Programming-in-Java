@@ -154,11 +154,10 @@ class Board {
           if (castling.length() < 1 || castling.length() > 4) return false;
           // XXX
         }
-        final String[] rows = position.split("/");
+        final String[] rows = fields.split("/");
         if (rows.length != N) return false;
         for (int r = 0; r < N; ++r)
           if (! check_fen_row(rows[r])) return false;
-        // XXX
         return true;
     }
     private static boolean check_fen_row(final String row) {
