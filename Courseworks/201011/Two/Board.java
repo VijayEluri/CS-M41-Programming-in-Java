@@ -131,6 +131,25 @@ class Board {
         // XXX
         return result;
     }
+    // auxiliary functions for checking the six fields of a fen-record:
+    private static boolean valid_placement(final String p) {
+      return true;
+    }
+    private static boolean valid_colour(final String c) {
+      return true;
+    }
+    private static boolean valid_castling(final String c) {
+      return true;
+    }
+    private static boolean fen_enpassant(final String e) {
+      return true;
+    }
+    private static boolean fen_halfmoves(final String h) {
+      return true;
+    }
+    private static boolean fen_fullmoves(final String f) {
+      return true;
+    }
 
     // set the position according to description in Forsyth-Edwards notation:
     private void fromFEN(final String position) {
