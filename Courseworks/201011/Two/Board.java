@@ -152,13 +152,17 @@ class Board {
         }
         if (! castling.equals("-")) {
           int count = 0;
+          int max = -1;
           final int K = castling.indexOf("K");
           if (K != -1) ++count;
-          final int Q = castling.indexOf("Q",K);
+          max = Math.max(max,K);
+          final int Q = castling.indexOf("Q",max);
           if (Q != -1) ++count;
-          final int k = castling.indexOf("k",Q);
+          max = Math.max(max,Q);
+          final int k = castling.indexOf("k",max);
           if (k != -1) ++count;
-          final int q = castling.indexOf("q",k);
+          max = Math.max(max,k);
+          final int q = castling.indexOf("q",max);
           if (q != -1) ++count;
           if (count != castling.length()) return false;
         }
@@ -291,7 +295,7 @@ class Board {
         assert(!validFEN("8/8/8/8/8/8/8/8 w j - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w QK - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w qk - 0 1"));
-        //assert(!validFEN("8/8/8/8/8/8/8/8 w kK - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w kK - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w KK - 0 1"));
         assert(validFEN("8/8/8/8/8/8/8/8 b - - 6 99"));
         assert(validFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
