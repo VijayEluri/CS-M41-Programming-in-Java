@@ -126,6 +126,8 @@ class Board {
             figure == black_knight || figure == black_pawn;
     }
 
+    // checks purely for syntactical validness
+    // (while their might be, e.g., 64 pawns, or no figures at all):
     public static boolean validFEN(final String position) {
         boolean result = true;
         // XXX
