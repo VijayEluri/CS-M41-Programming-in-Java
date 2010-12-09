@@ -143,6 +143,7 @@ class Board {
         if (! check_fen_row(rows[r])) return false;
       return true;
     }
+    // helper function for valid_placement:
     private static boolean check_fen_row(final String row) {
       assert(! row.isEmpty());
       int num_fields = 0;
