@@ -138,6 +138,11 @@ class Board {
       // XXX
       return true;
     }
+    private static boolean check_fen_row(final String row) {
+      assert(! row.isEmpty());
+      // XXX
+      return true;
+    }
     private static boolean valid_colour(final String c) {
       // XXX
       return true;
