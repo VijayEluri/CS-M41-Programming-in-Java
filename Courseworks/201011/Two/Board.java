@@ -126,6 +126,8 @@ class Board {
             figure == black_knight || figure == black_pawn;
     }
 
+    // checks purely for syntactical validness
+    // (while their might be, e.g., 64 pawns, or no figures at all):
     public static boolean validFEN(final String position) {
         final String[] parts = position.split("\\s+");
         return parts.length == 6 && valid_placement(parts[0]) &&
