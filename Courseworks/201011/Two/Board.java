@@ -263,6 +263,14 @@ class Board {
       // testing validFEN
       {
         /*
+        assert(valid_placement("8/8/8/8/8/8/8/8"));
+        assert(valid_placement("PKQNBRkp/pPkKpP3r/8/p6P/5Qqp/8/8/2rr1Q1P"));
+        assert(!valid_placement("/"));
+        assert(!valid_placement(" "));
+        assert(!valid_placement("///////"));
+        assert(!valid_placement("8/8/7/8/8/8/8/8"));
+        assert(!valid_placement("8/8/8/8/8/8/8/7y"));
+        assert(!valid_placement("PKNBRkkk/pPpPpP3r/8/p7P/5Qqp/8/8"));
         assert(validFEN("8/8/8/8/8/8/8/8 w - - 0 1"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w - - 0 0"));
         assert(!validFEN("8/8/8/8/8/8/8/8 w - - -1 1"));
