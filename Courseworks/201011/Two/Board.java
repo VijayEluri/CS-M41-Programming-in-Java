@@ -264,7 +264,8 @@ class Board {
       {
         /*
         assert(valid_placement("8/8/8/8/8/8/8/8"));
-        assert(valid_placement("PKQNBRkp/pPkKpP3r/8/p6P/5Qqp/8/8/2rr1Q1P"));
+        assert(!valid_placement("PKQNBRkp/pPkKpP3r/8/p6P/5Qqp/8/8/2rr1Q1P"));
+        assert(valid_placement("PKQNBRkp/pPkKpP1r/8/p6P/5Qqp/8/8/2rr1Q1P"));
         assert(!valid_placement("/"));
         assert(!valid_placement(" "));
         assert(!valid_placement("///////"));
