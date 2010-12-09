@@ -127,9 +127,50 @@ class Board {
     }
 
     public static boolean validFEN(final String position) {
-        boolean result = true;
+        final String[] parts = position.split("\\s+");
+        if (parts.length != 6) return false;
+        final String fields = parts[0];
+        final String colour = parts[1];
+        final String castling = parts[2];
+        final String en_passant = parts[3];
+        final String halfmoves = parts[4];
+        final String fullmoves = parts[5];
+        if (! colour.equals("w") && ! colour.equals("b")) return false;
+        try {
+          final int h = Integer.parseInt(halfmoves);
+          if (h < 0) return false;
+          final int f = Integer.parseInt(fullmoves);
+          if (f <= 0) return false;
+        }
+        catch (RuntimeException e) { return false; }
+        if (! en_passant.equals("-")) {
+          if (en_passant.length() != 2) return false;
+          final char file = en_passant.charAt(0);
+          if (file < 'a' || file > 'h') return false;
+          final char rank = en_passant.charAt(1);
+          if (rank < '1' || rank > '8') return false;
+        }
+        if (! castling.equals("-")) {
+          if (castling.length() < 1 || castling.length() > 4) return false;
+          // XXX
+        }
+        final String[] rows = position.split("/");
+        if (rows.length != N) return false;
+        for (int r = 0; r < N; ++r)
+          if (! check_fen_row(rows[r])) return false;
         // XXX
-        return result;
+        return true;
+    }
+    private static boolean check_fen_row(final String row) {
+      int num_fields = 0;
+      for (int i = 0; i < row.length(); ++i) {
+        final char c = row.charAt(i);
+        if (is_valid_figure(c)) ++num_fields;
+        else
+          if (c < '1' || c > '8') return false;
+          else num_fields += c - '0';
+      }
+      return num_fields == N;
     }
 
     // set the position according to description in Forsyth-Edwards notation:
