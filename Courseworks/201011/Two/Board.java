@@ -146,6 +146,7 @@ class Board {
       return true;
     }
     private static boolean valid_colour(final String c) {
+      assert(! c.isEmpty());
       // XXX
       return true;
     }
