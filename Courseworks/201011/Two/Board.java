@@ -238,22 +238,83 @@ class Board {
         return rank - '1';
     }
 
-    // for demonstration purposes:
+    // Unit testing:
     public static void main(final String[] args) {
-        for (char file = 'a'; file <= 'h'; ++file)
-            System.out.println("File: " + file + " has index: " + file2index(file));
-        for (char rank = '1'; rank <= '8'; ++rank)
-            System.out.println("Rank: " + rank + " has index: " + rank2index(rank));
-        {
-            final Board B = new Board();
-            System.out.println(B);
-            System.out.println(B.toFEN());
-        }
-        {
-            final Board B = new Board("7k/8/8/8/8/8/8/K7 w - - 0 1");
-            System.out.println(B);
-            System.out.println(B.toFEN());
-        }
-        // to be completed
+      // testing default construction
+      {
+        final Board b = new Board();
+        /*
+        assert(b.toFEN().equals(initial_position));
+        assert(b.active_colour == 'w');
+        assert(b.white_castling == 'b');
+        assert(b.black_castling == 'b');
+        assert(b.halfmoves == 0);
+        assert(b.fullmoves == 1);
+        int count_blacks = 0, count_whites = 0;
+        for (int x = 0; x < N; ++x)
+          for (int y = 0; y < N; ++y)
+            if (! b.is_empty(x,y)) {
+              final char f = b.board[x][y];
+              assert(is_valid_figure(f));
+              if (is_valid_white_figure(f)) ++count_whites;
+              else ++ count_blacks;
+            }
+        assert(count_whites == 16);
+        assert(count_blacks == 16);
+        */
+      }
+      // testing construction from fen
+      {
+
+      }
+      // testing get-functions
+      {
+
+      }
+      // testing castling functions
+      {
+
+      }
+      // testing normal moves
+      {
+
+      }
+      // testing validation of figures
+      {
+
+      }
+      // testing validFEN
+      {
+        /*
+        assert(validFEN("8/8/8/8/8/8/8/8 w - - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w - - 0 0"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w - - -1 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w j - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w QK - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w qk - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w kK - 0 1"));
+        assert(!validFEN("8/8/8/8/8/8/8/8 w KK - 0 1"));
+        assert(validFEN("8/8/8/8/8/8/8/8 b - - 6 99"));
+        assert(validFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
+        assert(validFEN("8/8/bBp5/8/8/2K4p/8/8 b Kq - 0 2"));
+        assert(!validFEN("8/8/bBp5/8/8/2K3p/8/8 b Kq - 0 2"));
+        */
+      }
+      // testing fromFEN
+      {
+
+      }
+      // testing toFEN
+      {
+
+      }
+      // testing equals
+      {
+
+      }
+      // testing conversions
+      {
+
+      }
     }
 }
