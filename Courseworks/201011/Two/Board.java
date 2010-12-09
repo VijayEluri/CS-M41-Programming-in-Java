@@ -196,15 +196,15 @@ class Board {
       // XXX
       return true;
     }
-    private static boolean fen_enpassant(final String e) {
+    private static boolean valid_enpassant(final String e) {
       // XXX
       return true;
     }
-    private static boolean fen_halfmoves(final String h) {
+    private static boolean valid_halfmoves(final String h) {
       // XXX
       return true;
     }
-    private static boolean fen_fullmoves(final String f) {
+    private static boolean valid_fullmoves(final String f) {
       // XXX
       return true;
     }
