@@ -26,6 +26,7 @@ class Board {
     // 'q' (only queen-side) or 'b' (both)
     private char white_castling;
     private char black_castling;
+    private String en_passant;
     private int halfmoves;
     private int fullmoves;
 
