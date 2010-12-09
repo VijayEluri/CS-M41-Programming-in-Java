@@ -156,6 +156,7 @@ class Board {
       return true;
     }
     private static boolean valid_enpassant(final String e) {
+      assert(! e.isEmpty());
       // XXX
       return true;
     }
