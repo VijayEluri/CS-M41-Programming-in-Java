@@ -182,6 +182,7 @@ class Board {
       return true;
     }
     private static boolean valid_enpassant(final String e) {
+      assert(! e.isEmpty());
       if (! e.equals("-")) {
         if (e.length() != 2) return false;
         final char file = e.charAt(0);
