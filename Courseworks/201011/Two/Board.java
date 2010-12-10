@@ -55,6 +55,9 @@ class Board {
     public char get_black_castling() {
         return black_castling;
     }
+    public String get_en_passant() {
+        return en_passant;
+    }
     public int get_halfmoves() {
         return halfmoves;
     }
