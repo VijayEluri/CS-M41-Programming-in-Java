@@ -52,6 +52,15 @@ class Moves {
         return false;
     }
 
+    public boolean check_white_promotion(final char pawn_file, final char figure) {
+        // XXX
+        return true;
+    }
+    public boolean check_black_promotion(final char pawn_file, final char figure) {
+        // XXX
+        return true;
+    }
+
     // checks whether black doesn't attack the field:
     public boolean black_not_attacking(final char file, final char rank) {
         // XXX
