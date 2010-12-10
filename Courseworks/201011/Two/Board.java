@@ -46,24 +46,12 @@ class Board {
     public char get(final char file, final char rank) {
         return board[rank2index(rank)][file2index(file)];
     }
-    public char get_active_colour() {
-        return active_colour;
-    }
-    public char get_white_castling() {
-        return white_castling;
-    }
-    public char get_black_castling() {
-        return black_castling;
-    }
-    public String get_en_passant() {
-        return en_passant;
-    }
-    public int get_halfmoves() {
-        return halfmoves;
-    }
-    public int get_fullmoves() {
-        return fullmoves;
-    }
+    public char get_active_colour() { return active_colour; }
+    public char get_white_castling() { return white_castling; }
+    public char get_black_castling() { return black_castling; }
+    public String get_en_passant() { return en_passant; }
+    public int get_halfmoves() { return halfmoves; }
+    public int get_fullmoves() { return fullmoves; }
     
     public void do_white_kingside_castling() {
         assert(M.check_white_kingside_castling());
