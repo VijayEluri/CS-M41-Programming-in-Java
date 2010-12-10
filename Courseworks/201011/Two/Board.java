@@ -340,7 +340,7 @@ class Board {
         else {
           if (white_castling == 'b') result += "KQ";
           else if (white_castling == 'k') result += "K";
-          else if (white_castling == 'k') result += "Q";
+          else if (white_castling == 'q') result += "Q";
           if (black_castling == 'b') result += "kq";
           else if (black_castling == 'k') result += "k";
           else if (black_castling == 'q') result += "q";
