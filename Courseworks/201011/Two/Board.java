@@ -91,8 +91,8 @@ class Board {
         assert(M.check_black_queenside_castling());
         reset('e','8');
         reset('a','8');
-        set('d','8','R');
-        set('c','8','K');
+        set('d','8','r');
+        set('c','8','k');
         active_colour = 'w';
         black_castling = '-';
         ++halfmoves;
