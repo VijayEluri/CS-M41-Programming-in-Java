@@ -464,7 +464,7 @@ class Board {
         assert(b.get_black_castling() == 'b');
         assert(b.get_en_passant().equals("-"));
         assert(b.get_halfmoves() == 0);
-        assert(b.get_fullmoves() == 0);
+        assert(b.get_fullmoves() == 1);
       }
       // testing castling moves
       {
