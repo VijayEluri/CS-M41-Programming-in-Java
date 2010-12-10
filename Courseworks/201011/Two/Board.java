@@ -136,14 +136,16 @@ class Board {
             else if (white_castling == 'k') white_castling = '-';
           }
         }
-        else if (figure == white_pawn)
-          if (rank0 == '2' && rank1 == '4') {
+        else if (figure == white_pawn) {
+          halfmoves = 0;
+          if (rank0 == '2' && rank1 == '4')
             en_passant = rankfile(file0,'3');
-            halfmoves = 0;
-            return;
-          }
-          else if (en_passant == (rankfile(file1,rank1)))
+          else if (en_passant == (rankfile(file1,rank1))) {
             reset(file1,'5');
+            en_passant = "-";
+          }
+          return;
+        }
         en_passant = "-";
         ++halfmoves;
     }
@@ -166,14 +168,16 @@ class Board {
             else if (black_castling == 'k') black_castling = '-';
           }
         }
-        else if (figure == black_pawn)
-          if (rank0 == '7' && rank1 == '5') {
+        else if (figure == black_pawn) {
+          halfmoves = 0;
+          if (rank0 == '7' && rank1 == '5')
             en_passant = rankfile(file0,'6');
-            halfmoves = 0;
-            return;
-          }
-          else if (en_passant == (rankfile(file1,rank1)))
+          else if (en_passant == (rankfile(file1,rank1))) {
             reset(file1,'3');
+            en_passant = "-";
+          }
+          return;
+        }
         en_passant = "-";
         ++halfmoves;
     }
