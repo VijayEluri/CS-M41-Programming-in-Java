@@ -8,12 +8,12 @@ class Moves {
     public boolean check_normal_white_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
         // XXX
-        return false;
+        return true;
     }
     public boolean check_normal_black_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
         // XXX
-        return false;
+        return true;
     }
     
     public boolean check_white_kingside_castling() {
@@ -33,7 +33,7 @@ class Moves {
         if (c == '-' || c == 'k') return false;
         if (B.get_active_colour() == 'b') return false;
         // XXX
-        return false;
+        return true;
     }
     public boolean check_black_kingside_castling() {
         // only demonstration code:
@@ -49,7 +49,7 @@ class Moves {
         if (c == '-' || c == 'k') return false;
         if (B.get_active_colour() == 'w') return false;
         // XXX
-        return false;
+        return true;
     }
 
     public boolean check_white_promotion(final char pawn_file, final char figure) {
