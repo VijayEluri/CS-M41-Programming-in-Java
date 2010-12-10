@@ -490,13 +490,11 @@ class Board {
       }
       // testing promotion moves
       {
-        /*
         Board b = new Board("8/P7/8/8/8/8/7p/8 w - - 0 1");
         b.do_white_promotion('a','Q');
         assert(b.toFEN().equals("Q7/8/8/8/8/8/7p/8 b - - 0 1"));
         b.do_black_promotion('h','q');
         assert(b.toFEN().equals("Q7/8/8/8/8/8/8/7q w - - 0 2"));
-        */
       }
       // testing normal moves
       {
