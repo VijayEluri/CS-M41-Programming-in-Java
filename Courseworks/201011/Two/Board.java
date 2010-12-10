@@ -304,7 +304,7 @@ class Board {
         assert(b.toFEN().equals("4k2r/8/8/8/8/8/8/5RK1 b k - 1 1"));
         b.do_black_kingside_castling();
         assert(b.toFEN().equals("5rk1/8/8/8/8/8/8/5RK1 w - - 2 2"));
-        b = new Board("r3k3/8/8/8/8/8/8/r3k3 w Qq - 0 1");
+        b = new Board("r3k3/8/8/8/8/8/8/R3K3 w Qq - 0 1");
         b.do_white_queenside_castling();
         assert(b.toFEN().equals("r3k3/8/8/8/8/8/8/2KR4 b q - 1 1"));
         b.do_black_queenside_castling();
