@@ -433,7 +433,28 @@ class Board {
       }
       // testing construction from fen
       {
-
+        /*
+        Board b = new Board("8/8/8/8/8/8/8/8 w Kq - 0 3");
+        for (int x = 0; x < N; ++x)
+          for (int y = 0; y < N; ++y)
+            assert(b.board[x][y] == empty);
+        assert(b.get_active_colour() == 'w');
+        assert(b.get_white_castling() == 'k');
+        assert(b.get_black_castling() == 'q');
+        assert(b.get_en_passant() == "-");
+        assert(b.get_halfmoves() == 0);
+        assert(b.get_fullmoves() == 3);
+        b = new Board("pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp b Qk d5 88 317");
+        for (int x = 0; x < N; ++x)
+          for (int y = 0; y < N; ++y)
+            assert(b.board[x][y] == black_pawn);
+        assert(b.get_active_colour() == 'b');
+        assert(b.get_white_castling() == 'q');
+        assert(b.get_black_castling() == 'k');
+        assert(b.get_en_passant() == "d5");
+        assert(b.get_halfmoves() == 88);
+        assert(b.get_fullmoves() == 317);
+        */
       }
       // testing get-functions
       {
