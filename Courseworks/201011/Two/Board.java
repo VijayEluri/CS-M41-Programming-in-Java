@@ -293,6 +293,28 @@ class Board {
         assert(b.toFEN().equals("rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2"));
         b.do_normal_white_move('g','1','f','3');
         assert(b.toFEN().equals("rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"));
+        b.do_normal_black_move('b','8','c','6');
+        assert(b.toFEN().equals("r1bqkbnr/pp1ppppp/2n5/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3"));
+        b.do_normal_white_move('f','1','c','4');
+        assert(b.toFEN().equals("r1bqkbnr/pp1ppppp/2n5/2p5/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3"));
+        b.do_normal_black_move('d','7','d','6');
+        assert(b.toFEN().equals("r1bqkbnr/pp2pppp/2np4/2p5/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4"));
+        b.do_white_kingside_castling();
+        assert(b.toFEN().equals("r1bqkbnr/pp2pppp/2np4/2p5/2B1P3/5N2/PPPP1PPP/RNBQ1RQ1 b kq - 1 4"));
+        b.do_normal_black_move('c','8','d','7');
+        assert(b.toFEN().equals("r2qkbnr/pp1bpppp/2np4/2p5/2B1P3/5N2/PPPP1PPP/RNBQ1RQ1 w kq - 2 5"));
+        b.do_normal_white_move('d','2','d','4');
+        assert(b.toFEN().equals("r2qkbnr/pp1bpppp/2np4/2p5/2BPP3/5N2/PPP2PPP/RNBQ1RQ1 b kq d3 0 5"));
+        b.do_normal_black_move('c','5','d','4');
+        assert(b.toFEN().equals("r2qkbnr/pp1bpppp/2np4/8/2BpP3/5N2/PPP2PPP/RNBQ1RQ1 w kq - 0 6"));
+        b.do_normal_white_move('f','3','d','4');
+        assert(b.toFEN().equals("r2qkbnr/pp1bpppp/2np4/8/2BNP3/8/PPP2PPP/RNBQ1RQ1 b kq - 1 6"));
+        b.do_normal_black_move('d','8','c','7');
+        assert(b.toFEN().equals("r3kbnr/ppqbpppp/2np4/8/2BNP3/8/PPP2PPP/RNBQ1RQ1 w kq - 2 7"));
+        b.do_normal_white_move('b','1','c','3');
+        assert(b.toFEN().equals("r3kbnr/ppqbpppp/2np4/8/2BNP3/2N5/PPP2PPP/R1BQ1RQ1 b kq - 3 7"));
+        b.do_black_queenside_castling();
+        assert(b.toFEN().equals("2kr1bnr/ppqbpppp/2np4/8/2BNP3/2N5/PPP2PPP/R1BQ1RQ1 w - - 4 8"));
         */
       }
       // testing seting and reseting
