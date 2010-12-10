@@ -111,12 +111,34 @@ class Board {
         final char figure = board[rank2index(rank0)][file2index(file0)];
         set(file1,rank1,figure);
         reset(file0,rank0);
-        // XXX en passant handling
+        ++halfmoves;
+        active_colour = 'b';
+        if (figure == white_pawn)
+          if (rank0 == '2' && rank1 == '4') {
+            en_passant = rankfile(file0,'3');
+            return;
+          }
+          else if (en_passant == (rankfile(file1,rank1)))
+            reset(file1,'5');
+        en_passant = "-";
     }
     public void do_normal_black_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
         assert(M.check_normal_black_move(file0,rank0,file1,rank1));
-        // XXX
+        final char figure = board[rank2index(rank0)][file2index(file0)];
+        set(file1,rank1,figure);
+        reset(file0,rank0);
+        ++halfmoves;
+        ++fullmoves;
+        active_colour = 'w';
+        if (figure == black_pawn)
+          if (rank0 == '7' && rank1 == '5') {
+            en_passant = rankfile(file0,'6');
+            return;
+          }
+          else if (en_passant == (rankfile(file1,rank1)))
+            reset(file1,'3');
+        en_passant = "-";
     }
 
     // set figure on field:
