@@ -319,11 +319,11 @@ class Board {
            if (! is_empty(x,y)) result += board[x][y];
            else {
              int num_empty = 1;
-             while (! is_empty(x,++y)) ++num_empty;
+             while (++y < N && is_empty(x,y)) ++num_empty;
              result += num_empty;
            }
           }
-          result += "/";
+          if (x > 0) result += "/";
         }
         result += " ";
         result += active_colour;
