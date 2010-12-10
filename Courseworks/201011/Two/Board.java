@@ -117,7 +117,18 @@ class Board {
         reset(file0,rank0);
         ++halfmoves;
         active_colour = 'b';
-        if (figure == white_pawn)
+        if (figure == white_king) white_castling = '-';
+        else if (figure == white_rook && rank0 == '1') {
+          if (file0 == 'a') {
+            if (white_castling == 'b') white_castling = 'k';
+            else if (white_castling == 'q') white_castling = '-';
+          }
+          else if (file0 == 'h') {
+            if (white_castling == 'b') white_castling = 'q';
+            else if (white_castling == 'k') white_castling = '-';
+          }
+        }
+        else if (figure == white_pawn)
           if (rank0 == '2' && rank1 == '4') {
             en_passant = rankfile(file0,'3');
             return;
@@ -135,7 +146,18 @@ class Board {
         ++halfmoves;
         ++fullmoves;
         active_colour = 'w';
-        if (figure == black_pawn)
+        if (figure == black_king) black_castling = '-';
+        else if (figure == black_rook && rank0 == '8') {
+          if (file0 == 'a') {
+            if (black_castling == 'b') black_castling = 'k';
+            else if (black_castling == 'q') black_castling = '-';
+          }
+          else if (file0 == 'h') {
+            if (black_castling == 'b') black_castling = 'q';
+            else if (black_castling == 'k') black_castling = '-';
+          }
+        }
+        else if (figure == black_pawn)
           if (rank0 == '7' && rank1 == '5') {
             en_passant = rankfile(file0,'6');
             return;
