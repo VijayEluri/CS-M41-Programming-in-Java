@@ -414,7 +414,7 @@ class Board {
               final char f = b.board[x][y];
               assert(is_valid_figure(f));
               if (is_valid_white_figure(f)) ++count_whites;
-              else ++ count_blacks;
+              else ++count_blacks;
             }
         assert(count_whites == 16);
         assert(count_blacks == 16);
