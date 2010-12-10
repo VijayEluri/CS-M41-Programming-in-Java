@@ -317,8 +317,8 @@ class Board {
     public String toFEN() {
         String result = "";
         for (int x = N-1; x >= 0; --x) {
-          for (int y = 0; y < N; ++y) {
-           if (! is_empty(x,y)) result += board[x][y];
+          for (int y = 0; y < N;) {
+           if (! is_empty(x,y)) result += board[x][y++];
            else {
              int num_empty = 1;
              while (++y < N && is_empty(x,y)) ++num_empty;
