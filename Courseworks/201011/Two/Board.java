@@ -62,6 +62,7 @@ class Board {
         active_colour = 'b';
         white_castling = '-';
         ++halfmoves;
+        en_passant = "-";
     }
     public void do_white_queenside_castling() {
         assert(M.check_white_queenside_castling());
@@ -77,6 +78,7 @@ class Board {
         black_castling = '-';
         ++halfmoves;
         ++fullmoves;
+        en_passant = "-";
     }
     public void do_black_queenside_castling() {
         assert(M.check_black_queenside_castling());
