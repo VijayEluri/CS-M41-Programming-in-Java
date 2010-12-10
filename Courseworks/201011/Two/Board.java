@@ -282,7 +282,34 @@ class Board {
     // set the position according to description in Forsyth-Edwards notation:
     private void fromFEN(final String position) {
         assert(validFEN(position));
-        // XXX
+        final String[] parts = position.split("\\s+");
+        final String[] rows = parts[0].split("/");
+        for (int x = 0; x < N; ++x) {
+          final String row = rows[(N-1)-x];
+          int y = 0;
+          for (int i = 0; i < row.length(); ++i) {
+            final char c = row.charAt(i);
+            if (c >= '1' && c <= '8') {
+              final int num_empty = c - '0';
+              for (int j = 0; j < num_empty; ++j) board[x][y++] = empty;
+            }
+            else board[x][y++] = c;
+          }
+        }
+        active_colour = parts[1].charAt(0);
+        if (parts[2].contains("K"))
+          if (parts[2].contains("Q")) white_castling = 'b';
+          else white_castling = 'k';
+        else if (parts[2].contains("Q")) white_castling = 'q';
+        else white_castling = '-';
+        if (parts[2].contains("k"))
+          if (parts[2].contains("q")) black_castling = 'b';
+          else black_castling = 'k';
+        else if (parts[2].contains("q")) black_castling = 'q';
+        else black_castling = '-';
+        en_passant = parts[3];
+        halfmoves = Integer.parseInt(parts[4]);
+        fullmoves = Integer.parseInt(parts[5]);
     }
     // describe the position in Forsyth-Edwards notation:
     public String toFEN() {
