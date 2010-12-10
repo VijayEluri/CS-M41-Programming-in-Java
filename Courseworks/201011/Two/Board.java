@@ -271,11 +271,19 @@ class Board {
       {
 
       }
-      // testing castling functions
+      // testing castling moves
+      {
+
+      }
+      // testing promotion moves
       {
 
       }
       // testing normal moves
+      {
+
+      }
+      // testing seting and reseting
       {
 
       }
