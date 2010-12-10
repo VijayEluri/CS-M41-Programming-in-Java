@@ -343,7 +343,7 @@ class Board {
           else if (white_castling == 'k') result += "Q";
           if (black_castling == 'b') result += "kq";
           else if (black_castling == 'k') result += "k";
-          else if (black_castling == 'k') result += "q";
+          else if (black_castling == 'q') result += "q";
         }
         result += " ";
         result += en_passant + " ";
