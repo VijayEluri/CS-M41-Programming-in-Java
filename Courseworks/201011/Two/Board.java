@@ -401,7 +401,6 @@ class Board {
       // testing default construction
       {
         final Board b = new Board();
-        /*
         assert(b.toFEN().equals(initial_position));
         assert(b.active_colour == 'w');
         assert(b.white_castling == 'b');
@@ -419,7 +418,6 @@ class Board {
             }
         assert(count_whites == 16);
         assert(count_blacks == 16);
-        */
       }
       // testing construction from fen
       {
