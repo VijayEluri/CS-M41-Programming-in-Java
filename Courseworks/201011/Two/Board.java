@@ -197,7 +197,11 @@ class Board {
             }
             result += "\n";
         }
-        result += "\nActive: " + active_colour + "\n";
+        result += "Active: " + active_colour + " ";
+        result += "White/black castling: " + white_castling + black_castling + " ";
+        result += "En passant: " + en_passant + " ";
+        result += "Half moves: " + halfmoves + " ";
+        result += "Full moves: " + fullmoves + " ";
         return result;
     }
 
