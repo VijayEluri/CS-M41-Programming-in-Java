@@ -460,7 +460,6 @@ class Board {
       }
       // testing castling moves
       {
-        /*
         Board b = new Board("4k2r/8/8/8/8/8/8/4K2R w Kk - 0 1");
         b.do_white_kingside_castling();
         assert(b.toFEN().equals("4k2r/8/8/8/8/8/8/5RK1 b k - 1 1"));
@@ -471,7 +470,6 @@ class Board {
         assert(b.toFEN().equals("r3k3/8/8/8/8/8/8/2KR4 b q - 1 1"));
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/2KR4 w - - 2 2"));
-        */
       }
       // testing promotion moves
       {
