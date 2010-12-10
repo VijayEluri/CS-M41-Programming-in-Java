@@ -433,7 +433,6 @@ class Board {
       }
       // testing construction from fen
       {
-        /*
         Board b = new Board("8/8/8/8/8/8/8/8 w Kq - 0 3");
         for (int x = 0; x < N; ++x)
           for (int y = 0; y < N; ++y)
@@ -454,7 +453,6 @@ class Board {
         assert(b.get_en_passant() == "d5");
         assert(b.get_halfmoves() == 88);
         assert(b.get_fullmoves() == 317);
-        */
       }
       // testing get-functions
       {
