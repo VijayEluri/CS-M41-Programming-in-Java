@@ -378,6 +378,7 @@ class Board {
         return active_colour == other.active_colour &&
             white_castling == other.white_castling &&
             black_castling == other.black_castling &&
+            en_passant == other.en_passant &&
             halfmoves == other.halfmoves &&
             fullmoves == other.fullmoves;
     }
