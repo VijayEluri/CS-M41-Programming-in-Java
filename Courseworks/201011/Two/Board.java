@@ -105,7 +105,7 @@ class Board {
         reset(pawn_file,'7');
         set(pawn_file,'8',figure);
         active_colour = 'b';
-        ++halfmoves;
+        halfmoves=0;
         en_passant = "-";
     }
     public void do_black_promotion(final char pawn_file, final char figure) {
@@ -113,7 +113,7 @@ class Board {
         reset(pawn_file,'2');
         set(pawn_file,'1',figure);
         active_colour = '2';
-        ++halfmoves;
+        halfmoves = 0;
         ++fullmoves;
         en_passant = "-";
     }
@@ -124,7 +124,6 @@ class Board {
         final char figure = board[rank2index(rank0)][file2index(file0)];
         set(file1,rank1,figure);
         reset(file0,rank0);
-        ++halfmoves;
         active_colour = 'b';
         if (figure == white_king) white_castling = '-';
         else if (figure == white_rook && rank0 == '1') {
@@ -140,11 +139,13 @@ class Board {
         else if (figure == white_pawn)
           if (rank0 == '2' && rank1 == '4') {
             en_passant = rankfile(file0,'3');
+            halfmoves = 0;
             return;
           }
           else if (en_passant == (rankfile(file1,rank1)))
             reset(file1,'5');
         en_passant = "-";
+        ++halfmoves;
     }
     public void do_normal_black_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
@@ -152,7 +153,6 @@ class Board {
         final char figure = board[rank2index(rank0)][file2index(file0)];
         set(file1,rank1,figure);
         reset(file0,rank0);
-        ++halfmoves;
         ++fullmoves;
         active_colour = 'w';
         if (figure == black_king) black_castling = '-';
@@ -169,11 +169,13 @@ class Board {
         else if (figure == black_pawn)
           if (rank0 == '7' && rank1 == '5') {
             en_passant = rankfile(file0,'6');
+            halfmoves = 0;
             return;
           }
           else if (en_passant == (rankfile(file1,rank1)))
             reset(file1,'3');
         en_passant = "-";
+        ++halfmoves;
     }
 
     // set figure on field:
