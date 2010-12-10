@@ -451,10 +451,6 @@ class Board {
         assert(b.toFEN().equals("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
         */
       }
-      // testing toFEN
-      {
-
-      }
       // testing equals
       {
 
