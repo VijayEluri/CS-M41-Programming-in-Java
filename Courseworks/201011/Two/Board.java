@@ -536,9 +536,15 @@ class Board {
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr1bnr/ppqbpppp/2np4/8/2BNP3/2N5/PPP2PPP/R1BQ1RK1 w - - 4 8"));
       }
-      // testing seting and reseting
+      // testing setting and resetting
       {
-
+        /*
+        final Board b =  new Board();
+        b.set('a','1','k');
+        assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/kNBQKBNR w KQkq - 0 1"));
+        b.reset('a','1');
+        assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1NBQKBNR w KQkq - 0 1"));
+        */
       }
       // testing validation of figures
       {
