@@ -322,6 +322,10 @@ class Board {
         assert(b.toFEN().equals("r3k3/8/8/8/8/8/8/2KR4 b kq - 1 1"));
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/2KR4 w - - 2 2"));
+
+        b = new Board("r3k3/8/8/8/8/8/8/R3K3 b Qkq - 0 1");
+        b.do_black_queenside_castling();
+        assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/R3K3 w - - 1 2"));
         */
       }
       // testing promotion moves
