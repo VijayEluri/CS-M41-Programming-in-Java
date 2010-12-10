@@ -601,7 +601,24 @@ class Board {
       }
       // testing equals
       {
-
+        /*
+        final Board b = new Board();
+        assert(b.equals(b));
+        final Board b1 = new Board(); b1.reset('a','1');
+        assert(! b.equals(b1));
+        final Board b2 = new Board(); b2.active_colour = 'b';
+        assert(! b.equals(b2));
+        final Board b3 = new Board(); b3.white_castling = 'k';
+        assert(! b.equals(b3));
+        final Board b4 = new Board(); b4.black_castling = 'k';
+        assert(! b.equals(b4));
+        final Board b5 = new Board(); b5.en_passant = "e3";
+        assert(! b.equals(b5));
+        final Board b6 = new Board(); b6.halfmoves = 1;
+        assert(! b.equals(b6));
+        final Board b7 = new Board(); b7.fullmoves = 1;
+        assert(! b.equals(b7));
+        */
       }
       // testing conversions
       {
