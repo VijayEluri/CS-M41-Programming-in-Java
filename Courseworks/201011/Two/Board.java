@@ -601,7 +601,6 @@ class Board {
       }
       // testing equals
       {
-        /*
         final Board b = new Board();
         assert(b.equals(b));
         final Board b1 = new Board(); b1.reset('a','1');
@@ -618,7 +617,6 @@ class Board {
         assert(! b.equals(b6));
         final Board b7 = new Board(); b7.fullmoves = 1;
         assert(! b.equals(b7));
-        */
       }
       // testing conversions
       {
