@@ -538,13 +538,11 @@ class Board {
       }
       // testing setting and resetting
       {
-        /*
         final Board b =  new Board();
         b.set('a','1','k');
         assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/kNBQKBNR w KQkq - 0 1"));
         b.reset('a','1');
         assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1NBQKBNR w KQkq - 0 1"));
-        */
       }
       // testing validation of figures
       {
