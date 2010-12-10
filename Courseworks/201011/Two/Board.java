@@ -546,7 +546,29 @@ class Board {
       }
       // testing validation of figures
       {
-
+        final String white_figures = "KQRBNP";
+        final String black_figures = "kqrbnp";
+        final String figures = white_figures + black_figures;
+        for (char c = '0'; c <= (char) 255; ++c) {
+          final StringBuffer buf = new StringBuffer();
+          buf.append(c);
+          final String cs = new String(buf);
+          if (white_figures.contains(cs)) {
+            assert(is_valid_white_figure(c));
+            assert(!is_valid_black_figure(c));
+            assert(is_valid_figure(c));
+          }
+          else if (black_figures.contains(cs)) {
+            assert(is_valid_black_figure(c));
+            assert(!is_valid_white_figure(c));
+            assert(is_valid_figure(c));
+          }
+          else {
+            assert(!is_valid_black_figure(c));
+            assert(!is_valid_white_figure(c));
+            assert(!is_valid_figure(c));
+          }
+        }
       }
       // testing validFEN
       {
