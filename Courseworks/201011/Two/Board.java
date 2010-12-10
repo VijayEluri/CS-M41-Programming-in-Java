@@ -112,7 +112,7 @@ class Board {
         assert(M.check_black_promotion(pawn_file, figure));
         reset(pawn_file,'2');
         set(pawn_file,'1',figure);
-        active_colour = '2';
+        active_colour = 'w';
         halfmoves = 0;
         ++fullmoves;
         en_passant = "-";
