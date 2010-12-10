@@ -456,7 +456,17 @@ class Board {
       }
       // testing get-functions
       {
-
+        /*
+        Board b = new Board();
+        assert(b.get('a','1') == 'R');
+        assert(b.get('h','8') == 'r');
+        assert(b.get_active_colour() == 'w');
+        assert(b.get_white_castling() == 'b');
+        assert(b.get_black_castling() == 'b');
+        assert(b.get_en_passant().equals("-"));
+        assert(b.get_halfmoves() == 0);
+        assert(b.get_fullmoves() == 0);
+        */
       }
       // testing castling moves
       {
