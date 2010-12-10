@@ -440,7 +440,7 @@ class Board {
         assert(b.get_active_colour() == 'w');
         assert(b.get_white_castling() == 'k');
         assert(b.get_black_castling() == 'q');
-        assert(b.get_en_passant() == "-");
+        assert(b.get_en_passant().equals("-"));
         assert(b.get_halfmoves() == 0);
         assert(b.get_fullmoves() == 3);
         b = new Board("pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp/pppppppp b Qk d5 88 317");
@@ -450,7 +450,7 @@ class Board {
         assert(b.get_active_colour() == 'b');
         assert(b.get_white_castling() == 'q');
         assert(b.get_black_castling() == 'k');
-        assert(b.get_en_passant() == "d5");
+        assert(b.get_en_passant().equals("d5"));
         assert(b.get_halfmoves() == 88);
         assert(b.get_fullmoves() == 317);
       }
