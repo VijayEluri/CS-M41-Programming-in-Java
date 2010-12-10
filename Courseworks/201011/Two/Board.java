@@ -396,7 +396,6 @@ class Board {
       {
         final String white_figures = "KQRBNP";
         final String black_figures = "kqrbnp";
-        final String figures = white_figures + black_figures;
         for (char c = '0'; c <= (char) 255; ++c) {
           final StringBuffer buf = new StringBuffer();
           buf.append(c);
