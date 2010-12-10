@@ -100,6 +100,15 @@ class Board {
         en_passant = "-";
     }
 
+    public void do_white_promotion(final char pawn_file, final char figure) {
+        assert(M.check_white_promotion(pawn_file, figure));
+        // XXX
+    }
+    public void do_black_promotion(final char pawn_file, final char figure) {
+        assert(M.check_black_promotion(pawn_file, figure));
+        // XXX
+    }
+
     public void do_normal_white_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
         assert(M.check_normal_white_move(file0,rank0,file1,rank1));
