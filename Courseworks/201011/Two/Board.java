@@ -314,7 +314,33 @@ class Board {
     // describe the position in Forsyth-Edwards notation:
     public String toFEN() {
         String result = "";
-        // XXX
+        for (int x = N-1; x >= 0; --x) {
+          for (int y = 0; y < N; ++y) {
+           if (! is_empty(x,y)) result += board[x][y];
+           else {
+             int num_empty = 1;
+             while (! is_empty(x,++y)) ++num_empty;
+             result += num_empty;
+           }
+          }
+          result += "/";
+        }
+        result += " ";
+        result += active_colour;
+        result += " ";
+        if (white_castling == '-' && black_castling == '-') result += "-";
+        else {
+          if (white_castling == 'b') result += "KQ";
+          else if (white_castling == 'k') result += "K";
+          else if (white_castling == 'k') result += "Q";
+          if (black_castling == 'b') result += "kq";
+          else if (black_castling == 'k') result += "k";
+          else if (black_castling == 'k') result += "q";
+        }
+        result += " ";
+        result += en_passant + " ";
+        result += halfmoves + " ";
+        result += fullmoves;
         return result;
     }
     // printing out position in 8 rows of characters,
