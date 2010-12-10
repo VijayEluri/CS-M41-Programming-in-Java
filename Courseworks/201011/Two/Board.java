@@ -102,11 +102,20 @@ class Board {
 
     public void do_white_promotion(final char pawn_file, final char figure) {
         assert(M.check_white_promotion(pawn_file, figure));
-        // XXX
+        reset(pawn_file,'7');
+        set(pawn_file,'8',figure);
+        active_colour = 'b';
+        ++halfmoves;
+        en_passant = "-";
     }
     public void do_black_promotion(final char pawn_file, final char figure) {
         assert(M.check_black_promotion(pawn_file, figure));
-        // XXX
+        reset(pawn_file,'2');
+        set(pawn_file,'1',figure);
+        active_colour = '2';
+        ++halfmoves;
+        ++fullmoves;
+        en_passant = "-";
     }
 
     public void do_normal_white_move(final char file0, final char rank0,
