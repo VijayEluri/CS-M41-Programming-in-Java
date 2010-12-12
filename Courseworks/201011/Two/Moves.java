@@ -3,7 +3,13 @@
 class Moves {
 
     private final Board B;
-    public Moves(final Board b) { B = b; }
+    private boolean regular;
+    public Moves(final Board b) { B = b; regular = regular_position(); }
+
+    public boolean get_regular_position() { return regular; }
+    public void set_regular_position(final boolean new_reg) {
+      regular = new_reg;
+    }
 
     // checking whether B represents a "normal" position or not;
     // if not, then only simple checks regarding move-correctness should
