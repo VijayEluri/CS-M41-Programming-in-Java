@@ -236,9 +236,9 @@ class Board {
         return rank - '1';
     }
     // rank and file together as a string with 2 characters:
-    private static String rankfile(final char rank, final char file) {
+    private static String filerank(final char file, final char rank) {
       StringBuffer f = new StringBuffer();
-      f.append(rank); f.append(file);
+      f.append(file); f.append(rank);
       return new String(f);
     }
 
