@@ -52,7 +52,7 @@ class Moves {
                                            final char file1, final char rank1) {
         final char fig = B.get(file0,rank0);
         if (! Board.is_valid_white_figure(fig)) return false;
-        if (B.get(file1,rank1) == Board.empty && ! Board.is_valid_black_figure(fig))
+        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_black_figure(fig))
           return false;
         if (B.get_active_colour() != 'w') return false;
         if (! check_move_simple(file0,rank0,file1,rank1)) return false;
