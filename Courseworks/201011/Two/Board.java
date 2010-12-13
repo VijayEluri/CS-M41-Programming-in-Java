@@ -391,27 +391,27 @@ class Board {
         return board[x][y] == empty;
     }
 
-    private boolean valid_file(final char file) {
+    private static boolean valid_file(final char file) {
       return file >= 'a' && file <= 'h';
     }
-    private boolean valid_rank(final char rank) {
+    private static boolean valid_rank(final char rank) {
       return rank >= '1' && rank <= '8';
     }
 
     // from file a, ..., h to index 0, ..., 7:
     private static int file2index(final char file) {
-        assert(file >= 'a');
-        assert(file <= 'h');
+        assert(valid_file(file));
         return file - 'a';
     }
     // from rank 1, ..., 8 to index 0, ..., 7:
     private static int rank2index(final char rank) {
-        assert(rank >= '1');
-        assert(rank <= '8');
+        assert(valid_rank(rank));
         return rank - '1';
     }
     // rank and file together as a string with 2 characters:
     private static String filerank(final char file, final char rank) {
+      assert(valid_file(file));
+      assert(valid_rank(rank));
       StringBuffer f = new StringBuffer();
       f.append(file); f.append(rank);
       return new String(f);
