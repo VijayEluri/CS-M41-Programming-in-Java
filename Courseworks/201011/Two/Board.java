@@ -33,14 +33,14 @@ class Board {
     private final Moves M;
 
     public Board() { // standard position
-        M = new Moves(this);
         board = new char[N][N];
         fromFEN(initial_position);
+        M = new Moves(this);
     }
     public Board(final String fen_position) {
-        M = new Moves(this);
         board = new char[N][N];
         fromFEN(fen_position);
+        M = new Moves(this);
     }
 
     public char get(final char file, final char rank) {
