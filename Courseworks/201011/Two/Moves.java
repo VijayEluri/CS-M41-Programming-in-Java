@@ -61,8 +61,9 @@ class Moves {
         char file_king = 0, rank_king = 0;
         for (file_king = 'a'; file_king <= 'h'; ++file_king)
           for (rank_king = '1'; rank_king <= '8'; ++rank_king)
-            if (B.get(file_king,rank_king) == Board.white_king) break;
-        return black_not_attacking(file_king,rank_king);
+            if (test_board.get(file_king,rank_king) == Board.white_king) break;
+        final Moves test_move = new Moves(test_board);
+        return test_move.black_not_attacking(file_king,rank_king);
     }
     public boolean check_normal_black_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
