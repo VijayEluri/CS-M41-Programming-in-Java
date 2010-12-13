@@ -139,9 +139,9 @@ class Board {
         else if (figure == white_pawn) {
           halfmoves = 0;
           if (rank0 == '2' && rank1 == '4')
-            en_passant = rankfile(file0,'3');
+            en_passant = filerank(file0,'3');
           else {
-            if (en_passant == (rankfile(file1,rank1)))
+            if (en_passant == (filerank(file1,rank1)))
               reset(file1,'5'); 
             en_passant = "-";
           }
@@ -172,10 +172,10 @@ class Board {
         else if (figure == black_pawn) {
           halfmoves = 0;
           if (rank0 == '7' && rank1 == '5')
-            en_passant = rankfile(file0,'6');
+            en_passant = filerank(file0,'6');
           else {
             en_passant = "-";
-            if (en_passant == (rankfile(file1,rank1)))
+            if (en_passant == (filerank(file1,rank1)))
               reset(file1,'3');
           }
           return;
