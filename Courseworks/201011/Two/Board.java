@@ -159,13 +159,8 @@ class Board {
         }
         else if (figure == white_pawn) {
           halfmoves = 0;
-          if (rank0 == '2' && rank1 == '4')
-            en_passant = filerank(file0,'3');
-          else {
-            if (en_passant.equals((filerank(file1,rank1))))
-              reset(file1,'5'); 
-            en_passant = "-";
-          }
+          if (rank0 == '2' && rank1 == '4') en_passant = filerank(file0,'3');
+          else en_passant = "-";
           return;
         }
         en_passant = "-";
@@ -193,13 +188,8 @@ class Board {
         }
         else if (figure == black_pawn) {
           halfmoves = 0;
-          if (rank0 == '7' && rank1 == '5')
-            en_passant = filerank(file0,'6');
-          else {
-            if (en_passant.equals((filerank(file1,rank1))))
-              reset(file1,'4');
-            en_passant = "-";
-          }
+          if (rank0 == '7' && rank1 == '5') en_passant = filerank(file0,'6');
+          else en_passant = "-";
           return;
         }
         en_passant = "-";
