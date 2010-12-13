@@ -58,6 +58,61 @@ class Moves {
         // XXX
         return true;
     }
+
+    // for checking a normal move by just applying the move-rules
+    private boolean check_move_simple(final char file0, final char rank0,
+                                      final char file1, final char rank1) {
+        final char fig = B.get(file0,rank0);
+        if (fig == Board.white_king || fig == Board.black_king)
+          return check_king_move(file0,rank0,file1,rank1);
+        if (fig == Board.white_queen || fig == Board.black_queen)
+          return check_queen_move(file0,rank0,file1,rank1);
+        if (fig == Board.white_rook || fig == Board.black_rook)
+          return check_rook_move(file0,rank0,file1,rank1);
+        if (fig == Board.white_bishop || fig == Board.black_bishop)
+          return check_bishop_move(file0,rank0,file1,rank1);
+        if (fig == Board.white_knight || fig == Board.black_knight)
+          return check_knight_move(file0,rank0,file1,rank1);
+        if (fig == Board.white_pawn)
+          return check_white_pawn_move(file0,rank0,file1,rank1);
+        else
+          return check_black_pawn_move(file0,rank0,file1,rank1);
+    }
+    private boolean check_king_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_queen_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_rook_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_bishop_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_knight_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_white_pawn_move(final char file0, final char rank0,
+                                          final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
+    private boolean check_black_pawn_move(final char file0, final char rank0,
+                                          final char file1, final char rank1) {
+      // XXX
+      return true;
+    }
     
     public boolean check_white_kingside_castling() {
         // only demonstration code:
