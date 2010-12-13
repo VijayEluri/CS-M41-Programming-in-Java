@@ -223,6 +223,14 @@ class Board {
         assert(y <= 7);
         return board[x][y] == empty;
     }
+
+    private boolean valid_file(final char file) {
+      return file >= 'a' && file <= 'h';
+    }
+    private boolean valid_rank(final char rank) {
+      return rank >= '1' && rank <= '8';
+    }
+
     // from file a, ..., h to index 0, ..., 7:
     private static int file2index(final char file) {
         assert(file >= 'a');
