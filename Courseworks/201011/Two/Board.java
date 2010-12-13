@@ -536,6 +536,18 @@ class Board {
         assert(b.toFEN().equals("r3kbnr/ppqbpppp/2np4/8/2BNP3/2N5/PPP2PPP/R1BQ1RK1 b kq - 3 7"));
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr1bnr/ppqbpppp/2np4/8/2BNP3/2N5/PPP2PPP/R1BQ1RK1 w - - 4 8"));
+        // en passant:
+        Board b2 = new Board("k7/p7/8/1P4p1/8/8/7P/K7 b - - 0 1");
+        b2.do_normal_black_move('a','7','a','5');
+        assert(b.toFEN().equals("k7/8/8/pP4p1/8/8/7P/K7 w - a6 0 2"));
+        b2.do_normal_white_move('b','5','a','6');
+        assert(b.toFEN().equals("k7/8/P7/6p1/8/8/7P/K7 b - - 0 2"));
+        b2.do_normal_black_move('g','5','g','4');
+        assert(b.toFEN().equals("k7/8/P7/8/6p1/8/7P/K7 w - - 0 3"));
+        b2.do_normal_white_move('h','2','h','4');
+        assert(b.toFEN().equals("k7/8/P7/8/6pP/8/8/K7 b h3 0 3"));
+        b2.do_normal_black_move('g','4','h','3');
+        assert(b.toFEN().equals("k7/8/P7/8/8/7p/8/K7 w - 0 4"));
       }
       // testing setting and resetting
       {
