@@ -141,7 +141,7 @@ class Board {
           if (rank0 == '2' && rank1 == '4')
             en_passant = filerank(file0,'3');
           else {
-            if (en_passant == (filerank(file1,rank1)))
+            if (en_passant.equals((filerank(file1,rank1))))
               reset(file1,'5'); 
             en_passant = "-";
           }
@@ -174,9 +174,9 @@ class Board {
           if (rank0 == '7' && rank1 == '5')
             en_passant = filerank(file0,'6');
           else {
+            if (en_passant.equals((filerank(file1,rank1))))
+              reset(file1,'4');
             en_passant = "-";
-            if (en_passant == (filerank(file1,rank1)))
-              reset(file1,'3');
           }
           return;
         }
