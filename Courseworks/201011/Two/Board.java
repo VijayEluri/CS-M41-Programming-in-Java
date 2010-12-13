@@ -397,9 +397,9 @@ class Board {
         b2.do_normal_black_move('g','5','g','4');
         assert(b2.toFEN().equals("k7/8/P7/8/6p1/8/7P/K7 w - - 0 3"));
         b2.do_normal_white_move('h','2','h','4');
-        assert(b2.toFEN().equals("k7/8/P7/8/6pP/8/8/K7 b h3 0 3"));
+        assert(b2.toFEN().equals("k7/8/P7/8/6pP/8/8/K7 b - h3 0 3"));
         b2.do_normal_black_move('g','4','h','3');
-        assert(b2.toFEN().equals("k7/8/P7/8/8/7p/8/K7 w - 0 4"));
+        assert(b2.toFEN().equals("k7/8/P7/8/8/7p/8/K7 w - - 0 4"));
         */
       }
       // testing setting and resetting
