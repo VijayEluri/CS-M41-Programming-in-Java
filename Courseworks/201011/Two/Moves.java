@@ -58,7 +58,7 @@ class Moves {
         if (! regular) return true;
         final Board test_board = new Board(B);
         test_board.normal_white_move_0(file0,rank0,file1,rank1);
-        char file_king = 0, rank_king = 0;
+        char file_king, rank_king = 0;
         for (file_king = 'a'; file_king <= 'h'; ++file_king)
           for (rank_king = '1'; rank_king <= '8'; ++rank_king)
             if (test_board.get(file_king,rank_king) == Board.white_king) break;
