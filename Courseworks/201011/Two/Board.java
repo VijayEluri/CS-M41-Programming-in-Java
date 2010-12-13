@@ -42,6 +42,20 @@ class Board {
         fromFEN(fen_position);
         M = new Moves(this);
     }
+    public Board(final Board b) {
+      board = new char[N][N];
+      for (int x = 0; x < N; ++x)
+        for (int y = 0; y < N; ++y)
+          board[x][y] = b.board[x][y];
+      active_colour = b.active_colour;
+      white_castling = b.white_castling;
+      black_castling = b.black_castling;
+      en_passant = b.en_passant;
+      halfmoves = b.halfmoves;
+      fullmoves = b.fullmoves;
+      M = new Moves(this);
+      M.set_regular_position(b.M.get_regular_position());
+    }
 
     public char get(final char file, final char rank) {
         return board[rank2index(rank)][file2index(file)];
@@ -474,6 +488,13 @@ class Board {
         assert(b.get_en_passant().equals("d5"));
         assert(b.get_halfmoves() == 88);
         assert(b.get_fullmoves() == 317);
+      }
+      // testing copy-construction
+      {
+        Board b = new Board();
+        assert(b.equals(new Board(b)));
+        b.fromFEN("PpPpKKkk/QQBbQq2/PPPPpppp/3NnNnR/RrRrRrQq/PpPpKQkq/8/prPR4 b KQkq e3 77 999");
+        assert(b.equals(new Board(b)));
       }
       // testing get-functions
       {
