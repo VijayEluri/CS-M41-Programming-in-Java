@@ -136,10 +136,13 @@ class Board {
         set(file1,rank1,figure);
         reset(file0,rank0);
     }
+    // performing full normal moves, with correctness checking and with
+    // updating all board attributes:
     public void do_normal_white_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
         assert(M.check_normal_white_move(file0,rank0,file1,rank1));
-        final char figure = board[rank2index(rank0)][file2index(file0)];
+        normal_white_move_0(file0,rank0,file1,rank1);
+        final char figure = board[rank2index(rank1)][file2index(file1)];
         set(file1,rank1,figure);
         reset(file0,rank0);
         active_colour = 'b';
@@ -171,7 +174,8 @@ class Board {
     public void do_normal_black_move(final char file0, final char rank0,
                                      final char file1, final char rank1) {
         assert(M.check_normal_black_move(file0,rank0,file1,rank1));
-        final char figure = board[rank2index(rank0)][file2index(file0)];
+        normal_black_move_0(file0,rank0,file1,rank1);
+        final char figure = board[rank2index(rank1)][file2index(file1)];
         set(file1,rank1,figure);
         reset(file0,rank0);
         ++fullmoves;
