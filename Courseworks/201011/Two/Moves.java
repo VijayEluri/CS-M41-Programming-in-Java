@@ -50,9 +50,8 @@ class Moves {
 
     public boolean check_normal_white_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
-        final char fig = B.get(file0,rank0);
-        if (! Board.is_valid_white_figure(fig)) return false;
-        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_black_figure(fig))
+        if (! Board.is_valid_white_figure(B.get(file0,rank0))) return false;
+        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_black_figure(B.get(file1,rank1)))
           return false;
         if (B.get_active_colour() != 'w') return false;
         if (! check_move_simple(file0,rank0,file1,rank1)) return false;
