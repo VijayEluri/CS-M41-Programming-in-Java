@@ -247,8 +247,13 @@ class Moves {
     }
 
     // checks whether black doesn't attack the field:
-    public boolean black_not_attacking(final char file, final char rank) {
-        // XXX
+    public boolean black_not_attacking(final char file0, final char rank0) {
+        for (char file1 = 'a'; file1 <= 'h'; ++file1)
+          for (char rank1 = '1'; rank1 <= '8'; ++rank1) {
+            final char fig = B.get(file1,rank1);
+            if (Board.is_valid_black_figure(fig) && check_move_simple(file1,rank1,file0,rank0))
+              return false;
+          }
         return true;
     }
     public boolean free_white(final char file, final char rank) {
@@ -256,8 +261,13 @@ class Moves {
         return black_not_attacking(file,rank) && B.is_empty(file,rank);
     }
     // checks whether white doesn't attack the field:
-    public boolean white_not_attacking(final char file, final char rank) {
-        // XXX
+    public boolean white_not_attacking(final char file0, final char rank0) {
+        for (char file1 = 'a'; file1 <= 'h'; ++file1)
+          for (char rank1 = '1'; rank1 <= '8'; ++rank1) {
+            final char fig = B.get(file1,rank1);
+            if (Board.is_valid_white_figure(fig) && check_move_simple(file1,rank1,file0,rank0))
+              return false;
+          }
         return true;
     }
     public boolean free_black(final char file, final char rank) {
