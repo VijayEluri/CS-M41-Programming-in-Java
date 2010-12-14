@@ -147,7 +147,12 @@ class Moves {
     }
     private boolean check_white_pawn_move(final char file0, final char rank0,
                                           final char file1, final char rank1) {
-      // XXX
+      final int diff_f = Math.abs(file0-file1), diff_r = rank1-rank0;
+      if (diff_f > 1 || diff_r <= 0 || diff_r > 2) return false;
+      if (diff_r == 2)
+        return diff_f == 0 && rank0 == '2' && rank1 == '4' && B.get(file0,'3') == Board.empty;
+      if (diff_f == 0) return true;
+      // return B.get(file1,rank1) != Board.empty || Board.filerank(file1,rank1).equals(B.get_en_passant());
       return true;
     }
     private boolean check_black_pawn_move(final char file0, final char rank0,
