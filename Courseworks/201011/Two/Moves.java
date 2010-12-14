@@ -67,8 +67,20 @@ class Moves {
     }
     public boolean check_normal_black_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
-        // XXX
-        return true;
+        if (! Board.is_valid_black_figure(B.get(file0,rank0))) return false;
+        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_white_figure(B.get(file1,rank1)))
+          return false;
+        if (B.get_active_colour() != 'b') return false;
+        if (! check_move_simple(file0,rank0,file1,rank1)) return false;
+        if (! regular) return true;
+        final Board test_board = new Board(B);
+        test_board.normal_black_move_0(file0,rank0,file1,rank1);
+        char file_king, rank_king = 0;
+        for (file_king = 'a'; file_king <= 'h'; ++file_king)
+          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
+            if (test_board.get(file_king,rank_king) == Board.black_king) break;
+        final Moves test_move = new Moves(test_board);
+        return test_move.white_not_attacking(file_king,rank_king);
     }
 
     // for checking a normal move by just applying the move-rules
