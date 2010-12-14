@@ -129,6 +129,7 @@ class Moves {
     private boolean check_bishop_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
       if (file0 == file1 || rank0 == rank1) return false;
+      else if (Math.abs(file0-file1) != Math.abs(rank0-rank1)) return false;
       else {
         final int step_f = (file0 < file1) ? +1 : -1;
         final int step_r = (rank0 < rank1) ? +1 : -1;
