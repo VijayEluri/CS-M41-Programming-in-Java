@@ -137,12 +137,12 @@ class Board {
     public void normal_white_move_0(final char file0, final char rank0,
                                     final char file1, final char rank1) {
         normal_move_0(file0,rank0,file1,rank1);
-        if (en_passant.equals((filerank(file1,rank1)))) reset(file1,'5'); 
+        if (eq_filerank(file1,rank1,en_passant)) reset(file1,'5'); 
     }
     public void normal_black_move_0(final char file0, final char rank0,
                                     final char file1, final char rank1) {
         normal_move_0(file0,rank0,file1,rank1);
-        if (en_passant.equals((filerank(file1,rank1)))) reset(file1,'4'); 
+        if (eq_filerank(file1,rank1,en_passant)) reset(file1,'4'); 
     }
     private void normal_move_0(final char file0, final char rank0,
                                final char file1, final char rank1) {
