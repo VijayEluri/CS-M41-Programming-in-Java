@@ -58,12 +58,10 @@ class Moves {
         if (! regular) return true;
         final Board test_board = new Board(B);
         test_board.normal_white_move_0(file0,rank0,file1,rank1);
-        char file_king, rank_king = 0;
-        for (file_king = 'a'; file_king <= 'h'; ++file_king)
-          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
-            if (test_board.get(file_king,rank_king) == Board.white_king) break;
         final Moves test_move = new Moves(test_board);
-        return test_move.black_not_attacking(file_king,rank_king);
+        final char[] king_pos = test_move.white_king_position();
+        assert(king_pos.length == 2);
+        return test_move.black_not_attacking(king_pos[0],king_pos[1]);
     }
     public boolean check_normal_black_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
@@ -272,6 +270,27 @@ class Moves {
     }
     public boolean free_black(final char file, final char rank) {
         return white_not_attacking(file,rank) && B.is_empty(file,rank);
+    }
+
+    public char[] white_king_position() {
+      for (char file = 'a'; file <= 'h'; ++file)
+        for (char rank = '1'; rank <= '8'; ++rank)
+          if (B.get(file,rank) == Board.white_king) {
+            char[] result = new char[2];
+            result[0] = file; result[1] = rank;
+            return result;
+          }
+      return new char[0];
+    }
+    public char[] black_king_position() {
+      for (char file = 'a'; file <= 'h'; ++file)
+        for (char rank = '1'; rank <= '8'; ++rank)
+          if (B.get(file,rank) == Board.black_king) {
+            char[] result = new char[2];
+            result[0] = file; result[1] = rank;
+            return result;
+          }
+      return new char[0];
     }
 
 
