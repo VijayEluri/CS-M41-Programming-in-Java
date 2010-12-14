@@ -114,6 +114,15 @@ class Board {
         en_passant = "-";
     }
 
+    // performing promotion, without correctness checking and without
+    // changing the other board attributes:
+    public void white_promotion_0(final char pawn_file, final char figure) {
+        // XXX
+    }
+    public void black_promotion_0(final char pawn_file, final char figure) {
+        // XXX
+    }
+
     public void do_white_promotion(final char pawn_file, final char figure) {
         assert(M.check_white_promotion(pawn_file, figure));
         reset(pawn_file,'7');
