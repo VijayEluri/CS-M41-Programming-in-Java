@@ -18,18 +18,15 @@
   <h2> Messages </h2>
   
   <ul>
-   <li> Support lab session Tuesday, 7/12/2010:
+   <li> Support lab session Tuesday, 14/12/2010:
     <ol>
-     <li> We first look into "value types" versus "reference types". </li>
-     <li> Then we investigate the supplied classes for the second coursework.
-     </li>
-     <li> Please have a look at the exercise on using class <code>Board</code>
-      --- you need to be able to solve it in order to do the coursework, and
-      a solution is provided. </li>
+     <li> The first hour we investigate "objects", especially how to store
+      values in objects (instance variables). </li>
+     <li> Then we discuss further the second coursework. </li>
     </ol>
    </li>
-   <li> Below you find the specification of the second subtask for coursework
-    II (worth 50 marks). </li>
+   <li> Below you find the specification of the third and fourth subtask for
+    coursework II (worth 50 marks each). </li>
   </ul>
   
   
@@ -1267,9 +1264,13 @@ resp.
       tasks until the last minute --- only bad quality will arise in this
       way (and remember, a coursework is worth 20% of the whole module). </li>
      <li> A key requirement for this coursework is that you create many
-      functions (static methods). </li>
+      functions (static and also non-static methods). </li>
      <li> Also some classes will be given to you, to make the task easier, and
       to practice using data types. </li>
+     <li> If you can solve the above task of the program Chess
+      completely on your own (using only the Java constructions from the
+      lectures, of course), you don't need to follow the help given. However
+      the task is made much easier by using the given templates. </li>
      <li> The task is subdivided into four classes:
       <ol>
        <li> Class <code>Board</code> handles the board, and reading a position
@@ -1306,8 +1307,8 @@ resp.
       <ul>
        <li> The class
         <a href="CS-M41_Programs/Courseworks/201011/Two/Board.java"> Board </a>
-        has to be completed. </li>
-       <li> Exactly the functions (methods) marked by "XXX" have to be
+        should be completed. </li>
+       <li> The functions (methods) marked by "XXX" have to be
         completed. </li>
        <li> The <code>assert</code> statements show you what you can assume
         (that is, you don't have to check it (and actually you must not
@@ -1335,6 +1336,43 @@ resp.
        <li> For string handling, you can use (exactly) the methods of the
         <code>String</code> class as discussed in Section 3.1 of the book
         (pages 338 - 343). </li>
+      </ul>
+     </li>
+     <li> <strong>Third task</strong>: check the moves.
+      <ul>
+       <li> The class
+        <a href="CS-M41_Programs/Courseworks/201011/Two/Moves.java"> Moves </a>
+        should be completed. </li>
+       <li> As usual, the starting point is to understand the architecture.
+       </li>
+       <li> The functions (methods) marked by "XXX" have to be
+        completed. </li>
+       <li> The first block of functions to be completed is concerned with
+        checking directly the rules: how the figures move, and that there are
+        no pieces in the way. </li>
+       <li> Then we have special functions for castling. </li>
+       <li> Finally we have the functions checking whether a field is under
+        attack. As already given, these functions are important for
+        implementing the rule that after a move the own king must not be under
+        attack. </li>
+      </ul>
+     </li>
+     <li> <strong>Fourth task</strong>: performing a sequence of moves.
+      <ul>
+       <li> The class
+        <a href="CS-M41_Programs/Courseworks/201011/Two/Game.java"> Game </a>
+        should be completed. </li>
+       <li> This is about constructing a Game-object from a move-sequence
+        and/or a starting position, and checking the moves. </li>
+       <li> As discussed, from <code>Board</code> to <code>Moves</code> to
+        <code>Game</code> there is a development, asking more and more design
+        from you. </li>
+       <li> So for <code>Game</code> only relatively late (that is, Wednesday)
+        helping code will be shown, so that you get rolling in case you have
+        problems with the design. </li>
+       <li> Of course, even if you have your own design, likely it is
+        advantageous to compare your solution with the structure which will
+        be given later, and to update it accordingly. </li>
       </ul>
      </li>
     </ol>
@@ -1369,7 +1407,7 @@ resp.
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Dec 10 10:54:46 GMT 2010
+Last modified: Mon Dec 13 20:32:22 GMT 2010
 <!-- hhmts end -->
 
    </div>

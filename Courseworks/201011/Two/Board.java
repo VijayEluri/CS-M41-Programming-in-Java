@@ -442,6 +442,9 @@ class Board {
       f.append(file); f.append(rank);
       return new String(f);
     }
+    public static boolean eq_filerank(final char file, final char rank, final String s) {
+      return filerank(file,rank).equals(s);
+    }
 
     // Unit testing:
     public static void main(final String[] args) {
