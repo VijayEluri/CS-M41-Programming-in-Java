@@ -108,6 +108,10 @@ class Moves {
     }
     private boolean check_queen_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
+      return check_rook_move(file0,rank0,file1,rank1) || check_bishop_move(file0,rank0,file1,rank1);
+    }
+    private boolean check_rook_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
       if (file0 == file1) {
         final int step = (rank0 < rank1) ? +1 : -1;
         for (char rank = (char)(rank0+step); rank != rank1; rank+=step)
@@ -120,24 +124,21 @@ class Moves {
           if (B.get(file,rank0) != Board.empty) return false;
         return true;
       }
+      else return false;
+    }
+    private boolean check_bishop_move(final char file0, final char rank0,
+                                    final char file1, final char rank1) {
+      if (file0 == file1 || rank0 == rank1) return false;
       else {
         final int step_f = (file0 < file1) ? +1 : -1;
         final int step_r = (rank0 < rank1) ? +1 : -1;
         char file = (char)(file0+step_f), rank = (char)(rank0+step_r);
-        while (file != file1)
+        while (file != file1) {
           if (B.get(file,rank) != Board.empty) return false;
+          file += step_f; rank += step_r;
+        }
         return rank == rank1;
       }
-    }
-    private boolean check_rook_move(final char file0, final char rank0,
-                                    final char file1, final char rank1) {
-      // XXX
-      return true;
-    }
-    private boolean check_bishop_move(final char file0, final char rank0,
-                                    final char file1, final char rank1) {
-      // XXX
-      return true;
     }
     private boolean check_knight_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
