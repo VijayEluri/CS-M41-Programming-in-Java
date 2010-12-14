@@ -377,7 +377,6 @@ class Moves {
         assert(!m.check_black_kingside_castling());
         assert(!m.check_white_queenside_castling());
         assert(!m.check_black_queenside_castling());
-        // XXX
       }
     }
 
