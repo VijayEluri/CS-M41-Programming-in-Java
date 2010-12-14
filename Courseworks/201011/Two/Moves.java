@@ -228,6 +228,60 @@ class Moves {
         m = new Moves(new Board("Kk6/8/8/8/8/8/8/7P w - - 0 1"));
         assert(!m.regular_position());
       }
+      // checking check_white/black_king/queenside_castling
+      {
+        Moves m = new Moves(new Board("4k2r/8/8/8/8/8/8/4K2R w Kk - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("4k2r/8/8/8/8/8/8/4K2R b Kk - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("4k2r/4pppp/8/8/8/8/4PPPP/4K2R w KQkq - 0 1"));
+        assert(m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("4k2r/4pppp/8/8/8/8/4PPPP/4K2R b KQkq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/8/8/8/8/8/8/R3K3 w Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/8/8/8/8/8/8/R3K3 b Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/p7/8/8/8/8/8/R3K3 w Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/p7/8/8/8/8/8/R3K3 b Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/p7/8/8/8/n7/8/R3K3 w Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        m = new Moves(new Board("r3k3/p7/B7/8/8/8/8/R3K3 b Qq - 0 1"));
+        assert(!m.check_white_kingside_castling());
+        assert(!m.check_black_kingside_castling());
+        assert(!m.check_white_queenside_castling());
+        assert(!m.check_black_queenside_castling());
+        // XXX
+      }
     }
 
 }
