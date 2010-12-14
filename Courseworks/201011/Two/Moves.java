@@ -216,6 +216,12 @@ class Moves {
     }
 
     public boolean check_white_promotion(final char pawn_file, final char figure) {
+        if (B.get_active_colour() != 'w') return false;
+        if (B.get(pawn_file,'7') != 'P') return false;
+        if (! Board.is_valid_white_figure(figure)) return false;
+        if (figure == 'P' || figure == 'K') return false;
+        if (! regular) return true;
+        final Board test_board = new Board(B);
         // XXX
         return true;
     }
