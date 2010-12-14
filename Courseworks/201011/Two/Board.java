@@ -310,7 +310,6 @@ class Board {
       // testing default construction
       {
         final Board b = new Board();
-        /*
         assert(b.toFEN().equals(initial_position));
         assert(b.active_colour == 'w');
         assert(b.white_castling == 'b');
@@ -328,11 +327,9 @@ class Board {
             }
         assert(count_whites == 16);
         assert(count_blacks == 16);
-        */
       }
       // testing construction from fen
       {
-        /*
         Board b = new Board("8/8/8/8/8/8/8/8 w Kq - 0 3");
         for (int x = 0; x < N; ++x)
           for (int y = 0; y < N; ++y)
@@ -353,7 +350,6 @@ class Board {
         assert(b.get_en_passant().equals("d5"));
         assert(b.get_halfmoves() == 88);
         assert(b.get_fullmoves() == 317);
-        */
       }
       // testing copy-construction
       {
@@ -364,7 +360,6 @@ class Board {
       }
       // testing get-functions
       {
-        /*
         Board b = new Board();
         assert(b.get('a','1') == 'R');
         assert(b.get('h','8') == 'r');
@@ -374,11 +369,9 @@ class Board {
         assert(b.get_en_passant().equals("-"));
         assert(b.get_halfmoves() == 0);
         assert(b.get_fullmoves() == 1);
-        */
       }
       // testing castling moves
       {
-        /*
         Board b = new Board("4k2r/4pppp/8/8/8/8/4PPPP/4K2R w Kk - 0 1");
         b.do_white_kingside_castling();
         assert(b.toFEN().equals("4k2r/4pppp/8/8/8/8/4PPPP/5RK1 b k - 1 1"));
@@ -406,22 +399,18 @@ class Board {
         b = new Board("r3k3/8/8/8/8/8/P7/R3K3 b Qkq - 0 1");
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr4/8/8/8/8/8/P7/R3K3 w Q - 1 2"));
-        */
       }
       // testing promotion moves
       {
-        /*
         Board b = new Board("8/P7/8/8/8/8/7p/8 w - - 0 1");
         b.do_white_promotion('a','Q');
         assert(b.toFEN().equals("Q7/8/8/8/8/8/7p/8 b - - 0 1"));
         b.do_black_promotion('h','q');
         assert(b.toFEN().equals("Q7/8/8/8/8/8/8/7q w - - 0 2"));
-        */
       }
       // testing normal moves
       {
         final Board b = new Board();
-        /*
         b.do_normal_white_move('e','2','e','4');
         assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1"));
         b.do_normal_black_move('c','7','c','5');
@@ -462,17 +451,14 @@ class Board {
         assert(b2.toFEN().equals("k7/8/P7/8/6pP/8/8/K7 b - h3 0 3"));
         b2.do_normal_black_move('g','4','h','3');
         assert(b2.toFEN().equals("k7/8/P7/8/8/7p/8/K7 w - - 0 4"));
-        */
       }
       // testing setting and resetting
       {
-        /*
         final Board b =  new Board();
         b.set('a','1','k');
         assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/kNBQKBNR w KQkq - 0 1"));
         b.reset('a','1');
         assert(b.toFEN().equals("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1NBQKBNR w KQkq - 0 1"));
-        */
       }
       // testing validation of figures
       {
@@ -501,7 +487,6 @@ class Board {
       }
       // testing validFEN
       {
-        /*
         assert(valid_placement("8/8/8/8/8/8/8/8"));
         assert(!valid_placement("PKQNBRkp/pPkKpP3r/8/p6P/5Qqp/8/8/2rr1Q1P"));
         assert(valid_placement("PKQNBRkp/pPkKpP1r/8/p6P/5Qqp/8/8/2rr1Q1P"));
@@ -523,19 +508,15 @@ class Board {
         assert(validFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
         assert(validFEN("8/8/bBp5/8/8/2K4p/8/8 b Kq - 0 2"));
         assert(!validFEN("8/8/bBp5/8/8/2K3p/8/8 b Kq - 0 2"));
-        */
       }
       // testing fromFEN
       {
-        /*
         final Board b = new Board();
         b.fromFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99");
         assert(b.toFEN().equals("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
-        */
       }
       // testing equals
       {
-        /*
         final Board b = new Board();
         assert(b.equals(b));
         final Board b1 = new Board(); b1.reset('a','1');
@@ -552,7 +533,6 @@ class Board {
         assert(! b.equals(b6));
         final Board b7 = new Board(); b7.fullmoves = 1;
         assert(! b.equals(b7));
-        */
       }
       // testing conversions
       {
