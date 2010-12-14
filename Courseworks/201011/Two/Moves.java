@@ -142,8 +142,8 @@ class Moves {
     }
     private boolean check_knight_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
-      // XXX
-      return true;
+      return (Math.abs(file0-file1) == 1 && Math.abs(rank0-rank1) == 2) ||
+        (Math.abs(file0-file1) == 2 && Math.abs(rank0-rank1) == 1);
     }
     private boolean check_white_pawn_move(final char file0, final char rank0,
                                           final char file1, final char rank1) {
