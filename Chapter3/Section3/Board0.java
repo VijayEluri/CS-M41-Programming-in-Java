@@ -9,7 +9,7 @@ class Board0 {
 
   public static void main(final String[] args) {
     final Board0 b = new Board0("Ha!");
-    assert(b.get_en_passant() == "Ha!");
+    assert(b.get_en_passant().equals("Ha!"));
   }
 }
  
