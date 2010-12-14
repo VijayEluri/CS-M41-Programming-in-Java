@@ -108,8 +108,26 @@ class Moves {
     }
     private boolean check_queen_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
-      // XXX
-      return true;
+      if (file0 == file1) {
+        final int step = (rank0 < rank1) ? +1 : -1;
+        for (char rank = (char)(rank0+step); rank != rank1; rank+=step)
+          if (B.get(file0,rank) != Board.empty) return false;
+        return true;
+      }
+      else if (rank0 == rank1) {
+        final int step = (file0 < file1) ? +1 : -1;
+        for (char file = (char)(file0+step); file != file1; file+=step)
+          if (B.get(file,rank0) != Board.empty) return false;
+        return true;
+      }
+      else {
+        final int step_f = (file0 < file1) ? +1 : -1;
+        final int step_r = (rank0 < rank1) ? +1 : -1;
+        char file = (char)(file0+step_f), rank = (char)(rank0+step_r);
+        while (file != file1)
+          if (B.get(file,rank) != Board.empty) return false;
+        return rank == rank1;
+      }
     }
     private boolean check_rook_move(final char file0, final char rank0,
                                     final char file1, final char rank1) {
