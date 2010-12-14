@@ -175,7 +175,6 @@ class Moves {
         return true;
     }
     public boolean free_white(final char file, final char rank) {
-        // XXX
         return black_not_attacking(file,rank) && B.is_empty(file,rank);
     }
     // checks whether white doesn't attack the field:
@@ -184,7 +183,6 @@ class Moves {
         return true;
     }
     public boolean free_black(final char file, final char rank) {
-        // XXX
         return white_not_attacking(file,rank) && B.is_empty(file,rank);
     }
 
@@ -299,7 +297,6 @@ class Moves {
         assert(!m.check_black_kingside_castling());
         assert(!m.check_white_queenside_castling());
         assert(!m.check_black_queenside_castling());
-        // XXX
       }
     }
 
