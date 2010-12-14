@@ -73,12 +73,10 @@ class Moves {
         if (! regular) return true;
         final Board test_board = new Board(B);
         test_board.normal_black_move_0(file0,rank0,file1,rank1);
-        char file_king, rank_king = 0;
-        for (file_king = 'a'; file_king <= 'h'; ++file_king)
-          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
-            if (test_board.get(file_king,rank_king) == Board.black_king) break;
         final Moves test_move = new Moves(test_board);
-        return test_move.white_not_attacking(file_king,rank_king);
+        final char[] king_pos = test_move.black_king_position();
+        assert(king_pos.length == 2);
+        return test_move.white_not_attacking(king_pos[0],king_pos[1]);
     }
 
     // for checking a normal move by just applying the move-rules
@@ -222,12 +220,10 @@ class Moves {
         if (! regular) return true;
         final Board test_board = new Board(B);
         test_board.white_promotion_0(pawn_file,figure);
-        char file_king, rank_king = 0;
-        for (file_king = 'a'; file_king <= 'h'; ++file_king)
-          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
-            if (test_board.get(file_king,rank_king) == Board.white_king) break;
         final Moves test_move = new Moves(test_board);
-        return test_move.black_not_attacking(file_king,rank_king);
+        final char[] king_pos = test_move.white_king_position();
+        assert(king_pos.length == 2);        
+        return test_move.black_not_attacking(king_pos[0],king_pos[1]);
     }
     public boolean check_black_promotion(final char pawn_file, final char figure) {
         if (B.get_active_colour() != 'b') return false;
@@ -237,12 +233,10 @@ class Moves {
         if (! regular) return true;
         final Board test_board = new Board(B);
         test_board.black_promotion_0(pawn_file,figure);
-        char file_king, rank_king = 0;
-        for (file_king = 'a'; file_king <= 'h'; ++file_king)
-          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
-            if (test_board.get(file_king,rank_king) == Board.black_king) break;
         final Moves test_move = new Moves(test_board);
-        return test_move.white_not_attacking(file_king,rank_king);
+        final char[] king_pos = test_move.black_king_position();
+        assert(king_pos.length == 2);        
+        return test_move.white_not_attacking(king_pos[0],king_pos[1]);
     }
 
     // checks whether black doesn't attack the field:
