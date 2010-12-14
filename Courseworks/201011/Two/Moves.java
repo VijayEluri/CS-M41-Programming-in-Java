@@ -222,12 +222,28 @@ class Moves {
         if (figure == 'P' || figure == 'K') return false;
         if (! regular) return true;
         final Board test_board = new Board(B);
-        // XXX
-        return true;
+        test_board.white_promotion_0(pawn_file,figure);
+        char file_king, rank_king = 0;
+        for (file_king = 'a'; file_king <= 'h'; ++file_king)
+          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
+            if (test_board.get(file_king,rank_king) == Board.white_king) break;
+        final Moves test_move = new Moves(test_board);
+        return test_move.black_not_attacking(file_king,rank_king);
     }
     public boolean check_black_promotion(final char pawn_file, final char figure) {
-        // XXX
-        return true;
+        if (B.get_active_colour() != 'b') return false;
+        if (B.get(pawn_file,'2') != 'p') return false;
+        if (! Board.is_valid_black_figure(figure)) return false;
+        if (figure == 'p' || figure == 'k') return false;
+        if (! regular) return true;
+        final Board test_board = new Board(B);
+        test_board.black_promotion_0(pawn_file,figure);
+        char file_king, rank_king = 0;
+        for (file_king = 'a'; file_king <= 'h'; ++file_king)
+          for (rank_king = '1'; rank_king <= '8'; ++rank_king)
+            if (test_board.get(file_king,rank_king) == Board.black_king) break;
+        final Moves test_move = new Moves(test_board);
+        return test_move.white_not_attacking(file_king,rank_king);
     }
 
     // checks whether black doesn't attack the field:
