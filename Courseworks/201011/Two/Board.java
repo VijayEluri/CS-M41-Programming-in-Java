@@ -416,6 +416,9 @@ class Board {
         assert(y <= 7);
         return board[x][y] == empty;
     }
+    public boolean is_empty(final char file, final char rank) {
+      return is_empty(rank2index(rank), file2index(file));
+    }
 
     private static boolean valid_file(final char file) {
       return file >= 'a' && file <= 'h';
