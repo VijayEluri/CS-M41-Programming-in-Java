@@ -125,6 +125,7 @@ class Board {
 
     public void do_white_promotion(final char pawn_file, final char figure) {
         assert(M.check_white_promotion(pawn_file, figure));
+        white_promotion_0(pawn_file,figure);
         reset(pawn_file,'7');
         set(pawn_file,'8',figure);
         active_colour = 'b';
@@ -133,6 +134,7 @@ class Board {
     }
     public void do_black_promotion(final char pawn_file, final char figure) {
         assert(M.check_black_promotion(pawn_file, figure));
+        black_promotion_0(pawn_file,figure);
         reset(pawn_file,'2');
         set(pawn_file,'1',figure);
         active_colour = 'w';
