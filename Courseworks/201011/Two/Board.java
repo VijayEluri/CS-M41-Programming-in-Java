@@ -102,10 +102,12 @@ class Board {
     // performing promotion, without correctness checking and without
     // changing the other board attributes:
     public void white_promotion_0(final char pawn_file, final char figure) {
-        // XXX
+        reset(pawn_file,'7');
+        set(pawn_file,'8',figure);
     }
     public void black_promotion_0(final char pawn_file, final char figure) {
-        // XXX
+        reset(pawn_file,'2');
+        set(pawn_file,'1',figure);
     }
 
     public void do_white_promotion(final char pawn_file, final char figure) {
