@@ -18,12 +18,12 @@
   <h2> Messages </h2>
   
   <ul>
-   <li> Support lab session Tuesday, 14/12/2010:
+   <li> See the solutions for the support lab session Tuesday, 14/12/2010:
     <ol>
-     <li> The first hour we investigate "objects", especially how to store
-      values in objects (instance variables). </li>
-     <li> See below for solutions. </li>
-     <li> Then we discuss further the second coursework. </li>
+     <li> These are easy examples for more complicated cases like the full
+     <code>Board</code> class. </li>
+     <li> Note that equality-checking for strings (like any other real
+     Java object) needs to happen via <code>equals</code>! </li>
     </ol>
    </li>
    <li> Below you find the specification of the third and fourth subtask for
@@ -613,12 +613,12 @@ java -ea Board0
        <li> Extend to class <code>Board2</code>, which via
         <code>reset</code> allows to reset the stored string. </li>
        <li> Extend to class <code>Board3</code>, which has also stored a
-        character active_colour, which is also given to the constructor,
+        character active_colour, which must also be given to the constructor,
         and which can be retrieved by <code>get_active_colour</code>.
        </li>
-       <li> Extend to class <code>Board4</code>, which provides a
-        <code>reset</code> method for setting en_passant to the empty
-        string and active_colour to w. </li>
+       <li> Naturally, <code>reset</code> should also reset the colour. </li>
+       <li> Finally add method <code>toString</code>, which allows to easily
+        printing out (a representation of) the object. </li>
       </ol>
       Solutions:
       <a href="CS-M41_Programs/Chapter3/Section3/Board0.java">
@@ -629,6 +629,9 @@ java -ea Board0
       </a>
       <a href="CS-M41_Programs/Chapter3/Section3/Board2.java">
        Board2
+      </a>
+      <a href="CS-M41_Programs/Chapter3/Section3/Board3.java">
+       Board3
       </a>
      </li>
      <li> Friday (17/12/2010):
@@ -1442,7 +1445,7 @@ resp.
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Dec 14 19:00:25 GMT 2010
+Last modified: Tue Dec 14 23:46:37 GMT 2010
 <!-- hhmts end -->
 
    </div>

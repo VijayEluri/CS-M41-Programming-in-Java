@@ -12,7 +12,7 @@ class Board1 {
 
   public static void main(final String[] args) {
     final Board1 b = new Board1("Ha!");
-    assert(b.get_en_passant() == "Ha!");
+    assert(b.get_en_passant().equals("Ha!"));
     assert(b.equals(b));
     final Board1 b2 = new Board1("Ha!");
     assert(b2.equals(b));
