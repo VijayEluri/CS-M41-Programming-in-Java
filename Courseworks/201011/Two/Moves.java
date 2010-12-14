@@ -165,38 +165,53 @@ class Moves {
     }
     
     public boolean check_white_kingside_castling() {
-        // only demonstration code:
         final char c = B.get_white_castling();
         if (c == '-' || c == 'q') return false;
         if (B.get_active_colour() == 'b') return false;
         if (B.get('e','1') != 'K') return false;
+        if (B.get('h','1') != 'R') return false;
         if (! black_not_attacking('e','1')) return false;
         if (! free_white('f','1')) return false;
-        // XXX
+        if (! free_white('g','1')) return false;
+        if (! black_not_attacking('h','1')) return false;
         return true;
     }
     public boolean check_white_queenside_castling() {
-        // only demonstration code:
         final char c = B.get_white_castling();
         if (c == '-' || c == 'k') return false;
         if (B.get_active_colour() == 'b') return false;
-        // XXX
+        if (B.get('e','1') != 'K') return false;
+        if (B.get('a','1') != 'R') return false;
+        if (! black_not_attacking('e','1')) return false;
+        if (! free_white('d','1')) return false;
+        if (! free_white('c','1')) return false;
+        if (! free_white('b','1')) return false;
+        if (! black_not_attacking('a','1')) return false;
         return true;
     }
     public boolean check_black_kingside_castling() {
-        // only demonstration code:
         final char c = B.get_black_castling();
         if (c == '-' || c == 'q') return false;
         if (B.get_active_colour() == 'w') return false;
-        // XXX
+        if (B.get('e','8') != 'k') return false;
+        if (B.get('h','8') != 'r') return false;
+        if (! white_not_attacking('e','8')) return false;
+        if (! free_black('f','8')) return false;
+        if (! free_black('g','8')) return false;
+        if (! white_not_attacking('h','8')) return false;
         return true;
     }
     public boolean check_black_queenside_castling() {
-        // only demonstration code:
         final char c = B.get_black_castling();
         if (c == '-' || c == 'k') return false;
         if (B.get_active_colour() == 'w') return false;
-        // XXX
+        if (B.get('e','8') != 'k') return false;
+        if (B.get('a','8') != 'r') return false;
+        if (! white_not_attacking('e','8')) return false;
+        if (! free_black('d','8')) return false;
+        if (! free_black('c','8')) return false;
+        if (! free_black('b','8')) return false;
+        if (! white_not_attacking('a','8')) return false;
         return true;
     }
 
