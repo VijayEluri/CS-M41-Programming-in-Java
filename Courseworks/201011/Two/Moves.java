@@ -51,7 +51,7 @@ class Moves {
     public boolean check_normal_white_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
         if (! Board.is_valid_white_figure(B.get(file0,rank0))) return false;
-        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_black_figure(B.get(file1,rank1)))
+        if (! B.is_empty(file1,rank1) && ! Board.is_valid_black_figure(B.get(file1,rank1)))
           return false;
         if (B.get_active_colour() != 'w') return false;
         if (! check_move_simple(file0,rank0,file1,rank1)) return false;
@@ -216,7 +216,7 @@ class Moves {
     }
     public boolean free_white(final char file, final char rank) {
         // XXX
-        return black_not_attacking(file,rank) && B.get(file,rank) == Board.empty;
+        return black_not_attacking(file,rank) && B.is_empty(file,rank);
     }
     // checks whether white doesn't attack the field:
     public boolean white_not_attacking(final char file, final char rank) {
@@ -225,7 +225,7 @@ class Moves {
     }
     public boolean free_black(final char file, final char rank) {
         // XXX
-        return white_not_attacking(file,rank) && B.get(file,rank) == Board.empty;
+        return white_not_attacking(file,rank) && B.is_empty(file,rank);
     }
 
 
