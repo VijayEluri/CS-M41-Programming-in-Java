@@ -68,7 +68,7 @@ class Moves {
     public boolean check_normal_black_move(final char file0, final char rank0,
                                            final char file1, final char rank1) {
         if (! Board.is_valid_black_figure(B.get(file0,rank0))) return false;
-        if (B.get(file1,rank1) != Board.empty && ! Board.is_valid_white_figure(B.get(file1,rank1)))
+        if (! B.is_empty(file1,rank1) && ! Board.is_valid_white_figure(B.get(file1,rank1)))
           return false;
         if (B.get_active_colour() != 'b') return false;
         if (! check_move_simple(file0,rank0,file1,rank1)) return false;
@@ -115,13 +115,13 @@ class Moves {
       if (file0 == file1) {
         final int step = (rank0 < rank1) ? +1 : -1;
         for (char rank = (char)(rank0+step); rank != rank1; rank+=step)
-          if (B.get(file0,rank) != Board.empty) return false;
+          if (! B.is_empty(file0,rank)) return false;
         return true;
       }
       else if (rank0 == rank1) {
         final int step = (file0 < file1) ? +1 : -1;
         for (char file = (char)(file0+step); file != file1; file+=step)
-          if (B.get(file,rank0) != Board.empty) return false;
+          if (! B.is_empty(file,rank0)) return false;
         return true;
       }
       else return false;
@@ -134,7 +134,7 @@ class Moves {
         final int step_r = (rank0 < rank1) ? +1 : -1;
         char file = (char)(file0+step_f), rank = (char)(rank0+step_r);
         while (file != file1) {
-          if (B.get(file,rank) != Board.empty) return false;
+          if (! B.is_empty(file,rank)) return false;
           file += step_f; rank += step_r;
         }
         return rank == rank1;
@@ -150,18 +150,18 @@ class Moves {
       final int diff_f = Math.abs(file0-file1), diff_r = rank1-rank0;
       if (diff_f > 1 || diff_r <= 0 || diff_r > 2) return false;
       if (diff_r == 2)
-        return diff_f == 0 && rank0 == '2' && rank1 == '4' && B.get(file0,'3') == Board.empty;
+        return diff_f == 0 && rank0 == '2' && rank1 == '4' && B.is_empty(file0,'3');
       if (diff_f == 0) return true;
-      return B.get(file1,rank1) != Board.empty || Board.eq_filerank(file1,rank1,B.get_en_passant());
+      return ! B.is_empty(file1,rank1) || Board.eq_filerank(file1,rank1,B.get_en_passant());
     }
     private boolean check_black_pawn_move(final char file0, final char rank0,
                                           final char file1, final char rank1) {
       final int diff_f = Math.abs(file0-file1), diff_r = rank0-rank1;
       if (diff_f > 1 || diff_r <= 0 || diff_r > 2) return false;
       if (diff_r == 2)
-        return diff_f == 0 && rank0 == '7' && rank1 == '5' && B.get(file0,'6') == Board.empty;
+        return diff_f == 0 && rank0 == '7' && rank1 == '5' && B.is_empty(file0,'6');
       if (diff_f == 0) return true;
-      return B.get(file1,rank1) != Board.empty || Board.eq_filerank(file1,rank1,B.get_en_passant());
+      return ! B.is_empty(file1,rank1) || Board.eq_filerank(file1,rank1,B.get_en_passant());
     }
     
     public boolean check_white_kingside_castling() {
