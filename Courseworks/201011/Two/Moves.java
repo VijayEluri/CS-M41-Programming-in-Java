@@ -152,13 +152,16 @@ class Moves {
       if (diff_r == 2)
         return diff_f == 0 && rank0 == '2' && rank1 == '4' && B.get(file0,'3') == Board.empty;
       if (diff_f == 0) return true;
-      // return B.get(file1,rank1) != Board.empty || Board.filerank(file1,rank1).equals(B.get_en_passant());
-      return true;
+      return B.get(file1,rank1) != Board.empty || Board.eq_filerank(file1,rank1,B.get_en_passant());
     }
     private boolean check_black_pawn_move(final char file0, final char rank0,
                                           final char file1, final char rank1) {
-      // XXX
-      return true;
+      final int diff_f = Math.abs(file0-file1), diff_r = rank0-rank1;
+      if (diff_f > 1 || diff_r <= 0 || diff_r > 2) return false;
+      if (diff_r == 2)
+        return diff_f == 0 && rank0 == '7' && rank1 == '5' && B.get(file0,'6') == Board.empty;
+      if (diff_f == 0) return true;
+      return B.get(file1,rank1) != Board.empty || Board.eq_filerank(file1,rank1,B.get_en_passant());
     }
     
     public boolean check_white_kingside_castling() {
