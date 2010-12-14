@@ -525,31 +525,31 @@ class Board {
       }
       // testing castling moves
       {
-        Board b = new Board("4k2r/8/8/8/8/8/8/4K2R w Kk - 0 1");
+        Board b = new Board("4k2r/4pppp/8/8/8/8/4PPPP/4K2R w Kk - 0 1");
         b.do_white_kingside_castling();
-        assert(b.toFEN().equals("4k2r/8/8/8/8/8/8/5RK1 b k - 1 1"));
+        assert(b.toFEN().equals("4k2r/4pppp/8/8/8/8/4PPPP/5RK1 b k - 1 1"));
         b.do_black_kingside_castling();
-        assert(b.toFEN().equals("5rk1/8/8/8/8/8/8/5RK1 w - - 2 2"));
+        assert(b.toFEN().equals("5rk1/4pppp/8/8/8/8/4PPPP/5RK1 w - - 2 2"));
 
-        b = new Board("4k2r/8/8/8/8/8/8/4K2R w KQk - 0 1");
+        b = new Board("4k2r/4pppp/8/8/8/8/4PPPP/4K2R w KQk - 0 1");
         b.do_white_kingside_castling();
-        assert(b.toFEN().equals("4k2r/8/8/8/8/8/8/5RK1 b k - 1 1"));
+        assert(b.toFEN().equals("4k2r/4pppp/8/8/8/8/8PPPP/5RK1 b k - 1 1"));
         b.do_black_kingside_castling();
-        assert(b.toFEN().equals("5rk1/8/8/8/8/8/8/5RK1 w - - 2 2"));
+        assert(b.toFEN().equals("5rk1/4pppp/8/8/8/8/4PPPP/5RK1 w - - 2 2"));
 
-        b = new Board("r3k3/8/8/8/8/8/8/R3K3 w Qq - 0 1");
+        b = new Board("r3k3/p7/8/8/8/8/3P4/R3K3 w Qq - 0 1");
         b.do_white_queenside_castling();
-        assert(b.toFEN().equals("r3k3/8/8/8/8/8/8/2KR4 b q - 1 1"));
+        assert(b.toFEN().equals("r3k3/p7/8/8/8/8/3P4/2KR4 b q - 1 1"));
         b.do_black_queenside_castling();
-        assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/2KR4 w - - 2 2"));
+        assert(b.toFEN().equals("2kr4/p7/8/8/8/8/3P4/2KR4 w - - 2 2"));
 
-        b = new Board("r3k3/8/8/8/8/8/8/R3K3 w Qkq - 0 1");
+        b = new Board("r3k3/p7/8/8/8/8/3P4/R3K3 w Qkq - 0 1");
         b.do_white_queenside_castling();
-        assert(b.toFEN().equals("r3k3/8/8/8/8/8/8/2KR4 b kq - 1 1"));
+        assert(b.toFEN().equals("r3k3/p7/8/8/8/8/3P4/2KR4 b kq - 1 1"));
         b.do_black_queenside_castling();
-        assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/2KR4 w - - 2 2"));
+        assert(b.toFEN().equals("2kr4/p7/8/8/8/8/3P4/2KR4 w - - 2 2"));
 
-        b = new Board("r3k3/8/8/8/8/8/8/R3K3 b Qkq - 0 1");
+        b = new Board("r3k3/8/8/8/8/8/P7/R3K3 b Qkq - 0 1");
         b.do_black_queenside_castling();
         assert(b.toFEN().equals("2kr4/8/8/8/8/8/8/R3K3 w Q - 1 2"));
       }
