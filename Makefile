@@ -1,4 +1,6 @@
+SHELL = /bin/bash
 .SUFFIXES :
+.PHONY : all
 
 language = java
 
