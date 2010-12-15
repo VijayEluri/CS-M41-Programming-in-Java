@@ -2,4 +2,9 @@
 
 class Game {
 
+  // unit testing:
+  public static void main(final String[] args) {
+
+  }
+
 }
