@@ -15,6 +15,7 @@ class Game {
   public final boolean monitor;
 
   public final int num_halfmoves;
+  private int num_valid_halfmoves;
 
   private final Board B;
   private final Moves M;
@@ -25,6 +26,8 @@ class Game {
       - by the initial field and the target field (each as file, rank)
       - or by 'k', 'q' for the kingside resp. queenside castling
       - or by file and figure for a pawn promotion.
+     If an invalid move is found, then from this move on all array-pointers
+     will be null.
   */
 
   Game(final String ev, final String si, final String da, final int ro,
@@ -46,6 +49,7 @@ class Game {
     num_halfmoves = valid_move_sequence(movetext);
     assert(num_halfmoves >= 0);
     M = new Moves(B);
+    num_valid_halfmoves = 0;
     move_seq = fill_move_seq();
     if (monitor) System.out.println(this);
   }
@@ -60,8 +64,14 @@ class Game {
   private char[][] fill_move_seq() {
     char[][] ms = new char[num_halfmoves][];
     // XXX fill ms with the moves
+    while (num_valid_halfmoves < num_halfmoves) {
+      if (ms[num_valid_halfmoves] != null) ++num_valid_halfmoves;
+      else break;
+    }
     return ms;
   }
+
+  public int get_num_valid_halfmoves() { return num_valid_halfmoves; }
 
   public String toString() {
     String s = "";
