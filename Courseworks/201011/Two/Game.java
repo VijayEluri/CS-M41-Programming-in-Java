@@ -14,6 +14,9 @@ class Game {
 
   public final boolean monitor;
 
+  public final int num_halfmoves;
+  private int num_valid_halfmoves;
+
   private final Board B;
   private final Moves M;
 
@@ -23,6 +26,8 @@ class Game {
       - by the initial field and the target field (each as file, rank)
       - or by 'k', 'q' for the kingside resp. queenside castling
       - or by file and figure for a pawn promotion.
+     If an invalid move is found, then from this move on all array-pointers
+     will be null.
   */
 
   Game(final String ev, final String si, final String da, final int ro,
@@ -34,7 +39,6 @@ class Game {
     assert(!nw.isEmpty());
     assert(!nb.isEmpty());
     assert(re.equals(white_won) || re.equals(black_won) || re.equals(draw) || re.equals(unknown));
-    assert(valid_move_sequence(mo));
     assert(fe.isEmpty() || Board.validFEN(fe));
     // if fen is empty then the standard position is used
     event = ev; site = si; date = da; round = ro;
@@ -42,24 +46,32 @@ class Game {
     fen = fe; monitor = mon;
     if (fen.isEmpty()) B = new Board();
     else B = new Board(fen);
+    num_halfmoves = valid_move_sequence(movetext);
+    assert(num_halfmoves >= 0);
     M = new Moves(B);
+    num_valid_halfmoves = 0;
     move_seq = fill_move_seq();
     if (monitor) System.out.println(this);
   }
 
-  // checks for syntactical correctness (only!):
-  public static boolean valid_move_sequence(final String seq) {
+  // checks for syntactical correctness (only!); returns -1 in case of
+  // a syntactical error, and the number of halfmoves (>= 0) otherwise:
+  public static int valid_move_sequence(final String seq) {
     // code will be provided YYY
-    return true;
+    return 0;
   }
 
   private char[][] fill_move_seq() {
-    int N = 0;
-    // XXX determine number N of halfmoves
-    char[][] ms = new char[N][];
+    char[][] ms = new char[num_halfmoves][];
     // XXX fill ms with the moves
+    while (num_valid_halfmoves < num_halfmoves) {
+      if (ms[num_valid_halfmoves] != null) ++num_valid_halfmoves;
+      else break;
+    }
     return ms;
   }
+
+  public int get_num_valid_halfmoves() { return num_valid_halfmoves; }
 
   public String toString() {
     String s = "";
