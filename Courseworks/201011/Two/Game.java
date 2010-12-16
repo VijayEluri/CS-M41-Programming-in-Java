@@ -14,6 +14,8 @@ class Game {
 
   public final boolean monitor;
 
+  public final int num_halfmoves;
+
   private final Board B;
   private final Moves M;
 
@@ -34,7 +36,6 @@ class Game {
     assert(!nw.isEmpty());
     assert(!nb.isEmpty());
     assert(re.equals(white_won) || re.equals(black_won) || re.equals(draw) || re.equals(unknown));
-    assert(valid_move_sequence(mo));
     assert(fe.isEmpty() || Board.validFEN(fe));
     // if fen is empty then the standard position is used
     event = ev; site = si; date = da; round = ro;
@@ -42,21 +43,22 @@ class Game {
     fen = fe; monitor = mon;
     if (fen.isEmpty()) B = new Board();
     else B = new Board(fen);
+    num_halfmoves = valid_move_sequence(movetext);
+    assert(num_halfmoves >= 0);
     M = new Moves(B);
     move_seq = fill_move_seq();
     if (monitor) System.out.println(this);
   }
 
-  // checks for syntactical correctness (only!):
-  public static boolean valid_move_sequence(final String seq) {
+  // checks for syntactical correctness (only!); returns -1 in case of
+  // a syntactical error, and the number of halfmoves (>= 0) otherwise:
+  public static int valid_move_sequence(final String seq) {
     // code will be provided YYY
-    return true;
+    return 0;
   }
 
   private char[][] fill_move_seq() {
-    int N = 0;
-    // XXX determine number N of halfmoves
-    char[][] ms = new char[N][];
+    char[][] ms = new char[num_halfmoves][];
     // XXX fill ms with the moves
     return ms;
   }
