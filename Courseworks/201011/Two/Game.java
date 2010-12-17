@@ -68,6 +68,8 @@ class Game {
   private int valid_move_sequence() {
     simplified_movetext = remove_comments(movetext);
     if (simplified_movetext.isEmpty()) return -1;
+    final String[] parts = simplified_movetext.split("//s+");
+    
     // code will be provided YYY
     return 0;
   }
@@ -81,6 +83,22 @@ class Game {
     }
     if (seq.contains("}")) return "";
     else return seq;
+  }
+  // converts for example "32." into 32 and "4..." into 4, while invalid
+  // move numbers result in -1:
+  private static int convert(final String s) {
+    assert(!s.contains(" "));
+    final int index = s.indexOf(".");
+    if (index == -1) return -1;
+    if (index+1 != s.length()) {
+      if (s.length() - index != 3) return -1;
+      if (s.charAt(index+1) != '.' || s.charAt(index+2) != '.') return -1;
+    }
+    int result;
+    try { result = Integer.parseInt(s.substring(0,index)); }
+    catch (RuntimeException e) { return -1; }
+    if (result < 1) return -1;
+    return result;
   }
 
   private char[][] fill_move_seq() {
@@ -143,6 +161,15 @@ class Game {
       assert(remove_comments("}").equals(""));
       assert(remove_comments("{}").equals(""));
       assert(remove_comments("xyz { jyt } kjh { bvc po5 } ").equals("xyz  kjh  "));
+      assert(convert("") == -1);
+      assert(convert("x") == -1);
+      assert(convert(".") == -1);
+      assert(convert("44..") == -1);
+      assert(convert("33.") == 33);
+      assert(convert("13...") == 13);
+      assert(convert("0.") == -1);
+      assert(convert("-2.") == -1);
+      assert(convert("3[3.") == -1);
     }
   }
 }
