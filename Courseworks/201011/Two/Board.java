@@ -247,10 +247,16 @@ class Board {
     // (while their might be, e.g., 64 pawns, or no figures at all):
     public static boolean validFEN(final String position) {
         final String[] parts = position.split("\\s+");
-        return parts.length == 6 && valid_placement(parts[0]) &&
-          valid_colour(parts[1]) && valid_castling(parts[2]) &&
-          valid_enpassant(parts[3]) && valid_halfmoves(parts[4]) &&
-          valid_fullmoves(parts[5]);
+        if (parts.length == 7 && parts[0].isEmpty())
+          return valid_placement(parts[1]) &&
+            valid_colour(parts[2]) && valid_castling(parts[3]) &&
+            valid_enpassant(parts[4]) && valid_halfmoves(parts[5]) &&
+            valid_fullmoves(parts[6]);
+        else
+          return parts.length == 6 && valid_placement(parts[0]) &&
+            valid_colour(parts[1]) && valid_castling(parts[2]) &&
+            valid_enpassant(parts[3]) && valid_halfmoves(parts[4]) &&
+            valid_fullmoves(parts[5]);
     }
     // auxiliary functions for checking the six fields of a fen-record:
     private static boolean valid_placement(final String p) {
