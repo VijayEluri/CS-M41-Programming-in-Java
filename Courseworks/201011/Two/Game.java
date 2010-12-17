@@ -1,5 +1,11 @@
 // Oliver Kullmann, 6.12.2010 (Swansea)
 
+/*
+  After construction, an object G of type Game offers the following functions:
+   - G.num_valid_halfmoves is -1 if the move-sequence was syntactically invalid
+   - G.get_move_sequence() is a copy of the array of valid half-moves.
+*/
+
 class Game {
 
   public final String
@@ -14,8 +20,9 @@ class Game {
 
   public final boolean monitor;
 
-  public final int num_halfmoves;
+  public final int num_halfmoves; // -1 iff invalid movetext
   private int num_valid_halfmoves;
+  private String simplified_movetext;
 
   private final Board B;
   private final Moves M;
@@ -46,19 +53,21 @@ class Game {
     fen = fe; monitor = mon;
     if (fen.isEmpty()) B = new Board();
     else B = new Board(fen);
-    num_halfmoves = valid_move_sequence(movetext);
-    assert(num_halfmoves >= 0);
+    num_halfmoves = valid_move_sequence();
     M = new Moves(B);
     num_valid_halfmoves = 0;
-    move_seq = fill_move_seq();
+    if (num_halfmoves == -1)
+      move_seq = null;
+    else
+      move_seq = fill_move_seq();
     if (monitor) System.out.println(this);
   }
 
   // checks for syntactical correctness (only!); returns -1 in case of
   // a syntactical error, and the number of halfmoves (>= 0) otherwise:
-  public static int valid_move_sequence(String seq) {
-    seq = remove_comments(seq);
-    if (seq.isEmpty()) return -1;
+  private int valid_move_sequence() {
+    simplified_movetext = remove_comments(movetext);
+    if (simplified_movetext.isEmpty()) return -1;
     // code will be provided YYY
     return 0;
   }
@@ -84,7 +93,18 @@ class Game {
     return ms;
   }
 
-  public int get_num_valid_halfmoves() { return num_valid_halfmoves; }
+  public char[][] get_move_sequence() {
+    if (move_seq == null) return null;
+    assert(num_valid_halfmoves >= 0);
+    final char[][] result = new char[num_valid_halfmoves][];
+    for (int i = 0; i < num_valid_halfmoves; ++i) {
+      final int items_move = move_seq[i].length;
+      result[i] = new char[items_move];
+      for (int j = 0; j < items_move; ++j)
+        result[i][j] = move_seq[i][j];
+    }
+    return move_seq;
+  }
 
   public String toString() {
     String s = "";
@@ -96,6 +116,7 @@ class Game {
     s += "Black: " + name_b + "\n";
     s += "Result: " + result + "\n";
     s += B;
+    if (num_halfmoves == -1) s += "Invalid move sequence.\n";
     return s;
   }
 
