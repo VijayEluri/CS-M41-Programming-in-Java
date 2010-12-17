@@ -661,6 +661,8 @@ class Board {
         assert(validFEN("PKQNBR2/8/8/8/8/8/8/2pKQNBR b - - 6 99"));
         assert(validFEN("8/8/bBp5/8/8/2K4p/8/8 b Kq - 0 2"));
         assert(!validFEN("8/8/bBp5/8/8/2K3p/8/8 b Kq - 0 2"));
+        assert(validFEN("8/8/bBp5/8/8/2K4p/8/8  b  Kq  -  0   2 "));
+        assert(validFEN(" 8/8/bBp5/8/8/2K4p/8/8  b  Kq  -  0   2 "));
       }
       // testing fromFEN
       {
