@@ -276,10 +276,10 @@ class Board {
       return is_empty(rank2index(rank), file2index(file));
     }
 
-    private static boolean valid_file(final char file) {
+    public static boolean valid_file(final char file) {
       return file >= 'a' && file <= 'h';
     }
-    private static boolean valid_rank(final char rank) {
+    public static boolean valid_rank(final char rank) {
       return rank >= '1' && rank <= '8';
     }
 
