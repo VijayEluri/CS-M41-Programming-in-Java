@@ -266,6 +266,8 @@ class Game {
       final char[][] ms1 = g1.get_move_sequence();
       assert(ms1 != null);
       assert(ms1.length == 85);
+      final Game g1b = new Game(ev1,si1,da1,ro1,nw1,nb1,re1,mo1_0,fe1,true);
+      assert(g1b.get_move_sequence() == null);
       final String ev2="x",si2="x",da2="x",nw2="x",nb2="x",re2="1/2-1/2",mo2="1. 1/2-1/2",fe2="";
       final int ro2 = 0;
       final Game g2 = new Game(ev2,si2,da2,ro2,nw2,nb2,re2,mo2,fe2,true);
@@ -275,6 +277,16 @@ class Game {
       final Game g3 = new Game(ev2,si2,da2,ro2,nw2,nb2,re2,"1. e4",fe2,true);
       final char[][] ms3 = g3.get_move_sequence();
       assert(ms3 == null);
+      final String
+        ev4 = "Scholar's mate", si4 = "X",
+        da4 = "X", nw4 = "X",
+        nb4 = "X", re4 = "1-0",
+        mo4 = "1. e4 e5 2. Qh5!? Nc6 3. Bc4 Nf6?? 4. Qxf7# 1-0", fe4 = "";
+      final int ro4 = 0;
+      final Game g4 = new Game(ev4,si4,da4,ro4,nw4,nb4,re4,mo4,fe4,true);
+      final char[][] ms4 = g4.get_move_sequence();
+      assert(ms4 != null);
+      assert(ms4.length == 7);
     }
     // syntax check
     {
