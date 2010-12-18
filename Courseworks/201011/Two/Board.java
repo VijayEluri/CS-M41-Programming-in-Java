@@ -404,11 +404,11 @@ class Board {
             }
             result += "\n";
         }
-        result += "Active: " + active_colour + " ";
-        result += "White/black castling: " + white_castling + black_castling + " ";
-        result += "En passant: " + en_passant + " ";
-        result += "Half moves: " + halfmoves + " ";
-        result += "Full moves: " + fullmoves + " ";
+        result += "Active: " + active_colour + "; ";
+        result += "white/black castling: " + white_castling + black_castling + "; ";
+        result += "en passant: " + en_passant + "; ";
+        result += "half moves: " + halfmoves + "; ";
+        result += "full moves: " + fullmoves + ".\n";
         return result;
     }
 

@@ -182,7 +182,7 @@ class Game {
     s += "Black: " + name_b + "\n";
     s += "Result: " + result + "\n";
     s += B;
-    if (num_halfmoves == -1) s += "\nInvalid move sequence.\n";
+    if (num_halfmoves == -1) s += "Invalid move sequence.\n";
     return s;
   }
 
