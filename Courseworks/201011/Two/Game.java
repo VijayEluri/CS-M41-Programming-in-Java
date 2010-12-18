@@ -217,6 +217,9 @@ class Game {
       final char[][] ms2 = g2.get_move_sequence();
       assert(ms2 != null);
       assert(ms2.length == 0);
+      final Game g3 = new Game(ev2,si2,da2,ro2,nw2,nb2,re2,"1. e4",fe2,true);
+      final char[][] ms3 = g3.get_move_sequence();
+      assert(ms3 == null);
     }
     // syntax check
     {
