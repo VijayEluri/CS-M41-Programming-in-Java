@@ -186,7 +186,8 @@ class Game {
       return false;
     m = m.substring(0,m.length()-2);
     if (m.length() == 0) return true;
-    else if (m.length() == 1) return Board.valid_file(m.charAt(0));
+    else if (m.length() == 1)
+      return Board.valid_file(m.charAt(0)) || Board.valid_rank(m.charAt(0));
     else
       return Board.valid_file(m.charAt(0)) && Board.valid_rank(m.charAt(1));
   }
