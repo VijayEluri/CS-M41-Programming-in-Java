@@ -53,7 +53,8 @@ class Game {
     fen = fe; monitor = mon;
     if (fen.isEmpty()) B = new Board();
     else B = new Board(fen);
-    num_halfmoves = valid_move_sequence();
+    num_halfmoves = -1;
+    valid_move_sequence();
     M = new Moves(B);
     num_valid_halfmoves = 0;
     if (num_halfmoves == -1)
@@ -63,15 +64,20 @@ class Game {
     if (monitor) System.out.println(this);
   }
 
-  // checks for syntactical correctness (only!); returns -1 in case of
-  // a syntactical error, and the number of halfmoves (>= 0) otherwise:
-  private int valid_move_sequence() {
+  // checks for syntactical correctness (only!); sets num_halfmoves and
+  // simplified_movetext, where num_halfmoves == -1 in case of
+  // a syntactical error:
+  private void valid_move_sequence() {
     simplified_movetext = remove_comments(movetext);
-    if (simplified_movetext.isEmpty()) return -1;
+    if (simplified_movetext.isEmpty()) return;
     final String[] parts = simplified_movetext.split("//s+");
-    
+    boolean white_current_colour = (B.get_active_colour() == 'w');
+    int fullmoves = B.get_fullmoves();
+    String new_movetext = "";
+    for (int i = 0; i < parts.length; ++i) {
+      
+    }
     // code will be provided YYY
-    return 0;
   }
   // removes comments, returning the empty string in case of error; assumes
   // that "{" or "}" are not used in comments opened by ";":
@@ -144,7 +150,7 @@ class Game {
     s += "Black: " + name_b + "\n";
     s += "Result: " + result + "\n";
     s += B;
-    if (num_halfmoves == -1) s += "Invalid move sequence.\n";
+    if (num_halfmoves == -1) s += "\nInvalid move sequence.\n";
     return s;
   }
 
