@@ -215,32 +215,176 @@ class Game {
     boolean white_move = (B.get_active_colour() == 'w');
     for (int i = 0; i < num_halfmoves;
          ++i, white_move=!white_move, ++num_valid_halfmoves) {
-      final String move = parts[i];
+      final char active_colour = (white_move) ? 'w' : 'b';
+      String move = parts[i];
+      move = move.replaceAll("x","");
       final boolean check = move.contains("+");
       final boolean mate = move.contains("#");
       final char check_mate = (mate) ? 'm' : (check) ? 'c' : '-';
-      final boolean pawn_move = !valid_piece(move.charAt(0));
-      final boolean promotion = move.contains("=");
-      final char active_colour = (white_move) ? 'w' : 'b';
-      if (white_move) {
-        if (move.equals(kingside_castling)) {
+      if (check || mate) move = move.substring(0,move.length()-1);
+      if (move.equals(kingside_castling)) {
+        if (white_move) {
           if (! M.check_white_kingside_castling()) break;
-          final char[] move_a = new char[3];
-          move_a[0] = active_colour;
-          move_a[1] = check_mate;
-          move_a[2] = 'k';
-          move_seq[i] = move_a;
+          B.do_white_kingside_castling();
+        }
+        else {
+          if (! M.check_black_kingside_castling()) break;
+          B.do_black_kingside_castling();
+        }
+        final char[] move_a = new char[3];
+        move_a[0] = active_colour;
+        move_a[1] = check_mate;
+        move_a[2] = 'k';
+        move_seq[i] = move_a;
+        continue;
+      }
+      else if (move.equals(queenside_castling)) {
+        if (white_move) {
+          if (! M.check_white_queenside_castling()) break;
+          B.do_white_queenside_castling();
+        }
+        else {
+          if (! M.check_black_queenside_castling()) break;
+          B.do_black_queenside_castling();
+        }
+        final char[] move_a = new char[3];
+        move_a[0] = active_colour;
+        move_a[1] = check_mate;
+        move_a[2] = 'q';
+        move_seq[i] = move_a;
+        continue;
+      }
+      final char promotion = move.contains("=") ? move.charAt(move.length()-1) : '-';
+      if (promotion != '-') move = move.substring(0,move.length()-2);
+      final char target_file = move.charAt(move.length()-2);
+      final char target_rank = move.charAt(move.length()-1);
+      final char figure = extract_figure(move,white_move);
+      if (figure != 'P' && figure != 'p') move = move.substring(1);
+      move = move.substring(0,move.length()-2); // now move contains just the source-field information
+      assert(move.length() <= 2);
+      char source_file = 0, source_rank = 0;
+      if (move.length() == 2) {
+        source_file = move.charAt(0);
+        source_rank = move.charAt(0);
+      }
+      else if (move.length() == 1) {
+        if (Board.valid_file(move.charAt(0))) {
+          source_file = move.charAt(0);
+          for (source_rank = '1'; source_rank <= '8'; ++source_rank)
+            if (can_move(source_file,source_rank,target_file,target_rank,figure,white_move))
+              break;
+          if (source_rank == '9') break;
+          {char further_rank = (char)(source_rank + 1);
+           for (; further_rank <= '8'; ++further_rank)
+             if (can_move(source_file,further_rank,target_file,target_rank,figure,white_move))
+               break;
+           if (further_rank != '9') break;
+          }
+        }
+        else {
+          source_rank = move.charAt(0);
+          for (source_file = 'a'; source_file <= 'h'; ++source_file)
+            if (can_move(source_file,source_rank,target_file,target_rank,figure,white_move))
+              break;
+          if (source_file == 'i') break;
+          {char further_file = (char)(source_file + 1);
+           for (; further_file <= 'h'; ++further_file)
+             if (can_move(further_file,source_rank,target_file,target_rank,figure,white_move))
+               break;
+           if (further_file != 'i') break;
+          }
         }
       }
       else {
-        // XXX
+        for (source_file = 'a'; source_file <= 'h'; ++source_file) {
+          for (source_rank = '1'; source_rank <= '8'; ++source_rank)
+            if (can_move(source_file,source_rank,target_file,target_rank,figure,white_move))
+              break;
+          if (source_rank <= '8') break;
+        }
+        if (source_file == 'i') break;
+        {char further_source_rank = (char)(source_rank+1);
+         for (; further_source_rank <= '8'; ++further_source_rank)
+           if (can_move(source_file,further_source_rank,target_file,target_rank,figure,white_move))
+             break;
+         if (further_source_rank != '9') break;
+        }
+        {char further_source_file = (char)(source_file+1);
+         for (; further_source_file <= 'h'; ++further_source_file) {
+           char further_source_rank = '1';
+           for (; further_source_rank <= '8'; ++further_source_rank)
+             if (can_move(further_source_file,further_source_rank,target_file,target_rank,figure,white_move))
+               break;
+           if (further_source_rank <= '8') break;
+         }
+         if (further_source_file != 'i') break;
+        }
+      }
+      if (promotion != '-') {
+        if (white_move) {
+          if (! M.check_white_promotion(source_file,figure)) break;
+          final char[] move_a = new char[4];
+          move_a[0] = active_colour;
+          move_a[1] = check_mate;
+          move_a[2] = source_file;
+          move_a[3] = figure;
+          move_seq[i] = move_a;
+          B.do_white_promotion(source_file,figure);
+        }
+        else {
+          if (! M.check_black_promotion(source_file,figure)) break;
+          final char[] move_a = new char[4];
+          move_a[0] = active_colour;
+          move_a[1] = check_mate;
+          move_a[2] = source_file;
+          move_a[3] = figure;
+          move_seq[i] = move_a;
+          B.do_black_promotion(source_file,figure);
+        }
+      }
+      else {
+        if (white_move) {
+          if (! M.check_normal_white_move(source_file,source_rank,target_file,target_rank))
+            break;
+          final char[] move_a = new char[6];
+          move_a[0] = active_colour;
+          move_a[1] = check_mate;
+          move_a[2] = source_file;
+          move_a[3] = source_rank;
+          move_a[4] = target_file;
+          move_a[5] = target_rank;
+          move_seq[i] = move_a;
+          B.do_normal_white_move(source_file,source_rank,target_file,target_rank);
+        }
+        else {
+          if (! M.check_normal_black_move(source_file,source_rank,target_file,target_rank))
+            break;
+          final char[] move_a = new char[6];
+          move_a[0] = active_colour;
+          move_a[1] = check_mate;
+          move_a[2] = source_file;
+          move_a[3] = source_rank;
+          move_a[4] = target_file;
+          move_a[5] = target_rank;
+          move_seq[i] = move_a;
+          B.do_normal_black_move(source_file,source_rank,target_file,target_rank);
+        }
       }
     }
-    // XXX fill move_seq with the moves
-    while (num_valid_halfmoves < num_halfmoves) {
-      if (move_seq[num_valid_halfmoves] != null) ++num_valid_halfmoves;
-      else break;
-    }
+  }
+  private static char extract_figure(final String m, final boolean white) {
+    assert(!m.isEmpty());
+    final char c = m.charAt(0);
+    if (!valid_piece(c)) return (white) ? 'P' : 'p';
+    if (white) return c;
+    return (char)(c - ('A' - 'a'));
+  }
+  private boolean can_move(final char file0, final char rank0, final char file1, final char rank1, final char figure, final boolean white) {
+    if (B.get(file0,rank0) != figure) return false;
+    if (white)
+      return M.check_normal_white_move(file0,rank0,file1,rank1);
+    else
+      return M.check_normal_black_move(file0,rank0,file1,rank1);
   }
 
   public char[][] get_move_sequence() {
@@ -248,6 +392,7 @@ class Game {
     assert(num_valid_halfmoves >= 0);
     final char[][] result = new char[num_valid_halfmoves][];
     for (int i = 0; i < num_valid_halfmoves; ++i) {
+      assert(move_seq[i] != null);
       final int items_move = move_seq[i].length;
       result[i] = new char[items_move];
       for (int j = 0; j < items_move; ++j)
