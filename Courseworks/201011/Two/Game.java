@@ -70,7 +70,7 @@ class Game {
   private void valid_move_sequence() {
     simplified_movetext = remove_comments(movetext);
     if (simplified_movetext.isEmpty()) return;
-    final String[] parts = simplified_movetext.split("//s+");
+    final String[] parts = simplified_movetext.split("\\s+");
     boolean white_current_colour = (B.get_active_colour() == 'w');
     int fullmoves = B.get_fullmoves();
     String new_movetext = "";
