@@ -20,7 +20,7 @@ class Game {
 
   public final boolean monitor;
 
-  public final int num_halfmoves; // -1 iff invalid movetext
+  public int num_halfmoves; // -1 iff invalid movetext
   private int num_valid_halfmoves;
   private String simplified_movetext;
 
@@ -74,10 +74,37 @@ class Game {
     boolean white_current_colour = (B.get_active_colour() == 'w');
     int fullmoves = B.get_fullmoves();
     String new_movetext = "";
+    boolean read_number = true;
     for (int i = 0; i < parts.length; ++i) {
-      
+      if (white_current_colour) {
+        if (read_number) {
+          if (convert(parts[i],true) != fullmoves) {
+            num_halfmoves = -1; return;
+          }
+          else read_number = false;
+        }
+        else {
+          if (! valid_movement(parts[i])) { num_halfmoves = -1; return; }
+          else {
+            ++num_halfmoves; new_movetext += parts[i] + " ";
+            white_current_colour = false; read_number = true;
+          }
+        }
+      }
+      else {
+        if (read_number)
+          if (convert(parts[i],false) == fullmoves) {
+            read_number = false; continue;
+          }
+        if (! valid_movement(parts[i])) { num_halfmoves = -1; return; }
+        else {
+          ++num_halfmoves; new_movetext += parts[i] + " ";
+          white_current_colour = true; read_number = true;
+          ++fullmoves;
+        }
+      }
     }
-    // code will be provided YYY
+    simplified_movetext = new_movetext;
   }
   // removes comments, returning the empty string in case of error; assumes
   // that "{" or "}" are not used in comments opened by ";":
@@ -115,6 +142,11 @@ class Game {
     catch (RuntimeException e) { return -1; }
     if (result < 1) return -1;
     return result;
+  }
+  // checks whether m represents a valid SAN (like "e4" or "Bb5xa6+"):
+  private static boolean valid_movement(final String m) {
+    // XXX
+    return true;
   }
 
   private char[][] fill_move_seq() {
