@@ -211,7 +211,7 @@ class Game {
       final char[][] ms1 = g1.get_move_sequence();
       assert(ms1 != null);
       assert(ms1.length == 85);
-      final String ev2="",si2="",da2="",nw2="",nb2="",re2="1/2-1/2",mo2="1. 1/2-1/2",fe2="";
+      final String ev2="x",si2="x",da2="x",nw2="x",nb2="x",re2="1/2-1/2",mo2="1. 1/2-1/2",fe2="";
       final int ro2 = 0;
       final Game g2 = new Game(ev2,si2,da2,ro2,nw2,nb2,re2,mo2,fe2,true);
       final char[][] ms2 = g2.get_move_sequence();
