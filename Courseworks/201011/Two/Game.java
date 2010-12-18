@@ -71,11 +71,16 @@ class Game {
     simplified_movetext = remove_comments(movetext);
     if (simplified_movetext.isEmpty()) return;
     final String[] parts = simplified_movetext.split("\\s+");
+    int num_parts = parts.length;
+    assert(num_parts > 0);
+    if (! result.equals(unknown))
+      if (! parts[--num_parts].equals(result)) return;
     boolean white_current_colour = (B.get_active_colour() == 'w');
     int fullmoves = B.get_fullmoves();
     String new_movetext = "";
     boolean read_number = true;
-    for (int i = 0; i < parts.length; ++i) {
+    num_halfmoves = 0;
+    for (int i = 0; i < num_parts; ++i) {
       if (white_current_colour) {
         if (read_number) {
           if (convert(parts[i],true) != fullmoves) {
