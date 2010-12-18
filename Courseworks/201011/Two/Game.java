@@ -68,7 +68,9 @@ class Game {
 
   // checks for syntactical correctness (only!); sets num_halfmoves and
   // simplified_movetext, where num_halfmoves == -1 in case of
-  // a syntactical error:
+  // a syntactical error, and simplified movetex just contains the
+  // space-separated sequence of moves in SAN (without any comments and
+  // without numbering):
   private void valid_move_sequence() {
     simplified_movetext = remove_comments(movetext);
     if (simplified_movetext.isEmpty()) return;
@@ -114,8 +116,11 @@ class Game {
     simplified_movetext = new_movetext;
   }
   // removes comments, returning the empty string in case of error; assumes
-  // that "{" or "}" are not used in comments opened by ";":
+  // that "{" or "}" are not used in comments opened by ";", and just removes
+  // characters '?' and '!' throughout:
   private static String remove_comments(String seq) {
+    seq.replaceAll("?","");
+    seq.replaceAll("!","");
     // first removing comments of the form "{...}":
     for (int opening_bracket = seq.indexOf("{"); opening_bracket != -1;
          opening_bracket = seq.indexOf("{")) {
@@ -283,6 +288,8 @@ class Game {
       assert(remove_comments(";abc").equals(""));
       assert(remove_comments(";]\na").equals("a"));
       assert(remove_comments(";}\na").equals(""));
+      assert(remove_comments("?!?!").equals(""));
+      assert(remove_comments("?sdjd{,,l;!}; dj!sk?s\n{ ??  ]}sjfdk ?!").equals("sdjdsjfdk "));
       assert(convert("",true) == -1);
       assert(convert("",false) == -1);
       assert(convert("x",true) == -1);
