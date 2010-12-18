@@ -23,7 +23,7 @@ $(executables) : $(bin_dir)/% : $(source_dir)/%.java | $(bin_dir)
 	gcj $(source_dir)/*.java --main=$* -o $(bin_dir)/$*
 
 run :
-	for P in $(bin_dir)/*; do echo $$P; $$P; done
+	for P in $(bin_dir)/*; do echo -e "\n$$P\n"; $$P; done
 
 cleanall :
 	rm $(bin_dir)/*
