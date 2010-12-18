@@ -119,8 +119,8 @@ class Game {
   // that "{" or "}" are not used in comments opened by ";", and just removes
   // characters '?' and '!' throughout:
   private static String remove_comments(String seq) {
-    seq.replaceAll("\\?","");
-    seq.replaceAll("\\!","");
+    seq = seq.replaceAll("\\?","");
+    seq = seq.replaceAll("\\!","");
     // first removing comments of the form "{...}":
     for (int opening_bracket = seq.indexOf("{"); opening_bracket != -1;
          opening_bracket = seq.indexOf("{")) {
