@@ -178,7 +178,7 @@ class Game {
     if (m.length() < 2) return false;
     if (m.contains("x")) { // handles capture
       final int pos_x = m.indexOf("x");
-      if (m.indexOf("x",pos_x) != 1) return false;
+      if (m.indexOf("x",pos_x) != -1) return false;
       m = m.substring(0,pos_x) + m.substring(pos_x+1);
     }
     if (m.length() < 2) return false;
