@@ -1,9 +1,9 @@
 // Oliver Kullmann, 6.12.2010 (Swansea)
 
 /*
-  After construction, an object G of type Game offers the following functions:
-   - G.num_valid_halfmoves is -1 if the move-sequence was syntactically invalid
-   - G.get_move_sequence() is a copy of the array of valid half-moves.
+  After construction, an object G of type Game offers G.get_move_sequence(),
+  a copy of the array of valid half-moves (null iff the move-sequence was
+  syntactically invalid), plus the input data via constant data members.
 */
 
 class Game {
@@ -20,7 +20,7 @@ class Game {
 
   public final boolean monitor;
 
-  public int num_halfmoves; // -1 iff invalid movetext
+  private int num_halfmoves; // -1 iff invalid movetext
   private int num_valid_halfmoves;
   private String simplified_movetext;
 
@@ -35,11 +35,12 @@ class Game {
       - or by file and figure for a pawn promotion.
      If an invalid move is found, then from this move on all array-pointers
      will be null.
+     If the move-sequence was syntactically invalid, then move_seq is null.
   */
 
-  Game(final String ev, final String si, final String da, final int ro,
-      final String nw, final String nb, final String re,
-      final String mo, final String fe, final boolean mon) {
+  public Game(final String ev, final String si, final String da, final int ro,
+              final String nw, final String nb, final String re,
+              final String mo, final String fe, final boolean mon) {
     assert(!ev.isEmpty());
     assert(!si.isEmpty());
     assert(!da.isEmpty());
@@ -149,9 +150,10 @@ class Game {
     return true;
   }
 
+  // computing the move-sequence from the from simplified_movetext
   private char[][] fill_move_seq() {
     char[][] ms = new char[num_halfmoves][];
-    // XXX fill ms with the moves
+    // XXX fill move_seq with the moves
     while (num_valid_halfmoves < num_halfmoves) {
       if (ms[num_valid_halfmoves] != null) ++num_valid_halfmoves;
       else break;
