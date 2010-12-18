@@ -27,7 +27,7 @@ class Game {
   private final Board B;
   private final Moves M;
 
-  private final char[][] move_seq;
+  private char[][] move_seq;
   /* A single move is a char-array of length 5, 2 or 3, where the first
      char is 'w' or 'b', followed either
       - by the initial field and the target field (each as file, rank)
@@ -58,10 +58,8 @@ class Game {
     valid_move_sequence();
     M = new Moves(B);
     num_valid_halfmoves = 0;
-    if (num_halfmoves == -1)
-      move_seq = null;
-    else
-      move_seq = fill_move_seq();
+    move_seq = null;
+    if (num_halfmoves != -1) fill_move_seq();
     if (monitor) System.out.println(this);
   }
 
@@ -150,15 +148,15 @@ class Game {
     return true;
   }
 
-  // computing the move-sequence from the from simplified_movetext
-  private char[][] fill_move_seq() {
-    char[][] ms = new char[num_halfmoves][];
+  // computing the move-sequence from the from simplified_movetext, determining
+  // num_valid_halfmoves and move_seq:
+  private void fill_move_seq() {
+    move_seq = new char[num_halfmoves][];
     // XXX fill move_seq with the moves
     while (num_valid_halfmoves < num_halfmoves) {
-      if (ms[num_valid_halfmoves] != null) ++num_valid_halfmoves;
+      if (move_seq[num_valid_halfmoves] != null) ++num_valid_halfmoves;
       else break;
     }
-    return ms;
   }
 
   public char[][] get_move_sequence() {
