@@ -1,9 +1,9 @@
 // Oliver Kullmann, 6.12.2010 (Swansea)
 
 /*
-  After construction, an object G of type Game offers the following functions:
-   - G.num_valid_halfmoves is -1 if the move-sequence was syntactically invalid
-   - G.get_move_sequence() is a copy of the array of valid half-moves.
+  After construction, an object G of type Game offers G.get_move_sequence(),
+  a copy of the array of valid half-moves (null iff the move-sequence was
+  syntactically invalid), plus the input data via constant data members.
 */
 
 class Game {
@@ -20,26 +20,28 @@ class Game {
 
   public final boolean monitor;
 
-  public int num_halfmoves; // -1 iff invalid movetext
+  private int num_halfmoves; // -1 iff invalid movetext
   private int num_valid_halfmoves;
   private String simplified_movetext;
 
   private final Board B;
   private final Moves M;
 
-  private final char[][] move_seq;
-  /* A single move is a char-array of length 5, 2 or 3, where the first
-     char is 'w' or 'b', followed either
-      - by the initial field and the target field (each as file, rank)
-      - or by 'k', 'q' for the kingside resp. queenside castling
+  private char[][] move_seq;
+  /* A single move is a char-array of length 6, 3 or 4, where the first
+     char is 'w' or 'b' ("white" or "black"), followed by 'c' for "check"
+     or 'm' for "mate" or '-' for neither, followed either
+      - by the initial field and the target field (each as (file, rank))
+      - or by 'k' or 'q' for the kingside resp. queenside castling
       - or by file and figure for a pawn promotion.
      If an invalid move is found, then from this move on all array-pointers
      will be null.
+     If the move-sequence was syntactically invalid, then move_seq is null.
   */
 
-  Game(final String ev, final String si, final String da, final int ro,
-      final String nw, final String nb, final String re,
-      final String mo, final String fe, final boolean mon) {
+  public Game(final String ev, final String si, final String da, final int ro,
+              final String nw, final String nb, final String re,
+              final String mo, final String fe, final boolean mon) {
     assert(!ev.isEmpty());
     assert(!si.isEmpty());
     assert(!da.isEmpty());
@@ -57,10 +59,8 @@ class Game {
     valid_move_sequence();
     M = new Moves(B);
     num_valid_halfmoves = 0;
-    if (num_halfmoves == -1)
-      move_seq = null;
-    else
-      move_seq = fill_move_seq();
+    move_seq = null;
+    if (num_halfmoves != -1) fill_move_seq();
     if (monitor) System.out.println(this);
   }
 
@@ -149,14 +149,15 @@ class Game {
     return true;
   }
 
-  private char[][] fill_move_seq() {
-    char[][] ms = new char[num_halfmoves][];
-    // XXX fill ms with the moves
+  // computing the move-sequence from the from simplified_movetext, determining
+  // num_valid_halfmoves and move_seq:
+  private void fill_move_seq() {
+    move_seq = new char[num_halfmoves][];
+    // XXX fill move_seq with the moves
     while (num_valid_halfmoves < num_halfmoves) {
-      if (ms[num_valid_halfmoves] != null) ++num_valid_halfmoves;
+      if (move_seq[num_valid_halfmoves] != null) ++num_valid_halfmoves;
       else break;
     }
-    return ms;
   }
 
   public char[][] get_move_sequence() {
