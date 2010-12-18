@@ -28,10 +28,11 @@ class Game {
   private final Moves M;
 
   private char[][] move_seq;
-  /* A single move is a char-array of length 5, 2 or 3, where the first
-     char is 'w' or 'b', followed either
-      - by the initial field and the target field (each as file, rank)
-      - or by 'k', 'q' for the kingside resp. queenside castling
+  /* A single move is a char-array of length 6, 3 or 4, where the first
+     char is 'w' or 'b' ("white" or "black"), followed by 'c' for "check"
+     or 'm' for "mate" or '-' for neither, followed either
+      - by the initial field and the target field (each as (file, rank))
+      - or by 'k' or 'q' for the kingside resp. queenside castling
       - or by file and figure for a pawn promotion.
      If an invalid move is found, then from this move on all array-pointers
      will be null.
