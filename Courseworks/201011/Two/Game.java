@@ -166,10 +166,11 @@ class Game {
     }
     if (m.length() < 2) return false;
     if (m.contains("#")) { // handles checkmate
-      if (m.charAt(m.length()-1) != '+') return false;
+      if (m.charAt(m.length()-1) != '#') return false;
       m = m.substring(0,m.length()-1);
       if (m.contains("#")) return false;
     }
+    if (m.length() < 2) return false;
     if (m.contains("=")) { // handles promotions
       if (! pawn_move) return false;
       if (m.length() < 4) return false;
