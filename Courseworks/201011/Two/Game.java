@@ -8,11 +8,13 @@
 
 class Game {
 
-  public final String
+  public static final String
     white_won = "1-0",
     black_won = "0-1",
     draw = "1/2-1/2",
-    unknown = "*";
+    unknown = "*",
+    kingside_castling = "0-0",
+    queenside_castling = "0-0-0";
 
   public final String
     event, site, date, name_w, name_b, result, movetext, fen;
@@ -149,9 +151,47 @@ class Game {
     return result;
   }
   // checks whether m represents a valid SAN (like "e4" or "Bb5xa6+"):
-  private static boolean valid_movement(final String m) {
-    // XXX
-    return true;
+  private static boolean valid_movement(String m) {
+    assert(!m.isEmpty());
+    if (m.length() < 2) return false;
+    if (m.equals(kingside_castling) || m.equals(queenside_castling))
+      return true; // handles castling
+    final boolean pawn_move = !valid_piece(m.charAt(0));
+    if (! pawn_move) m = m.substring(1);
+    if (m.length() < 2) return false;
+    if (m.contains("+")) { // handles check
+      final int pos_p = m.indexOf("+");
+      if (pos_p < m.length() - 2) return false;
+      if (pos_p == m.length() - 2)
+        if (m.charAt(m.length()-1) != '+') return false;
+      m = m.substring(0,pos_p);
+    }
+    if (m.length() < 2) return false;
+    if (m.contains("=")) { // handles promotions
+      if (! pawn_move) return false;
+      if (m.length() < 4) return false;
+      if (m.indexOf("=") != m.length()-2) return false;
+      if (m.charAt(m.length()-3) != '8') return false;
+      if (! valid_piece(m.charAt(m.length()-1))) return false;
+      m = m.substring(0,m.length()-2);
+    }
+    if (m.length() < 2) return false;
+    if (m.contains("x")) { // handles capture
+      final int pos_x = m.indexOf("x");
+      if (m.indexOf("x",pos_x) != 1) return false;
+      m = m.substring(0,pos_x) + m.substring(pos_x+1);
+    }
+    if (m.length() < 2) return false;
+    if (! Board.valid_file(m.charAt(m.length()-2)) || ! Board.valid_rank(m.charAt(m.length()-1)))
+      return false;
+    m = m.substring(0,m.length()-2);
+    if (m.length() == 0) return true;
+    else if (m.length() == 1) return Board.valid_file(m.charAt(0));
+    else
+      return Board.valid_file(m.charAt(0)) && Board.valid_rank(m.charAt(1));
+  }
+  private static boolean valid_piece(final char p) {
+    return  p == 'K' || p == 'Q' || p == 'R' || p == 'B' || p == 'N';
   }
 
   // computing the move-sequence from the from simplified_movetext, determining
@@ -256,6 +296,21 @@ class Game {
       assert(convert("-2.",false) == -1);
       assert(convert("3[3.",true) == -1);
       assert(convert("3[3.",false) == -1);
+      assert(valid_movement("0-0"));
+      assert(valid_movement("0-0-0"));
+      assert(valid_movement("e2"));
+      assert(valid_movement("c7c5"));
+      assert(valid_movement("cc5"));
+      assert(valid_movement("7c5"));
+      assert(valid_movement("c4xd3"));
+      assert(valid_movement("e8=N"));
+      assert(valid_movement("d7xe8=N"));
+      assert(valid_movement("Be2"));
+      assert(valid_movement("Qc7c5"));
+      assert(valid_movement("Rcc5"));
+      assert(valid_movement("N7c5"));
+      assert(valid_movement("Kc4xd3"));
+
     }
   }
 }
