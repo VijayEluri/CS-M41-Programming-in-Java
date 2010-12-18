@@ -207,7 +207,29 @@ class Game {
   // computing the move-sequence from the from simplified_movetext, determining
   // num_valid_halfmoves and move_seq:
   private void fill_move_seq() {
+    assert(num_halfmoves >= 0);
     move_seq = new char[num_halfmoves][];
+    if (num_halfmoves == 0) return;
+    final String[] parts = simplified_movetext.split(" ");
+    assert(parts.length == num_halfmoves);
+    boolean white_move = (B.get_active_colour() == 'w');
+    for (int i = 0; i < num_halfmoves;
+         ++i, white_move=!white_move, ++num_valid_halfmoves) {
+      final String move = parts[i];
+      final boolean check = move.contains("+");
+      final boolean mate = move.contains("#");
+      final boolean pawn_move = !valid_piece(move.charAt(0));
+      final boolean promotion = move.contains("=");
+      if (white_move) {
+        if (move.equals(kingside_castling)) {
+          if (! M.check_white_kingside_castling()) break;
+          // XXX
+        }
+      }
+      else {
+        // XXX
+      }
+    }
     // XXX fill move_seq with the moves
     while (num_valid_halfmoves < num_halfmoves) {
       if (move_seq[num_valid_halfmoves] != null) ++num_valid_halfmoves;
