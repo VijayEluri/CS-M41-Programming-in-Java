@@ -73,8 +73,10 @@ class Game {
     // code will be provided YYY
     return 0;
   }
-  // removes comments, returns empty string in case of error:
+  // removes comments, returning the empty string in case of error; assumes
+  // that "{" or "}" are not used in comments opened by ";":
   private static String remove_comments(String seq) {
+    // first removing comments of the form "{...}":
     for (int opening_bracket = seq.indexOf("{"); opening_bracket != -1;
          opening_bracket = seq.indexOf("{")) {
       final int closing_bracket = seq.indexOf("}");
@@ -82,7 +84,14 @@ class Game {
       seq = seq.substring(0,opening_bracket) + seq.substring(closing_bracket+1);
     }
     if (seq.contains("}")) return "";
-    else return seq;
+    // now removing comments of the form ";... EOL":
+    for (int semicolon = seq.indexOf(";"); semicolon != -1;
+         semicolon = seq.indexOf(";")) {
+      final int eol = seq.indexOf("\n",semicolon);
+      if (eol == -1) return "";
+      seq = seq.substring(0,semicolon) + seq.substring(eol+1);
+    }
+    return seq;
   }
   // converts for example "32." into 32 (for white) and "4..." into 4 (for
   // black), while invalid move-numbers result in -1:
@@ -90,8 +99,7 @@ class Game {
     assert(!s.contains(" "));
     final int index = s.indexOf(".");
     if (index == -1) return -1;
-    if (white)
-      if (index+1 != s.length()) return -1;
+    if (white) { if (index+1 != s.length()) return -1; }
     else {
       if (s.length() - index != 3) return -1;
       if (s.charAt(index+1) != '.' || s.charAt(index+2) != '.') return -1;
@@ -163,6 +171,11 @@ class Game {
       assert(remove_comments("}").equals(""));
       assert(remove_comments("{}").equals(""));
       assert(remove_comments("xyz { jyt } kjh { bvc po5 } ").equals("xyz  kjh  "));
+      assert(remove_comments(";  \nabc\nxyz;333\n").equals("abc\nxyz"));
+      assert(remove_comments("sdjd{,,l;}; djsks\n{   ]}sjfdk ").equals("sdjdsjfdk "));
+      assert(remove_comments(";abc").equals(""));
+      assert(remove_comments(";]\na").equals("a"));
+      assert(remove_comments(";}\na").equals(""));
       assert(convert("",true) == -1);
       assert(convert("",false) == -1);
       assert(convert("x",true) == -1);
