@@ -160,13 +160,16 @@ class Game {
     if (! pawn_move) m = m.substring(1);
     if (m.length() < 2) return false;
     if (m.contains("+")) { // handles check
-      final int pos_p = m.indexOf("+");
-      if (pos_p < m.length() - 2) return false;
-      if (pos_p == m.length() - 2)
-        if (m.charAt(m.length()-1) != '+') return false;
-      m = m.substring(0,pos_p);
+      if (m.charAt(m.length()-1) != '+') return false;
+      m = m.substring(0,m.length()-1);
+      if (m.contains("+")) return false;
     }
     if (m.length() < 2) return false;
+    if (m.contains("#")) { // handles checkmate
+      if (m.charAt(m.length()-1) != '+') return false;
+      m = m.substring(0,m.length()-1);
+      if (m.contains("#")) return false;
+    }
     if (m.contains("=")) { // handles promotions
       if (! pawn_move) return false;
       if (m.length() < 4) return false;
@@ -311,7 +314,30 @@ class Game {
       assert(valid_movement("Rcc5"));
       assert(valid_movement("N7c5"));
       assert(valid_movement("Kc4xd3"));
-
+      assert(valid_movement("e2+"));
+      assert(valid_movement("c7c5+"));
+      assert(valid_movement("cc5+"));
+      assert(valid_movement("7c5+"));
+      assert(valid_movement("c4xd3+"));
+      assert(valid_movement("e8=N+"));
+      assert(valid_movement("d7xe8=N+"));
+      assert(valid_movement("Be2+"));
+      assert(valid_movement("Qc7c5+"));
+      assert(valid_movement("Rcc5+"));
+      assert(valid_movement("N7c5+"));
+      assert(valid_movement("Kc4xd3+"));
+      assert(valid_movement("e2#"));
+      assert(valid_movement("c7c5#"));
+      assert(valid_movement("cc5#"));
+      assert(valid_movement("7c5#"));
+      assert(valid_movement("c4xd3#"));
+      assert(valid_movement("e8=N#"));
+      assert(valid_movement("d7xe8=N#"));
+      assert(valid_movement("Be2#"));
+      assert(valid_movement("Qc7c5#"));
+      assert(valid_movement("Rcc5#"));
+      assert(valid_movement("N7c5#"));
+      assert(valid_movement("Kc4xd3#"));
     }
   }
 }
