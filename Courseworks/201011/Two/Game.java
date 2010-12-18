@@ -218,12 +218,18 @@ class Game {
       final String move = parts[i];
       final boolean check = move.contains("+");
       final boolean mate = move.contains("#");
+      final char check_mate = (mate) ? 'm' : (check) ? 'c' : '-';
       final boolean pawn_move = !valid_piece(move.charAt(0));
       final boolean promotion = move.contains("=");
+      final char active_colour = (white_move) ? 'w' : 'b';
       if (white_move) {
         if (move.equals(kingside_castling)) {
           if (! M.check_white_kingside_castling()) break;
-          // XXX
+          final char[] move_a = new char[3];
+          move_a[0] = active_colour;
+          move_a[1] = check_mate;
+          move_a[2] = 'k';
+          move_seq[i] = move_a;
         }
       }
       else {
