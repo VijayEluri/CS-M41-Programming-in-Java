@@ -192,13 +192,37 @@ class UseArgument {
         the code). </li>
        <li> There are many problems with this program, and we try to write a
         "perfect" version of it. </li>
-       <li> We learn
+       <li> We learn:
         <ol>
-         <li> <code>final</code> (for declaring constants) </li>
-         <li> <code>if</code> (for conditional execution) </li>
-         <li> the <code>length</code>-variable to be used with
-          <code>args</code> (finding out how many command-line arguments were
-          entered) </li>
+         <li> <code>final</code> for declaring constants: Don't use
+          <pre>
+    int a = Integer.parseInt(args[0]);
+          </pre>
+          but
+          <pre>
+    final int a = Integer.parseInt(args[0]);
+          </pre>
+          for a variable whose value shouldn't be changed anymore (i.e., we
+          have a <strong>constant</strong>).
+         </li>
+         <li> The <code>length</code>-variable to be used with
+          <code>args</code> for finding out how many command-line arguments
+          were entered:
+          <pre>
+args.length
+          </pre>
+          is an integer, namely the number of command-line arguments.
+         </li>
+         <li> <code>if</code> for conditional execution: Via
+          <pre>
+if (args.length <= 1)
+  System.err.println("ERROR[IntOpsP]: Two arguments are needed (two numbers).");
+else
+  ...
+          </pre>
+          we output an error-message in case we do not have two command-line
+          arguments.
+         </li>
          <li> <code>Integer.MIN_VALUE</code> and <code>Integer.MAX_VALUE</code>
           (to find out the range of int's) </li>
          <li> the <code>System.exit</code> function (early return with
@@ -1545,7 +1569,7 @@ resp.
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Oct 17 22:22:05 BST 2011
+Last modified: Mon Oct 17 22:31:03 BST 2011
 <!-- hhmts end -->
 
    </div>
