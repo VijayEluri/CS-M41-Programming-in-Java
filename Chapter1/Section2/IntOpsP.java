@@ -6,14 +6,14 @@
 // IntOpsP is the improved version of IntOps, now handling all errors
 // ("P" is for "perfect").
 
-// Version = 1.0
+// Version = 1.0.1
 
 public class IntOpsP {
   // Error codes:
   public static final int err_num_par = 1, err_not_int = 2;
   public static void main(final String[] args) {
     if (args.length <= 1) {
-      System.err.println("ERROR[IntOps]: Two arguments are expected (namely two numbers).");
+      System.err.println("ERROR[IntOpsP]: Two arguments are needed (two numbers).");
       System.exit(err_num_par);
     }
     try { // catching parsing errors
