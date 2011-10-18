@@ -216,28 +216,39 @@ args.length
          <li> <code>if</code> for conditional execution: Via
           <pre>
 if (args.length <= 1)
-  System.err.println("ERROR[IntOpsP]: Two arguments are needed (two numbers).");
+  System.err.println("ERROR[IntOpsI]: Two arguments are needed (two numbers).");
 else
   ...
           </pre>
           we output an error-message in case we do not have two command-line
           arguments.
          </li>
-         <li> <code>Integer.MIN_VALUE</code> and <code>Integer.MAX_VALUE</code>
-          (to find out the range of int's) </li>
-         <li> the <code>System.exit</code> function (early return with
-          exit-code) </li>
-         <li> conditional expressions (to initialise variables in one go)
+	 <li> <a href="CS-M41_Programs/Chapter1/Section2/IntOpsI.java">Here</a>
+	  is the improved version. </li>
+	 <li> There are further serious problems with input handling:
+	  overflow and non-integer input. They can be handled using the
+	  following constructions:
+	  <ol>
+	   <li> <code>Integer.MIN_VALUE</code> and
+	    <code>Integer.MAX_VALUE</code> for finding out the range of int's.
+	   </li>
+	   <li> <code>try ... catch</code> for error handling via catching
+	    exceptions. </li>
+	  </ol>
+	 </li>
+	 <li> Finally we have problems with the structure of the code: too
+	  many nested if-then-else make the code messy, and it would be good
+	  if we had also conditional variable initialisation:
+	  <ol>
+	   <li> The <code>System.exit</code> function allows early return with
+	    an exit-code. </li>
+	   <li> Conditional expressions allow to have several cases in the
+	    initialisaton of variables. </li>
+	  </ol>
          </li>
-         <li> <code>try ... catch</code> (error handling via catching
-          exceptions). </li>
-        </ol>
        </li>
        <li> <a href="CS-M41_Programs/Chapter1/Section2/IntOpsP.java">Here</a>
-        is the improved version. </li>
-       <li> Actually, this improved version is in one respect more advanced
-        than what we discussed in the lab --- can you spot the difference?
-       </li>
+        is the fully improved version. </li>
       </ol>
      </li>
      <li> Friday (21/10/2011): Section 1.3
@@ -1569,7 +1580,7 @@ resp.
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Oct 17 22:31:03 BST 2011
+Last modified: Tue Oct 18 18:34:37 BST 2011
 <!-- hhmts end -->
 
    </div>
