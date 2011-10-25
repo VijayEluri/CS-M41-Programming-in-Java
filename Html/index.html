@@ -1349,6 +1349,9 @@ x * y mod n := ((x % n) * (y % n)) % n
 0
       </pre>
      </li>
+     <li> A final remark: Due to the deficient handling of negative numbers
+      in Java w.r.t. the remainder-operation, we only consider non-negative
+      integers here. </li>
     </ol>
    </li>
    <li> Specification of <code>ModularPower</code>:
@@ -1371,8 +1374,10 @@ x * y mod n := ((x % n) * (y % n)) % n
 1
 > ModularPower 2 3 5
 3
-> ModularPower -3 3 5
-3
+> ModularPower 2 1234567890 777777777
+383814208
+> ModularPower 1000000000 56789 1000000001
+1000000000
       </pre>
      </li>
      <li> Note that in the non-error case just a number is output. </li>
@@ -1394,15 +1399,19 @@ x * y mod n := ((x % n) * (y % n)) % n
 > DiscreteLogarithm 1 2 2
 0
 > DiscreteLogarithm 0 2 2
--1
+1
 > DiscreteLogarithm 5 2 7
 -1
 > DiscreteLogarithm 5 3 7
 5
 > DiscreteLogarithm 2 3 5
 3
-> DiscreteLogarithm -3 3 5
-3
+> DiscreteLogarithm 3 2 777777777
+-1
+> DiscreteLogarithm 383814208 2 777777777
+3690
+> DiscreteLogarithm 3 10 1111111181
+898664729
       </pre>
      </li>
      <li> Note that, again, in the non-error case no text is output. </li>
@@ -1417,7 +1426,7 @@ x * y mod n := ((x % n) * (y % n)) % n
      <li> Note that the result is always between 1 and n (inclusive). </li>
      <li> Some examples:
       <pre>
-> ElementOrder 0 0
+> ElementOrder 0 1
 1
 > ElementOrder 1 5
 1
@@ -1425,6 +1434,12 @@ x * y mod n := ((x % n) * (y % n)) % n
 4
 > ElementOrder 2 8
 3
+> ElementOrder 6 10000019
+10000018
+> ElementOrder 5 100000007
+100000006
+> ElementOrder 1000000 1000001
+2
       </pre>
      </li>
     </ol>
@@ -1675,7 +1690,7 @@ resp.
     <address><a href="mailto: O . K u l l m a n n @ S w a n s e a . a c . u k ">Oliver Kullmann</a></address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Oct 25 14:27:50 BST 2011
+Last modified: Tue Oct 25 15:38:49 BST 2011
 <!-- hhmts end -->
 
    </div>
