@@ -10,20 +10,19 @@ class ModularPower {
         args.length + " many.");
       System.exit(errcode_args);
     }
-    final int a = Integer.parseInt(args[0]);
-    final int e = Integer.parseInt(args[1]);
     final int n = Integer.parseInt(args[2]);
     if (n <= 0) {
       System.err.println(errmess + "n must be positive, while it is " + n + ".");
       System.exit(errcode_n);
     }
-    final int a_red = a % n;
     if (n == 1) {
       System.out.println(0);
       return;
     }
+    final int a = Integer.parseInt(args[0]) % n;
+    final int e = Integer.parseInt(args[1]);
     int power = 1;
-    for (int i = 0; i < e; ++i) power = (power * a_red) % n;
+    for (int i = 0; i < e; ++i) power = (power * a) % n;
     System.out.println(power);
   }
 }
