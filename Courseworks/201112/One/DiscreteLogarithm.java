@@ -21,7 +21,8 @@ class DiscreteLogarithm {
     }
     final int a = Integer.parseInt(args[0]) % n;
     final int b = Integer.parseInt(args[1]) % n;
-    int exp = 0, power = 1;
+    int exp = 0;
+    long power = 1;
     while (power != a && exp++ < n) power = (power * b) % n;
     if (power == a) System.out.println(exp);
     else System.out.println(-1);

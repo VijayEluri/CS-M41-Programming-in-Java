@@ -21,7 +21,7 @@ class ModularPower {
     }
     final int a = Integer.parseInt(args[0]) % n;
     final int e = Integer.parseInt(args[1]);
-    int power = 1;
+    long power = 1;
     for (int i = 0; i < e; ++i) power = (power * a) % n;
     System.out.println(power);
   }

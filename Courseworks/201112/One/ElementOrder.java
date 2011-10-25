@@ -18,8 +18,13 @@ class ElementOrder {
     final int a = Integer.parseInt(args[0]) % n;
     final boolean[] found = new boolean[n];
     found[a] = true;
-    int order = 1, power = (a*a) % n;
-    while (! found[power]) { ++order; found[power] = true; power = (power * a) % n; }
+    int order = 1;
+    long power = ((long) a * a) % n;
+    while (! found[(int) power]) {
+      ++order;
+      found[(int) power] = true;
+      power = (power * a) % n;
+    }
     System.out.println(order);
   }
 }
