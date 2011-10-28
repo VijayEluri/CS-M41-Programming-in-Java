@@ -1,7 +1,11 @@
 // Oliver Kullmann, 14.12.2009 (Swansea)
 
+/* Remark: This solution uses no assignments; with assignments it gets a
+   bit easier.
+*/
+
 class ReadThreeIntegers {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final int a = Integer.parseInt(args[0]);
     final int b = Integer.parseInt(args[1]);
     final int c = Integer.parseInt(args[2]);
