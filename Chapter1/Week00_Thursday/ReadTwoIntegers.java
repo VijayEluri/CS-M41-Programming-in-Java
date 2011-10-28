@@ -6,6 +6,7 @@
    - The "+" as argument of println means concatenation of string.
      So println(a + " " + b) is the same as the sequence
        print(a); print(" "); println(b);
+    - A better solution checks the number of arguments.
 */
 
 class ReadTwoIntegers {

@@ -1,7 +1,9 @@
 // Oliver Kullmann, 14.12.2009 (Swansea)
 
-/* Remark: This solution uses no assignments; with assignments it gets a
-   bit easier.
+/* Remarks:
+    - This solution uses no assignments; with assignments it gets a
+      bit easier.
+    - A better solution checks the number of arguments.
 */
 
 class ReadThreeIntegers {
