@@ -18,16 +18,12 @@ class CouponCollector {
         System.exit(errcode_N);
       }
       int cardcnt = 0;
-      int valcnt = 0;
       // do simulation:
-      boolean[] found = new boolean[N];
-      while (valcnt < N) {
-        final int val = (int) (Math.random() * N);
-        ++cardcnt;
-        if (! found[val]) {
-      	  ++valcnt;
-	  found[val] = true;
-        }
+      {int valcnt = 0;
+       for (boolean[] found = new boolean[N]; valcnt < N; ++cardcnt) {
+         final int val = (int) (Math.random() * N);
+         if (! found[val]) { ++valcnt; found[val] = true; }
+       }
       }
       System.out.println("Measured:    " + cardcnt);
       double sum = 0;
