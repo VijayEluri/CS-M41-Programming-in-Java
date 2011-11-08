@@ -2,8 +2,8 @@
 
 class RandomSeq { 
   public static void main(final String[] args) { 
-  final int N = Integer.parseInt(args[0]);
-  for (int i = 0; i < N; ++i)
+  final long N = Long.parseLong(args[0]);
+  for (long i = 0; i < N; ++i)
     System.out.println(Math.random());
   }
 }
