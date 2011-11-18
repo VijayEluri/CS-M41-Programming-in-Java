@@ -14,7 +14,7 @@ class Average {
       }
     }
     catch (RuntimeException e) {
-      StdOut.println("ERROR[Average]: Input errror.");
+      StdOut.println("ERROR[Average]: Input error.");
       return;
     }
 

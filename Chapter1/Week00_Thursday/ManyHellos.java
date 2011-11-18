@@ -6,13 +6,17 @@
 */
 
 class ManyHellos {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
   // print 5 times using "while":
   int counter = 5;
   while (counter-- > 0)
     System.out.println("Hello, World!");
   // now printing 5 times using "for" (this is better here):
   for (int i = 1; i <= 5; ++i)
+    System.out.println("Hello, World!");
+  }
+  // an improvement (more idiomatic, and avoiding potential overflow):
+  for (int i = 0; i < 5; ++i)
     System.out.println("Hello, World!");
   }
 }

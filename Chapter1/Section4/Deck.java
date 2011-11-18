@@ -9,7 +9,7 @@ class Deck {
     final int nr_ranks = rank.length;
     final int nr_cards = nr_suits * nr_ranks;
 
-    String deck[] = new String[nr_cards];
+    final String deck[] = new String[nr_cards];
     for (int r = 0, base_index = 0; r < nr_ranks; ++r, base_index+=nr_suits) {
       for (int s=0; s < nr_suits; ++s)
         deck[base_index+s] = rank[r] + " of " + suit[s];

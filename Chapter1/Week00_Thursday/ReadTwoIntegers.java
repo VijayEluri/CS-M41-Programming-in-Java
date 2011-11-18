@@ -6,10 +6,11 @@
    - The "+" as argument of println means concatenation of string.
      So println(a + " " + b) is the same as the sequence
        print(a); print(" "); println(b);
+    - A better solution checks the number of arguments.
 */
 
 class ReadTwoIntegers {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final int a = Integer.parseInt(args[0]);
     final int b = Integer.parseInt(args[1]);
     if (a < b)
