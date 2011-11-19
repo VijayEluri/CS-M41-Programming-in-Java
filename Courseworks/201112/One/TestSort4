@@ -5,15 +5,25 @@ set -o errexit
 set -o nounset
 
 script_name="TestSort4"
-version_number=0.0.6
+version_number=0.0.8
 
-cat TestcasesSort4 | while read line; do
-  input=${line}
-  computed_result=$(java Sort4 ${input})
-  read line
-  expected_result=${line}
-  if [[ "${computed_result}" != "${expected_result}" ]]; then
-    echo -e "ERROR[${script_name}]: False result on input \"${input}\"."
-    exit 1
-  fi
+programs=*/Sort4.class
+
+for P in ${programs}; do
+  dir=$(dirname ${P})
+  echo ${dir}
+  cd ${dir}
+  errors=0
+  cat ../TestcasesSort4 | while read line; do
+    input=${line}
+    computed_result=$(java Sort4 ${input})
+    read line
+    expected_result=${line}
+    if [[ "${computed_result}" != "${expected_result}" ]]; then
+      echo -e " False result on input \"${input}\"."
+      let ++errors
+    fi
+  done
+  echo "errors=${errors}"
+  echo
 done
