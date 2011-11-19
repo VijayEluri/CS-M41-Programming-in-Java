@@ -15,9 +15,8 @@ class Sort4 {
 
     // Sort a, b, c
     if (b < a) { final int t=a; a=b; b=t; }
-    if (c < b)
-      if (c < a) { final int t=a; a=c; c=t; }
-      else { final int t=b; b=c; c=t; }
+    if (c < b) { final int t=b; b=c; c=t; }
+    if (b < a) { final int t=a; a=b; b=t; }
     assert(a <= b);
     assert(b <= c);
     
