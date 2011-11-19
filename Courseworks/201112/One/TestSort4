@@ -5,7 +5,7 @@ set -o errexit
 set -o nounset
 
 script_name="TestSort4"
-version_number=0.0.8
+version_number=0.1
 
 programs=*/Sort4.class
 
@@ -14,16 +14,17 @@ for P in ${programs}; do
   echo ${dir}
   cd ${dir}
   errors=0
-  cat ../TestcasesSort4 | while read line; do
+  while read line; do
     input=${line}
     computed_result=$(java Sort4 ${input})
     read line
     expected_result=${line}
     if [[ "${computed_result}" != "${expected_result}" ]]; then
       echo -e " False result on input \"${input}\"."
-      let ++errors
+      let "++errors"
     fi
-  done
+  done < ../TestcasesSort4
   echo "errors=${errors}"
   echo
+  cd ..
 done
