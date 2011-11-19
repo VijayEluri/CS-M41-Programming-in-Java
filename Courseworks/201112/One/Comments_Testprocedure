@@ -1,0 +1,8 @@
+Oliver Kullmann, 19.11.2011 (Swansea)
+
+1) Sort4
+
+Production of "TestcasesSort4" by Maxima (OKlibrary) via
+
+with_stdout("TestcasesSort4", for L in all_transformations_l_l([1,2,3,4]) do (print(apply(sconcats,L)), print(apply(sconcats,sort(L)))));
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+# Oliver Kullmann, 19.11.2011 (Swansea)
+
+set -o errexit
+set -o nounset
+
+script_name="TestSort4"
+version_number=0.0.6
+
+cat TestcasesSort4 | while read line; do
+  input=${line}
+  computed_result=$(java Sort4 ${input})
+  read line
+  expected_result=${line}
+  if [[ "${computed_result}" != "${expected_result}" ]]; then
+    echo -e "ERROR[${script_name}]: False result on input \"${input}\"."
+    exit 1
+  fi
+done
