@@ -3,7 +3,7 @@ SHELL = /bin/bash
 
 .PHONY : all clean cleanall
 
-programs = $(wildcard *.java)
+programs = $(wildcard */*.java)
 programs := $(programs:.java=)
 classfiles := $(addsuffix .class, $(programs))
 
