@@ -10,7 +10,7 @@ classfiles := $(addsuffix .class, $(programs))
 all : $(classfiles)
 
 $(classfiles) : %.class : %.java
-	javac $<
+	- javac $<
 
 clean :
 	- rm $(classfiles)
