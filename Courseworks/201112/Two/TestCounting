@@ -1,0 +1,25 @@
+#!/bin/bash
+# Oliver Kullmann, 20.11.2011 (Swansea)
+
+set -o errexit
+set -o nounset
+
+script_name="TestCounting"
+version_number=0.0.6
+
+testee=Counting
+testcases="Counting_cases"
+
+errors=0
+while read line; do
+  input=${line}
+  computed_result=$(java ${testee} ${input})
+  read line
+  expected_result=${line}
+  if [[ "${computed_result}" != "${expected_result}" ]]; then
+    echo -e " False result on input \"${input}\"."
+    let "++errors"
+  fi
+done < ${testcases}
+echo "errors=${errors}"
+echo
