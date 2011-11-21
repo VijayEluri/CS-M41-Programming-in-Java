@@ -76,7 +76,14 @@ class Field {
 
   public static void output_field(final int[][] field) {
     assert(valid_field(field));
+    final int M = field.length, N = field[0].length;
     // XXX to be completed XXX
+  }
+  private static String field(final int f) {
+    assert(f == fe || f == f1 || f == f2);
+    if (f == fe) return " ";
+    if (f == f1) return "X";
+    return "0";
   }
 
   public static void output_movelist(final int[][] move_list) {
