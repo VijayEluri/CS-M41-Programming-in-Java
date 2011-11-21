@@ -62,9 +62,10 @@ class GeneralisedTicTacToe {
     assert(Field.valid_field(field));
 
     final int[][] move_list = new int[number_cells][2];
-    int move_index = 0;
-    assert(move_list[move_index][0] == 0);
-    assert(move_list[move_index][1] == 0);
+    final int[] move_index = new int[1];
+    move_index[0] = 0;
+    assert(move_list[move_index[0]][0] == 0);
+    assert(move_list[move_index[0]][1] == 0);
 
     final int[][][] rows = Rows.list_rows(K,M,N,R);
     assert(rows.length == R);

@@ -44,14 +44,19 @@ class Field {
     return valid_coordinates(field, i, j) && field[i-1][j-1] == fe;
   }
 
-  // enters a valid move into the field and into the move-list:
-  public static void enter_move(final int[][] field, final int[][] move_list,
-  final int i, final int j, final int player, final int move_index) {
+  // enters a valid move into the field and into the move-list, with update
+  // of move_index:
+  public static void enter_move(final int[][] field, final int i, final int j, final int player, final int[][] move_list, final int[] move_index) {
     assert(valid_move(field, i, j));
     assert(player == f1 || player == f2);
     field[i-1][j-1] = player;
-    move_list[move_index][0] = i;
-    move_list[move_index][1] = j;
+    assert(move_index != null);
+    assert(move_index.length == 1);
+    assert(move_list != null);
+    assert(move_index[0] < move_list.length);
+    move_list[move_index[0]][0] = i;
+    move_list[move_index[0]][1] = j;
+    ++move_index[0];
   }
 
   public static void output_field(final int[][] field) {
