@@ -8,8 +8,10 @@ class GeneralisedTicTacToe {
   public static final String message_win_2 = "The second player wins.";
   public static final String message_error_exit = "Exiting after input errors.";
   public static final String message_not_implemented = "Functionality not implemented.";
-
-  public static final int number_parameters = 4;
+  public static final String message_win1_always = "The first player will always win after the first move.";
+  public static final String message_no_win = "Every game must end in a draw.";
+  public static final String message_output_field = "The final position is:";
+  public static final String message_output_movelist = "The complete list of moves is:";
 
   public static final int mode_hh = 1;
   public static final int mode_hc = 2;
@@ -35,9 +37,42 @@ class GeneralisedTicTacToe {
     final int mode = parameters[3];
     assert(mode == mode_hh || mode == mode_hc || mode == mode_ch || mode == mode_cc);
 
+    if (K == 1) {
+      System.out.println(message_win1_always);
+      return;
+    }
+    if (M < K && N < K) {
+      System.out.println(message_no_win);
+      return;
+    }
+    final int number_cells = M*N;
+    final int R = Counting.number_rows(K,M,N);
+    assert(R >= 1);
+
+    final int[][] field = Field.empty_field(M,N);
+    assert(field.length == M);
+    assert(field[0].length == N);
+    assert(Field.valid_field(field));
+
+    final int[][] move_list = new int[number_cells][2];
+    int move_index = 0;
+    assert(move_list[move_index][0] == 0);
+    assert(move_list[move_index][1] == 0);
+
+    final int[][][] rows = Rows.list_rows(K,M,N,R);
+    assert(rows.length == R);
+    assert(Rows.check_list_rows(rows, field));
+
+    // XXX to be completed XXX
+    System.out.println(message_not_implemented); // yet nothing implemented
+    boolean first_player_moves = true;
     // XXX to be completed XXX
 
-    System.out.println(message_not_implemented); // yet nothing implemented
+    System.out.println(message_output_field);
+    Field.output_field(field);
+    System.out.println(message_output_movelist);
+    Field.output_movelist(move_list);
+
     return;
   }
 }
