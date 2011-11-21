@@ -22,6 +22,8 @@ class GeneralisedTicTacToe {
   public static void main(final String[] args) {
     System.out.println(message_start);
 
+    // Parameter reading
+
     final int[] parameters = Parameters.process_parameters(args);
     if (parameters == null) {
       System.err.println(message_error_exit);
@@ -37,6 +39,8 @@ class GeneralisedTicTacToe {
     final int mode = parameters[3];
     assert(mode == mode_hh || mode == mode_hc || mode == mode_ch || mode == mode_cc);
 
+    // Handling of trivial cases
+
     if (K == 1) {
       System.out.println(message_win1_always);
       return;
@@ -45,6 +49,9 @@ class GeneralisedTicTacToe {
       System.out.println(message_no_win);
       return;
     }
+
+    // Preparing fundamental data and data structures
+
     final int number_cells = M*N;
     final int R = Counting.number_rows(K,M,N);
     assert(R >= 1);
@@ -63,16 +70,23 @@ class GeneralisedTicTacToe {
     assert(rows.length == R);
     assert(Rows.check_list_rows(rows, field));
 
+    final int[][][] occurrences = Occurrences.occurrences_field(rows, field);
+    assert(occurrences.length == M);
+    assert(occurrences[0].length == N);
+    assert(Occurrences.consistency_check(rows, occurrences));
+
+    // Reading resp. computing the moves
+
     // XXX to be completed XXX
     System.out.println(message_not_implemented); // yet nothing implemented
     boolean first_player_moves = true;
     // XXX to be completed XXX
 
+    // Final output
+
     System.out.println(message_output_field);
     Field.output_field(field);
     System.out.println(message_output_movelist);
     Field.output_movelist(move_list);
-
-    return;
   }
 }
