@@ -83,8 +83,10 @@ class GeneralisedTicTacToe {
 
     // Reading resp. computing the moves
 
-    // XXX to be completed XXX
-    System.out.println(message_not_implemented); // yet nothing implemented
+    if (mode != mode_hh) {
+      System.out.println(message_not_implemented);
+      return;
+    }
     boolean first_player_moves = true;
     // XXX
     {
