@@ -50,12 +50,12 @@ class Field {
   public static int enter_move(
       final int[][] field,
       final int i, final int j,
-      final int player,
+      final boolean first_player,
       final int[][] move_list, final int[] move_index,
       final int[][][] occurrences,
       final int[][] occupation) {
     assert(valid_move(field, i, j));
-    assert(player == f1 || player == f2);
+    final int player = (first_player) ? f1 : f2;
     field[i-1][j-1] = player;
     assert(move_index != null);
     assert(move_index.length == 1);
@@ -68,7 +68,7 @@ class Field {
     assert(occ != null);
     int max = Integer.MIN_VALUE;
     for (int r = 0; r < occ.length; ++r) {
-      final int new_length = Occupation.update(occupation, r, player == f1);
+      final int new_length = Occupation.update(occupation, r, first_player);
       if (new_length > max) max = new_length;
     }
     return max;
