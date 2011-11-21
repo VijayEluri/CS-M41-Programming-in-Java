@@ -86,6 +86,13 @@ class GeneralisedTicTacToe {
     // XXX to be completed XXX
     System.out.println(message_not_implemented); // yet nothing implemented
     boolean first_player_moves = true;
+    // XXX
+    {
+      final int[] reading = Input.read_move();
+      // XXX
+      final int max = Field.enter_move(field, reading[0], reading[1], first_player_moves, move_list, move_index, occurrences, occupation);
+      // XXX
+    }
     // XXX to be completed XXX
 
     // Final output
