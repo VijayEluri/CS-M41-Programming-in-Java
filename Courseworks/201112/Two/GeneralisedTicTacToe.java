@@ -76,6 +76,11 @@ class GeneralisedTicTacToe {
     assert(occurrences[0].length == N);
     assert(Occurrences.consistency_check(rows, occurrences));
 
+    final int[][] occupation = Occupation.occupation_vector(R);
+    assert(Occupation.valid_occupation(occupation, K));
+    assert(occupation[0][0] == 0);
+    assert(occupation[0][1] == 0);
+
     // Reading resp. computing the moves
 
     // XXX to be completed XXX

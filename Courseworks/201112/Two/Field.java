@@ -37,16 +37,23 @@ class Field {
 
   public static boolean valid_coordinates(final int[][] field, final int i, final int j) {
     assert(valid_field(field));
-     return i >= 1 && j >= 1 && i <= field.length && j <= field[0].length;
-   }
+    return i >= 1 && j >= 1 && i <= field.length && j <= field[0].length;
+  }
 
   public static boolean valid_move(final int[][] field, final int i, final int j) {
     return valid_coordinates(field, i, j) && field[i-1][j-1] == fe;
   }
 
   // enters a valid move into the field and into the move-list, with update
-  // of move_index:
-  public static void enter_move(final int[][] field, final int i, final int j, final int player, final int[][] move_list, final int[] move_index) {
+  // of move_index and occupation; returns the maximum of the number of fields
+  // occupied by the player for the involved rows:
+  public static int enter_move(
+      final int[][] field,
+      final int i, final int j,
+      final int player,
+      final int[][] move_list, final int[] move_index,
+      final int[][][] occurrences,
+      final int[][] occupation) {
     assert(valid_move(field, i, j));
     assert(player == f1 || player == f2);
     field[i-1][j-1] = player;
@@ -57,6 +64,14 @@ class Field {
     move_list[move_index[0]][0] = i;
     move_list[move_index[0]][1] = j;
     ++move_index[0];
+    final int[] occ = occurrences[i-1][j-1];
+    assert(occ != null);
+    int max = Integer.MIN_VALUE;
+    for (int r = 0; r < occ.length; ++r) {
+      final int new_length = Occupation.update(occupation, r, player == f1);
+      if (new_length > max) max = new_length;
+    }
+    return max;
   }
 
   public static void output_field(final int[][] field) {
