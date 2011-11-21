@@ -39,6 +39,8 @@ class Counting {
     // upward and downward sector.
   }
 
+
+  // for testing:
   public static void main(final String[] args) {
     final int k = Integer.parseInt(args[0]);
     final int m = Integer.parseInt(args[1]);
