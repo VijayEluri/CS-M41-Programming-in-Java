@@ -90,7 +90,7 @@ class GeneralisedTicTacToe {
     boolean first_player_moves = true;
     // XXX
     {
-      final int[] reading = Input.read_move();
+      final int[] reading = Input.read_move(M,N);
       // XXX
       final int max = Field.enter_move(field, reading[0], reading[1], first_player_moves, move_list, move_index, occurrences, occupation);
       // XXX
