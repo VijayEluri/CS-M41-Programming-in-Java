@@ -12,23 +12,21 @@ class Rows {
     int row_index = 0;
     // horizontal rows:
     for (int i = 0; i < m; ++i)
-      for (int j = 0; j <= n-k; ++j) {
+      for (int j = 0; j <= n-k; ++j, ++row_index) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
           rows[row_index][p][0] = i;
           rows[row_index][p][1] = j+p;
         }
-        ++row_index;
       }
     // vertical rows:
     for (int j = 0; j < n; ++j)
-      for (int i = 0; i <= m-k; ++i) {
+      for (int i = 0; i <= m-k; ++i, ++row_index) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
           rows[row_index][p][0] = i+p;
           rows[row_index][p][1] = j;
         }
-        ++row_index;
       }
     // diagonal rows, top-left to bottom-right:
     for (int i = 0; i < m+n-1; ++i) {
@@ -38,16 +36,30 @@ class Rows {
       final int br_j = Math.min(i,n-1);
       final int length = br_i - tl_i + 1;
       assert(length == br_j - tl_j + 1);
-      for (int d = 0; d <= length-k; ++d) {
+      for (int d = 0; d <= length-k; ++d, ++row_index) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
           rows[row_index][p][0] = tl_i + p;
           rows[row_index][p][1] = tl_j + p;
         }
-        ++row_index;
       }
     }
-    // XXX to be completed XXX
+    // diagonal rows, bottom-left to top-right:
+    for (int i = 0; i < m+n-1; ++i) {
+      final int bl_i = Math.min(i,m-1);
+      final int bl_j = Math.max(i-m+1,0);
+      final int tr_i = Math.max(i-n+1,0);
+      final int tr_j = Math.min(i,n-1);
+      final int length = bl_i - tr_i + 1;
+      assert(length == tr_j - bl_j + 1);
+      for (int d = 0; d <= length-k; ++d, ++row_index) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = bl_i - p;
+          rows[row_index][p][1] = bl_j + p;
+        }
+      }
+    }
     assert(row_index == r);
     return rows;
   }
@@ -66,7 +78,7 @@ class Rows {
       for (int p = 0; p < K; ++p) {
         if (lr[r][p] == null) return false;
         if (lr[r][p].length != 2) return false;
-        if (! Field.valid_coordinates(field, lr[r][p][0], lr[r][p][1])) return false;
+        if (! Field.valid_coordinates(field, lr[r][p][0]+1, lr[r][p][1]+1)) return false;
       }
     }
     return true;
