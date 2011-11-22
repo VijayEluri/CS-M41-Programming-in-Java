@@ -9,7 +9,46 @@ class Rows {
     assert(k <= m || k <= n);
     assert(r >= 1);
     int[][][] rows = new int[r][][];
+    int row_index = 0;
+    // horizontal rows:
+    for (int i = 0; i < m; ++i)
+      for (int j = 0; j <= n-k; ++j) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = i;
+          rows[row_index][p][1] = j+p;
+        }
+        ++row_index;
+      }
+    // vertical rows:
+    for (int j = 0; j < n; ++j)
+      for (int i = 0; i <= m-k; ++i) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = i+p;
+          rows[row_index][p][1] = j;
+        }
+        ++row_index;
+      }
+    // diagonal rows, left-top to right-bottom:
+    for (int i = 0; i < m+n-1; ++i) {
+      final int lt_i = Math.max(m-1-i,0);
+      final int lt_j = Math.max(i-m+1,0);
+      final int rb_i = m-1-Math.max(i-n+1,0);
+      final int rb_j = Math.min(i,n-1);
+      final int length = rb_i - lt_i + 1;
+      assert(length == rb_j - lt_j + 1);
+      for (int d = 0; d <= length-k; ++d) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = lt_i + p;
+          rows[row_index][p][1] = lt_j + p;
+        }
+        ++row_index;
+      }
+    }
     // XXX to be completed XXX
+    assert(row_index == r);
     return rows;
   }
 
