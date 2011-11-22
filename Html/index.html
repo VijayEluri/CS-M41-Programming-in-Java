@@ -1498,7 +1498,42 @@ x * y mod n := ((x % n) * (y % n)) % n
    <li> Optional extensions consider some basic techniques for machine-playing.
    </li>
    <li> Precise instructions will be given for the decomposition of this
-    task into small tasks (via functions). </li>
+    task into small tasks (via functions).
+    <ol>
+     <li> Code will be given, which contains all the major functions. </li>
+     <li> Also enough code to help understanding how this is supposed to work. </li>
+     <li> Open places are marked by "XXX" (to be filled out). </li>
+     <li> The given structure has to be followed: on the one hand, otherwise the task
+      would be very hard, and on the other hand, in almost all professional situations
+      also most of the code (and especially the general structure) is already given.
+     </li>
+    </ol>
+   </li>
+   <li> The main program:
+    <ol>
+     <li> The command-line call is <code>GeneralisedTicTacToe K M N hh/hc/ch/cc</code>,
+      for example for two humans playing ordinary tic-tac-toe:
+      <pre>
+> java -ea GeneralisedTicTacToe 3 3 3 hh
+      </pre>
+      </li>
+     <li> Note the option "-ea" here, which enables assertions:
+      <ul>
+       <li> The given code contains many assertions, and they are enabled with this
+	option. </li>
+       <li> The assertions spell out (most of) the prerequisites for function calls and
+	executions of instructions which might fail. </li>
+       <li> In debug-mode these assertions should be enabled. </li>
+       <li> While finally, when the program really is used, the assertions are not to
+	be activated (since they can require long run-times). </li>
+      </ul>
+     </li>
+     <li>  In hh-mode (human-human) your program then reads the moves of the two players,
+      handling appropriately (all!) input errors, and determines the winner. </li>
+     <li> Also the intermediate and final positions are to be displayed (simple text modus).
+     </li>
+    </ol>
+   </li>
   </ul>
 
 
@@ -1534,7 +1569,7 @@ x * y mod n := ((x % n) * (y % n)) % n
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Nov 22 15:31:12 GMT 2011
+Last modified: Tue Nov 22 15:51:09 GMT 2011
 <!-- hhmts end -->
 
    </div>
