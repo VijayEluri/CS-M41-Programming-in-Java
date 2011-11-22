@@ -35,11 +35,13 @@ class Field {
     return e == fe || e == f1 || e == f2;
   }
 
+  // these are the "user"-coordinates, and thus 1-based:
   public static boolean valid_coordinates(final int[][] field, final int i, final int j) {
     assert(valid_field(field));
     return i >= 1 && j >= 1 && i <= field.length && j <= field[0].length;
   }
 
+  // i, j are "user-coordinates", and thus 1-based:
   public static boolean valid_move(final int[][] field, final int i, final int j) {
     return valid_coordinates(field, i, j) && field[i-1][j-1] == fe;
   }
@@ -74,6 +76,7 @@ class Field {
     return max;
   }
 
+  // printing out a field:
   public static void output_field(final int[][] field) {
     assert(valid_field(field));
     final int M = field.length, N = field[0].length;
@@ -96,6 +99,7 @@ class Field {
     return "0";
   }
 
+  // printing out a move-list:
   public static void output_movelist(final int[][] move_list) {
     assert(move_list != null);
     final int number_moves = move_list.length;
