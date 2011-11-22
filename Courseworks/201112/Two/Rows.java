@@ -30,19 +30,19 @@ class Rows {
         }
         ++row_index;
       }
-    // diagonal rows, left-top to right-bottom:
+    // diagonal rows, top-left to bottom-right:
     for (int i = 0; i < m+n-1; ++i) {
-      final int lt_i = Math.max(m-1-i,0);
-      final int lt_j = Math.max(i-m+1,0);
-      final int rb_i = m-1-Math.max(i-n+1,0);
-      final int rb_j = Math.min(i,n-1);
-      final int length = rb_i - lt_i + 1;
-      assert(length == rb_j - lt_j + 1);
+      final int tl_i = Math.max(m-1-i,0);
+      final int tl_j = Math.max(i-m+1,0);
+      final int br_i = m-1-Math.max(i-n+1,0);
+      final int br_j = Math.min(i,n-1);
+      final int length = br_i - tl_i + 1;
+      assert(length == br_j - tl_j + 1);
       for (int d = 0; d <= length-k; ++d) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
-          rows[row_index][p][0] = lt_i + p;
-          rows[row_index][p][1] = lt_j + p;
+          rows[row_index][p][0] = tl_i + p;
+          rows[row_index][p][1] = tl_j + p;
         }
         ++row_index;
       }
