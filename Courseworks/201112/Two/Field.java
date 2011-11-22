@@ -77,11 +77,21 @@ class Field {
   public static void output_field(final int[][] field) {
     assert(valid_field(field));
     final int M = field.length, N = field[0].length;
-    // XXX to be completed XXX
+    final int horiz_spaces = (N <= 9) ? 1 : (N <= 99) ? 2 : 3;
+    final int vert_spaces = (M <= 9) ? 1 : (M <= 99) ? 2 : 3;
+    StdOut.printf("%" + (vert_spaces+2) + "s", " ");
+    for (int j = 0; j < N; ++j) StdOut.printf("%" + horiz_spaces + "s", j+1);
+    System.out.println();
+    for (int i = 0; i < M; ++i) {
+      StdOut.printf("%" + vert_spaces + "d: ",i+1);
+      for (int j = 0; j < N; ++j) StdOut.printf("%" + horiz_spaces + "s", cell(field[i][j]));
+      System.out.println();
+    }
+    System.out.println();
   }
-  private static String field(final int f) {
+  private static String cell(final int f) {
     assert(f == fe || f == f1 || f == f2);
-    if (f == fe) return " ";
+    if (f == fe) return ".";
     if (f == f1) return "X";
     return "0";
   }
