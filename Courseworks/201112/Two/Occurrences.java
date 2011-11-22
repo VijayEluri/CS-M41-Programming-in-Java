@@ -7,8 +7,23 @@ class Occurrences {
     assert(Rows.check_list_rows(rows, field));
     final int M = field.length;
     final int N = field[0].length;
-    int[][][] occ = new int[M][N][];
-    // XXX to be completed XXX
+    final int R = rows.length;
+    int[][][] occ = new int[M][N][R];
+    int[][] curr_index = new int[M][N];
+    for (int r = 0; r < R; ++r)
+      for (int p = 0; p < rows[r].length; ++p) {
+        final int i = rows[r][p][0];
+        final int j = rows[r][p][1];
+        occ[i][j][ curr_index[i][j]++ ] = r;
+      }
+    // resizing the occurrence-arrays to the actual lengths:
+    for (int i = 0; i < M; ++i)
+      for (int j = 0; j < N; ++j) {
+        final int length = curr_index[i][j];
+        int[] copy = new int[length];
+        for (int l = 0; l < length; ++l) copy[l] = occ[i][j][l];
+        occ[i][j] = copy;
+      }
     return occ;
   }
 
