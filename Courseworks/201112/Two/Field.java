@@ -97,6 +97,17 @@ class Field {
   }
 
   public static void output_movelist(final int[][] move_list) {
-    // XXX to be completed XXX
+    assert(move_list != null);
+    final int number_moves = move_list.length;
+    for (int m = 0; m < number_moves; ++m) {
+      assert(move_list[m] != null);
+      assert(move_list[m].length == 2);
+      final int i = move_list[m][0];
+      assert(i >= 1);
+      final int j = move_list[m][1];
+      assert(j >= 1);
+      final String label = (m%2 == 0) ? "I" : "II";
+      StdOut.printf("%3d.%-2s: %2d %2d\n", m/2+1, label, i, j);
+    }
   }
 }
