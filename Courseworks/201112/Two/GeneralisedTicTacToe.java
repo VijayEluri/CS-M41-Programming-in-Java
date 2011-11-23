@@ -4,6 +4,11 @@ class GeneralisedTicTacToe {
 
   public static final String program_name = "GeneralisedTicTacToe";
   public static final String message_start = "Starting " + program_name + ".";
+  public static final String message_R = "Number of rows: ";
+  public static final String message_occ = "Occurrences:";
+  public static final String message_game = "The games begins.";
+  public static final String message_mv_expected_1 = "Player I has to move.";
+  public static final String message_mv_expected_2 = "Player II has to move.";
   public static final String message_win_1 = "The first player wins.";
   public static final String message_win_2 = "The second player wins.";
   public static final String message_draw = "Game ended with draw.";
@@ -14,6 +19,7 @@ class GeneralisedTicTacToe {
   public static final String message_no_win = "Every game must end in a draw.";
   public static final String message_move_1 = "Move of player I: ";
   public static final String message_move_2 = "Move of player II: ";
+  public static final String message_max_occupation = "Maximal occupation number of new cell: ";
   public static final String message_output_field = "The final position is:";
   public static final String message_output_movelist = "The complete list of moves is:";
 
@@ -59,6 +65,7 @@ class GeneralisedTicTacToe {
     final int number_cells = M*N;
     final int R = Counting.number_rows(K,M,N);
     assert(R >= 1);
+    System.out.println(message_R + R);
 
     final int[][] field = Field.empty_field(M,N);
     assert(field.length == M);
@@ -79,6 +86,8 @@ class GeneralisedTicTacToe {
     assert(occurrences.length == M);
     assert(occurrences[0].length == N);
     assert(Occurrences.consistency_check(rows, occurrences));
+    System.out.println(message_occ);
+    Occurrences.show_occurrence_counts(occurrences);
 
     final int[][] occupation = Occupation.occupation_vector(R);
     assert(Occupation.valid_occupation(occupation, K));
@@ -87,6 +96,7 @@ class GeneralisedTicTacToe {
 
     // Reading resp. computing the moves
 
+    System.out.println(message_game); System.out.println();
     if (mode != mode_hh) {
       System.out.println(message_not_implemented);
       return;
@@ -97,6 +107,8 @@ class GeneralisedTicTacToe {
     for (; move_index[0] < number_cells; first_player_moves = ! first_player_moves) {
       int move_i = 0, move_j = 0;
       boolean interrupt = false;
+      if (first_player_moves) System.out.println(message_mv_expected_1);
+      else System.out.println(message_mv_expected_2);
       do {
         final int[] reading = Input.read_move(M,N);
         if (reading == null) { interrupt = true; break; }
@@ -108,6 +120,7 @@ class GeneralisedTicTacToe {
       System.out.println(move_i + " " + move_j);
       final int max = Field.enter_move(field, move_i, move_j, first_player_moves, move_list, move_index, occurrences, occupation);
       Field.output_field(field);
+      System.out.println(message_max_occupation + max);
       if (max == K) {
         draw = false;
         break;

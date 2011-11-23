@@ -90,7 +90,6 @@ class Field {
       for (int j = 0; j < N; ++j) StdOut.printf("%" + horiz_spaces + "s", cell(field[i][j]));
       System.out.println();
     }
-    System.out.println();
   }
   private static String cell(final int f) {
     assert(f == fe || f == f1 || f == f2);
