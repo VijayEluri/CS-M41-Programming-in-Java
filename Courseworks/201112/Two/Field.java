@@ -70,7 +70,7 @@ class Field {
     assert(occ != null);
     int max = Integer.MIN_VALUE;
     for (int r = 0; r < occ.length; ++r) {
-      final int new_length = Occupation.update(occupation, r, first_player);
+      final int new_length = Occupation.update(occupation, occ[r], first_player);
       if (new_length > max) max = new_length;
     }
     return max;
