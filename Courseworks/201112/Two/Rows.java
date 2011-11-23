@@ -39,8 +39,8 @@ class Rows {
       for (int d = 0; d <= length-k; ++d, ++row_index) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
-          rows[row_index][p][0] = tl_i + p;
-          rows[row_index][p][1] = tl_j + p;
+          rows[row_index][p][0] = tl_i + d + p;
+          rows[row_index][p][1] = tl_j + d + p;
         }
       }
     }
@@ -55,8 +55,8 @@ class Rows {
       for (int d = 0; d <= length-k; ++d, ++row_index) {
         rows[row_index] = new int[k][2];
         for (int p = 0; p < k; ++p) {
-          rows[row_index][p][0] = bl_i - p;
-          rows[row_index][p][1] = bl_j + p;
+          rows[row_index][p][0] = bl_i - d - p;
+          rows[row_index][p][1] = bl_j + d + p;
         }
       }
     }
