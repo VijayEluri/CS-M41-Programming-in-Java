@@ -1,10 +1,39 @@
 // Oliver Kullmann, 21.11.2011 (Swansea)
 
+/* Library for handling the playing field ("board"), which provides the
+   following functionality:
+
+   - constants fe, f1, f2 as codes for cell-values;
+   - valid_entry(e) checks whether e is one of these codes;
+   - empty_field(M,N) returns the empty field of dimension M X N;
+   - valid_field(field) checks whether field has been initialised, and
+     all cells contain valid values;
+   - valid_coordinates(field, i, j) checks whether i, j are valid
+     (matrix-)coordinates (or matrix-indices) for field; these are
+     the user-coordinates, which are 1-based, while the internal
+     representations are all 0-based; the top-left corner thus has (here!)
+     coordinates i=1, j=1 (internally i=0, j=0);
+   - valid_move(field, i, j) checks whether occupying field i,j is valid
+     for field;
+   - enter_move(field, i, j, first_player, move_list, move_index, occurrences,
+     occupation) enters the valid move given by i,j into field, where the
+     boolean first_player states whether it is the first player's move or not;
+     update of data-structures move_list, move_index, and occupation;
+   - output_field(field) prints a simple representation of field to
+     standard output;
+   - output_movelist(move_list, number_moves) prints out a move-list.
+
+*/
+
 class Field {
 
-  public static final int fe = 0; // field empty
-  public static final int f1 = 1; // field occupied by player 1
-  public static final int f2 = 2; // field occupied by player 2
+  public static final int fe = 0; // cell empty
+  public static final int f1 = 1; // cell occupied by player 1
+  public static final int f2 = 2; // cell occupied by player 2
+
+  public static boolean valid_entry(final int e) {
+    return e == fe || e == f1 || e == f2;
+  }
 
   // creates the empty field of size m x n:
   public static int[][] empty_field(final int m, final int n) {
@@ -29,10 +58,6 @@ class Field {
         if (! valid_entry(field[i][j])) return false;
     }
     return true;
-  }
-
-  public static boolean valid_entry(final int e) {
-    return e == fe || e == f1 || e == f2;
   }
 
   // these are the "user"-coordinates, and thus 1-based:
