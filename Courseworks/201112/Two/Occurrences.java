@@ -34,7 +34,6 @@ class Occurrences {
     if (M == 0) return false;
     final int N = occurrences[0].length;
     if (N == 0) return false;
-    if (occurrences == null) return false;
     int sum = 0;
     for (int i = 0; i < M; ++i)
       for (int j = 0; j < N; ++j)
@@ -44,6 +43,23 @@ class Occurrences {
     assert(R != 0);
     final int K = rows[0].length;
     return(sum == R*K);
+  }
+
+  public static void show_occurrence_counts(final int[][][] occurrences) {
+    assert(occurrences != null);
+    final int M = occurrences.length;
+    assert(M != 0);
+    final int N = occurrences[0].length;
+    assert(N != 0);
+    final int spaces = (M*N <= 99) ? 3 : 4;
+    for (int i = 0; i < M; ++i) {
+      for (int j = 0; j < N; ++j) {
+        assert(occurrences[i][j] != null);
+        final int count = occurrences[i][j].length;
+        StdOut.printf("%" + spaces + "d", count);
+      }
+      System.out.println();
+    }
   }
 
 }
