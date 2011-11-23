@@ -1,5 +1,12 @@
 // Oliver Kullmann, 20.11.2011 (Swansea)
 
+/*
+  Provides function number_rows(K,M,N):
+  - returning the number of "rows" (i.e., horizontal, vertical or
+    diagonal lines of length K) in an M X N grid;
+  - Prerequisites: K,M,N >= 1.
+*/
+
 class Counting {
 
   public static int number_rows(final int k, final int m, final int n) {
