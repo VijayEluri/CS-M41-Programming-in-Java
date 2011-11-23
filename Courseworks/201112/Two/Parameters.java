@@ -34,7 +34,7 @@ class Parameters {
       error_message(message_num_param + args.length + ".");
       return null;
     }
-    int K,M,N;
+    int K=0,M=0,N=0; // initialisation to make it compile already now
     // XXX to be completed: reading K,M,N XXX
     int m = 0;
     // XXX to be completed: reading m XXX
