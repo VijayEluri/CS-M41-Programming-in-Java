@@ -100,9 +100,8 @@ class Field {
   }
 
   // printing out a move-list:
-  public static void output_movelist(final int[][] move_list) {
+  public static void output_movelist(final int[][] move_list, final int number_moves) {
     assert(move_list != null);
-    final int number_moves = move_list.length;
     for (int m = 0; m < number_moves; ++m) {
       assert(move_list[m] != null);
       assert(move_list[m].length == 2);

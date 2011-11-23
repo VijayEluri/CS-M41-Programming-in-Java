@@ -6,10 +6,14 @@ class GeneralisedTicTacToe {
   public static final String message_start = "Starting " + program_name + ".";
   public static final String message_win_1 = "The first player wins.";
   public static final String message_win_2 = "The second player wins.";
+  public static final String message_draw = "Game ended with draw.";
+  public static final String message_interrupt = "Game was interrupted.";
   public static final String message_error_exit = "Exiting after input errors.";
   public static final String message_not_implemented = "Functionality not implemented.";
   public static final String message_win1_always = "The first player will always win after the first move.";
   public static final String message_no_win = "Every game must end in a draw.";
+  public static final String message_move_1 = "Move of player I: ";
+  public static final String message_move_2 = "Move of player II: ";
   public static final String message_output_field = "The final position is:";
   public static final String message_output_movelist = "The complete list of moves is:";
 
@@ -88,20 +92,37 @@ class GeneralisedTicTacToe {
       return;
     }
     boolean first_player_moves = true;
-    // XXX
-    {
-      final int[] reading = Input.read_move(M,N);
-      // XXX
-      final int max = Field.enter_move(field, reading[0], reading[1], first_player_moves, move_list, move_index, occurrences, occupation);
-      // XXX
+    boolean draw = true;
+    for (; move_index[0] < M*N; first_player_moves = ! first_player_moves) {
+      int move_i = 0, move_j = 0;
+      boolean interrupt = false;
+      do {
+        final int[] reading = Input.read_move(M,N);
+        if (reading == null) { interrupt = true; break; }
+        move_i = reading[0]; move_j = reading[1];
+      } while (! Field.valid_move(field,move_i,move_j));
+      if (interrupt) break;
+      if (first_player_moves) System.out.print(message_move_1);
+      else System.out.print(message_move_2);
+      System.out.println(move_i + " " + move_j);
+      final int max = Field.enter_move(field, move_i, move_j, first_player_moves, move_list, move_index, occurrences, occupation);
+      Field.output_field(field);
+      if (max == K) {
+        draw = false;
+        break;
+      }
     }
-    // XXX to be completed XXX
+    if (draw)
+      if (move_index[0] == M*N) System.out.println(message_draw);
+      else System.out.println(message_interrupt);
+    else if (first_player_moves) System.out.println(message_win_1);
+    else System.out.println(message_win_2);
 
     // Final output
 
     System.out.println(message_output_field);
     Field.output_field(field);
     System.out.println(message_output_movelist);
-    Field.output_movelist(move_list);
+    Field.output_movelist(move_list, move_index[0]);
   }
 }
