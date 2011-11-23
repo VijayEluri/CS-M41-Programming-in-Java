@@ -39,8 +39,8 @@ class Occupation {
   public static boolean owns_row(final int[][] occupation, final int r, final boolean first_player) {
     assert(valid_occupation(occupation));
     assert(r < occupation.length);
-    if (first_player) return occupation[r][0] == 0;
-    return occupation[r][1] == 0;
+    if (first_player) return occupation[r][1] == 0;
+    return occupation[r][0] == 0;
   }
 
   // update the occupation-count for row r after a cell has been marked:
