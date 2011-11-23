@@ -1,15 +1,51 @@
 // Oliver Kullmann, 21.11.2011 (Swansea)
 
+/*
+  Call by
+
+> java GeneralisedTicTacToe K M N s
+
+  to play "K in a row on an M x N board", where
+
+  - K >= 1 is the size of the "row" to be filled with own marks
+  - M is the number of rows of the rectangular board
+  - N is the number of columns of the rectangular board.
+
+  In "K in a row" a "row" means actually a "line", that is a vertically,
+  horizontally or diagonally connected sequence of k cells of the board.
+
+  After printing out basic information, moves are read from standard input,
+  alternatingly for the two players, starting with the first player.
+  A move is given by two natural numbers (separated by space symbols) i, j,
+  with 1 <= i <= M and 1 <= j <= N.
+
+  The string s can be one of
+  - "hh" : human against human
+  - "hc" : human against computer
+  - "ch" : computer against human
+  - "cc" : computer against computer.
+*/
+
 class GeneralisedTicTacToe {
 
   public static final String program_name = "GeneralisedTicTacToe";
   public static final String message_start = "Starting " + program_name + ".";
+  public static final String message_R = "Number of rows: ";
+  public static final String message_occ = "Occurrences:";
+  public static final String message_game = "The game begins.";
+  public static final String message_mv_expected_1 = "Player I has to move.";
+  public static final String message_mv_expected_2 = "Player II has to move.";
   public static final String message_win_1 = "The first player wins.";
   public static final String message_win_2 = "The second player wins.";
+  public static final String message_draw = "Game ended with draw.";
+  public static final String message_interrupt = "Game was interrupted.";
   public static final String message_error_exit = "Exiting after input errors.";
   public static final String message_not_implemented = "Functionality not implemented.";
   public static final String message_win1_always = "The first player will always win after the first move.";
   public static final String message_no_win = "Every game must end in a draw.";
+  public static final String message_move_1 = "Move of player I: ";
+  public static final String message_move_2 = "Move of player II: ";
+  public static final String message_max_occupation = "Maximal occupation number of new cell: ";
   public static final String message_output_field = "The final position is:";
   public static final String message_output_movelist = "The complete list of moves is:";
 
@@ -55,6 +91,7 @@ class GeneralisedTicTacToe {
     final int number_cells = M*N;
     final int R = Counting.number_rows(K,M,N);
     assert(R >= 1);
+    System.out.println(message_R + R);
 
     final int[][] field = Field.empty_field(M,N);
     assert(field.length == M);
@@ -75,6 +112,8 @@ class GeneralisedTicTacToe {
     assert(occurrences.length == M);
     assert(occurrences[0].length == N);
     assert(Occurrences.consistency_check(rows, occurrences));
+    System.out.println(message_occ);
+    Occurrences.show_occurrence_counts(occurrences);
 
     final int[][] occupation = Occupation.occupation_vector(R);
     assert(Occupation.valid_occupation(occupation, K));
@@ -83,23 +122,30 @@ class GeneralisedTicTacToe {
 
     // Reading resp. computing the moves
 
-    // XXX to be completed XXX
-    System.out.println(message_not_implemented); // yet nothing implemented
-    boolean first_player_moves = true;
-    // XXX
-    {
-      final int[] reading = Input.read_move();
-      // XXX
-      final int max = Field.enter_move(field, reading[0], reading[1], first_player_moves, move_list, move_index, occurrences, occupation);
-      // XXX
+    System.out.println(message_game); System.out.println();
+    if (mode != mode_hh) {
+      System.out.println(message_not_implemented);
+      return;
     }
-    // XXX to be completed XXX
+    Field.output_field(field);
+    boolean first_player_moves = true;
+    boolean draw = true;
+    // XXX the move-loop -- to be completed XXX
+
+    // Result
+
+    System.out.println();
+    if (draw)
+      if (move_index[0] == number_cells) System.out.println(message_draw);
+      else System.out.println(message_interrupt);
+    else if (first_player_moves) System.out.println(message_win_1);
+    else System.out.println(message_win_2);
 
     // Final output
 
     System.out.println(message_output_field);
     Field.output_field(field);
     System.out.println(message_output_movelist);
-    Field.output_movelist(move_list);
+    Field.output_movelist(move_list, move_index[0]);
   }
 }
