@@ -126,6 +126,8 @@ class GeneralisedTicTacToe {
         break;
       }
     }
+
+    System.out.println();
     if (draw)
       if (move_index[0] == number_cells) System.out.println(message_draw);
       else System.out.println(message_interrupt);
