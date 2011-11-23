@@ -1,5 +1,12 @@
 // Oliver Kullmann, 21.11.2011 (Swansea)
 
+/*
+  Provides function process_parameters(args):
+  - parses the parameters from the command line and returns them in an array;
+  - in case of input errors, messages are printed on standard error, and
+    null is returned.
+*/
+
 class Parameters {
 
   public static final String error_header = "ERROR[" + GeneralisedTicTacToe.program_name + "]: ";
