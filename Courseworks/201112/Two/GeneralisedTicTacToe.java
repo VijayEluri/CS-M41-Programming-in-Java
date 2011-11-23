@@ -1,5 +1,31 @@
 // Oliver Kullmann, 21.11.2011 (Swansea)
 
+/*
+  Call by
+
+> java GeneralisedTicTacToe K M N s
+
+  to play "K in a row on an M x N board", where
+
+  - K >= 1 is the size of the "row" to be filled with own marks
+  - M is the number of rows of the rectangular board
+  - N is the number of columns of the rectangular board.
+
+  In "K in a row" a "row" means actually a "line", that is a vertically,
+  horizontally or diagonally connected sequence of k cells of the board.
+
+  After printing out basic information, moves are read from standard input,
+  alternatingly for the two players, starting with the first player.
+  A move is given by two natural numbers (separated by space symbols) i, j,
+  with 1 <= i <= M and 1 <= j <= N.
+
+  The string s can be one of
+  - "hh" : human against human
+  - "hc" : human against computer
+  - "ch" : computer against human
+  - "cc" : computer against computer.
+*/
+
 class GeneralisedTicTacToe {
 
   public static final String program_name = "GeneralisedTicTacToe";
@@ -126,6 +152,8 @@ class GeneralisedTicTacToe {
         break;
       }
     }
+
+    // Result
 
     System.out.println();
     if (draw)
