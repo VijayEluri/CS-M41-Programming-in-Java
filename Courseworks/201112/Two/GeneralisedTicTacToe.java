@@ -91,9 +91,10 @@ class GeneralisedTicTacToe {
       System.out.println(message_not_implemented);
       return;
     }
+    Field.output_field(field);
     boolean first_player_moves = true;
     boolean draw = true;
-    for (; move_index[0] < M*N; first_player_moves = ! first_player_moves) {
+    for (; move_index[0] < number_cells; first_player_moves = ! first_player_moves) {
       int move_i = 0, move_j = 0;
       boolean interrupt = false;
       do {
@@ -113,7 +114,7 @@ class GeneralisedTicTacToe {
       }
     }
     if (draw)
-      if (move_index[0] == M*N) System.out.println(message_draw);
+      if (move_index[0] == number_cells) System.out.println(message_draw);
       else System.out.println(message_interrupt);
     else if (first_player_moves) System.out.println(message_win_1);
     else System.out.println(message_win_2);
