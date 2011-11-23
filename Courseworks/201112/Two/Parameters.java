@@ -7,6 +7,7 @@ class Parameters {
     "and one of \"hh\", \"hc\", \"ch\", \"cc\".";
   public static final String message_num_param = "Four parameters are needed, not ";
   public static final String message_parsing = "The first three parameters must be integers.";
+  public static final String message_positive = "The first three parameters must be > 0.";
   public static final String message_mode = "The fourth parameter must be one of \"hh\", \"hc\", \"ch\", \"cc\".";
 
   /*
@@ -34,6 +35,10 @@ class Parameters {
     }
     catch (final Exception e) {
       error_message(message_parsing);
+      return null;
+    }
+    if (K < 1 || M < 1 || N < 1) {
+      error_message(message_positive);
       return null;
     }
     int m = 0;
