@@ -18,7 +18,7 @@ class Input {
   public static int[] read_move(final int M, final int N) {
     boolean waiting = true;
     int i=0, j=0;
-    while (waiting) {
+    do {
       if (StdIn.isEmpty()) return null;
       final String inp_i = StdIn.readString();
       if (StdIn.isEmpty()) return null;
@@ -32,7 +32,7 @@ class Input {
       if (! waiting)
         if (i < 1 || i > M || j < 1 || j > N) waiting = true;
       if (waiting) System.out.println(message_invalid);
-    }
+    } while (waiting);
     int[] result = new int[2];
     result[0] = i; result[1] = j;
     return result;
