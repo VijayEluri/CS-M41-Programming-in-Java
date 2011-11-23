@@ -1,7 +1,60 @@
 // Oliver Kullmann, 21.11.2011 (Swansea)
 
+/* Provides functions
+
+   - list_rows(K,M,N,R) for computing the R "rows" ("lines") of length K
+     in an M x N rectangle (field); R must be the correct number.
+     A "row" (of length K) is given by K-many pairs of coordinates (internal
+     format).
+   - check_list_rows(rows, field) checks the computed list of rows against
+     a valid field (whether rows is fully initialised, and is an array of
+     arrays A of the same length, where A is an array of two-element
+     arrays C, and where C finally is a pair of valid coordinates (internal)
+     for field).
+
+     Running main with parameters (3,3,3) yields the 8 "rows" of the
+     standard tic-tac-toe board:
+
+0: (0,0)(0,1)(0,2)
+1: (1,0)(1,1)(1,2)
+2: (2,0)(2,1)(2,2)
+3: (0,0)(1,0)(2,0)
+4: (0,1)(1,1)(2,1)
+5: (0,2)(1,2)(2,2)
+6: (0,0)(1,1)(2,2)
+7: (2,0)(1,1)(0,2)
+
+     (first three horizontal lines, then three vertical lines, then the
+     prinzipal diagonal, then the antidiagonal).
+
+     Running main with parameters (3,3,4) yields 14 "rows":
+
+0: (0,0)(0,1)(0,2)
+1: (0,1)(0,2)(0,3)
+2: (1,0)(1,1)(1,2)
+3: (1,1)(1,2)(1,3)
+4: (2,0)(2,1)(2,2)
+5: (2,1)(2,2)(2,3)
+6: (0,0)(1,0)(2,0)
+7: (0,1)(1,1)(2,1)
+8: (0,2)(1,2)(2,2)
+9: (0,3)(1,3)(2,3)
+10: (0,0)(1,1)(2,2)
+11: (0,1)(1,2)(2,3)
+12: (2,0)(1,1)(0,2)
+13: (2,1)(1,2)(0,3)
+
+     (first 6 horizontal rows, then 4 vertical rows, then 2 diagonals
+     top-left to bottom-right, then 2 diagonals bottom-left to top-right).
+*/
+
 class Rows {
 
+  // computes an array "rows" of length r, each element an array "line" of
+  // length k, whose elements are arrays of length 2: array line represents a
+  // "row" of an m x n field, and array rows collects precisely all these
+  // lines; for efficient array-allocation (upfront) the precise number r of
+  // rows must also be given:
   public static int[][][] list_rows(final int k, final int m, final int n, final int r) {
     assert(k >= 2);
     assert(m >= 1);
