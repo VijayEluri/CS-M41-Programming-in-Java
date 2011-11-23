@@ -32,7 +32,7 @@ class GeneralisedTicTacToe {
   public static final String message_start = "Starting " + program_name + ".";
   public static final String message_R = "Number of rows: ";
   public static final String message_occ = "Occurrences:";
-  public static final String message_game = "The games begins.";
+  public static final String message_game = "The game begins.";
   public static final String message_mv_expected_1 = "Player I has to move.";
   public static final String message_mv_expected_2 = "Player II has to move.";
   public static final String message_win_1 = "The first player wins.";
