@@ -19,6 +19,7 @@
   <h2> Messages </h2>
   
   <ul>
+   <li> See below for the <strong>second coursework</strong>. </li>
    <li> If you still do not have a Linux-lab account, then this means that
     you are not properly in the University-system, and that means, we can not
     really know about you: You need then to contact me about this! </li>
@@ -912,14 +913,7 @@ public class LeftAssociative {
      </li>
     </ol>
    </li>
-   <li>
-    <hr />
-    <p>
-     <strong> The following is the old information for 2010/11, which can
-      serve as a first indication. </strong> Will be updated soon.
-    </p>
-   </li>
-   <li> Week 8 (26/11/2010):
+   <li> Week 8 (25/11/2011):
     <ol>
      <li> If you didn't finish the exercises from last week, then please
       finish them now (we are still on functions). </li>
@@ -931,7 +925,40 @@ public class LeftAssociative {
       (1,3,7), then the output should be (0,3/7,1). And if the
       input is (-10,-4,-1), then the output should be (0,6/9,1).
      </li>
+     <li> Additional exercises on multidimensional arrays:
+      <ol>
+       <li> Hard-code a 3 x 3 array of integers with the values
+        <pre>
+1 2 3
+4 5 6
+7 8 9
+        </pre>
+        and print it out. </li>
+       <li> Write a function <code>print_array(A)</code> in a class
+        <code>PrintArray</code> which prints out an arbitrary two-dimensional
+        array of integers, row-wise. Handle the general case, where every row
+        can have a different length. And if null-pointers occur for a row
+        , then print "[null]", while if the whole array is null, then print
+        "[[null]]" (no exceptions should be thrown). </li>
+       <li> Add a main function to class <code>PrintArray</code> which tests
+        function <code>print_array(A)</code>. </li>
+       <li> Read natural numbers M and N from the command
+        line, specifying an M x N array of integers. Then read from standard
+        input (using <code>StdIn</code>) row-wise these M*N many integers,
+        and store them in an array. Finally print them out, using
+        <code>PrintArray.print_array</code>. </li>
+      </ol>
+      See <a href="CS-M41_Programs/Chapter2/ArrayExercises">here</a> for
+      solutions.
+     </li>
     </ol>
+   </li>
+   <li>
+    <hr />
+    <p>
+     <strong> The following is the old information for 2010/11, which can
+      serve as a first indication. </strong> Will be updated soon.
+    </p>
    </li>
    <li> Week 9 (3/12/2010):
     <ol>
@@ -1478,6 +1505,66 @@ x * y mod n := ((x % n) * (y % n)) % n
 
   <h3> Second coursework: Tic-Tac-Toe (generalised) </h3>
 
+  <p>Formal requirements:</p>
+  <ul>
+   <li> Deadline for submission is 14/12/2011, 15:00. </li>
+   <li> This coursework has to be submitted electronically:
+    <ol>
+     <li> All the java-files which constitute "GeneralisedTicTacToe", together
+      with a file "Comments.txt" have to be put into a directory named by
+      just your student-number (e.g., "123456"), this put into one archive,
+      for example "123456.zip", and this archive must be send to me via
+      e-mail. </li>
+     <li> To emphasise: You send to me, as attachment, one
+      file, which is a package in some standard format, zip or gzip for
+      example, named "123456.zip" or "123456.tar.gzip" for example, and which
+      contains one <em>directory</em> (named by your student number, e.g.,
+      "123456"), and where this directory contains the java-files and the
+      text-file. </li>
+     <li> I'll send you an acknowledgement, once I got your package-file. </li>
+     <li> To make this safer, it would be good if in your e-mail you could
+      state the md5sum-result for your package-file (e.g., "123456.zip"). For
+      a Windows-environment see e.g.
+      <a href="http://www.pc-tools.net/win32/md5sums/"> here </a> for how
+      to do this (in a Linux-system, use "md5sum 123456.zip" on a
+      command-line).
+     </li>
+     <li> This process has been found considerably more reliable than
+      submission via Blackboard. </li>
+    </ol>
+   </li>
+   <li> The file "Comments.text" must start with your name and student number,
+    and can then contain any comments or explanations you might want to make.
+   </li>
+   <li> The structure and much of the code is already given, only at the places
+    marked with "XXX" are you expected to add code. </li>
+   <li> You might also add further (private) helper functions. </li>
+   <li> You might add new classes if you wish to implement the
+    machine-playing functionality. </li>
+   <li> Good coding quality is paramount:
+    <ol>
+     <li> You must have thoroughly tested your code -- compiled it and run it
+      often! </li>
+     <li> Use only the Java constructions presented in the lectures. </li>
+     <li> Anything else will result in a deduction of 50 percent! </li>
+     <li> This is to make sure that you really concentrate on the essentials,
+      and don't copy-and-paste code (which usually contains a lot of noise).
+     </li>
+     <li> Compared to the book, we introduced a few extensions in the lectures,
+      most important the <code>final</code>-qualifier, which you are expected
+      to use. </li>
+     <li> Input checking (as discussed in the lectures) is important. </li>
+     <li> Take care about precise class- and file-names (if you have to
+      introduce new classes; this is only needed if you add capabilities
+      for computer-play). </li>
+     <li> Choose good variable-names. </li>
+     <li> Provide a well-organised indentation. </li>
+     <li> Finally, follow <strong>precisely</strong> the specifications! </li>
+    </ol>
+   </li>
+
+  </ul>
+
   <p>
    General overview:
   </p>
@@ -1497,46 +1584,194 @@ x * y mod n := ((x % n) * (y % n)) % n
     each other. </li>
    <li> Optional extensions consider some basic techniques for machine-playing.
    </li>
-   <li> Precise instructions will be given for the decomposition of this
-    task into small tasks (via functions).
+   <li> The decomposition of this task into small tasks (via functions) is
+    already given.
     <ol>
-     <li> Code will be given, which contains all the major functions. </li>
-     <li> Also enough code to help understanding how this is supposed to work. </li>
+     <li> The code below contains all the major functions. </li>
      <li> Open places are marked by "XXX" (to be filled out). </li>
-     <li> The given structure has to be followed: on the one hand, otherwise the task
-      would be very hard, and on the other hand, in almost all professional situations
-      also most of the code (and especially the general structure) is already given.
+     <li> The given structure has to be followed:
+      <ul>
+       <li> on the one hand, otherwise the task would be very hard, </li>
+       <li> and on the other hand, in almost all professional situations
+	also most of the code (and especially the general structure) has
+	already been established. </li>
+      </ul>
      </li>
     </ol>
    </li>
    <li> The main program:
     <ol>
-     <li> The command-line call is <code>GeneralisedTicTacToe K M N hh/hc/ch/cc</code>,
-      for example for two humans playing ordinary tic-tac-toe:
+     <li> The command-line call is
+      <code>GeneralisedTicTacToe K M N hh/hc/ch/cc</code>. </li>
+     <li> For example for two humans playing ordinary tic-tac-toe:
       <pre>
 > java -ea GeneralisedTicTacToe 3 3 3 hh
       </pre>
       </li>
      <li> Note the option "-ea" here, which enables assertions:
       <ul>
-       <li> The given code contains many assertions, and they are enabled with this
-	option. </li>
-       <li> The assertions spell out (most of) the prerequisites for function calls and
-	executions of instructions which might fail. </li>
+       <li> The given code contains many assertions, and they are enabled with
+	this option. </li>
+       <li> The assertions spell out (most of) the prerequisites for function
+	calls and executions of instructions which might fail. </li>
        <li> In debug-mode these assertions should be enabled. </li>
-       <li> While finally, when the program really is used, the assertions are not to
-	be activated (since they can require long run-times). </li>
+       <li> While finally, when the program really is used, the assertions are
+	not to be activated (since they can require long run-times). </li>
       </ul>
      </li>
-     <li>  In hh-mode (human-human) your program then reads the moves of the two players,
-      handling appropriately (all!) input errors, and determines the winner. </li>
-     <li> Also the intermediate and final positions are to be displayed (simple text modus).
+     <li>  In hh-mode (human-human) your program then reads the moves of the
+      two players, handling appropriately (all!) input errors, and determines
+      the outcome. </li>
+     <li> Also the intermediate and final positions are to be displayed
+      (simple text modus). </li>
+     <li> Here is a simple run, using standard tic-tac-toe:
+      <pre>
+> java GeneralisedTicTacToe 3 3 3 hh
+Starting GeneralisedTicTacToe.
+Number of rows: 8
+Occurrences:
+  3  2  3
+  2  4  2
+  3  2  3
+The game begins.
+
+   123
+1: ...
+2: ...
+3: ...
+Player I has to move.
+2 2
+Move of player I: 2 2
+   123
+1: ...
+2: .X.
+3: ...
+Maximal occupation number of new cell: 1
+Player II has to move.
+2 1
+Move of player II: 2 1
+   123
+1: ...
+2: 0X.
+3: ...
+Maximal occupation number of new cell: 1
+Player I has to move.
+1 3
+Move of player I: 1 3
+   123
+1: ..X
+2: 0X.
+3: ...
+Maximal occupation number of new cell: 2
+Player II has to move.
+3 1
+Move of player II: 3 1
+   123
+1: ..X
+2: 0X.
+3: 0..
+Maximal occupation number of new cell: 2
+Player I has to move.
+1 1
+Move of player I: 1 1
+   123
+1: X.X
+2: 0X.
+3: 0..
+Maximal occupation number of new cell: 2
+Player II has to move.
+3 3
+Move of player II: 3 3
+   123
+1: X.X
+2: 0X.
+3: 0.0
+Maximal occupation number of new cell: 2
+Player I has to move.
+1 2
+Move of player I: 1 2
+   123
+1: XXX
+2: 0X.
+3: 0.0
+Maximal occupation number of new cell: 3
+
+The first player wins.
+The final position is:
+   123
+1: XXX
+2: 0X.
+3: 0.0
+The complete list of moves is:
+  1.I :  2  2
+  1.II:  2  1
+  2.I :  1  3
+  2.II:  3  1
+  3.I :  1  1
+  3.II:  3  3
+  4.I :  1  2
+      </pre>
      </li>
+     <li> Your output should look rather similar to this one. </li>
+     <li> Regarding input, no other input than the coordinates from the
+      moves must be used. </li>
+     <li> In directory
+      <a href="CS-M41_Programs/Courseworks/201112/Two/Testgames/">
+       Testgames
+      </a>
+      some testing examples for
+      input are given, and your program must be able to run them
+      via for example
+      <pre>
+cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
+      </pre>
+     </li>
+     <li> Note that the first three numbers in the filename are K,M,N, while
+      the fourth is the result ("0" is draw, "1" first player wins, "2"
+      second player wins). </li>
     </ol>
    </li>
   </ul>
 
+  <p>The tasks:</p>
 
+  <ul>
+   <li> All files are to be found
+    <a href="CS-M41_Programs/Courseworks/201112/Two/">
+     here
+    </a>.
+   </li>
+   <li> You need to study carefully the java-files, in order to gain an
+    understanding of the design of this system. </li>
+   <li> Marks are distributed on the different tasks (completing the
+    classes) as follows (as usual, marks are capped at 100):
+    <ol>
+     <li> <code>GeneralisedTicTacToe.java</code>: 20 </li>
+     <li> <code>Parameters.java</code>: 10 </li>
+     <li> <code>Field.java</code>: 20 </li>
+     <li> <code>Input.java</code>: 10 </li>
+     <li> <code>Rows.java</code>: 30 </li>
+     <li> <code>Occurrences.java</code>: 20 </li>
+    </ol>
+   </li>
+   <li> The above implements only mode "hh" (human against human). For
+    providing also computer-playing the following marks can be gained:
+    <ol>
+     <li> Implementing all four modes, where the computer just chooses
+      any correct move: 30 marks. </li>
+     <li> If the computer sees always if the player can win imediately:
+      additionally 10 marks. </li>
+     <li> If the computer prevents if possible a win of the opponent in
+      one move: 10 marks. </li>
+    </ol>
+   </li>
+   <li> Your program must never crash! All input errors must be handled,
+    and messages issued (before possibly exiting the program). </li>
+   <li> Cases which are not handled, must be "handled" by outputing the
+    not-implemented-message (already provided). </li>
+   <li> Also winnes and losses must be output using the <em>provided</em>
+    messages. </li>
+  </ul>
 
   <h2> Links </h2>
 
@@ -1569,7 +1804,7 @@ x * y mod n := ((x % n) * (y % n)) % n
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Nov 22 15:51:09 GMT 2011
+Last modified: Fri Nov 25 00:15:51 GMT 2011
 <!-- hhmts end -->
 
    </div>
