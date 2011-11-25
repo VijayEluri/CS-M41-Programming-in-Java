@@ -5,9 +5,9 @@ set -o errexit
 set -o nounset
 
 script_name="TestSort4"
-version_number=0.1
+version_number=0.1.1
 
-programs=*/Sort4.class
+programs=${programs:-*/Sort4.class}
 
 for P in ${programs}; do
   dir=$(dirname ${P})
