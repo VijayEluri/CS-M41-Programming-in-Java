@@ -913,14 +913,7 @@ public class LeftAssociative {
      </li>
     </ol>
    </li>
-   <li>
-    <hr />
-    <p>
-     <strong> The following is the old information for 2010/11, which can
-      serve as a first indication. </strong> Will be updated soon.
-    </p>
-   </li>
-   <li> Week 8 (26/11/2010):
+   <li> Week 8 (25/11/2011):
     <ol>
      <li> If you didn't finish the exercises from last week, then please
       finish them now (we are still on functions). </li>
@@ -932,7 +925,40 @@ public class LeftAssociative {
       (1,3,7), then the output should be (0,3/7,1). And if the
       input is (-10,-4,-1), then the output should be (0,6/9,1).
      </li>
+     <li> Additional exercises on multidimensional arrays:
+      <ol>
+       <li> Hard-code a 3 x 3 array of integers with the values
+        <pre>
+1 2 3
+4 5 6
+7 8 9
+        </pre>
+        and print it out. </li>
+       <li> Write a function <code>print_array(A)</code> in a class
+        <code>PrintArray</code> which prints out an arbitrary two-dimensional
+        array of integers, row-wise. Handle the general case, where every row
+        can have a different length. And if null-pointers occur for a row
+        , then print "[null]", while if the whole array is null, then print
+        "[[null]]" (no exceptions should be thrown). </li>
+       <li> Add a main function to class <code>PrintArray</code> which tests
+        function <code>print_array(A)</code>. </li>
+       <li> Read natural numbers M and N from the command
+        line, specifying an M x N array of integers. Then read from standard
+        input (using <code>StdIn</code>) row-wise these M*N many integers,
+        and store them in an array. Finally print them out, using
+        <code>PrintArray.print_array</code>. </li>
+      </ol>
+      See <a href="CS-M41_Programs/Chapter2/ArrayExercises">here</a> for
+      solutions.
+     </li>
     </ol>
+   </li>
+   <li>
+    <hr />
+    <p>
+     <strong> The following is the old information for 2010/11, which can
+      serve as a first indication. </strong> Will be updated soon.
+    </p>
    </li>
    <li> Week 9 (3/12/2010):
     <ol>
@@ -1778,7 +1804,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Wed Nov 23 17:49:16 GMT 2011
+Last modified: Fri Nov 25 00:15:51 GMT 2011
 <!-- hhmts end -->
 
    </div>
