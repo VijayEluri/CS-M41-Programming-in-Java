@@ -4,8 +4,8 @@ class Sort4 {
   static final String errmess = "ERROR[Sort4]: ";
   public static void main(final String[] args) {
     if (args.length != 4) {
-      System.err.println(errmess + "Precisely two arguments are needed, while you entered " +
-        args.length + " many.");
+      System.err.println(errmess + "Precisely four arguments are needed, while you entered " +
+        args.length + " arguments.");
       System.exit(1);
     }
     int a = Integer.parseInt(args[0]);
