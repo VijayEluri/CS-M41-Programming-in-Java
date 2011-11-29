@@ -5,9 +5,10 @@ set -o errexit
 set -o nounset
 
 script_name="TestSort4"
-version_number=0.1.1
+version_number=0.1.2
 
 programs=${programs:-*/Sort4.class}
+testcases=${testcases:-../TestcasesSort4}
 
 for P in ${programs}; do
   dir=$(dirname ${P})
@@ -23,7 +24,7 @@ for P in ${programs}; do
       echo -e " False result on input \"${input}\"."
       let "++errors"
     fi
-  done < ../TestcasesSort4
+  done < ${testcases}
   echo "errors=${errors}"
   echo
   cd ..

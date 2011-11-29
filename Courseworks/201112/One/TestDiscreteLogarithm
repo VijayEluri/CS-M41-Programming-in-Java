@@ -1,0 +1,33 @@
+#!/bin/bash
+# Oliver Kullmann, 28.11.2011 (Swansea)
+
+set -o errexit
+set -o nounset
+
+script_name="TestDiscreteLogarithm"
+version_number=0.1
+
+testee=DiscreteLogarithm
+programs=${programs:-*/${testee}.class}
+testcases=${testcases:-../Testcases${testee}}
+
+for P in ${programs}; do
+  dir=$(dirname ${P})
+  echo ${dir}
+  cd ${dir}
+  errors=0
+  while read input; do
+    set +e
+    computed_result=$(java ${testee} ${input} 2>&1)
+    errvalue=$?
+    read expected_result
+    set -e
+    if [[ "${computed_result}" != "${expected_result}" ]]; then
+      echo -e " False result on input \"${input}\", namely \"${computed_result}\"."
+      let "++errors"
+    fi
+  done < ${testcases}
+  echo "errors=${errors}"
+  echo
+  cd ..
+done
