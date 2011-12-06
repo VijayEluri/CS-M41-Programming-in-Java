@@ -19,6 +19,8 @@
   <h2> Messages </h2>
   
   <ul>
+   <li> Friday, 2/12/2011, we have two lab sessions, from 11-12 and from
+    12-13, in the Linux lab (as usual). </li>
    <li> Everybody should have obtained an e-mail with her/his marks and
     comments for the first coursework. See below for the solutions. </li>
    <li> See below for the <strong>second coursework</strong>. </li>
@@ -955,38 +957,54 @@ public class LeftAssociative {
      </li>
     </ol>
    </li>
-   <li>
-    <hr />
-    <p>
-     <strong> The following is the old information for 2010/11, which can
-      serve as a first indication. </strong> Will be updated soon.
-    </p>
-   </li>
-   <li> Week 9 (3/12/2010):
+   <li> Week 9 (2/12/2011):
     <ol>
-     <li> Use the data types "Color" and "Picture" from the lecture (see
-      above). </li>
-     <li> Exercise 3.1.2 from the book: Write a program that takes from the
-     command-line three integers from 0 to 255 (representing red, green
-     and blue), and then creates and shows a 256-by-256 picture of that
-     colour. </li>
-     <li> Exercise 3.1.3 from the book: Modify program "AlbersSquares" to take
-      nine command-line arguments, representing now three colours, and then
-      draw the 3*2=6 squares showing all the Albers squares with the large
-      square in each colour and the small square in each different colour.
+     <li> See the two exercises above for the Tuesday-lecture
+     (writing programs <code>AlbersSquares</code> and <code>Grayscale</code>).
      </li>
-     <li> Exercise 3.1.6 from the book: Write a program that takes the name of
-     a picture file as a command-line input, and creates three images, one
-     that contains only the red components, one for green, and one for blue.
+     <li> Further exercises using the data types "Color" and "Picture" from
+      the lecture (see above):
+      <ol>
+       <li> Exercise 3.1.2 from the book: Write a program that takes from the
+        command-line three integers from 0 to 255 (representing red, green
+        and blue), and then creates and shows a 256-by-256 picture of that
+        colour. </li>
+       <li> Exercise 3.1.3 from the book: Modify program "AlbersSquares" to
+        take nine command-line arguments, representing now three colours, and
+        then draw the 3*2=6 squares showing all the Albers squares with the
+        large square in each colour and the small square in each different
+        colour. </li>
+       <li> Exercise 3.1.6 from the book: Write a program that takes the name
+        of a picture file as a command-line input, and creates three images,
+        one that contains only the red components, one for green, and one for
+        blue. </li>
+       <li> Exercise 3.1.4 from the book:
+        <ul>
+         <li> Write a program that takes the name of a grayscale picture-file
+          as a command-line argument, and plots a histogram of the frequency
+          of occurrences of each of the 256 grayscale intensities. </li>
+         <li> Use the library "StdStats" from Section 2.2 (provided
+          <a href="CS-M41_Programs/Chapter2/Libraries"> here </a>). </li>
+        </ul>
+       </li>
+      </ol>
      </li>
-     <li> Exercise 3.1.4 from the book:
-      <ul>
-       <li> Write a program that takes the name of a grayscale picture-file
-        as a command-line argument, and plots a histogram of the frequency
-        of occurrences of each of the 256 grayscale intensities. </li>
-       <li> Use the library "StdStats" from Section 2.2 (provided
-        <a href="CS-M41_Programs/Chapter2/Libraries"> here </a>). </li>
-      </ul>
+     <li> Another (simple) array-exercises:
+      <ol>
+       <li> Read N from the command-line. </li>
+       <li> Create an NxN array A of integers, where the first row contains
+        0,1,..., the second row contains 1,2,..., and so on. </li>
+       <li> Then add all the numbers on the principal diagonal (that is,
+        A[0,0] + A[1,1] + ...), and print out the result. </li>
+       <li> You can easily check whether your program works: the result should
+        be N*(N-1). </li>
+       <li> Use one function for creating the array. </li>
+       <li> And use another function for computing the diagonal sum. </li>
+      </ol>
+      The solution is
+      <a href="CS-M41_Programs/Chapter2/ArrayExercises/DiagonalSum.java">
+       here
+      </a>.
      </li>
      <li> Finally we practise using static data members ("static instance
       variables"). Write a class <code>StringExample</code>:
@@ -1013,6 +1031,13 @@ public class LeftAssociative {
        the solution </a>.
      </li>
     </ol>
+   </li>
+   <li>
+    <hr />
+    <p>
+     <strong> The following is the old information for 2010/11, which can
+      serve as a first indication. </strong> Will be updated soon.
+    </p>
    </li>
    <li> Week 10 (10/12/2010):
     <ol>
@@ -1841,7 +1866,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Nov 29 14:52:27 GMT 2011
+Last modified: Fri Dec  2 06:13:56 GMT 2011
 <!-- hhmts end -->
 
    </div>
