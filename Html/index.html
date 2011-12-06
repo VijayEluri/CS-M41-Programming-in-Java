@@ -19,6 +19,7 @@
   <h2> Messages </h2>
   
   <ul>
+   <li> See below for further information on the second coursework. </li>
    <li> Everybody should have obtained an e-mail with her/his marks and
     comments for the first coursework. See below for the solutions. </li>
    <li> See below for the <strong>second coursework</strong>. </li>
@@ -1808,6 +1809,80 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     not-implemented-message (already provided). </li>
    <li> Also winnings and losses must be output using the <em>provided</em>
     messages. </li>
+   <li> Some remarks on the tasks:
+    <ol>
+     <li> <code>GeneralisedTicTacToe.java</code>:
+      <ul>
+       <li> My solution has 22 lines. Likely you need more lines, but beyond
+       50 lines I guess there is a chance that you are doing something wrong.
+       </li>
+       <li> The various cases (first versus second player, interrupt, some
+        player wins, or game finishes) need to be organised. </li>
+       <li> You need to find out which of the variables are involved here
+        and need updating. </li>
+       <li> Which of the provided functions are to be used? </li>
+       <li> And which of the provided messages are needed? </li>
+      </ul>
+     </li>
+     <li> <code>Parameters.java</code>:
+      <ul>
+       <li> Here the task is to understand input and output. Otherwise it is
+        straightforward. </li>
+       <li> First XXX: My solution has 13 lines. </li>
+       <li> Second XXX: My solution has 8 lines. </li>
+      </ul>
+     </li>
+     <li> <code>Field.java</code>:
+      <ul>
+       <li> Read the code! Only in this way do you get a full understanding
+        of the whole program. </li>
+       <li> First XXX: My solution has 13 lines; likely you need more, but it
+        is all straightforward. </li>
+       <li> Second XXX: My solution has 12 lines; likely you need more, but
+        again it is all straightforward. </li>
+      </ul>
+     </li>
+     <li> <code>Input.java</code>:
+      <ul>
+       <li> My solution has 13 lines; I don't think you need more than 30
+        lines. </li>
+       <li> Understand that it is an endless loop, only terminated by the
+        end of standard input or by correct input. </li>
+       <li> Of course, you need to use <code>StdIn</code>. </li>
+       <li> And use the provided message. </li>
+      </ul>
+     </li>
+     <li> <code>Rows.java</code>:
+      <ul>
+       <li> Compute various arrays first by hand, to understand the task. </li>
+       <li> Regarding the two examples given in the file-header: The order of
+        the rows, and also the order of cells in the rows, is not important.
+        All what counts is that you get all rows in some order, and that the
+        rows have all their cells (in some order). </li>
+       <li> My solution has 50 lines. </li>
+       <li> If you have trouble here, first consider the special case
+        k=m=n=3 and r=8. </li>
+       <li> I think it is easiest to consider the four directions (horizontal,
+        vertical, top-left to bottom-right, bottom-left to top-right)
+        separately. </li>
+       <li> It is all rather simple, it only needs some organised thinking,
+        to create a scheme for the creation of the various row-types. </li>
+       <li> Use asserts! </li>
+      </ul>
+     </li>
+     <li> <code>Occurrences.java</code>:
+      <ul>
+       <li> If you use a different order of the rows, then your occurrences
+	(of cells in rows) will differ from the given example. </li>
+       <li> First XXX: depending on how you do it, the one line might become
+	two (or even three). </li>
+       <li> Second XXX: My solution has 13 lines; you might use more, but it's
+	all straightforward. </li>
+       <li> Again, read all the code! </li>
+      </ul>
+     </li>
+    </ol>
+   </li>
   </ul>
 
   <h2> Links </h2>
@@ -1841,7 +1916,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Dec  6 12:42:48 GMT 2011
+Last modified: Tue Dec  6 14:31:06 GMT 2011
 <!-- hhmts end -->
 
    </div>
