@@ -1150,97 +1150,6 @@ public class LeftAssociative {
     </ul>
    </li>
   </ul>
-  <!--
-   <li> Week 10, Friday, 4/12/2009: Understanding the (new) Poker
-    class-collection:
-    <ol>
-     <li> Add to the Card-class a test-function (that is, a "main"-function)
-      which creates a couple of cards using the two constructors and
-      prints them out. </li>
-     <li> Here is a possible
-      <a href="CS-M41_Programs/Courseworks/200910/Two/Card.java">
-       solution </a>. </li>
-     <li> Extending the analysis capabilities:
-      <ul>
-       <li> Copy Poker.java to PokerExtended.java (and, of course, update
-        the class-name accordingly). </li>
-       <li> Now for the case N=0 (where an input-hand is to be analysed),
-        add code to show for the 1+5+10=16 exchange possibilities what is
-        the best and the worst case which could arise. </li>
-       <li> Hint: You just need to apply the given capabilities. </li>
-       <li> Evaluation is done by class "Evaluation" (for no big surprise).
-       </li>
-      </ul>
-     </li>
-     <li> Here is the
-      <a href="CS-M41_Programs/Courseworks/200910/Two/PokerExtended.java">
-       extended version </a>. </li>
-     <li> Note that this program compiles, but it cannot run successfully
-      until you implement the missing functionality. </li>
-    </ol>
-   </li>
-   <li> Week 11, Friday, 4/12/2009: Using and changing some data type.
-    <ul>
-     <li> Consider Storage.java from the Poker class-collection (available
-      <a href="CS-M41_Programs/Courseworks/200910/Two/Storage.java">
-       here </a>).
-     </li>
-     <li> First you need to understand the API; so try to understand
-      the public members of this class.
-     </li>
-     <li> Some examples for using this class are already given in the
-      test function.
-     </li>
-     <li> Write a client program which takes N from the command-line,
-      stores the products i*j for 1 &lt;= i &lt; j &lt;= N in a Storage-object,
-      and outputs the Storage-object.
-     </li>
-     <li> Now change the implementation (only(!) - not the interface!),
-      by just using a two-dimensional array (instead of the one-dimensional
-      array as we have it now). </li>
-     <li> For that you just need to change the implementations of the
-      constructor and of the get/set-functions, and, of course, the definition
-      of the instance-variable "results". </li>
-     <li> The function "index" is no longer needed. </li>
-     <li> The main-function as well as your client must work as before,
-      without any need for changing the code, and without changes in the
-      observable behaviour.
-     </li>
-     <li> Recall that a two-dimensional integer array is declared via, e.g.,
-      <code>int[][] a;</code>, initialised via, e.g., <code>a = new int[3][4];
-      </code>, and used by, e.g., <code>a[2][3] = 77</code>.
-     </li>
-     <li> Remark on this alternative implementation: It uses more memory,
-      but access is quicker, since no index-computations are necessary.
-      This is a typical situation, using different implementations for
-      trading time versus space.
-     </li>
-     <li> Since we cannot use inheritance yet, usage of the two implementations
-      is a bit clumsy, since we need to have two files "Storage.java"
-      somewhere (containing the two implementations), and then to copy one or
-      the other into the directory with our application. </li>
-     <li> Inheritance allows one to define one "interface class" "Storage",
-      which is abstract, and then to define various classes implementing
-      this interface, like "StorageFast" and "StorageSmall".
-     </li>
-     <li> Final remark: Of course, for coursework II only the original files
-      are to be used (though it will also work with the alternative
-      implementation, of course).
-     </li>
-    </ul>
-    Here is the <a href="CS-M41_Programs/Chapter3/Week11"> solution </a>
-    (see the sub-directories for old and new versions of Storage.java).
-    Altogether 4 programs can be compiled and run:
-    <ol>
-     <li> The two Storage-programs ("New" and "Old", each with its
-      test-program). </li>
-     <li> The two versions of the Client-program, using the two versions of
-      the Storage-class. </li>
-    </ol>
-    See the files for how to compile and run these four programs.
-   </li>
-  </ul>
--->
   
 
   <h2> Coursework </h2>
@@ -1886,7 +1795,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Sun Dec 11 10:58:39 GMT 2011
+Last modified: Sun Dec 11 11:00:04 GMT 2011
 <!-- hhmts end -->
 
    </div>
