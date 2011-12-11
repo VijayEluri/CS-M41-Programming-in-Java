@@ -1018,7 +1018,9 @@ public class LeftAssociative {
        the Trivial-solution </a>, and here is the
       <a href="CS-M41_Programs/Chapter3/Week09/Client.java"> Client </a>.
      </li>
-      <li> Study <a href="CS-M41_Programs/Chapter3/Libraries/Turtle.java">
+     <li> Study "Charge.java" and "Potential.java", understand how it works,
+      and play a bit around (using for example "charges.txt" as input). </li>
+     <li> Study <a href="CS-M41_Programs/Chapter3/Libraries/Turtle.java">
        Turtle.java </a> and the application
       <a href="CS-M41_Programs/Chapter3/Section2/Spiral.java">Spiral.java </a>;
       play a bit around with it, and write your own clients of class Turtle,
@@ -1032,99 +1034,32 @@ public class LeftAssociative {
       serve as a first indication. </strong> Will be updated soon.
     </p>
    </li>
-   <li> Week 11 (17/12/2010): Exercises related to parsing strings
-    <ol>
-     <li> Read a string from the command-line and determine how many
-      space-separated parts it has.
-      <ul>
-       <li> Call the class "CountParts", printing out how many parts there
-       are. </li>
-       <li> In order to input a string containing spaces, you need to use
-        single quotation marks, e.g.
-        <pre>
-> java CountParts 'hhg   j bbnbh bvc c'
-5
-        </pre>
-       </li>
-       <li> This task is very easy using the split-method of the String-class;
-        see Section 3.1 of the book (also available
-        <a href="http://www.cs.princeton.edu/introcs/31datatype/"> here </a>).
-        </li>
-       <li> Examples for the split-functions are
-        <a href="http://www.rgagnon.com/javadetails/java-0438.html"> there
-         </a>.
-       </li>
-       <li> Play around with various input (only spaces, leading spaces,
-        trailing spaces, ...), to better understand the behaviour. </li>
-       <li> Here is a
-        <a href="CS-M41_Programs/Chapter3/Section1/Parsing/CountParts.java">
-         solution </a>
-        which also shows the parts with their indices.
-       </li>
-      </ul>
-     </li>
-     <li> Modify the solution of the previous part, where now the string is
-      split at the symbol "@".
-      <ul>
-       <li> Again, play around with it (what happens when spaces are used?).
-       </li>
-       <li> Here is a
-        <a href="CS-M41_Programs/Chapter3/Section1/Parsing/SplitCharacter.java">
-         solution </a>
-        which again shows the parts with their indices.
-       </li>
-      </ul>
-     </li>
-     <li> Parse a string, where you extract all digits from it, adding them
-      up, returning their sum and the original string without these digits:
-      <ul>
-       <li> For example
-        <pre>
-> java Crossfoot 'dg08 ha ns82g40h1 '
-23
-"dg ha nsgh "
-        </pre>
-       </li>
-       <li> To detect whether a character is a digit, use that characters
-        are treated as integers, and thus can be compared by "&lt;" etc., and
-        can be added/subtracted. </li>
-       <li> Here is a
-        <a href="CS-M41_Programs/Chapter3/Section1/Parsing/Crossfoot.java">
-         solution </a>.
-       </li>
-      </ul>
-     </li>
-    </ol>
-    All these techniques you've already seen in the <code>Board</code> class.
-   </li>
-  </ul>
-  <!--
-   <li> Week 5, Friday, 6/11/2009:
-    <ol>
-     <li> Counting random events:
+   <li> Additional exercises:
+    <ul>
+     <li> More on arrays (and static functions):
       <ol>
-       <li> Write a program (class) "RandomNumbers" which takes two
-        command-line arguments M and N. </li>
-       <li> The program then creates N many random integers in the interval
-        [1, M], counts how often each of these integers occurs, and then
-        prints out the relative frequency for each of these M numbers (that is,
-        the quotient "occurrences / N"). </li>
-       <li> Your program should work for large N, and thus should not store
-        the N random numbers computed. </li>
-       <li> For the creation of the random integer write a function
-        <code>random(M)</code>, which takes M as parameter, and returns a
-        random integer from 1 to M. </li>
-       <li> Hint: you need to use an integer-array of size M for performing
-        the counting. </li>
+       <li> Counting random events:
+        <ol>
+         <li> Write a program (class) "RandomNumbers" which takes two
+          command-line arguments M and N. </li>
+         <li> The program then creates N many random integers in the interval
+          [1, M], counts how often each of these integers occurs, and then
+          prints out the relative frequency for each of these M numbers (that is,
+          the quotient "occurrences / N"). </li>
+         <li> Your program should work for large N, and thus should not store
+          the N random numbers computed. </li>
+         <li> For the creation of the random integer write a function
+          <code>random(M)</code>, which takes M as parameter, and returns a
+          random integer from 1 to M. </li>
+         <li> Hint: you need to use an integer-array of size M for performing
+          the counting. </li>
+        </ol>
+        Here is <a href="CS-M41_Programs/Chapter2/Week05/RandomNumbers.java">
+         the solution </a>.
+       </li>
       </ol>
-      Here is <a href="CS-M41_Programs/Chapter2/Week05/RandomNumbers.java">
-       the solution </a>.
      </li>
-    </ol>
-   </li>
-   <li> Week 6+7, Friday 13/11/2009:
-    <ol>
-     <li> Libraries:
+     <li> More on modules (or "libraries"):
       <ol>
        <li> Implement the library class StdStats with (just) the static
         functions "min", "max" and "mean". </li>
@@ -1135,9 +1070,73 @@ public class LeftAssociative {
         mean=4.6. </li>
       </ol>
      </li>
-     <li> Recursion:
+     <li> Parsing strings (using methods from the <code>String</code> class)
       <ol>
-       <li> Enter the program "Htree" from the lecture. </li>
+       <li> Read a string from the command-line and determine how many
+        space-separated parts it has.
+        <ul>
+         <li> Call the class "CountParts", printing out how many parts there
+          are. </li>
+         <li> In order to input a string containing spaces, you need to use
+          single quotation marks, e.g.
+          <pre>
+> java CountParts 'hhg   j bbnbh bvc c'
+5
+          </pre>
+         </li>
+         <li> This task is very easy using the split-method of the String-class;
+          see Section 3.1 of the book (also available
+          <a href="http://www.cs.princeton.edu/introcs/31datatype/"> here </a>).
+         </li>
+         <li> Examples for the split-functions are
+          <a href="http://www.rgagnon.com/javadetails/java-0438.html"> there
+          </a>.
+         </li>
+         <li> Play around with various inputs (only spaces, leading spaces,
+          trailing spaces, ...), to better understand the behaviour. </li>
+         <li> Here is a
+          <a href="CS-M41_Programs/Chapter3/Section1/Parsing/CountParts.java">
+           solution </a>
+          which also shows the parts with their indices.
+         </li>
+        </ul>
+       </li>
+       <li> Modify the solution of the previous part, where now the string is
+        split at the symbol "@".
+        <ul>
+         <li> Again, play around with it (what happens when spaces are used?).
+         </li>
+         <li> Here is a
+          <a href="CS-M41_Programs/Chapter3/Section1/Parsing/SplitCharacter.java">
+           solution </a>
+          which again shows the parts with their indices.
+         </li>
+        </ul>
+       </li>
+       <li> Parse a string, where you extract all digits from it, adding them
+        up, returning their sum and the original string without these digits:
+        <ul>
+         <li> For example
+          <pre>
+> java Crossfoot 'dg08 ha ns82g40h1 '
+23
+"dg ha nsgh "
+          </pre>
+         </li>
+         <li> To detect whether a character is a digit, use that characters
+          are treated as integers, and thus can be compared by "&lt;" etc., and
+          can be added/subtracted. </li>
+         <li> Here is a
+          <a href="CS-M41_Programs/Chapter3/Section1/Parsing/Crossfoot.java">
+           solution </a>.
+         </li>
+        </ul>
+       </li>
+      </ol>
+     </li>
+     <li> Recursion (we didn't do that section from Chapter 2):
+      <ol>
+       <li> Enter the program "Htree" from the book. </li>
        <li> Write a modified program "Htree2", which asks for confirmation
         before continuing drawing parts of the tree. </li>
        <li> Also print out appropriate messages, so that you can follow in
@@ -1148,34 +1147,10 @@ public class LeftAssociative {
       Here is <a href="CS-M41_Programs/Chapter2/Section3/Htree2.java">
        a solution </a>.
      </li>
-    </ol>
+    </ul>
    </li>
-   <li> Week 8, Friday, 20/11/2009:
-    <ol>
-    </ol>
-   </li>
-   <li> Week 9, Friday, 27/11/2009:
-    <ol>
-     <li> Creating and using a trivial class:
-      <ul>
-       <li> Write a class <code>Trivial</code>, which stores two integers (via
-        the constructor), and as member functions ("methods") allows to
-        compute their sum and to translate the object into a string. </li>
-       <li> Write then a program which reads four integers from the
-        command-line, creates two objects of type <code>Trivial</code>
-        accordingly, and outputs their sums and the objects themselves. </li>
-      </ul>
-      Here is <a href="CS-M41_Programs/Chapter3/Week09/Trivial.java">
-       the Trivial-solution </a>, and here is the
-      <a href="CS-M41_Programs/Chapter3/Week09/Client.java"> Client </a>.
-     </li>
-     <li> Study "Charge.java" and "Potential.java", understand how it works,
-      and play a bit around (using for example "charges.txt" as input). </li>
-     <li> Study "Turtle.java" and the application "Spiral.java"; again, play
-      a bit around with it, and write your own clients of class Turtle,
-      creating some simple turtle-graphics. </li>
-    </ol>
-   </li>
+  </ul>
+  <!--
    <li> Week 10, Friday, 4/12/2009: Understanding the (new) Poker
     class-collection:
     <ol>
@@ -1911,7 +1886,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Sun Dec 11 10:36:01 GMT 2011
+Last modified: Sun Dec 11 10:58:39 GMT 2011
 <!-- hhmts end -->
 
    </div>
