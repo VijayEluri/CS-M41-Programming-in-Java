@@ -618,12 +618,34 @@ else
           <a href="CS-M41_Programs/Chapter3/Section2/PassByValue.java">
            PassByValue
           </a> ? </li>
-         <li> And which of the arguments of function <code>update</code> can
-          be made final? </li>
-         <li> What is the output of
-          <a href="CS-M41_Programs/Chapter3/Section2/PotentialProblem.java">
-           PotentialProblem
-          </a> ? </li>
+         <li> And which of the variables (arguments of function
+          <code>update</code> and others) can be made final?
+          The solution is provided
+          <a href="CS-M41_Programs/Chapter3/Section2/PassByValue2.java">
+           here
+          </a>.
+         </li>
+         <li> Aliasing:
+          <ol>
+           <li> What is the output of
+            <a href="CS-M41_Programs/Chapter3/Section2/PotentialProblem.java">
+             PotentialProblem
+            </a> ? </li>
+           <li> What is the output of
+            <a href="CS-M41_Programs/Chapter3/Section2/PotentialProblem2.java">
+             PotentialProblem2
+            </a> ? </li>
+           <li> What is the output of
+            <a href="CS-M41_Programs/Chapter3/Section2/PotentialProblem3.java">
+             PotentialProblem3
+            </a> ? </li>
+          </ol>
+          Understand that aliasing can not occur in the first two examples,
+          whatever we do, since the data types used for variable x are
+          immutable. And understand why using a "proper class", i.e.,
+          an array here, provided the additional level of indirection in the
+          third example so that aliasing finally occurs.
+         </li>
         </ol>
        </li>
        <li> The architecture of the second coursework:
@@ -1735,7 +1757,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Sun Dec 11 11:12:54 GMT 2011
+Last modified: Sun Dec 11 12:02:21 GMT 2011
 <!-- hhmts end -->
 
    </div>
