@@ -19,7 +19,19 @@ class Input {
     boolean waiting = true;
     int i=0, j=0;
     do {
-      // XXX to be completed XXX
+      if (StdIn.isEmpty()) return null;
+      final String inp_i = StdIn.readString();
+      if (StdIn.isEmpty()) return null;
+      final String inp_j = StdIn.readString();
+      try {
+        i = Integer.parseInt(inp_i);
+        j = Integer.parseInt(inp_j);
+        waiting = false;
+      }
+      catch (final Exception e) {}
+      if (! waiting)
+        if (i < 1 || i > M || j < 1 || j > N) waiting = true;
+      if (waiting) System.out.println(message_invalid);
     } while (waiting);
     int[] result = new int[2];
     result[0] = i; result[1] = j;

@@ -103,7 +103,18 @@ class Field {
 
   // printing out a field:
   public static void output_field(final int[][] field) {
-    // XXX to be completed XXX
+    assert(valid_field(field));
+    final int M = field.length, N = field[0].length;
+    final int horiz_spaces = (N <= 9) ? 1 : (N <= 99) ? 2 : 3;
+    final int vert_spaces = (M <= 9) ? 1 : (M <= 99) ? 2 : 3;
+    StdOut.printf("%" + (vert_spaces+2) + "s", " ");
+    for (int j = 0; j < N; ++j) StdOut.printf("%" + horiz_spaces + "s", j+1);
+    System.out.println();
+    for (int i = 0; i < M; ++i) {
+      StdOut.printf("%" + vert_spaces + "d: ",i+1);
+      for (int j = 0; j < N; ++j) StdOut.printf("%" + horiz_spaces + "s", cell(field[i][j]));
+      System.out.println();
+    }
   }
   private static String cell(final int f) {
     assert(f == fe || f == f1 || f == f2);
@@ -114,6 +125,16 @@ class Field {
 
   // printing out a move-list:
   public static void output_movelist(final int[][] move_list, final int number_moves) {
-    // XXX to be completed XXX
+    assert(move_list != null);
+    for (int m = 0; m < number_moves; ++m) {
+      assert(move_list[m] != null);
+      assert(move_list[m].length == 2);
+      final int i = move_list[m][0];
+      assert(i >= 1);
+      final int j = move_list[m][1];
+      assert(j >= 1);
+      final String label = (m%2 == 0) ? "I" : "II";
+      StdOut.printf("%3d.%-2s: %2d %2d\n", m/2+1, label, i, j);
+    }
   }
 }

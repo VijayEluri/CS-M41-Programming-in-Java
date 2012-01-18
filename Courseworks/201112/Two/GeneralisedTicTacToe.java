@@ -130,7 +130,28 @@ class GeneralisedTicTacToe {
     Field.output_field(field);
     boolean first_player_moves = true;
     boolean draw = true;
-    // XXX the move-loop -- to be completed XXX
+    for (; move_index[0] < number_cells; first_player_moves = ! first_player_moves) {
+      int move_i = 0, move_j = 0;
+      boolean interrupt = false;
+      if (first_player_moves) System.out.println(message_mv_expected_1);
+      else System.out.println(message_mv_expected_2);
+      do {
+        final int[] reading = Input.read_move(M,N);
+        if (reading == null) { interrupt = true; break; }
+        move_i = reading[0]; move_j = reading[1];
+      } while (! Field.valid_move(field,move_i,move_j));
+      if (interrupt) break;
+      if (first_player_moves) System.out.print(message_move_1);
+      else System.out.print(message_move_2);
+      System.out.println(move_i + " " + move_j);
+      final int max = Field.enter_move(field, move_i, move_j, first_player_moves, move_list, move_index, occurrences, occupation);
+      Field.output_field(field);
+      System.out.println(message_max_occupation + max);
+      if (max == K) {
+        draw = false;
+        break;
+      }
+    }
 
     // Result
 

@@ -34,10 +34,29 @@ class Parameters {
       error_message(message_num_param + args.length + ".");
       return null;
     }
-    int K=0,M=0,N=0; // initialisation to make it compile already now
-    // XXX to be completed: reading K,M,N XXX
+    int K,M,N;
+    try {
+      K = Integer.parseInt(args[0]);
+      M = Integer.parseInt(args[1]);
+      N = Integer.parseInt(args[2]);
+    }
+    catch (final Exception e) {
+      error_message(message_parsing);
+      return null;
+    }
+    if (K < 1 || M < 1 || N < 1) {
+      error_message(message_positive);
+      return null;
+    }
     int m = 0;
-    // XXX to be completed: reading m XXX
+    if (args[3].equals("hh")) m = GeneralisedTicTacToe.mode_hh;
+    else if (args[3].equals("hc")) m = GeneralisedTicTacToe.mode_hc;
+    else if (args[3].equals("ch")) m = GeneralisedTicTacToe.mode_ch;
+    else if (args[3].equals("cc")) m = GeneralisedTicTacToe.mode_cc;
+    if (m == 0) {
+      error_message(message_mode);
+      return null;
+    }
     int[] result = new int[4];
     result[0] = K; result[1] = M; result[2] = N; result[3] = m;
     return result;

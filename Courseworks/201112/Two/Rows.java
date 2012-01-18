@@ -63,9 +63,56 @@ class Rows {
     assert(r >= 1);
     int[][][] rows = new int[r][][];
     int row_index = 0;
-
-    // XXX to be completed XXX
-
+    // horizontal rows:
+    for (int i = 0; i < m; ++i)
+      for (int j = 0; j <= n-k; ++j, ++row_index) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = i;
+          rows[row_index][p][1] = j+p;
+        }
+      }
+    // vertical rows:
+    for (int j = 0; j < n; ++j)
+      for (int i = 0; i <= m-k; ++i, ++row_index) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = i+p;
+          rows[row_index][p][1] = j;
+        }
+      }
+    // diagonal rows, top-left to bottom-right:
+    for (int i = 0; i < m+n-1; ++i) {
+      final int tl_i = Math.max(m-1-i,0);
+      final int tl_j = Math.max(i-m+1,0);
+      final int br_i = m-1-Math.max(i-n+1,0);
+      final int br_j = Math.min(i,n-1);
+      final int length = br_i - tl_i + 1;
+      assert(length == br_j - tl_j + 1);
+      for (int d = 0; d <= length-k; ++d, ++row_index) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = tl_i + d + p;
+          rows[row_index][p][1] = tl_j + d + p;
+        }
+      }
+    }
+    // diagonal rows, bottom-left to top-right:
+    for (int i = 0; i < m+n-1; ++i) {
+      final int bl_i = Math.min(i,m-1);
+      final int bl_j = Math.max(i-m+1,0);
+      final int tr_i = Math.max(i-n+1,0);
+      final int tr_j = Math.min(i,n-1);
+      final int length = bl_i - tr_i + 1;
+      assert(length == tr_j - bl_j + 1);
+      for (int d = 0; d <= length-k; ++d, ++row_index) {
+        rows[row_index] = new int[k][2];
+        for (int p = 0; p < k; ++p) {
+          rows[row_index][p][0] = bl_i - d - p;
+          rows[row_index][p][1] = bl_j + d + p;
+        }
+      }
+    }
     assert(row_index == r);
     return rows;
   }

@@ -51,7 +51,7 @@ class Occurrences {
       for (int p = 0; p < rows[r].length; ++p) {
         final int i = rows[r][p][0];
         final int j = rows[r][p][1];
-        // XXX to be completed (one single line) XXX
+        occ[i][j][ curr_index[i][j]++ ] = r;
       }
     // resizing the occurrence-arrays to the actual lengths:
     for (int i = 0; i < M; ++i)
@@ -84,7 +84,19 @@ class Occurrences {
 
   public static void show_occurrence_counts(final int[][][] occurrences) {
     assert(occurrences != null);
-    // XXX to be completed XXX
+    final int M = occurrences.length;
+    assert(M != 0);
+    final int N = occurrences[0].length;
+    assert(N != 0);
+    final int spaces = (M*N <= 99) ? 3 : 4;
+    for (int i = 0; i < M; ++i) {
+      for (int j = 0; j < N; ++j) {
+        assert(occurrences[i][j] != null);
+        final int count = occurrences[i][j].length;
+        StdOut.printf("%" + spaces + "d", count);
+      }
+      System.out.println();
+    }
   }
 
 
