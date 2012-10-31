@@ -21,13 +21,13 @@
   <ul>
    <li> Next lecture:
     <ol>
-     <li> Friday (26/10/2012) from 11-12 in the Robert Recorde room (followed
+     <li> Friday (2/11/2012) from 11-12 in the Robert Recorde room (followed
       by the lab 12-13). </li>
     </ol>
    </li>
    <li> Coursework dates:
     <ol>
-     <li> First coursework: Handed out 30/10/2012, deadline 14/11/2012. </li>
+     <li> First coursework: Handed out 31/10/2012, deadline 15/11/2012. </li>
      <li> Second coursework: Handed out 23/11/2012, deadline 11/12/2012. </li>
     </ol>
    </li>
@@ -1122,12 +1122,11 @@ public class LeftAssociative {
   <h3> First coursework </h3>
 
   <ul>
-   <li> Deadline for submission is 14/11/2012, 11:00. </li>
+   <li> Deadline for submission is 15/11/2012, 11:00. </li>
    <li> This coursework has to be electronically submitted. </li>
-<!--
     <ol>
-     <li> Four Java-files, named "Sort4.java", "ModularPower.java",
-      "DiscreteLogarithm.java" and "ElementOrder.java", together with
+     <li> Four Java-files, named "Statistics.java", "Duplicate.java",
+      "MaxCount.java" and "Plateau.java", together with
       a file "Comments.txt" have to be put into a directory named with
       just your student-number (e.g., "123456"), this put into one archive,
       for example "123456.zip", and this archive must be send to me via
@@ -1159,11 +1158,16 @@ public class LeftAssociative {
      </li>
      <li> Syntax errors will result in deductions. </li>
      <li> Of course, false outputs will also result in deductions. </li>
-     <li> Use only the Java constructions presented in the lectures. </li>
-     <li> Anything else will result in a deduction of 50 percent! (The same
-      will hold for the second coursework.) </li>
-     <li> This is to make sure that you really concentrate on the essentials,
-      and don't copy-and-paste code (which usually contains a lot of noise).
+     <li> Use only the Java constructions presented in the lectures.
+      <ul>
+       <li> Anything else will result in a deduction of 50 percent! (The same
+        will hold for the second coursework.) </li>
+       <li> This is to make sure that you really concentrate on the essentials,
+        and don't copy-and-paste code (which usually contains a lot of noise).
+       </li>
+       <li> Thus under no circumstances an "import"-statement can be used.
+       </li>
+      </ul>
      </li>
      <li> Compared to the book, we introduced a few extensions in the lectures,
       most important the <code>final</code>-qualifier, which you are expected
@@ -1173,181 +1177,110 @@ public class LeftAssociative {
      <li> Take care about precise class- and file-names. </li>
      <li> Choose good variable-names. </li>
      <li> Provide a well-organised indentation. </li>
+     <li> For three of the four programs, no comments are allowed: write good
+      code, so that no comments are needed! </li>
      <li> Finally, follow <strong>precisely</strong> the specification: Not
       just regarding the values of the output, but also regarding the precise
       formatting! </li>
     </ol>
    </li>
-   <li> For each of the four programs to be written you can get 30 marks,
-    which makes 120 marks altogether, which are capped at 100. </li>
-   <li> The four programs
+    <li> The four programs
     <ol>
-     <li> <code>Sort4</code> </li>
-     <li> <code>ModularPower</code> </li>
-     <li> <code>DiscreteLogarithm</code> </li>
-     <li> <code>ElementOrder</code> </li>
+     <li> <code>Statistics</code>: 20 marks </li>
+     <li> <code>Duplicate</code>: 20 marks </li>
+     <li> <code>MaxCount</code>: 30 marks </li>
+     <li> <code>Plateau</code>: 50 marks </li>
     </ol>
     are likely best approached in this order (of increasing difficulty). </li>
-   <li> The first programs concerns conditionals (only), the second and the
-    third additionally also loops, and the fourth additionally also arrays.
-   </li>
-   <li> Specification of <code>Sort4</code>:
+   <li> If you reach more than 100 marks (120 is possible), then the result
+    will be capped at 100. </li>
+   <li> Specification of <code>Statistics</code>:
     <ol>
-     <li> This programs takes four integers as parameters, and returns them
-      in sorted order. </li>
+     <li> This programs takes a list of floating-point numbers as parameters,
+      and prints their count N, their minimum and maximum, their sum, and
+      their average, each on a new line, without any further output. </li>
      <li> E.g. (omitting here and in the sequel the <code>java</code>-command):
       <pre>
-> Sort4 1 2 3 4
-1 2 3 4
->Sort4 8 7 7 2
-2 7 7 8
-      </pre>
-     </li>
-     <li> Notice that in the non-error case there is no text output, just
-      the 4 numbers, separated by a space, closing with end-of-line. </li>
-     <li> An additional requirement concerns the number of comparisons used
-      by your program: for each input-sequence, only at most 5 comparisons
-      are to be used! </li>
-     <li> Of course, the solution must use only elementary means, that is,
-      only using conditionals and assignments. The only library functions
-      used are for input and output. </li>
-    </ol>
-   </li>
-   <li> Modular arithmetic: the basic idea.
-    <ol>
-     <li> The remaining three exercises concern "modular arithmetic". </li>
-     <li> A "modulus" n is given, a natural number greater zero. </li>
-     <li> Recall that for an integer x the Java operation "remainder", i.e.,
-      <code> x % n</code>, produces a natural number from 0 to n-1 (inclusive).
-     </li>
-     <li> Now "modular arithmetic" (with the integers) basically means, that
-      before and after performing additions and multiplications, one replaces
-      operands and result by the remainder with n.
-      <pre>
-x + y mod n := ((x % n) + (y % n)) % n
-x * y mod n := ((x % n) * (y % n)) % n
-      </pre>
-     </li>
-     <li> In this way one keeps all numbers small. </li>
-     <li> Arithmetic modulo 2, the first non-trivial case, is the the
-      arithmetic of even and odd. </li>
-     <li> Some concrete examples:
-      <ul>
-       <li> 6 + 10 mod 5 = 1 + 0 mod 5 = 1. </li>
-       <li> 77 + 20 mod 15 = 2 + 5 mod 15 = 7. </li>
-       <li> 77 + 14 mod 15 = 2 + 14 mod 15 = 1. </li>
-       <li> 3 * 7 mod 5 = 3 * 2 mod 5 = 1. </li>
-       <li> 3 * 7 mod 21 = 0. </li>
-      </ul>
-     </li>
-     <li> You might want to write two little programs, "ModularAddition" and
-      "ModularMultiplication", to play around with it:
-      <pre>
-> ModularAddition 6 10 5
-1
-> ModularMultiplication 3 7 21
-0
-      </pre>
-     </li>
-     <li> A final remark: Due to the deficient handling of negative numbers
-      in Java w.r.t. the remainder-operation, we only consider non-negative
-      integers here. </li>
-    </ol>
-   </li>
-   <li> Specification of <code>ModularPower</code>:
-    <ol>
-     <li> This program takes three integer parameters a, e, n, and computes
-      a^e mod n (the power of a to e, modulo n). </li>
-     <li> The exponent e is not directly part of the modular arithmetic (it is
-      not reduced by the remainder operation), and we only consider
-      non-negative e. </li>
-     <li> Recall that a^0=1 for all a (and thus also 0^0 = 1). </li>
-     <li> Since for n=1 (computing modulo 1) we have "0=1", in that special
-      case it means 0^0 = 0. </li>
-     <li> Some examples:
-      <pre>
-> ModularPower 0 5 7
-0
-> ModularPower 0 0 1
-0
-> ModularPower 0 0 2
-1
-> ModularPower 2 3 5
-3
-> ModularPower 2 1234567890 777777777
-383814208
-> ModularPower 1000000000 56789 1000000001
-1000000000
-      </pre>
-     </li>
-     <li> Note that in the non-error case just a number is output. </li>
-    </ol>
-   </li>
-   <li> Specification of <code>DiscreteLogarithm</code>:
-    <ol>
-     <li> This program takes three integer parameters a, b, n, and computes
-      the smallest exponent 0 &lt;= e &lt; n with b^e = a mod n. </li>
-     <li> That is, the "discrete logarithm" of a to base b modulo n. </li>
-     <li> It is the inverse of <code>ModularPower</code>. </li>
-     <li> In case there is no e, the result shall be "-1". </li>
-     <li> Some examples:
-      <pre>
-> DiscreteLogarithm 0 0 1
-0
-> DiscreteLogarithm 0 0 2
-1
-> DiscreteLogarithm 1 2 2
-0
-> DiscreteLogarithm 0 2 2
-1
-> DiscreteLogarithm 5 2 7
--1
-> DiscreteLogarithm 5 3 7
-5
-> DiscreteLogarithm 2 3 5
-3
-> DiscreteLogarithm 3 2 777777777
--1
-> DiscreteLogarithm 383814208 2 777777777
-3690
-> DiscreteLogarithm 3 10 1111111181
-898664729
-      </pre>
-     </li>
-     <li> Note that, again, in the non-error case no text is output. </li>
-    </ol>
-   </li>
-   <li> Specification of <code>ElementOrder</code>:
-    <ol>
-     <li> This program takes two integer parameters a, n, and computes how
-      many different elements can be obtained by repeated multiplication of
-      a with itself modulo n, i.e., considering a^1 mod n, a^2 mod n, ...,
-      and counting how many different numbers can be obtained. </li>
-     <li> Note that the result is always between 1 and n (inclusive). </li>
-     <li> Some examples:
-      <pre>
-> ElementOrder 0 1
-1
-> ElementOrder 1 5
-1
-> ElementOrder 2 5
+> Statistics 1.1 4.6 3.1 -4
 4
-> ElementOrder 2 8
-3
-> ElementOrder 6 10000019
-10000018
-> ElementOrder 5 100000007
-100000006
-> ElementOrder 1000000 1000001
+-4.0
+4.6
+4.799999999999999
+1.1999999999999997
+> Statistics
+0
+      </pre>
+     </li>
+     <li> Notice that in case of zero inputs, just the first output, N, is
+      printed. </li>
+     <li> Of course, the solution must use only elementary means, that is,
+      only using conditionals and assignments. </li>
+     <li> This program must not contain any comments. </li>
+    </ol>
+   </li>
+   <li> Specification of <code>Duplicate</code>:
+    <ol>
+     <li> This program takes a list of integers as parameters, and prints out
+      "true" in case the list contains a duplicate, and "false" otherwise.
+     </li>
+     <li> Some examples:
+      <pre>
+> Duplicate 0 5 7
+false
+> Duplicate 0 0 1
+true
+      </pre>
+     </li>
+     <li> This program must not contain any comments. </li>
+    </ol>
+   </li>
+   <li> Specification of <code>MaxCount</code>:
+    <ol>
+     <li> This program takes a list of intergers as parameters, and prints
+      the maximal number of times a number occcurs in that list. </li>
+     <li> Some examples:
+      <pre>
+> MaxCount
+0
+> MaxCount 3 3 4
+2
+> MaxCount 1 2 3
+1
+      </pre>
+     </li>
+     <li> This program must not contain any comments. </li>
+    </ol>
+   </li>
+   <li> Specification of <code>Plateau</code>:
+    <ol>
+     <li> This program takes a list of integers as parameters, and prints
+      the length and location of the longest contiguous sequence of equal
+      values where the values of the elements just before and just after this
+      sequence are (strictly) smaller (if such elements exist). </li>
+     <li> Some examples:
+      <pre>
+> Plateau
+0
+> Plateau 1
+1
+> Plateau 1 1
+2
+> Plateau 1 1 2
+1
+> Plateau 1 1 2 2
+2
+> Plateau 1 1 2 2 3
+1
+> Plateau 1 1 2 2 0
 2
       </pre>
      </li>
+     <li> This program may contain comments. </li>
     </ol>
    </li>
-   <li> General remark: All programs are rather small: A few lines for reading
-    the input, a few lines for error handling, and a few lines for the core
-    computation. </li>
+   <li> General remark: All programs are rather small. </li>
   </ul>
+<!--
   <p>
    Here are the solutions:
   </p>
@@ -1382,9 +1315,8 @@ x * y mod n := ((x % n) * (y % n)) % n
    <li> There are also files "TestcasesXXX", which contain on one line the
     command-line parameters, and on the next line the expected output.
    </li>
--->
   </ul>
-
+-->
 
 <!--
   <h3> Second coursework: Tic-Tac-Toe (generalised) </h3>
@@ -1763,7 +1695,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Oct 26 10:11:36 BST 2012
+Last modified: Wed Oct 31 02:13:24 GMT 2012
 <!-- hhmts end -->
 
    </div>
