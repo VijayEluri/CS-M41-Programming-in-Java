@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB"> 
+ <head>
+  <title>Finding bugs</title>
+  <meta name="author" content="Oliver Kullmann" />
+   <meta name="description" content="On finding bugs in Java programs" />
+    <meta name="robot" content="all" />
+     <meta http-equiv="content-type" content="text/html" />
+      <meta http-equiv="charset" content="utf-8" />
+ </head>
+ 
+ <body>
+
+  <h1>Finding bugs in Java programs</h1>
+
+
+  <h2>Syntax errors</h2>
+
+  <ul>
+   <li> The most important rule is to scroll up (in the console window) to
+    find the <strong>first</strong> error - most of the time it's easiest to
+    ignore all other errors. </li>
+   <li> Go to the line of the error; sometimes it is just enough to look at
+    this line (closely) to spot the problem. </li>
+   <li> Otherwise one needs to understand (partially) the error message;
+    besides the line-number also the column-number is helpful. </li>
+   <li> An important method to encounter only a small number of syntax errors,
+    and that at a known location, is to <strong>compile often</strong>:
+    <ol>
+     <li> Enter only one line or one <strong>complete</strong> construct at a
+      time, and immediately compile the program. </li>
+     <li> To start with, it is very important to enter the
+      <strong>complete</strong> class scaffolding, i.e.,
+      <pre>
+class XXX {
+}
+      </pre>
+      If you wouldn't enter immediately the closing brackets, you could check
+      for syntax errors only once the program would be completed, and then
+      you'll be (likely) overwhelmed with syntax errors. </li>
+     <li> Then comes
+      <pre>
+public static void main(final String[] args) {
+}
+      </pre>
+      inside the class. Again, the closing brackets are needed. </li>
+     <li> After each such unit entered, compile the program - if you get a
+      syntax error, very likely it is located in the small piece of code you
+      just entered. </li>
+    </ol>
+   </li>
+  </ul>
+
+
+  <h2>Runtime errors</h2>
+
+  <h3>Arrays</h3>
+
+  <ul>
+   <li> For example the small program
+    <pre>
+class Test {
+  public static void main(final String[] args) {
+    int i = 0;
+    System.out.println(args[i]);
+  }
+}
+    </pre>
+    when run without a parameter, throws the exception
+    <pre>
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 0
+        at Test.main(Test.java:4)
+    </pre>
+    which is quite informative:
+    <ol>
+     <li> In the function <code>main</code> in class <code>Test</code>, at line
+      4 of the file "Test.java", an array-index was not within the allowed
+      bounds, and that index is 0. </li>
+     <li> Recall that for an array <code>A</code> the allowed indices i are the
+      natural numbers 0 &le; i &lt; A.length. </li>
+    </ol>
+   </li>
+   <li> Now directly before the critical instruction, print the length of the
+    array and the index, to see the error more clearly:
+    <pre>
+class Test {
+  public static void main(final String[] args) {
+    int i = 0;
+System.err.println(args.length);
+System.err.println(i);
+    System.out.println(args[i]);
+  }
+}
+    </pre>
+    Note that printing happens to standard-error, and that here the
+    print-statements are not indented --- this is so that one doesn't forget
+    to remove the debugging-statements at the end!
+   </li>
+   <li> It might also happen (though perhaps not with our small programs),
+    that the array hasn't been created, for example
+    <pre>
+class Test {
+  public static void main(final String[] args) {
+    int[] A = null;
+    A[0] = 0;
+  }
+}
+    </pre>
+    creates the runtime error
+    <pre>
+Exception in thread "main" java.lang.NullPointerException
+        at Test.main(Test.java:4)
+    </pre>
+    since A is the null-pointer (points to "nothing"). We see that Java's
+    compile-time checking is not very clever (or it is very "formal"): The
+    program
+    <pre>
+class Test {
+  public static void main(final String[] args) {
+    int[] A;
+    A[0] = 0;
+  }
+}
+    </pre>
+    would have created a compile-time error ("variable A might not have been
+    initialized"), while the above <em>equivalent</em> program doesn't create a
+    compile-time error. </li>
+  </ul>
+   
+
+   <hr />
+
+   <div>
+    <p></p>
+    <span id="validate-picture">
+     <a href="http://validator.w3.org/check?uri=referer">
+      <img src="images/valid-xhtml10"
+       alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+     </a>
+    </span>
+ 
+    <address>
+      <a href="http://www.cs.swan.ac.uk/~csoliver/">
+	Oliver Kullmann
+      </a>
+    </address>
+<!-- Created: Thu Nov  8 16:58:58 GMT 2012 -->
+<!-- hhmts start -->
+Last modified: Thu Nov  8 18:31:28 GMT 2012
+<!-- hhmts end -->
+
+   </div>
+
+  </body>
+</html>
