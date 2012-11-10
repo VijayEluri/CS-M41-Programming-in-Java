@@ -8,9 +8,9 @@ set -o errexit
 set -o nounset
 
 script_name="CompileAll"
-version_number=0.1
+version_number=0.1.1
 
-directories=${directories:-"$(ls -d */)"}
+directories=${directories:-*/}
 logfile="LogFile"
 
 for D in ${directories}; do
@@ -18,7 +18,7 @@ for D in ${directories}; do
   cd ${D}
   echo >> ${logfile}
   date >> ${logfile}
-  programs="$(ls *.java)"
+  programs=*.java
   echo ${programs}
   for P in ${programs}; do
     javac ${P} &>>${logfile}
