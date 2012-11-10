@@ -1,0 +1,27 @@
+#!/bin/bash
+# Oliver Kullmann, 10.11.2012 (Swansea)
+
+# Assumes that all directories in the current directories are
+# coursework-directories.
+
+set -o errexit
+set -o nounset
+
+script_name="CompileAll"
+version_number=0.1
+
+directories=${directories:-"$(ls -d */)"}
+logfile="LogFile"
+
+for D in ${directories}; do
+  echo ${D}
+  cd ${D}
+  echo >> ${logfile}
+  date >> ${logfile}
+  programs="$(ls *.java)"
+  echo ${programs}
+  for P in ${programs}; do
+    javac ${P} &>>${logfile}
+  done
+  cd ..
+done
