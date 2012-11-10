@@ -8,18 +8,20 @@ set -o errexit
 set -o nounset
 
 script_name="CompileAll"
-version_number=0.1.1
+version_number=0.1.2
 
 directories=${directories:-*/}
-logfile="LogFile"
+evaldir="Evaluation"
+logfile="${evaldir}/Log_compilation"
 
 for D in ${directories}; do
   echo ${D}
   cd ${D}
+  mkdir -p ${evaldir}
   echo >> ${logfile}
   date >> ${logfile}
   programs=*.java
-  echo ${programs}
+  echo ${programs} >> ${logfile}
   for P in ${programs}; do
     javac ${P} &>>${logfile}
   done
