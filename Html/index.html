@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB">
  <head>
   <title>CS-M41 Programming in Java 2012/13</title>
   <meta name="author" content="Oliver Kullmann" />
@@ -10,14 +10,14 @@
      <meta http-equiv="content-type" content="text/html" />
       <meta http-equiv="charset" content="utf-8" />
  </head>
- 
+
  <body>
 
   <h1>CS-M41 Programming in Java 2012/13</h1>
-  
-  
+
+
   <h2> Messages </h2>
-  
+
   <ul>
 <!--
    <li> For the courseworks please note that the input as well as the output
@@ -39,10 +39,10 @@
     </ol>
    </li>
   </ul>
-  
-  
+
+
   <h2> General information </h2>
-  
+
   <ul>
    <li> First week (1/10/2012 - 5/10/2012):
     <ol>
@@ -114,10 +114,10 @@
      </a>
     is the postgrad demonstrator. </li>
   </ul>
-  
-  
+
+
   <h2> The textbook </h2>
-  
+
   <ul>
    <li> This module is based on the book
     <ul>
@@ -137,15 +137,15 @@
    <li> In this module we cover the essentials from the first three chapter.
    </li>
   </ul>
-  
-  
+
+
   <h2> Slides and material for the lectures </h2>
 
-  
+
   <p>
    The additional programs you find <a href="CS-M41_Programs"> here </a>.
   </p>
-  
+
   <ul>
    <li> Week 2:
     <ol>
@@ -351,12 +351,12 @@ else
 4 : """
        </pre>
        </li>
-       <li> 
+       <li>
         <a href="CS-M41_Programs/Chapter1/Section5">RandomSeq.java</a>
         is a simple example programs which outputs N (pseudo)random numbers
         to standard output.
        </li>
-       <li> 
+       <li>
         <a href="CS-M41_Programs/Chapter1/Section5">Average.java</a>
         shows how to read an arbitrary stream of numbers from standard
         input and computing their arithmetic mean.
@@ -418,7 +418,7 @@ else
          <li> Write a function <code>max(a,b)</code>, computing the maximum
           of two integers:
           <ul>
-           <li> 
+           <li>
             <a href="CS-M41_Programs/Chapter2/Section1/Max2.java"> Template
             </a>
            </li>
@@ -516,15 +516,70 @@ else
     <ol>
      <li> Tuesday (22/11/2011):
       <ol>
-       <li> Using libraries
-        <a href="Slides/22library-2x2.pdf"> Libraries and Clients </a>. </li>
-       <li> Two programs have to be completed, filling the positions marked
-        with "XXX":
+       <li> First an exercise for writing functions; write class
+        "SimpleBernoulli" containing the following functions:
         <ol>
+         <li> Function "bernoulli", taking a floating-point number p from 0 to
+          1 as argument, and returning a boolean which is true with
+          (pseudo-)probability p. </li>
+         <li> Function "bernoulli_r", taking as arguments p as above and N, an
+          integer, performing N random coin flips, and returning the number of
+          heads. </li>
+        </ol>
+        The main program reads N and p from the command-line, and prints
+        the result of bernoulli_r(p,N). How many coin-flips can be performed
+        within a few seconds?
+        <p></p>
+        Here is the
+        <a href="CS-M41_Programs/Chapter2/Section2/SimpleBernoulli.java">
+         solution
+        </a>.
+       </li>
+       <li> Now come exercises for using libraries
+        <a href="Slides/22library-2x2.pdf"> Libraries and Clients </a>.
+        Three programs have to be completed, filling the positions marked
+        with "XXX", and one program has to be written from scratch.
+        <ol>
+         <li> Solve the first exercise from Coursework I, now using the library
+          StdStats.
+          <p></p>
+          Here is the
+        <a href="CS-M41_Programs/Chapter2/Section2/Statistics.java">
+         solution
+        </a>. By the way, that's easy, but it has also disadvantages, namely?
+         </li>
+         <li> Using StdRandom.discrete:
+          <ul>
+           <li>
+            <a href="CS-M41_Programs/Chapter2/Section2/Count.java">
+             Template
+            </a>
+           </li>
+           <li> Complete function "count" which
+            <ul>
+             <li> takes an array a of probabilities (as does
+              StdRandom.discrete) and an integer N as arguments, </li>
+             <li> performs N (pseudo-)random draws of natural numbers
+              0, ..., a.length-1 according to the probabilities in
+              a, </li>
+             <li> counts for each of these natural number how often they occur,
+             </li>
+            </ul>
+            and returns an array with these counts. </li>
+           <li> Complete function "output". </li>
+           <li> Run the program with some N, so that executions takes a few
+            seconds. </li>
+           <li>
+            <a href="CS-M41_Programs/Chapter2/Section2/Completed/Count.java">
+            Solution
+            </a>
+           </li>
+          </ul>
+         </li>
          <li> Write a program <code>RandomPoints</code> which draws N
           random points according to a Gaussian distribution:
           <ul>
-           <li> 
+           <li>
             <a href="CS-M41_Programs/Chapter2/Section2/RandomPoints.java">
              Template
             </a>
@@ -541,7 +596,7 @@ else
           coin flips, and compares it with the approximation by the
           Gaussian distribution:
           <ul>
-           <li> 
+           <li>
             <a href="CS-M41_Programs/Chapter2/Section2/Bernoulli.java">
              Template
             </a>
@@ -578,7 +633,7 @@ else
          <li> Write a program <code>AlbersSquares</code> which shows two
           colours using two squares:
           <ul>
-           <li> 
+           <li>
             <a href="CS-M41_Programs/Chapter3/Section1/Templates/AlbersSquares.java">
              Template
             </a>
@@ -593,7 +648,7 @@ else
          <li> Write a program <code>Grayscale</code> to convert a
           colour-picture to a gray scale:
           <ul>
-           <li> 
+           <li>
             <a href="CS-M41_Programs/Chapter3/Section1/Templates/Grayscale.java">
              Template
             </a>
@@ -1122,7 +1177,7 @@ public class LeftAssociative {
     </ul>
    </li>
   </ul>
-  
+
 
   <h2> Coursework </h2>
 
@@ -1686,7 +1741,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
    <li> There you also find C++ versions. </li>
   </ul>
 
- 
+
   <h2> Reading </h2>
 
 
@@ -1700,7 +1755,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
        alt="Valid XHTML 1.0 Strict" height="31" width="88" />
      </a>
     </span>
- 
+
     <address>
       <a href="http://www.cs.swan.ac.uk/~csoliver/">
 	Oliver Kullmann
@@ -1708,7 +1763,7 @@ cat 3_1_6_1 | java GeneralisedTicTacToe 3 1 6 hh
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Sat Nov 17 08:13:36 GMT 2012
+Last modified: Sat Nov 17 10:08:32 GMT 2012
 <!-- hhmts end -->
 
    </div>
