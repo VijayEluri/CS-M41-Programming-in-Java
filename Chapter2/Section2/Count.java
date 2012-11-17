@@ -11,7 +11,6 @@ class Count {
   private static XXX output(XXX c) {
     assert(c != null);
     for (int i = 0; i < c.length; ++i) System.out.print(XXX);
-    XXX;
   }
 
   public static void main(final String[] args) {

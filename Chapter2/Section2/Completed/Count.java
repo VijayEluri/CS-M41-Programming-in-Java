@@ -11,7 +11,6 @@ class Count {
   private static void output(final int[] c) {
     assert(c != null);
     for (int i = 0; i < c.length; ++i) System.out.print(c[i] + " ");
-    return;
   }
 
   public static void main(final String[] args) {
