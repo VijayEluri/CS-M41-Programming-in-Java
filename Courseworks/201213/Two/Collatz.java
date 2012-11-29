@@ -1,5 +1,5 @@
 class Collatz {
-  public static long parseLong(final String s) {
+  public static long parse(final String s) {
     if (s == null) return 0;
     long res;
     try { res = Long.parseLong(s); }
@@ -40,9 +40,9 @@ class Collatz {
       System.err.println("ERROR[Collatz]: The argument n is needed.");
       System.exit(1);
     }
-    final long n = parseLong(args[0]);
+    final long n = parse(args[0]);
     if (n <= 0) {
-      System.err.println("ERROR[Collatz]: n must be an integer >= 1.");
+      System.err.println("ERROR[Collatz]: n must be an integer from 1 to " + Long.MAX_VALUE + ".");
       System.exit(2);
     }
     output(evaluation(n));
