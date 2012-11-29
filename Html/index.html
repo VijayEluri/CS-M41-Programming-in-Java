@@ -1452,6 +1452,7 @@ true
       the published interface). </li>
     </ol>
    </li>
+   <li> None of the programs must not contain any comments. </li>
    <li> The three programs
     <ol>
      <li> <code>Concatenate</code>: 20 marks </li>
@@ -1493,7 +1494,6 @@ xyzasd  jjk
      </li>
      <li> And the only String-functionality to be used is concatenation of two
       strings. </li>
-     <li> This program must not contain any comments. </li>
     </ol>
    </li>
    <li> Specification of <code>Collatz</code>:
@@ -1561,7 +1561,7 @@ ERROR[Collatz]: n must be an integer from 1 to 9223372036854775807.
        <li> Function <code>tpo</code> takes an INT n and returns 3n+1 ("tpo" for
         "triple plus one"). </li>
        <li> Function <code>evaluation</code> takes an INT n, computes the
-        Collatz-sequence, and returns the an INT-array of length two, with first
+        Collatz-sequence, and returns an INT-array of length two, with first
         element the number of steps until it reached 1, and the second element the
         maximum number attained in that sequence. </li>
        <li> Finally, function <code>output</code> takes an array of length two
@@ -1580,9 +1580,9 @@ output(evaluation(n));
      <li> This time the command-line arguments are ignored, but input is obtained
       from standard input, using <code>StdIn.java</code>, as provided. </li>
      <li> It reads space-separated words (ignoring all space-characters), and
-      prints out the word-count plus, in numerical order, for all characters found
-      the character-representation in quotation marks, the numerical code, and
-      the number of occurrences. </li>
+      prints out the word-count, plus, in numerical order, for all characters
+      found the character-representation in quotation marks, the numerical
+      code in brackets, and the number of occurrences. </li>
      <li> Some examples:
       <pre>
 > java CountingChars
@@ -1685,7 +1685,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Thu Nov 29 01:08:18 GMT 2012
+Last modified: Thu Nov 29 01:14:57 GMT 2012
 <!-- hhmts end -->
 
    </div>
