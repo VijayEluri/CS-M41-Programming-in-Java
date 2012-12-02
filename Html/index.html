@@ -1452,7 +1452,8 @@ true
       the published interface). </li>
     </ol>
    </li>
-   <li> None of the programs must not contain any comments. </li>
+   <li> The programs must not contain any comments (so that you can
+    concentrate on the code). </li>
    <li> The three programs
     <ol>
      <li> <code>Concatenate</code>: 20 marks </li>
@@ -1463,7 +1464,8 @@ true
    <li> Specification of <code>Concatenate</code>:
     <ol>
      <li> This program concatenates the command-line arguments (as strings),
-      in two different versions, and prints them out, each on its own line. </li>
+      in two different versions, and prints these versions out, each on its
+      own line. </li>
      <li> Some examples:
       <pre>
 > java Concatenate
@@ -1546,7 +1548,9 @@ ERROR[Collatz]: n must be an integer from 1 to 9223372036854775807.
      </li>
      <li> You don't need to check for overflow (in principle that would be
       needed, but we haven't practised that). </li>
-     <li> 7 functions are to be written (and used, of course):
+     <li> 7 functions are to be written (and used, of course, except of
+      functions <code>evenp</code> and <code>oddp</code>, where it is
+      sensible to use exactly one of them):
       <ol>
        <li> Function <code>parse</code> takes a string as argument and returns
         its INT-value. This function must never throw an exception, but must
@@ -1612,8 +1616,8 @@ a b c def abc
      </li>
      <li> You need to use the type <code>char</code>, which can be implicitly
       converted (promoted) to an integer in the range from 0 to 65535. </li>
-     <li> The only String-functionality used is, besides construction from a
-      String-literal, the method <code>charAt</code>. </li>
+     <li> The only String-functionality used, besides construction and
+      obtaining the length, is the method <code>charAt</code>. </li>
      <li> 5 functions are to be written (and used, of course):
       <ol>
        <li> Function <code>copy_and_double</code> takes an array of strings as
@@ -1631,12 +1635,12 @@ a b c def abc
         argument, and returns the word count. This function must work under
         all circumstances without throwing an exception. </li>
        <li> Function <code>count_chars</code> takes an array of strings as
-        argument, and returns and int-array of size 65536, containing for every
+        argument, and returns an int-array of size 65536, containing for every
         possible char-value its count. This function must work under
         all circumstances without throwing an exception (except in case there
         is not enough memory). </li>
-       <li> Function <code>output</code> takes an array of integers are argument,
-        and prints them out in the required format. </li>
+       <li> Function <code>output</code> takes an array of integers as
+        argument, and prints them out in the required format. </li>
       </ol>
      </li>
      <li> The <code>main</code>-function is
@@ -1685,7 +1689,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Thu Nov 29 01:14:57 GMT 2012
+Last modified: Sun Dec  2 12:17:00 GMT 2012
 <!-- hhmts end -->
 
    </div>
