@@ -16,7 +16,7 @@ set -o nounset
 set -o pipefail
 
 script_name="RunTests"
-version_number=0.0.7
+version_number=0.0.8
 
 errormsg="ERROR[${script_name}]:"
 
@@ -40,6 +40,12 @@ for D in ${directories}; do
   echo ${D}
   cd ${D}
   date > ${logfile}
+  if [[ ! -f "${program}.java" ]]; then
+    echo " No ${program}.java."
+    echo "No ${program}.java." >> ${logfile}
+    cd ..
+    continue
+  fi
   for T in ${dir_with_tests}/Testcases/${program}/*; do
     B="$(basename $T)"
 set +o errexit
