@@ -20,4 +20,10 @@ class Trivial {
   public String toString() {
     return a + ", " + b;
   }
+
+  public static void main(final String[] args) {
+    final Trivial T = new Trivial(5,11);
+    assert(T.sum() == 16);
+    System.out.println(T); // uses method toString
+  }
 }
