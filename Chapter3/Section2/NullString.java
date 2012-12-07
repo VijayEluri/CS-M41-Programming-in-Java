@@ -16,7 +16,7 @@ class NullString {
     s1 = null;
     System.out.println(s1 == null);
     System.out.println(s1 == s2);
-    s2 = ""; // that's a perfect string, not different from any other strng
+    s2 = ""; // that's a perfect string, not different from any other string
     System.out.println(s2 != null);
     System.out.println(s1 != s2);
 
