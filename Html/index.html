@@ -19,6 +19,11 @@
   <h2> Messages </h2>
 
   <ul>
+   <li> See below for explanations on "null" and "Java-objects" (the
+    support-lab session for week 10). </li>
+   <li> Week 11 we have lectures and labs as usual: There will be an
+    important amount of <strong>exam preparation</strong> in this week.
+   </li>
    <li> See below for the second coursework. </li>
    <li> For the courseworks please note that the input as well as the output
     must be <strong>precisely</strong> as stated, everything else is an
@@ -671,9 +676,23 @@ else
     <ol>
      <li> Tuesday (4/12/2012):
       <ol>
-       <li> Understanding <code>null</code>:
+       <li> Understanding <code>null</code>, and Java-Objects in general:
         <ol>
-         <li> XXX
+         <li> An "object" in Java is a special thing. Therefore I refer to it
+          as "Java-object". </li>
+         <li> Objects of primitive data type (int's, boolean's, double's,
+          char's, and some more) are <strong>NOT</strong> Java-objects. </li>
+         <li> The speciality of Java-objects is that, unlike int's for
+          example, you never have them "in your hands" --- only
+          <strong>pointers</strong>. </li>
+         <li> A variable for a Java-object is a <strong>pointer</strong>. </li>
+         <li> That is, it is a memory address! </li>
+         <li> There is a special exceptional ("singular") memory address,
+          namely "null", which stands for something which is NOT THERE. </li>
+         <li> Study the demo-program
+          <a href="CS-M41_Programs/Chapter3/Section2/NullString.java">
+           NullString
+          </a> carefully!. </li>
         </ol>
        </li>
        <li> Completing Section 3.2
@@ -1695,7 +1714,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Thu Dec  6 21:25:32 GMT 2012
+Last modified: Fri Dec  7 08:42:26 GMT 2012
 <!-- hhmts end -->
 
    </div>
