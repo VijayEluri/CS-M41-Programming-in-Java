@@ -6,9 +6,10 @@
 
 set -o errexit
 set -o nounset
+set -o pipefail
 
 script_name="CompileAll"
-version_number=0.1.2
+version_number=0.1.3
 
 directories=${directories:-*/}
 evaldir="Evaluation"
@@ -23,7 +24,13 @@ for D in ${directories}; do
   programs=*.java
   echo ${programs} >> ${logfile}
   for P in ${programs}; do
+set +o errexit
     javac ${P} &>>${logfile}
+    returnval=$?
+set -o errexit
+  if [[ ${returnval} != 0 ]]; then
+    echo " Error compiling ${P}."
+  fi
   done
   cd ..
 done
