@@ -14,7 +14,7 @@ set -o nounset
 set -o pipefail
 
 script_name="ProduceTestResults"
-version_number=0.0.7
+version_number=0.1
 
 errormsg="ERROR[${script_name}]:"
 
@@ -30,5 +30,5 @@ testresults_dir=$3
 
 for T in ${testcases_dir}/*; do
   B=$(basename $T)
-  ${program} $(cat $T) > ${testresults_dir}/$B
+  cat $T | xargs ${program} > ${testresults_dir}/$B
 done
