@@ -23,7 +23,7 @@ class CountingChars {
   public static int count_words(final String[] s) {
     if (s == null) return 0;
     int count = 0;
-    for (int i = 0; i < s.length && s[i] != null; ++i, ++ count);
+    for (int i = 0; i < s.length && s[i] != null; ++i, ++count);
     return count;
   }
   public static int[] count_chars(final String[] s) {
