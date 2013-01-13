@@ -49,7 +49,7 @@ for D in ${directories}; do
   for T in ${dir_with_tests}/Testcases/${program}/*; do
     B="$(basename $T)"
 set +o errexit
-    java ${program} $(cat ${T}) &>${outputfile}
+    cat ${T} | xargs java ${program} &>${outputfile}
     returnval=$?
 set -o errexit
     if [[ ${returnval} != 0 ]]; then
