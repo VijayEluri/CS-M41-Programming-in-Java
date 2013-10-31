@@ -1311,7 +1311,7 @@ System.out.println(a);
      <li> If K > 0, then the a_i are grouped in groups of size K, inside
       the groups the numbers are multiplied, and all the products are added,
       yielding the output. </li>
-     <li> If K < 0, then the summation sums up the reciprocal values of the
+     <li> If K &lt; 0, then the summation sums up the reciprocal values of the
       products. </li>
      <li> In the special case K=1 the output thus is a_1 + ... + a_N. </li>
      <li> In the case K=-1 the output is 1/a_1 + ... + 1/a_N. </li>
@@ -1319,7 +1319,7 @@ System.out.println(a);
       <ol>
        <li> If no command-line argument is given, then error-code 1 is to be
         returned. </li>
-       <li> If K < 0, and one of a_i = 0, then error-code 2 is to be returned.
+       <li> If K &lt; 0, and one of a_i = 0, then error-code 2 is to be returned.
        </li>
        <li> In both cases there must be no output. </li>
        <li> The return-code of a program is set via
@@ -1406,6 +1406,15 @@ System.out.println(a);
      <li> While for cases you can not handle, do not output anything, but
       return an error-code >= 3, which you specify in your Comments.txt.
      </li>
+    </ol>
+   </li>
+   <li> Some remarks on marking:
+    <ol>
+     <li> You get 100% if your program is correct (on all the examples above,
+      and, of course, also on all other cases), and the code is of good
+      quality. </li>
+     <li> For obtaining 50% the program should compile, and should be able to
+      handle the cases K=-1,0,+1, with error-codes in the other cases. </li>
     </ol>
    </li>
 <!--
@@ -1763,7 +1772,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Thu Oct 31 23:15:23 GMT 2013
+Last modified: Thu Oct 31 23:28:10 GMT 2013
 <!-- hhmts end -->
 
    </div>
