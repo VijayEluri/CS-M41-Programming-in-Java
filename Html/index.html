@@ -1391,7 +1391,7 @@ Name I
 0.3333333333333333
       </pre>
      </li>
-     <li> Examples for error cases:
+     <li> Examples for error cases (note that there is NO OUTPUT here):
       <pre>
 > java Summing
 > echo $?
@@ -1400,6 +1400,12 @@ Name I
 > echo $?
 2
       </pre>
+     </li>
+     <li> "<code>echo $?</code>" is an instruction issued on the
+      command line (from the console), <em>after</em> the program has
+      finished. It shows the value V of <code>System.exit(V);</code> </li>
+     <li> As with everything in programming you do not understand
+      exactly -- do experiments!
      </li>
     </ol>
    </li>
@@ -1823,7 +1829,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Nov  4 22:57:29 GMT 2013
+Last modified: Wed Nov 13 10:24:13 GMT 2013
 <!-- hhmts end -->
 
    </div>
