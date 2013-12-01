@@ -19,9 +19,14 @@
      return a[i];
    }
    public void set(final int i, final int x) {
-     if (i < 0) return;
+     if (i < 0) { set(0,x); return; }
      if (i >= n) { n = i+1; enlarge();}
      a[i] = x;
+   }
+   public int[] get_array() {
+     final int[] a_ = new int[n];
+     for (int i = 0; i < n; ++i) a_[i] = a[i];
+     return a_;
    }
    
    public boolean equals(final Array rhs) {
@@ -37,13 +42,10 @@
    }
    
    private void create() { a = new int[n]; }
-   private void multiply() { n = (int) 1.4 * n; }
    private void enlarge() {
-     final int old_n = n;
-     multiply();
      final int[] old = a;
      create();
-     for (int i = 0; i < old_n; ++i) a[i] = old[i];
+     for (int i = 0; i < old.length; ++i) a[i] = old[i];
    }
  }
  
