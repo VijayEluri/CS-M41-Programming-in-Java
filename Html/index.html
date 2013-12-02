@@ -19,8 +19,8 @@
   <h2> Messages </h2>
 
   <ul>
-   <li> The second coursework will become available (here) Saturday,
-        30/11/2013. Deadline is Monday in two weeks. </li>
+   <li> See below for the second coursework. Deadline is Monday in two weeks.
+   </li>
   </ul>
 
 
@@ -1226,7 +1226,7 @@ System.out.println(a);
    <li> Deadline for submission is Friday 15/11/2013, 11:00. </li>
    <li> This coursework has to be submitted electronically.
     <ol>
-     <li> One Java-files, named "Summing.java", together with
+     <li> One Java-file, named "Summing.java", together with
       a file "Comments.txt", have to be put into a directory named with
       just your student-number (e.g., "123456"), and this put into one archive,
       for example "123456.zip", and this archive must be send to me via
@@ -1495,22 +1495,19 @@ Name I
 
   <ul>
    <li> Deadline for submission is Monday 16/12/2013, 11:00. </li>
-<!--
-   <li> This coursework has to be electronically submitted.
+   <li> The submission process is similar to before:
     <ol>
-     <li> Three Java-files, named "Concatenate.java", "Collatz.java",
-      and "CountingChars.java", together with
-      a file "Comments.txt" and the file "StdIn.java" (from the book) have to
-      be put into a directory named with just your student-number (e.g.,
-      "123456"), this put into one archive, for example "123456.zip", and this
-      archive must be send to me via e-mail. </li>
+     <li> Two Java-files, named "Array.java" and "Client.java", together with
+      a file "Comments.txt", have to be put into a directory named with
+      just your student-number (e.g., "123456"), and this put into one archive,
+      for example "123456.zip", and this archive must be send to me via
+      e-mail. </li>
      <li> To emphasise: You send to me, as attachment, <strong>one</strong>
       file, which is a package in some standard format, zip or gzip for
       example, named "123456.zip" or "123456.tar.gzip" for example, and which
       contains one directory (named by your student number, e.g., "123456"),
-      and where this directory contains again (precisely) five files (four
+      and where this directory contains precisely three files (two
       Java-files, one text-file). </li>
-     <li> Please note that "Comment.txt" is needed in any case. </li>
      <li> I'll send you an acknowledgement, once I got your package-file. </li>
      <li> To make this safer, it would be good if in your e-mail you could
       state the md5sum-result for your package-file (e.g., "123456.zip"). For
@@ -1519,19 +1516,57 @@ Name I
       to do this (in a Linux-system, use "md5sum 123456.zip" on a
       command-line).
      </li>
+     <li> So the body of the e-mail should look like that (assuming that the
+      student number of the submitter is 123456):
+      <pre>
+Dear Oliver,
+
+attached you find the submission 123456.zip for coursework I, from
+
+  Full Name I, student number (123456), e-mail
+If applicable:
+  Full Name II, student number, e-mail.
+
+md5-sum of 123456.zip is: 348314edfe76e48ff07ffed81d3e0b23
+
+Best regards
+
+Name I
+      </pre>
+     </li>
      <li> This process has been found considerably more reliable than
       submission via Blackboard. </li>
+     <li> Please follow these instructions with precision (this is part of the
+      job of a programmer -- to be precise). </li>
     </ol>
    </li>
-   <li> The file "Comments.txt" must start with your name and student number,
-    and can then contain any comments or explanations you might want to make.
+   <li> You can work either on your own, or work in pairs:
+    <ol>
+     <li> Groups with three or more people are not allowed! </li>
+     <li> You must not exchange information with other groups on your
+      solution. Two different groups must have essentially different
+      solutions. </li>
+     <li> The marking standard for a pair-submission will be somewhat higher
+      than for a single-submission: It is expected for a pair, that the
+      program is fully working, and that the details (use of
+      <code>final</code>, indentation, variable names) are of better standard.
+     </li>
+     <li> As a pair you only submit one solution, using the student-number
+      of the person who submits it; CC this e-mail to the second student
+      involved (and state the names in the body of the e-mail -- see above!).
+     </li>
+    </ol>
+   </li>
+   <li> The file "Comments.txt" must start with name and student number
+    of the authors (one or two), and can then contain any comments or
+    explanations you might want to make.
    </li>
    <li> Good coding quality is paramount:
     <ol>
      <li> You must have tested your code (compiled it and run it).
      </li>
      <li> Syntax errors will result in deductions. </li>
-     <li> Of course, false outputs will also result in deductions. </li>
+     <li> This time there is no output at all. </li>
      <li> Use only the Java constructions presented in the lectures.
       <ul>
        <li> Anything else will result in a deduction of 50 percent! (The same
@@ -1543,234 +1578,80 @@ Name I
        </li>
       </ul>
      </li>
-     <li> Compared to the book, we introduced a few extensions in the lectures,
-      most important the <code>final</code>-qualifier, which you are expected
-      to use. </li>
-     <li> Also some input checking (as discussed in the lectures) is important.
-     </li>
+     <li> Compared to the book, we introduced the
+      <code>final</code>-qualifier, which you are expected to use. </li>
      <li> Take care about precise class- and file-names. </li>
+     <li> Care about <em>private</em> and <em>public</em>. </li>
+     <li> Use private helper-functions (methods). </li>
      <li> Choose good variable-names. </li>
      <li> Provide a well-organised indentation. </li>
-     <li> For three of the four programs, no comments are allowed: write good
+     <li> There should be no tab-symbols in your file, and no trailing spaces.
+     </li>
+     <li> There shouldn't be non-ASCII symbols in your files. </li>
+     <li> No comments are allowed in the code: write good
       code, so that no comments are needed! </li>
-     <li> Finally, follow <strong>precisely</strong> the specification: Not
-      just regarding the values of the output, but also regarding the precise
-      formatting! </li>
-     <li> Additionally to the first coursework, now also the function-signatures
-      (name, parameter-types and return-type) are part of the specification, so
-      no deviation is allowed. </li>
-     <li> If you use additional function, make them private (they do not belong to
-      the published interface). </li>
+     <li> Finally, follow <strong>precisely</strong> the specification. </li>
+     <li> Additionally to the first coursework, now also the
+      function-signatures (name, parameter-types and return-type) are part of
+      the specification, so no deviation is allowed. </li>
+     <li> If you use additional functions, make them private (they do not
+      belong to the published interface). </li>
     </ol>
    </li>
    <li> The programs must not contain any comments (so that you can
     concentrate on the code). </li>
-   <li> The three programs
-    <ol>
-     <li> <code>Concatenate</code>: 20 marks </li>
-     <li> <code>Collatz</code>: 40 marks </li>
-     <li> <code>CountingChars</code>: 40 marks </li>
-    </ol>
-    are likely best approached in this order (of increasing difficulty). </li>
-   <li> Specification of <code>Concatenate</code>:
-    <ol>
-     <li> This program concatenates the command-line arguments (as strings),
-      in two different versions, and prints these versions out, each on its
-      own line. </li>
-     <li> Some examples:
-      <pre>
-> java Concatenate
-
-""
-> java Concatenate xyz
-xyz
-"xyz"
-> java Concatenate xyz abc uvw
-xyzabcuvw
-"xyz abc uvw"
-> java Concatenate xyz "asd " " jj" k
-xyzasd  jjk
-"xyz asd   jj k"
-      </pre>
-     </li>
-     <li> We see that the second form of concatenation adds one space inbetween
-      the strings from the command-line, and puts the whole into quotation marks.
-     </li>
-     <li> This functionality is to be achieved via two functions,
-      <code>concatenate</code> and <code>concatenate_spaces</code>. </li>
-     <li> <code>concatenate</code> takes an array of strings as arguments, and
-      returns a string, which is the plain concatenation of the array. </li>
-     <li> <code>concatenate_spaces</code> takes an array of strings as arguments,
-      and returns a string, which is the concatenation of the array, with a
-      single space separating the array-elements. </li>
-     <li> Both functions must return a reasonable result under all circumstances.
-     </li>
-     <li> And the only String-functionality to be used is concatenation of two
-      strings. </li>
     </ol>
    </li>
-   <li> Specification of <code>Collatz</code>:
+   <li> One class-file is already provided, namely
+    <a href="CS-M41_Programs/Courseworks/201314/Two/Client.java">
+     Client.java </a>.
+    This file <strong>must not be changed</strong>, with the only exception
+    that you can comment out lines you do not get compiling. The class
+    <code>Client</code> uses the class <code>Array</code>, which you have to
+    provide.
+   </li>
+   <li> Your task is to write <code>Array.java</code>:
     <ol>
-     <li> The program <code>Collatz</code> takes an integer n >= 1 as argument,
-      computes the Collatz-sequence as specified
-      <a href="http://en.wikipedia.org/wiki/Collatz_conjecture"> here </a>,
-      and prints out the number of steps for the sequence and the maximum
-      obtained, separated by a (single) space. </li>
-     <li> Some examples:
-      <pre>
-> java Collatz 1
-0 1
-> java Collatz 6
-8 16
-> java Collatz 11
-14 52
-> java Collatz 27
-111 9232
-> java Collatz 63728127
-949 966616035460
-> java Collatz  670617279
-986 966616035460
-> java Collatz 9780657630
-1132 319497287463520
-      </pre>
-     </li>
-     <li> As you can see, an appropriate integer type, called INT below, has to
-      be used, which is big enough (there is exactly one solution). </li>
-     <li> Two error-codes are to be returned
-      (using <code>System.exit(code)</code>):
-      <pre>
-> java Collatz 
-ERROR[Collatz]: The argument n is needed.
-> echo $?
-1
-> java Collatz 99999999999999999999999999999999999999
-ERROR[Collatz]: n must be an integer from 1 to 9223372036854775807.
-kullmann-0:Temp> echo $?
-2
-> java Collatz 0
-ERROR[Collatz]: n must be an integer from 1 to 9223372036854775807.
-> echo $?
-2
-> java Collatz X
-ERROR[Collatz]: n must be an integer from 1 to 9223372036854775807.
-> echo $?
-2
-      </pre>
-     </li>
-     <li> You don't need to check for overflow (in principle that would be
-      needed, but we haven't practised that). </li>
-     <li> 7 functions are to be written (and used, of course, except of
-      functions <code>evenp</code> and <code>oddp</code>, where it is
-      sensible to use exactly one of them):
-      <ol>
-       <li> Function <code>parse</code> takes a string as argument and returns
-        its INT-value. This function must never throw an exception, but must
-        return 0 in case the string doesn't represent an INT. So the construction
-       <code>try { ... } catch(Exception e) { ... }</code> must be used. </li>
-       <li> Function <code>evenp</code> ("p" for "predicate") takes an INT and
-        returns true iff it is even. </li>
-       <li> Function <code>oddp</code> ("p" for "predicate") takes an INT and
-        returns true iff it is odd. </li>
-       <li> Function <code>h</code> takes an INT and returns that number devided
-        by two ("h" for "half"). </li>
-       <li> Function <code>tpo</code> takes an INT n and returns 3n+1 ("tpo" for
-        "triple plus one"). </li>
-       <li> Function <code>evaluation</code> takes an INT n, computes the
-        Collatz-sequence, and returns an INT-array of length two, with first
-        element the number of steps until it reached 1, and the second element the
-        maximum number attained in that sequence. </li>
-       <li> Finally, function <code>output</code> takes an array of length two
-        as obtained from evaluation, and prints it as required above. </li>
-      </ol>
-     </li>
-     <li> The <code>main</code>-function contains as last line
-      <pre>
-output(evaluation(n));
-      </pre>
-     </li>
+     <li> <code>Array</code> is a data type representing a dynamic array,
+      which never yields an error except when running out of memory (you
+      do not need to do something here). </li>
+     <li> There are two constructors, <code>Array()</code> (no arguments),
+      which creates an array of size zero, and <code>Array(arr)</code>, where
+      <code>arr</code> is an integer array, which is copied. If
+      <code>arr</code> is <code>null</code>, then the empty array is
+      created. </li>
+     <li> Via method <code>size()</code> we get the length of the array. </li>
+     <li> Via method <code>get(i)</code> for integer <code>i</code> we get the
+      value at index i (zero-based). </li>
+     <li> Negative i is treated as i = 0. </li>
+     <li> If i >= 0 is outside the array-bounds, then the array is
+      automatically extended with zeros, so that then i becomes the index of
+      the last field of the array. </li>
+     <li> Via method <code>set(i,x)</code> for integers <code>i, x</code>, we
+      set the value at index i to x. </li>
+     <li> Again, negative i is treated as i = 0. </li>
+     <li> And again, if i >= 0 is outside the array-bounds, then the array is
+      automatically extended with zeros, so that then i becomes the index of
+      the last field of the array. </li>
+     <li> Method <code>get_array()</code> yields an integer array, which is
+      a copy of the represented array. </li>
+     <li> Via method <code>equals(rhs)</code> for another Array-object rhs (
+      like "right-hand side") we check for equality (same size and same
+      elements). </li>
+     <li> Via method <code>toString()</code> a string-representation is
+      produced, consisting of the size, followed by a colon, and then the
+      elements, as pairs space plus integer. </li>
     </ol>
    </li>
-   <li> Specification of <code>CountingChars</code>:
-    <ol>
-     <li> This time the command-line arguments are ignored, but input is obtained
-      from standard input, using <code>StdIn.java</code>, as provided. </li>
-     <li> It reads space-separated words (ignoring all space-characters), and
-      prints out the word-count, plus, in numerical order, for all characters
-      found the character-representation in quotation marks, the numerical
-      code in brackets, and the number of occurrences. </li>
-     <li> Some examples:
-      <pre>
-> java CountingChars
-0
-> java CountingChars
-a b c def abc
-5
-"a" (97): 2
-"b" (98): 2
-"c" (99): 2
-"d" (100): 1
-"e" (101): 1
-"f" (102): 1
-> java CountingChars
-龍 龙 Ö ßu@  
-،A
-5
-"@" (64): 1
-"A" (65): 1
-"u" (117): 1
-"Ö" (214): 1
-"ß" (223): 1
-"،" (1548): 1
-"龍" (40845): 1
-"龙" (40857): 1
-      </pre>
-     </li>
-     <li> You need to use the type <code>char</code>, which can be implicitly
-      converted (promoted) to an integer in the range from 0 to 65535. </li>
-     <li> The only String-functionality used, besides construction and
-      obtaining the length, is the method <code>charAt</code>. </li>
-     <li> 5 functions are to be written (and used, of course):
-      <ol>
-       <li> Function <code>copy_and_double</code> takes an array of strings as
-        argument, and returns an array of strings with double as many elements,
-        where the first half is a copy of the input-array (copying only the
-        string-pointers, not making deep copies). This function must work under
-        all circumstances without throwing an exception, except in case the
-        array gets too large. Note that unused slots of the array are those
-        containing <code>null</code>. </li>
-       <li> Function <code>read</code> reads the words from standard input,
-         and returns them in a string-array. In order to accommodate arbitrarily
-         long input, the function <code>copy_and_double</code> is to be used,
-         to enlarge the currently used array if needed. </li>
-       <li> Function <code>count_words</code> takes an array of strings as
-        argument, and returns the word count. This function must work under
-        all circumstances without throwing an exception. </li>
-       <li> Function <code>count_chars</code> takes an array of strings as
-        argument, and returns an int-array of size 65536, containing for every
-        possible char-value its count. This function must work under
-        all circumstances without throwing an exception (except in case there
-        is not enough memory). </li>
-       <li> Function <code>output</code> takes an array of integers as
-        argument, and prints them out in the required format. </li>
-      </ol>
-     </li>
-     <li> The <code>main</code>-function is
-      <pre>
-  public static void main(final String[] args) {
-    final String[] text = read();
-    System.out.println(count_words(text));
-    output(count_chars(text));
-  }
-      </pre>
-     </li>
-    </ol>
-   </li>
-   <li> To give you an indication about the length of the prorams, my
-    solution-lengths are: Concatenate.java has 21 lines and 620 characters,
-    Collatz.java has 50 lines and 1275 characters, CountingChars.java has 50
-    lines and 1545 characters. </li>
-  </ul>
-
+   <li> You need to study the code of the <code>Client</code> class carefully,
+    to understand the details! Run with
+    <pre>
+> java -ea Client
+    </pre>
+    (enabling the assertions). </li>
+   <li> Your program must run (without arguments) without producing any
+    error. </li>
+<!--
   <p>
    Here are the solutions:
   </p>
@@ -1838,7 +1719,7 @@ a b c def abc
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Fri Nov 29 09:20:31 GMT 2013
+Last modified: Mon Dec  2 02:37:06 GMT 2013
 <!-- hhmts end -->
 
    </div>
