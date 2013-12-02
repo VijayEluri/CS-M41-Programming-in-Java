@@ -15,7 +15,7 @@
    public int size() { return n; }
    public int get(final int i) {
      if (i < 0) return get(0);
-     else if (i >= n) { n = i+1; enlarge(); return 0; }
+     if (i >= n) { n = i+1; enlarge(); return 0; }
      return a[i];
    }
    public void set(final int i, final int x) {
