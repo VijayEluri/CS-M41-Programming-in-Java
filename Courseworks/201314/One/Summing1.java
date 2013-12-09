@@ -11,7 +11,7 @@ class Summing1 {
     for (int i = 1; i < N; ++i) {
       double val = Double.parseDouble(args[i]);
       if (reciprocal) if (val == 0) System.exit(err_zero); else val = 1/val;
-      if (ak == 1 || i % ak == 1) { sum += prod; prod = val; }
+      if ((i-1) % ak == 0) { sum += prod; prod = val; }
       else prod *= val;
     }
     System.out.println(sum+prod);
