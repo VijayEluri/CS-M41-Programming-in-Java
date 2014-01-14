@@ -30,7 +30,7 @@
    }
    
    public boolean equals(final Array rhs) {
-     if (rhs.n != n) return false;
+     if (rhs == null || rhs.n != n) return false;
      for (int i = 0; i < n; ++i) if (a[i] != rhs.a[i]) return false;
      return true;
    }
