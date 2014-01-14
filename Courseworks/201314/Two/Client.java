@@ -9,8 +9,10 @@ class Client {
     assert(a2.get(0) == 3);
     assert(a2.get(1) == 77);
     assert(a2.get(2) == 45);
+    assert(!a1.equals(a2));
     a[1] = 777;
     assert(a2.get(1) == 77);
+    assert(!a2.equals(a1));
     
     {final int[] a_c = a2.get_array();
      assert(a_c != null);
@@ -18,8 +20,10 @@ class Client {
      assert(a_c[0] == 3);
      assert(a_c[1] == 77);
      assert(a_c[2] == 45);
+     assert(a2.equals(new Array(a_c)));
      a_c[1] = 111;
      assert(a2.get(1) == 77);
+     assert(!a2.equals(new Array(a_c)));
     }
     
     assert(a2.get(-1) == 3);
@@ -42,6 +46,7 @@ class Client {
     assert(a1.get(2) == 99);
     
     assert(! a1.equals(a2));
+    assert(a1.equals(a1));
     assert(new Array(a1.get_array()).equals(a1));
     assert(new Array(a2.get_array()).equals(a2));
 
