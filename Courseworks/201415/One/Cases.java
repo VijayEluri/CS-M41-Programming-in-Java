@@ -48,6 +48,20 @@ class Cases {
         }
         ++i;
       }
+      System.exit(0);
+    }
+    {
+      final int rem = Integer.parseInt(args[0]);
+      if (rem <= 0) {
+        long sum = 0;
+        for (int i = 1; i < nargs; ++i) sum += Integer.parseInt(args[i]);
+        System.out.println(sum);
+        System.exit(0);
+      }
+      final int[] count = new int[rem];
+      for (int i = 1; i < nargs; ++i) ++count[Integer.parseInt(args[i]) % rem];
+      for (int i = 0; i < rem; ++i)
+        System.out.println(i + ": " + count[i]);
     }
   }
 }
