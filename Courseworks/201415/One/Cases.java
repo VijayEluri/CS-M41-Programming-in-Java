@@ -15,7 +15,7 @@ class Cases {
       if (b == 0)
         System.out.println("a = " + a);
       else
-        System.out.println("a % b = " + (a % b));
+        System.out.println(a + " % " + b + " = " + (a % b));
       System.exit(0);
     }
     if (nargs == 3) {
@@ -59,9 +59,13 @@ class Cases {
         System.exit(0);
       }
       final int[] count = new int[rem];
-      for (int i = 1; i < nargs; ++i) ++count[Integer.parseInt(args[i]) % rem];
+      for (int i = 1; i < nargs; ++i) {
+        int r = Integer.parseInt(args[i]) % rem;
+        if (r < 0) r += rem;
+        ++count[r];
+      }
       for (int i = 0; i < rem; ++i)
-        System.out.println(i + ": " + count[i]);
+        if (count[i] != 0) System.out.println(i + ": " + count[i]);
     }
   }
 }
