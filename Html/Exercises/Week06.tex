@@ -1,0 +1,66 @@
+% Oliver Kullmann, 4.11.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 6}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 7/11/2014
+\end{center}
+
+
+This is for the two hours --- HAPPY PROGRAMMING! With this bit more time, you can also try the harder exercises.
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+Always test your programs thoroughly!
+
+\begin{enumerate}
+\item If you feel insecure, then perhaps you might start with exercises from previous weeks (see the \href{\chp}{Course home page}). Make sure you understand
+  \begin{enumerate}
+  \item Primitive types like \inl{int} or \inl{boolean}.
+  \item The basics of the computation of expressions (including conversions).
+  \item Variable declarations and initialisations.
+  \item Handling of the command-line.
+  \item Simple straight-line programs (just assignments and input/output).
+  \item If-then-else.
+  \item For- and while-loops.
+  \item Arrays.
+  \end{enumerate}
+\item Write a program that reads in integers (as many as the user enters) from standard input and prints out the maximum and minimum values. Before entering the program, make a sketch on paper.
+\item Modify this program by rejecting non-positive entries, asking the user to re-enter the input (until he gets it correct). Before entering the program, extend the previous sketch. Hint: a while-loop is appropriate for testing the input values.
+\item Read $N$ from the command-line and $N$ floating-point number from standard input, and compute their mean value. Create an error message if not enough numbers were entered. Compute also the standard deviation as the square root of the sum of the squares of the differences from these numbers and the average, the whole then divided by $N-1$. Hint: For this computation you could store the numbers in an array.
+\item Read in $N$ from the command-line plus $N-1$ integers from $1$ to $N$ from standard input, assuming that these numbers are different. Now determine the missing number (from the interval $1 \dots N$). For an extension, reject repeated inputs.
+
+
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+See \href{\chp#ExercisesWeek06}{Course home page, Week 6}.
+
+
+\end{document}
