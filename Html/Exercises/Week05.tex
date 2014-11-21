@@ -1,0 +1,53 @@
+% Oliver Kullmann, 30.10.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 5}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 31/10/2014
+\end{center}
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Write a program that declares and initializes an array \texttt{a[]} of size 1000 and accesses \texttt{a[1000]}. Does your program compile? What happens when you run it?
+\item Describe and explain what happens when you compile and run a program with the following statement:
+  \begin{lstlisting}{large}
+final int N = 1000;
+final int[] a = new int[N*N*N*N];
+  \end{lstlisting}
+  Hint: Think twice! Better try it out. Then modify the program to what likely is ``really'' meant.
+\item Write a program \texttt{Deck32} (recall \texttt{Deck} from the \href{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201415_MgQxuCUrrS/index.html#LecturesWeek05}{lecture}), which uses only a deck of 32 cards, and where the ranks do not include 2 up to 6.
+\item Combine \texttt{Deck} and \texttt{Deck32} into one program, where via a command-line argument it is decided whether 32 or 52 cards are to be used.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+See \href{\chp#ExercisesWeek05}{Course home page, Week 5}.
+
+
+\end{document}

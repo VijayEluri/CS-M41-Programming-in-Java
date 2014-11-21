@@ -1,0 +1,58 @@
+% Oliver Kullmann, 20.11.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 8}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 21/11/2014
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+If you didn't finish the exercises from last week, then please finish them now (we are still on functions). Always test your programs thoroughly!
+
+\begin{enumerate}
+\item Write a function (static method) \texttt{sgn}, taking a floating point number $x$ as argument, and returning a double, which is $-1, 0 , +1$ according to $x < 0$, $x = 0$, or $x > 0$.
+\item Write a function \texttt{fld} (``floor logarithm dualis''), that takes a floating point number $x > 0$ as input and returns the largest integer $n$ (possibly negative) such that $2^n \le x$ holds. Of course, as usual, do not use any special Java library.
+
+  Recall: $2^0 = 1$, and $2^{-n} = 1 / 2^n$. Perhaps best to start with the test whether $x = 1$, $x > 1$ or $x < 1$ holds. For example $\mathrm{fld}(128) = 7$, $\mathrm{fld}(127) = 6$, $\mathrm{fld}(0.5) = -1$, $\mathrm{fld}(0.4) = -2$.
+\item Write a function \texttt{and}, that takes a boolean array as argument, and returns true iff all elements are true; your function should return a value in \emph{every case} (even if the array is \texttt{null}).
+\item Write a function \texttt{xor}, that takes a boolean array as argument, and returns true iff an odd number of elements are true; your function should return a value in \emph{every case}.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+Use the Pdf-version of this sheet, in order to get the html-links working.
+\begin{itemize}
+\item See \href{\chp#ExercisesWeek08}{Course home page, Week 8}.
+\item Study the \emph{Solution}, as provided in the program collection for the module, Chapter 2, Section 2, under \texttt{Completed}.
+\end{itemize}
+
+
+
+\end{document}

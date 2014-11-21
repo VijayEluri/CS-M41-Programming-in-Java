@@ -1,0 +1,60 @@
+% Oliver Kullmann, 14.11.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 7}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 14/11/2014
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+Always test your programs thoroughly!
+
+\begin{enumerate}
+\item Write a function (static method) \texttt{odd}, that takes three boolean inputs and returns \texttt{true} iff an odd number of inputs are true.
+\item Write a function \texttt{majority}, that also takes three boolean inputs and returns \texttt{true} iff at least two of the arguments have the value \texttt{true}.
+\item Write a function \texttt{equal}, that takes two arrays of integers as arguments, and returns \texttt{true} if they contain the same number of elements and all corresponding pairs of elements are equal, and \texttt{false} otherwise.
+\item Write a function \texttt{triangular}, that takes three double values as arguments, and returns \texttt{true} iff they could be the sides of a triangle (none of them is greater than or equal to the sum of the other two). 
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+Use the Pdf-version of this sheet, in order to get the html-links working.
+\begin{itemize}
+\item See \href{\chp#ExercisesWeek07}{Course home page, Week 7}.
+\item Study the \emph{Solution}, as provided in the program collection for the module, Chapter 2, Section 1, under \texttt{Completed}:
+  \begin{enumerate}
+  \item It shows the \href{http://www.cafeaulait.org/course/week2/43.html}{conditional evaluation operator} in the solution for \texttt{odd}.
+  \item It shows how to use \texttt{assert} to test your code (see \href{http://sqa.fyicenter.com/FAQ/JUnit/What_Is_Java_assert_Statement_.html}{Tutorial}; this contains quite a few spelling mistakes, and \texttt{-source} is not needed anymore, but otherwise it is alright).
+  \end{enumerate}
+\end{itemize}
+
+
+
+\end{document}
