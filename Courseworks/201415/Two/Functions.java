@@ -1,7 +1,7 @@
 class Functions {
 
   public static int no_args = 1, wrong_selection = 2, missing_args = 3,
-    missing_strings = 4;
+    negative_counts = 4, missing_strings = 5;
 
   private static int selection(final String a) {
     if (a.equals("1")) return 1;
@@ -46,15 +46,16 @@ class Functions {
   public static void comp(final String[] a, final String[] b, final String[] x) {
     if (a == null || b == null || x == null) return;
     final int la = a.length, lb = b.length, lx = x.length;
-    X count1 = new X(la), count2 = new X(lb);
+    X count1 = (la>0)?new X(la):null, count2 = (lb>0)?new X(lb):null;
     for (int i = 0; i < lx; ++i) {
       final String s = x[i];
       for (int j = 0; j < la; ++j) if (s.equals(a[j])) count1.inc(j);
       for (int j = 0; j < lb; ++j) if (s.equals(b[j])) count2.inc(j);
     }
-    System.out.println(count1);
-    System.out.println(count2);
-    System.out.println(count1.equals(count2));
+    if (count1!=null) System.out.println(count1);
+    if (count2!=null) System.out.println(count2);
+    if (count1!=null && count2!=null) System.out.println(count1.equals(count2));
+    else System.out.println(true);
   }
   
   public static void main(final String[] args) {
@@ -77,6 +78,7 @@ class Functions {
       if (l <= 2) System.exit(missing_args);
       final int m = Integer.parseInt(args[1]);
       final int n = Integer.parseInt(args[2]);
+      if (m < 0 || n < 0) System.exit(negative_counts);
       if (l < 3+m+n) System.exit(missing_strings);
       final String[] a = new String[m];
       for (int i = 0; i < m; ++i) a[i] = args[3+i];
