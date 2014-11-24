@@ -16,9 +16,8 @@ class Cases {
       return;
     }
     if (nargs == 3) {
-      final double a = Double.parseDouble(args[0]);
-      final double b = Double.parseDouble(args[1]);
-      final double c = Double.parseDouble(args[2]);
+      final double a = Double.parseDouble(args[0]),
+        b = Double.parseDouble(args[1]), c = Double.parseDouble(args[2]);
       if (a <= b)
         if (b <= c) System.out.println(a + " " + b + " " + c);
         else if (c < a) System.out.println(c + " " + a + " " + b);
@@ -33,16 +32,15 @@ class Cases {
       final int maj = (even) ? nargs/2 : nargs/2+1;
       final int[] a = new int[nargs];
       for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
-      int i = 0; boolean stop = false;
-      while (i <= nargs / 2 && ! stop) {
+      boolean stop = false;
+      for (int i = 0; !stop && i <= nargs/2; ++i) {
         final int b = a[i];
         int count = 1;
         for (int j = i+1; j < nargs; ++j) if (b == a[j]) ++count;
         if (count >= maj) {
           System.out.println(b);
-          if (! even || count > maj) stop = true;
+          if (!even || count > maj) stop = true;
         }
-        ++i;
       }
       return;
     }
