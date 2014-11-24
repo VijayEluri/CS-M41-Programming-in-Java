@@ -30,5 +30,5 @@ testresults_dir=$3
 
 for T in ${testcases_dir}/*; do
   B=$(basename $T)
-  cat $T | xargs ${program} > ${testresults_dir}/$B
+  cat $T | xargs java ${program} > ${testresults_dir}/$B
 done

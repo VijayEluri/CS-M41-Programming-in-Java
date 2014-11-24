@@ -46,7 +46,7 @@ for D in ${directories}; do
     cd ..
     continue
   fi
-  for T in ${dir_with_tests}/Testcases/${program}/*; do
+  for T in ${dir_with_tests}/Testcases/*; do
     B="$(basename $T)"
 set +o errexit
     cat ${T} | xargs java ${program} &>${outputfile}
@@ -56,7 +56,7 @@ set -o errexit
       echo " Error running ${program} on ${B}."
       echo "Runtime error: ${B}" >> ${logfile}
     else
-      comparison="${dir_with_tests}/Testresults/${program}/${B}"
+      comparison="${dir_with_tests}/Testresults/${B}"
 set +o errexit
       diff ${comparison} ${outputfile} &>${difffile}
       returnval=$?
