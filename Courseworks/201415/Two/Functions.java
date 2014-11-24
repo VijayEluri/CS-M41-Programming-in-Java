@@ -55,7 +55,9 @@ class Functions {
     if (count1!=null) System.out.println(count1);
     if (count2!=null) System.out.println(count2);
     if (count1!=null && count2!=null) System.out.println(count1.equals(count2));
-    else System.out.println(true);
+    else if (count1 == count2) System.out.println(true);
+    else if (count1 != null) System.out.println(count1.sum() == 0);
+    else System.out.println(count2.sum() == 0);
   }
   
   public static void main(final String[] args) {
