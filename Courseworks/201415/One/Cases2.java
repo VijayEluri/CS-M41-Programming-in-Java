@@ -13,17 +13,15 @@ class Cases2 {
     a[j] = t;
   }
   
-  // In-place sorting of a, having at most 3 elements:
+  // In-place sorting of the first three elements:
   public static void sort3(final double[] a) {
     if (a == null) return;
     final int l = a.length;
-    assert(l <= 3);
     if (l <= 1) return;
     if (a[0] > a[1]) swap(a,0,1);
     if (l == 2 || a[1] <= a[2]) return;
     swap(a,1,2);
     if (a[0] > a[1]) swap(a,0,1);
-    return;
   }
   
   public static int[] read_int(final String[] args, final int begin) {
@@ -44,8 +42,7 @@ class Cases2 {
   }
   
   public static void output(final int[] a) {
-    if (a == null) return;
-    for (int i = 0; i < a.length; ++i) System.out.println(a[i]);
+    if (a != null) for (int i = 0; i < a.length; ++i) System.out.println(a[i]);
   }
   public static void output(final double[] a) {
     if (a == null) return;
@@ -68,20 +65,13 @@ class Cases2 {
       final int x = a[i];
       boolean found = false;
       for (int j = 0; !found && j < l2; ++j)
-        if (x == elements[j]) {
-          found = true;
-          ++counts[j];
-        }
-      if (!found) {
-        elements[l2] = x;
-        counts[l2++] = 1;
-      }
+        if (x == elements[j]) { found = true; ++counts[j]; }
+      if (!found) { elements[l2] = x; counts[l2++] = 1; }
     }
     if (l2 == l) return res;
     final int[][] res_ = new int[2][l2];
-    for (int i = 0; i < l2; ++i) {
-      res_[0][i] = res[0][i];
-      res_[1][i] = res[1][i];
+    for (int i = 0; i < l2; ++i) for (int j = 0; j < 2; ++j)
+      res_[j][i] = res[j][i];
     }
     return res_;
   }
@@ -100,12 +90,11 @@ class Cases2 {
     {
      final int le = elements.length;
      boolean stop = false;
-     for (int i = 0; !stop && i < le; ++i) {
+     for (int i = 0; !stop && i < le; ++i)
        if (counts[i] >= maj) {
          m[lm++] = elements[i];
          if (! even || counts[i] > maj) stop = true;
        }
-     }
     }
     if (lm == 2) return m;
     final int[] m_ = new int[lm];
@@ -116,12 +105,10 @@ class Cases2 {
   public static void main(final String[] args) {
     final int nargs = args.length;
     if (nargs == 0) {
-      System.out.println("Nothing to be done.");
-      return;
+      System.out.println("Nothing to be done."); return;
     }
     if (nargs == 1) {
-      System.out.println("Hello, " + args[0] + "!");
-      return;
+      System.out.println("Hello, " + args[0] + "!"); return;
     }
     if (nargs == 2) {
       final int a = Integer.parseInt(args[0]), b = Integer.parseInt(args[1]);
@@ -131,13 +118,10 @@ class Cases2 {
     }
     if (nargs == 3) {
       final double[] a = read_double(args,0);
-      sort3(a);
-      output(a);
-      return;
+      sort3(a); output(a); return;
     }
     if (nargs >= 4 && nargs <= 6) {
-      output(majority(read_int(args, 0)));
-      return;
+      output(majority(read_int(args, 0))); return;
     }
     {
       final int rem = Integer.parseInt(args[0]);
@@ -150,8 +134,7 @@ class Cases2 {
       final int[] a = read_int(args,1);
       final int l = a.length;
       for (int i = 0; i < l; ++i) {
-        a[i] %= rem;
-        if (a[i] < 0) a[i] += rem;
+        a[i] %= rem; if (a[i] < 0) a[i] += rem;
       }
       final int[][] ec = elements_counts(a);
       final int[] e = ec[0], c = ec[1];
