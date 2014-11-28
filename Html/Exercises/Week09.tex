@@ -1,0 +1,55 @@
+% Oliver Kullmann, 27.11.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 9}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 27/11/2014
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Do the \href{\chp#PractiseLectureWeek09}{two exercises} from the lecture.
+\item Leaf through the files \texttt{StdDraw.java} and \texttt{Picture.java}.
+\item Write a program \texttt{ShowColour}, that takes from the command-line three integers from 0 to 255 (representing \href{http://en.wikipedia.org/wiki/RGB_color_model}{red, green and blue}), and then creates and shows a 256-by-256 picture of that colour.
+\item Write a program \texttt{ExtractColours}, that takes the name of a picture file as a command-line input, and creates four images, the original, one that contains only the red components, one for green, and one for blue. (Hint: Take \texttt{Greyscale} as role model.)
+\item Modify program \texttt{AlbersSquares} to take nine command-line arguments, representing now three colours, and then draw the 3*2=6 squares showing all the \href{http://en.wikipedia.org/wiki/Josef_Albers}{Albers squares} with the large square in each colour and the small square in each different colour.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+Use the Pdf-version of this sheet, in order to get the html-links working.
+\begin{itemize}
+\item See \href{\chp#ExercisesWeek09}{Course home page, Week 9}.
+\item Some \emph{Solutions} are provided in the program collection for the module, Chapter 3, Section 1, under \texttt{Completed}.
+\end{itemize}
+
+
+
+\end{document}
