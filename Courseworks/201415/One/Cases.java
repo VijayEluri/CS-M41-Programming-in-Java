@@ -28,8 +28,6 @@ class Cases {
       return;
     }
     if (nargs >= 4 && nargs <= 6) {
-      final boolean even = nargs % 2 == 0;
-      final int maj = (even) ? nargs/2 : nargs/2+1;
       final int[] a = new int[nargs];
       for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
       boolean stop = false;
@@ -37,9 +35,10 @@ class Cases {
         final int b = a[i];
         int count = 1;
         for (int j = i+1; j < nargs; ++j) if (b == a[j]) ++count;
-        if (count >= maj) {
+        final int comp = 2 * count;
+        if (comp >= nargs) {
           System.out.println(b);
-          if (!even || count > maj) stop = true;
+          if (comp > nargs) stop = true;
         }
       }
       return;
