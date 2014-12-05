@@ -1,0 +1,52 @@
+% Oliver Kullmann, 4.12.2014 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 10}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 5/12/2014
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Write a class \texttt{Trivial}, which stores two integers, and as member functions (``methods'') allows to compute their sum and their product, and allows equality-comparison and translation into strings.
+\item Write then a program which reads four integers from the command-line, creates two objects of type Trivial accordingly, and outputs their sums and products, and the objects themselves.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+Use the Pdf-version of this sheet, in order to get the html-links working.
+\begin{itemize}
+\item See \href{\chp#ExercisesWeek10}{Course home page, Week 10}.
+\item Some \emph{Solutions} are provided in the program collection for the module, Chapter 3, under \texttt{Week 10}.
+\end{itemize}
+
+
+
+\end{document}
