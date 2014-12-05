@@ -1,6 +1,6 @@
 class Client {
 
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final int x0 = Integer.parseInt(args[0]);
     final int y0 = Integer.parseInt(args[1]);
     final int x1 = Integer.parseInt(args[2]);
@@ -10,8 +10,10 @@ class Client {
     final Trivial t1 = new Trivial(x1,y1);
 
     System.out.println(t0.sum());
+    System.out.println(t0.prod());
     System.out.println(t0);
     System.out.println(t1.sum());
+    System.out.println(t1.prod());
     System.out.println(t1);
   }
 }

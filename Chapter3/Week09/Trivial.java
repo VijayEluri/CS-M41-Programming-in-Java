@@ -13,10 +13,12 @@ class Trivial {
     b = y;
   }
 
-  public int sum() {
-    return a+b;
-  }
+  public int sum() { return a+b; }
+  public int prod() { return a*b; }
 
+  public boolean equals(final Trivial other) {
+    return (a == other.a) && (b == other.b);
+  }
   public String toString() {
     return a + ", " + b;
   }
@@ -24,6 +26,9 @@ class Trivial {
   public static void main(final String[] args) {
     final Trivial T = new Trivial(5,11);
     assert(T.sum() == 16);
+    assert(T.prod() == 55);
+    assert(T.equals(new Trivial(5,11)));
+    assert(! T.equals(new Trivial(5,10)));
     System.out.println(T); // uses method toString
   }
 }
