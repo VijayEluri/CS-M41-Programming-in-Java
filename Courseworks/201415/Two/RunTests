@@ -1,0 +1,70 @@
+#!/bin/bash
+# Oliver Kullmann, 2.12.2012 (Swansea)
+
+# Usage:
+
+# RunTests program dir_with_tests
+
+# Runs program via "java program" in the current
+# directory, considering all testcases in dir_with_tests/Testcases,
+# and comparing them with their solutions in dir_with_tests/Testresults.
+# Storing the results in D/Evaluation/program_log_tests.
+# dir_with_tests must be given as an absolute pathname.
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+script_name="RunTests"
+version_number=0.0.9
+
+errormsg="ERROR[${script_name}]:"
+
+if [[ $# != 2 ]]; then
+  echo "${errormsg} Precisely two arguments are needed:
+ program dir_with_tests"
+  exit 1
+fi
+
+program=$1
+dir_with_tests=$2
+
+evaldir="Evaluation"
+
+logfile="${evaldir}/${program}_log_tests"
+outputfile="${evaldir}/${program}_output"
+difffile="${evaldir}/${program}_diff"
+
+date > ${logfile}
+if [[ ! -f "${program}.java" ]]; then
+  echo " No ${program}.java."
+  echo "No ${program}.java." >> ${logfile}
+  exit 1
+fi
+for T in ${dir_with_tests}/Testcases/*; do
+  B="$(basename $T)"
+  echo "RUNNING $B"
+set +o errexit
+  if [[ -s $T ]]; then
+    java ${program} $(cat $T)
+    returnval=$?
+  else
+    java ${program}
+    returnval=$?
+  fi
+  cat ${T} | xargs java ${program} &>${outputfile}
+set -o errexit
+  echo "return value = ${returnval}"
+  comparison="${dir_with_tests}/Testresults/${B}"
+set +o errexit
+  diff ${comparison} ${outputfile} &>${difffile}
+  returnval=$?
+set -o errexit
+  if [[ ${returnval} != 0 ]]; then
+    echo " Testfailure with ${program} on ${B}."
+    echo "Testfailure: ${B}" >> ${logfile}
+    cat ${difffile} >> ${logfile}
+  fi
+  rm ${outputfile} ${difffile}
+done
+

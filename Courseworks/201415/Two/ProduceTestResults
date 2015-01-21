@@ -1,0 +1,45 @@
+#!/bin/bash
+# Oliver Kullmann, 2.12.2012 (Swansea)
+
+# Usage:
+
+# ProduceTestResults program testcases_dir testresults_dir
+
+# Runs "program" with every file in testcases_dir put as command-line
+# arguments, placing the results in a file with the same name in
+# directory testresults_dir
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+script_name="ProduceTestResults"
+version_number=0.1
+
+errormsg="ERROR[${script_name}]:"
+
+if [[ $# != 3 ]]; then
+  echo "${errormsg} Precisely three arguments are needed:
+ program testcases_dir testresults_dir"
+  exit 1
+fi
+
+program=$1
+testcases_dir=$2
+testresults_dir=$3
+
+for T in ${testcases_dir}/*; do
+  B=$(basename $T)
+  echo "RUNNING $B"
+set +o errexit
+  if [[ -s $T ]]; then
+    java ${program} $(cat $T)
+    returnval=$?
+  else
+    java ${program}
+    returnval=$?
+  fi
+  cat $T | xargs java ${program} > ${testresults_dir}/$B
+set -o errexit
+  echo ${returnval} > ${testresults_dir}/${B}_RET
+done
