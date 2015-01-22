@@ -16,7 +16,7 @@ set -o nounset
 set -o pipefail
 
 script_name="RunTests"
-version_number=0.0.9
+version_number=0.1
 
 errormsg="ERROR[${script_name}]:"
 
@@ -43,28 +43,34 @@ if [[ ! -f "${program}.java" ]]; then
 fi
 for T in ${dir_with_tests}/Testcases/*; do
   B="$(basename $T)"
-  echo "RUNNING $B"
+  echo -e "\nRUNNING $B" | tee -a ${logfile}
 set +o errexit
   if [[ -s $T ]]; then
-    java ${program} $(cat $T)
-    returnval=$?
+    cat $T | xargs bash -c 'java '"${program}"' "$@"; echo "$?" > AUSGABE ' -
+    returnval=$(cat AUSGABE)
   else
     java ${program}
     returnval=$?
   fi
   cat ${T} | xargs java ${program} &>${outputfile}
 set -o errexit
-  echo "return value = ${returnval}"
   comparison="${dir_with_tests}/Testresults/${B}"
+  compret="$(cat ${dir_with_tests}/Testresults/${B}_RET)"
 set +o errexit
   diff ${comparison} ${outputfile} &>${difffile}
-  returnval=$?
+  diffret=$?
 set -o errexit
-  if [[ ${returnval} != 0 ]]; then
-    echo " Testfailure with ${program} on ${B}."
-    echo "Testfailure: ${B}" >> ${logfile}
-    cat ${difffile} >> ${logfile}
+  if [[ ${diffret} != 0 ]]; then
+    echo "Testfailure with output (observed vs. correct):" >> ${logfile}
+    echo "------------" >> ${logfile}
+    cat ${outputfile} >> ${logfile}
+    echo "------------" >> ${logfile}
+    cat ${comparison} >> ${logfile}
   fi
-  rm ${outputfile} ${difffile}
+  if [[ ${returnval} != ${compret} ]]; then
+    echo "Testfailure with exitcode: (observed vs. correct)" >> ${logfile}
+    echo "${returnval} ${compret}" >> ${logfile}
+  fi
+  rm -f ${outputfile} ${difffile} AUSGABE
 done
 
