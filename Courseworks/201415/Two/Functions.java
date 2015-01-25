@@ -51,18 +51,15 @@ class Functions {
   public static void comp(final String[] a, final String[] b, final String[] x) {
     if (a == null || b == null || x == null) return;
     final int la = a.length, lb = b.length, lx = x.length;
-    X count1 = (la>0)?new X(la):null, count2 = (lb>0)?new X(lb):null;
+    X count1 = new X((la>0)?la:1), count2 = new X((lb>0)?lb:1);
     for (int i = 0; i < lx; ++i) {
       final String s = x[i];
       for (int j = 0; j < la; ++j) if (s.equals(a[j])) count1.inc(j);
       for (int j = 0; j < lb; ++j) if (s.equals(b[j])) count2.inc(j);
     }
-    if (count1!=null) System.out.println(count1);
-    if (count2!=null) System.out.println(count2);
-    if (count1!=null && count2!=null) System.out.println(count1.equals(count2));
-    else if (count1 == count2) System.out.println(true);
-    else if (count1 != null) System.out.println(count1.sum() == 0);
-    else System.out.println(count2.sum() == 0);
+    if (la > 0) System.out.println(count1);
+    if (lb > 0) System.out.println(count2);
+    System.out.println(count1.equals(count2));
   }
   
   public static void main(final String[] args) {
