@@ -51,7 +51,7 @@ class Functions {
   public static void comp(final String[] a, final String[] b, final String[] x) {
     if (a == null || b == null || x == null) return;
     final int la = a.length, lb = b.length, lx = x.length;
-    X count1 = new X((la>0)?la:1), count2 = new X((lb>0)?lb:1);
+    final X count1 = new X((la>0)?la:1), count2 = new X((lb>0)?lb:1);
     for (int i = 0; i < lx; ++i) {
       final String s = x[i];
       for (int j = 0; j < la; ++j) if (s.equals(a[j])) count1.inc(j);
