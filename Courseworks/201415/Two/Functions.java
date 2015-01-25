@@ -42,10 +42,10 @@ class Functions {
     final int l = a.length;
     if (l == 0) return a; // harmless, since elements can't be changed
     final int l3 = l/3 + ((l%3 == 0) ? 0 : 1);
-    final int[] m = new int[l3];
+    final int[] res = new int[l3];
     for (int i = 0, j = 0; i < l; ++i, j=(i%3==0)?j+1:j)
-      if (i%3 == 0 || a[i]>m[j]) m[j] = a[i];
-    return m;
+      if (i%3 == 0 || a[i]>res[j]) res[j] = a[i];
+    return res;
   }
   
   public static void comp(final String[] a, final String[] b, final String[] x) {
