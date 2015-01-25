@@ -33,12 +33,12 @@ for T in ${testcases_dir}/*; do
   echo "RUNNING $B"
 set +o errexit
   if [[ -s $T ]]; then
-    cat $T | xargs bash -c 'java '"${program}"' "$@"; echo "$?" > AUSGABE ' -
+    cat $T | xargs bash -c 'java -ea '"${program}"' "$@"; echo "$?" > AUSGABE ' -
   else
-    java ${program}
+    java -ea ${program}
     echo "$?" > AUSGABE
   fi
-  cat $T | xargs java ${program} > ${testresults_dir}/$B
+  cat $T | xargs java -ea ${program} > ${testresults_dir}/$B
 set -o errexit
   cat AUSGABE > ${testresults_dir}/${B}_RET
 done
