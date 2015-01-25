@@ -22,14 +22,19 @@ class Functions {
     assert(a != null);
     for (int i = 0; i < a.length; ++i) System.out.println(a[i]);
   }
-  
+
+  private static long sum(final int[] a) {
+    assert(a != null);
+    long s = 0;
+    for (int i = 0; i < a.length; ++i) s += a[i];
+    return s;
+  }
+
   public static boolean div(final int[] a) {
     if (a == null) return false;
     final int l = a.length;
-    long sum = 0;
-    for (int i = 0; i < l; ++i) sum += a[i];
-    if (l == 0) return sum == 0;
-    return sum % l == 0;
+    if (l == 0) return true;
+    return sum(a) % l == 0;
   }
 
   public static int[] max3(final int[] a) {
