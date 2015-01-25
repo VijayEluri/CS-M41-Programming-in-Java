@@ -69,13 +69,11 @@ class Functions {
     if (sel == 0) System.exit(wrong_selection);
     
     if (sel == 1) {
-      final int[] a = read(args);
-      System.out.println(div(a));
+      System.out.println(div(read(args)));
       return;
     }
     if (sel == 2) {
-      final int[] a = read(args);
-      write(max3(a));
+      write(max3(read(args)));
       return;
     }
     if (sel == 3) {
