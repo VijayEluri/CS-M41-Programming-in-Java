@@ -1,0 +1,60 @@
+% Oliver Kullmann, 6.10.2015 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 2}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 7/10/2015
+\end{center}
+
+Below you find embedded links to the course home page, which explicitly is \url{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201516_KoU7Z9bzTn/index.html}
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Try to enter the programs \texttt{Empty}, \texttt{HelloWorld}, \texttt{UseArgument} from the \href{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201516_KoU7Z9bzTn/index.html#LecturesWeek02}{lecture} --- best from memory!
+  \begin{center}
+    Try, and only then have a glance, try again, glance again, ...
+  \end{center}
+\item Now write a program \texttt{UseThree}, which is called with
+  \begin{lstlisting}{Use}
+> java UseThree X Y Z
+  \end{lstlisting}
+   and which outputs
+   \begin{lstlisting}{Use}
+     Hello, X, Y, Z!
+   \end{lstlisting}
+   You find the solution also under \href{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201516_KoU7Z9bzTn/index.html#LecturesWeek02}{material for Lecture 02} --- but try hard!
+ \item Write \texttt{Hello10}, which prints out ``Hello, World!'' ten times. Perhaps you want to combine it with using names from the command-line.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+See \href{\chp#ExercisesWeek02}{Course home page, Week 2}.
+
+
+\end{document}

@@ -139,6 +139,7 @@
     </ol>
    </li>
    <li> Week 2:
+    <a name="LecturesWeek02"></a>
     <ol>
      <li> Tuesday (6/10/2015):
       <ol>
@@ -160,9 +161,20 @@ class HelloWorld {
 }
           </pre>
          </li>
-         <li> Hello-World with three further names:
+         <li> Hello-World with name provided as argument:
           <pre>
 class UseArgument {
+  public static void main(String[] args) {
+    System.out.print("Hello, ");
+    System.out.print(args[0]);
+    System.out.println("!");
+  }
+ }
+          </pre>
+         </li>
+         <li> Hello-World with three further names:
+          <pre>
+class UseThree {
   public static void main(String[] args) {
     System.out.print("Hello, ");
     System.out.print(args[0]);
@@ -769,17 +781,19 @@ else
   </p>
 
   <ul>
-   <li> Week 2 (10/10/2014):
+   <li> Week 2 (7/10/2015):
+    <a name="ExercisesWeek02"></a>
     <ol>
-     <li> The program "UseArgument.java" from the book is needed:
+     <li> Recall the program "UseArgument.java" from the book:
       <ol>
        <li> If you have already written it, rewrite it
         <strong>from scratch</strong>, not using notes! </li>
        <li> Otherwise you find it above (material for Lectures Week 2): enter
         it and understand it. </li>
+       <li> Now write the version "UseThree". </li>
        <li> It is called with, e.g.,
         <pre>
-> java UseArgument X Y Z
+> java UseThree X Y Z
         </pre>
   and it outputs
         <pre>
@@ -1303,7 +1317,7 @@ System.out.println(a);
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Oct  6 20:43:15 BST 2015
+Last modified: Tue Oct  6 21:23:29 BST 2015
 <!-- hhmts end -->
 
    </div>
