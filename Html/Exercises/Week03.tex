@@ -1,0 +1,75 @@
+% Oliver Kullmann, 13.10.2015 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 3}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 14/10/2015
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Why does 10/3 give 3 and not 3.33333333? And how do we get the latter? (Write a little test program.)
+\item What do each of the following print?
+  \begin{lstlisting}{Examp}
+    System.out.println(2 + "bc");
+    System.out.println(2 + 3 + "bc");
+    System.out.println((2+3) + "bc");
+    System.out.println("bc" + (2+3));
+    System.out.println("bc" + 2 + 3);
+  \end{lstlisting}
+  Explain each outcome, and then write a test program to see whether that's really true.
+\item Suppose that a variable a is declared as
+  \begin{lstlisting}{Decl}
+    int a = 2147483647;
+  \end{lstlisting}
+  (or equivalently, \texttt{Integer.MAX\_VALUE}). What do each of the following print?
+\begin{lstlisting}{ExampI}
+  System.out.println(a);
+  System.out.println(a + 1);
+  System.out.println(2 - a);
+  System.out.println(-2 - a);
+  System.out.println(2 * a);
+  System.out.println(4 * a);
+  \end{lstlisting}
+Explain each outcome, and then write a test program to see whether that's really true.
+\item What is the value of
+  \begin{lstlisting}{Num}
+    (Math.sqrt(2) * Math.sqrt(2) == 2)
+  \end{lstlisting}
+  Check it out!
+\item Write a program that takes two positive integers as command-line arguments, and prints \texttt{true} iff either divides the other. So for example for inputs $2,4$ or $9,3$ we get \texttt{true}, while for inputs $5,7$ we get \texttt{false}.
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+The course home page is \url{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201516_KoU7Z9bzTn/index.html}. See \href{\chp#ExercisesWeek03}{Course home page, Week 3} for further exercises.
+
+
+\end{document}
