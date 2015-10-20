@@ -1,0 +1,67 @@
+% Oliver Kullmann, 20.10.2015 (Swansea)
+
+\documentclass[11pt]{article}
+\usepackage[driverfallback=hypertex]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\lstloadlanguages{Java}
+\newcommand{\Java}{\lstset{language=Java,keywordstyle=\bfseries,breaklines,breakindent=30pt}}
+\newcommand{\inl}[1]{\lstinline$#1$}
+
+\input{Definitions}
+
+\begin{document}
+
+\begin{center}
+  \href{http://www.swan.ac.uk/}{Swansea University}\\
+  \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
+  \href{\chp}{\module}\\[1ex]
+  \textbf{Lab classes - Week 4}\\
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 21/10/2015
+\end{center}
+
+
+\section{Standard exercises}
+\label{sec:stdex}
+
+\Java
+
+\begin{enumerate}
+\item Write a program which reads two integers and prints them out sorted in ascending order.
+\item Write another program which reads three integers and prints them out sorted in ascending order.
+\item Write better versions of ``TenHellos.java'' (printing ``Hello World!'' ten times), using first a while-loop and then a for-loop. Which is better?
+\item Improve this program to ``NHellos.java'', printing $N \ge 0$ times ``Hello World!'', where $N$ is read from the command-line.
+
+  Extended this program, by reading a second parameter $M \ge 0$ from the command-line, and printing in ``Hello World!'' not just one, but $M$ exclamation marks. For example:
+  \begin{lstlisting}{NJ}
+> java NHellos 0 7
+> java NHellos 1 7
+Hello, World!!!!!!!
+> java NHellos 1 0
+Hello, World
+> java NHellos 2 0
+Hello, World
+Hello, World
+> java NHellos 2 3
+Hello, World!!!
+Hello, World!!!
+  \end{lstlisting}
+
+\end{enumerate}
+
+
+\section{Additional exercises}
+\label{sec:addex}
+
+The course home page is \url{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201516_KoU7Z9bzTn/index.html}.
+
+See \href{\chp#ExercisesWeek04}{Course home page, Week 4} for further exercises, and for solutions.
+
+
+\end{document}
