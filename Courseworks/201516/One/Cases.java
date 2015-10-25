@@ -41,10 +41,11 @@ class Cases {
       return;
     }
     {
-      final int sign = Math.abs(Integer.parseInt(args[0])) % 2;
       long sum = 0;
-      for (int i = 0, mult=1-2*sign; i < nargs; ++i, mult*=-1)
+      for (int i = 1, mult=1; i < nargs; ++i, mult*=-1)
         sum += (mult * Integer.parseInt(args[i]));
+      final int s0 = Integer.parseInt(args[0]);
+      if (s0 % 2 == 0) {sum *= -1; sum += s0;} else sum -= s0;
       System.out.println(sum);
     }
   }
