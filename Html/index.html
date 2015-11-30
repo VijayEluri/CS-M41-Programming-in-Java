@@ -20,20 +20,6 @@
 
   <ul>
    <li> Coursework II is available. </li>
-   <li> Week 08 (16/11 - 20/11/2015):
-    <ol>
-     <li> Tuesday 12-13 (Linux lab), first part
-     <a href="#LecturesWeek08"> Exercises </a>. </li>
-     <li> Tuesday 13-14 (Linux lab), ADDITIONAL exercises (not compulsory),
-      for you to practise functions (and elementary programming). </li>
-     <li> Wednesday 9-10 (Linux lab) </li>
-     <li> Thursday 14-15 (Robert Recorde) CANCELLED (rescheduled Monday,
-     23/11/2015, 16-17) </li>
-     <li> Thursday 17-18 (Linux lab), second part
-     <a href="#LecturesWeek08"> Exercises </a>. </li>
-    </ol>
-    We finish Chapter 2 (functions), and this only needs practising (for Chapter 2). </li>
-   <li> Monday 23/11/2015 we start with the final Chapter 3. </li>
    <li> There are additional slots in the timetable: Monday 16-17 and
     Thursday 17-18. Currently there are no PGs at these times, but the
     Linux lab is reserved for you to practice (also as fallback, if you
@@ -699,7 +685,7 @@ else
    </li>
    <li> Week 10:
     <ol>
-     <li> Monday (1/12/2014):
+     <li> Tuesday (1/12/2015):
       <ol>
        <li> Discussing the solution of the first coursework. </li>
        <li> Understanding <code>null</code>, and Java-Objects in general:
@@ -726,7 +712,7 @@ else
        </li>
       </ol>
      </li>
-     <li> Friday (5/12/2014):
+     <li> Thursday (3/12/2015):
       <ol>
        <li> Section 3.3
         <a href="Slides/33design.pdf"> Designing data types </a>.
@@ -1107,19 +1093,27 @@ public class LeftAssociative {
      </li>
     </ol>
    </li>
-   <li> Week 10 (5/12/2014):
+   <li> Week 10 (1+2/12/2015):
     <a name="ExercisesWeek10"></a>
     <ol>
      <li> Creating and using a trivial class:
       <ul>
        <li> Write a class <code>Trivial</code>, which stores two integers (via
         the constructor), and as member functions ("methods") allows to
-        compute their sum and product, and allows equality-comparison and
-        and translationg to strings. </li>
-       <li> Write then a program which reads four integers from the
-        command-line, creates two objects of type <code>Trivial</code>
-        accordingly, and outputs their sums and products and the objects
-        themselves. </li>
+        compute their sum and product, and translation to strings. </li>
+       <li> The objects of this class must be immutable. </li>
+       <li> Furthermore allow equality-comparison, where two
+        <code>Trivial</code>-objects are considered equal if (and only if) the
+        members are equal <em>independent</em> of their order. </li>
+       <li> And finally write a method <code>multiply</code>, which takes an
+        integer as argument, and multiplies the object with this number. Note
+        that you can't modify the object itself. </li>
+       <li> Write then a program <code>Client</code>, which reads four
+        integers from the command-line, creates two objects of type
+        <code>Trivial</code> accordingly, and outputs their sums and products
+        and the objects themselves, and whether the two objects are equal, and
+        finally outputs the multiplications of the second object with the sum
+        of the first object. </li>
       </ul>
       Here is <a href="CS-M41_Programs/Chapter3/Week10/Trivial.java">
        the Trivial-solution </a>, and here is the
@@ -1336,7 +1330,7 @@ System.out.println(a);
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Tue Nov 24 22:41:54 GMT 2015
+Last modified: Mon Nov 30 21:49:06 GMT 2015
 <!-- hhmts end -->
 
    </div>
