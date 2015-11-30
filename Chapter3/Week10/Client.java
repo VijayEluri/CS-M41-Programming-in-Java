@@ -15,5 +15,7 @@ class Client {
     System.out.println(t1.sum());
     System.out.println(t1.prod());
     System.out.println(t1);
+    System.out.println(t0.equals(t1));
+    System.out.println(t1.multiply(t0.sum()));
   }
 }
