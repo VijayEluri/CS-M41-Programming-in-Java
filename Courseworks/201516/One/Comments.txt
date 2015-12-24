@@ -1,0 +1,100 @@
+1. On structure
+
+Let's assume there is the int-variable x, which takes values >= 1,
+and you have a case-distinction like that
+
+(A)
+
+if (x = 1) {...}
+if (x = 2) {...}
+if (x = 3) {...}
+if (x >= 4) {...}
+
+(For the coursework that may either be the global case-distinction on the
+number of command-line arguments, or similarly to the binary case distinction
+for the last case.)
+
+Now either there has to be a "return" in each block, or you use if-then-*else*:
+
+(B)
+
+if (x = 1) {... return;}
+if (x = 2) {... return;}
+if (x = 3) {... return;}
+{...}
+
+or
+
+(C)
+
+if (x = 1) {...}
+else if (x = 2) {...}
+else if (x = 3) {...}
+else {...}
+
+You might consider that as superfluous --- but otherwise the reader has to
+read the WHOLE PROGRAM program to determine what's the case! How do you
+(and the compiler!) know otherwise that e.g. the case x=1 is not continued
+later? And a maintainer can easily introduce errors.
+
+Via (A) you introduce a "coupling" here between the cases, i.e., you don't
+fix explicitly the program logic, and the control flow depends on the values
+of ALL cases --- without any need!
+
+LOCALITY is is very important! Keep independent parts independent.
+
+
+2. To continue with this issue, let's assume you have two cases
+
+if (...) { compute (A) }
+else {compute (B) }
+
+where (A) and (B) are structurally very similar (as in the last part of
+the coursework). Now many of you used names like
+
+(A) variable a, b
+(B) variable c, d
+
+that is, you "continued" the naming of (A) in (B) -- but again, that
+creates a coupling, this time only for the reader, who must assume that
+the computation (B) in some way *continues* the computation of (A), however
+this is NOT THE CASE! So, in order to emphasise the structural similarity,
+use the SAME NAMES in (A) and in (B).
+
+To see the coupling, assume for example that later, e.g. by a
+maintainer, (A) has to be extended, and another variable is needed --
+if you have the names independent, then you could just use "c", but via the
+above scheme, due to your dependency you had to rename the variables in (B) to
+"d, e", creating unnecessary work, confusion, and the potential for errors.
+Such things happen with every superfluous dependency. At some point they
+won't be followed through (as they become more and more ridiculous), and then
+the names are very strange ("why on earth are the variables in (B) named
+this way??").
+
+Same with loop variables: independent loops (that is, not nested) typically
+just ALL use "i" (not "a, b, c, d" -- these loops do not depend on each
+other!).
+
+
+3. Misuse of double
+
+int is the most fundamental data type, and should be used whenever possible
+(together with long). While double is complicated and error-prone, and should
+only be used for numerical, that is, approximated computations.
+
+
+4. Abbreviations
+
+In Cases1.java for N==4 I introduced abbreviations a,...,d just for
+easier reading, but without problem one could have just used A[0],...,A[3].
+
+
+5. Strong locality
+
+In Cases1.java the final case I demonstrate how to keep variable "pos"
+(like "positive") as local "as possible", by creating a dedicated scope
+just for this variable. This technique is not well known, but it keeps
+your variables as local as possible -- after Line 34 it is clear that
+"pos" does not play any role anymore.
+To emphasise the special character of this block, I use restricted
+indentation for it (just one space, not my usual two spaces).
