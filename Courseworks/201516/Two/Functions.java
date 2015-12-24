@@ -1,6 +1,6 @@
 class Functions {
 
-  public final static int no_args = 1;
+  public final static int error_no_args = 1;
 
   public static String concat(final String[] a) {
     if (a == null) return "";
@@ -64,7 +64,7 @@ class Functions {
 
   public static void main(final String[] args) {
     final int N = args.length;
-    if (N == 0) System.exit(no_args);
+    if (N == 0) System.exit(error_no_args);
     final X x = new X(args[0]);
     if (x.to_boolean()) {
       final boolean b = x.b();
