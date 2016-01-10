@@ -1,6 +1,6 @@
 class Functions {
 
-  public final static int error_no_args = 1;
+  private final static int error_no_args = 1;
 
   public static String concat(final String[] a) {
     if (a == null) return "";
