@@ -1,0 +1,20 @@
+One typical, and easily corrected mistake: Don't forget to handle null!
+
+A fundamental mistake: "integrating" into some function with specified
+input/output behaviour some special "feature", so that the task at hand
+is treated easier -- this violates the fundamental contract between the
+client and the programmer, that a function does what it is supposed to do!
+You must not spoil functions used by others with "private" issues.
+Obviously, public functions are in any case used by others.
+However, also private functions, when they have given a specification,
+may be used by others, namely by maintenance programmers (inside the
+class).
+
+How concat, sum, max, min are implemented, has up to style issues only
+one solution: see Functions.java !
+
+The big case distinction in main:
+
+Using "return" helps the reader (and the compiler) to determine when
+a case is finished -- otherwise the rest of the program had to be inspected!
+I use additionally "else if" here to emphasise this structure.
