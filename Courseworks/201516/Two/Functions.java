@@ -67,8 +67,7 @@ class Functions {
     if (N == 0) System.exit(error_no_args);
     final X x = new X(args[0]);
     if (x.to_boolean()) {
-      final boolean b = x.b();
-      if (b) {
+      if (x.b()) {
         final String[] s = new String[N-1];
         for (int i = 0; i < s.length; ++i) s[i] = args[i+1];
         System.out.println("\"" + concat(s) + "\"");
@@ -82,13 +81,11 @@ class Functions {
       }
     }
     else if (x.to_int()) {
-      final int n = x.i();
-      System.out.println(sum(extract_int(args)) - n);
+      System.out.println(sum(extract_int(args)) - x.i());
       return;
     }
     else if (x.to_double()) {
-      final double d = x.d();
-      if (d >= 0) System.out.println(max(extract_double(args)));
+      if (x.d() >= 0) System.out.println(max(extract_double(args)));
       else System.out.println(min(extract_double(args)));
     }
     else if (args[0].equals("special")) {
