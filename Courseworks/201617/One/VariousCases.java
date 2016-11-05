@@ -42,7 +42,11 @@ class VariousCases {
         if (a > d) {final int t=d;d=c;c=b;b=a;a=t;}
         else {final int t=d;d=c;c=b;b=t;}
       else if (c > d) {final int t=c;c=d;d=t;}
-      System.out.println(a + " " + b + " " + c + " " + d);
+      int size = 1;
+      if (b > a) ++size;
+      if (c > b) ++size;
+      if (d > c) ++size;
+      System.out.println(size);
       return;
     }
     {
