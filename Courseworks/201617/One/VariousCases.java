@@ -50,12 +50,26 @@ class VariousCases {
       return;
     }
     {
+      final int modifier = Integer.parseInt(args[0]);
+      if (modifier < 0) {
+        long prod = 1;
+        for (int i = 1; i < nargs; ++i)
+          prod *= (long) (Integer.parseInt(args[i]));
+        System.out.println(prod);
+        return;
+      }
       long sum = 0;
-      for (int i = 1, mult=1; i < nargs; ++i, mult*=-1)
-        sum += mult * (long)Integer.parseInt(args[i]);
-      final int s0 = Integer.parseInt(args[0]);
-      if (s0 % 2 == 0) {sum *= -1; sum += s0;} else sum -= s0;
+      if (modifier == 0) {
+        for (int i = 1; i < nargs; ++i)
+          sum += (long) (Integer.parseInt(args[i]));
+        System.out.println(sum);
+        return;
+      }
+      for (int i = 1; i < nargs; ++i)
+        if (i % modifier != 0)
+          sum += (long) (Integer.parseInt(args[i]));
       System.out.println(sum);
+      return;
     }
   }
 }
