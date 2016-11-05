@@ -15,7 +15,8 @@ class VariousCases {
       return;
     }
     if (nargs == 2) {
-      System.out.println("Hello, " + args[0] + " and " + args[1] + "!");
+      System.out.println("Argument 1: \"" + args[0] + "\".");
+      System.out.println("Argument 2: \"" + args[1] + "\".");
       return;
     }
     if (nargs == 3) {
