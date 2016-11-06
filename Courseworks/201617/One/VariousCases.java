@@ -20,9 +20,9 @@ class VariousCases {
       return;
     }
     if (nargs == 3) {
-      final int a = Math.abs(Integer.parseInt(args[0])),
-        b = Math.abs(Integer.parseInt(args[1])),
-        c = Math.abs(Integer.parseInt(args[2]));
+      final long a = Integer.parseInt(args[0]),
+        b = Integer.parseInt(args[1]),
+        c = Integer.parseInt(args[2]);
       boolean found = false;
       if (a*b == c) {found = true; System.out.println("1*2=3");}
       if (a*c == b) {found = true; System.out.println("1*3=2");}
