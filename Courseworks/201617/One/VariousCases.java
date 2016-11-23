@@ -49,6 +49,23 @@ class VariousCases {
       System.out.println(size);
       return;
     }
+    if (nargs == 4) {
+      final int[] a = new int[nargs];
+      for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
+      int diseq = 0;
+      for (int i = 0; i < nargs-1; ++i) {
+        final int ai = a[i];
+        for (int j = i+1; j < nargs; ++j)
+          if (ai != a[j]) ++diseq;
+      }
+      int size;
+      if (diseq == 0) size = 1;
+      else if (3 <= diseq && diseq <= 4) size = 2;
+      else if (diseq == 5) size = 3;
+      else size = 4;
+      System.out.println(size);
+      return;
+    }
     {
       final int modifier = Integer.parseInt(args[0]);
       if (modifier < 0) {
