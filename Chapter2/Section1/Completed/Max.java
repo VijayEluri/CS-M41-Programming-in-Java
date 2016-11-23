@@ -2,6 +2,7 @@ public class Max {
 
   public static int max(final int[] a) {
     int curmax = Integer.MIN_VALUE;
+    if (a == null) return curmax;
     for (int i = 0; i < a.length; ++i)
       if (a[i] > curmax) curmax = a[i];
     return curmax;

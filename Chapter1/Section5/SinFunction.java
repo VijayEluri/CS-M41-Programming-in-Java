@@ -24,8 +24,8 @@ class SinFunction {
 
         final double alpha = 4;
         final double beta = 20;
-        double[] x = new double[N+1];
-        double[] y = new double[N+1];
+        final double[] x = new double[N+1];
+        final double[] y = new double[N+1];
         for (int i = 0; i <= N; ++i) {
             x[i] = Math.PI * i/N;
             y[i] = Math.sin(alpha*x[i]) + Math.sin(beta*x[i]);
