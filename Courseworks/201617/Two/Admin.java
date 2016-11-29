@@ -63,12 +63,15 @@ class Admin {
     }
     {
       assert(nargs >= 4);
-      final Person[] a = new Person[nargs/2];
+      final boolean even = (nargs % 2 == 0);
+      final int length = (even) ? nargs/2 : nargs/2+1;
+      final Person[] a = new Person[length];
       for (int i = 0; i < nargs-1; i+=2) {
         final String name = args[i];
         final int inc = Integer.parseInt(args[i+1]);
         a[i/2] = new Person(name, inc);
       }
+      if (! even) a[length-1] = new Person(args[args.length-1]);
       System.out.println(equal_persons(a));
       System.out.println(sum_income(a));
       System.out.println(longest_name(a));
