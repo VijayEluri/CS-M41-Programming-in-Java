@@ -685,50 +685,56 @@ else
     <ol>
      <li> Tuesday (6/12/2016):
       <ol>
-       <li> Section 3.2
-            <a href="Slides/32datatype.pdf"> Creating data types </a>.
+       <li> We consider first the question of "public" versus "private":
+       <li> Section 3.3
+            <a href="Slides/33design.pdf"> Designing data types </a>.
        </li>
       </ol>
      </li>
-     <li> Thursday (8/12/2016): Understanding <code>null</code>, and Java-Objects in general:
+     <li> Thursday (8/12/2016):
       <ol>
-       <li> An "object" in Java is a special thing. Therefore I refer to it
-        as "Java-object". </li>
-       <li> Objects of primitive data type (int's, boolean's, double's,
-        char's, and some more) are <strong>NOT</strong> Java-objects. </li>
-       <li> The speciality of Java-objects is that, unlike int's for
-        example, you never have them "in your hands" --- only
-        <strong>pointers</strong>. </li>
-       <li> A variable for a Java-object is a <strong>pointer</strong>. </li>
-       <li> That is, it is a memory address! </li>
-       <li> There is a special exceptional ("singular") memory address,
-        namely "null", which stands for something which is NOT THERE. </li>
-       <li> Study the demo-program
-        <a href="CS-M41_Programs/Chapter3/Section2/NullString.java">
-         NullString
-        </a> carefully! </li>
+       <li> First hour: Section 3.2
+            <a href="Slides/32datatype.pdf"> Creating data types </a>.
+       </li>
+       <li> Plus a quick intro into "identify versus equality":
+            All the issues are demonstrated in program
+            <a href="CS-M41_Programs/Chapter3/Section2/EqualityIssues.java">
+            EqualityIssues </a> --- predict its output!
+       </li>
       </ol>
      </li>
-    </ol>
    </li>
    <li> Week 11:
     <ol>
-     <li> Tuesday (13/12/2016):  Section 3.3
-          <a href="Slides/33design.pdf"> Designing data types </a>.
+     <li> Tuesday (13/12/2016)
+      <ol>
+       <li> <a href="Slides/Revision.pdf"> Revision and exam-preparation
+            lecture </a>.
+       </li>
+      </ol>
      </li>
      <li> Thursday (15/12/2016):
       <ol>
-       <li> First hour:
-        <a href="Slides/Revision.pdf"> Revision and exam-preparation lecture
-        </a>.
+       <li> First hour: Understanding <code>null</code>, and Java-Objects in
+            general:
+        <ol>
+         <li> An "object" in Java is a special thing. Therefore I refer to it
+         as "Java-object". </li>
+         <li> Objects of primitive data type (int's, boolean's, double's,
+         char's, and some more) are <strong>NOT</strong> Java-objects. </li>
+         <li> The speciality of Java-objects is that, unlike int's for
+         example, you never have them "in your hands" --- only
+         <strong>pointers</strong>. </li>
+         <li> A variable for a Java-object is a <strong>pointer</strong>. </li>
+         <li> That is, it is a memory address! </li>
+         <li> There is a special exceptional ("singular") memory address,
+          namely "null", which stands for something which is NOT THERE. </li>
+         <li> Study the demo-program
+         <a href="CS-M41_Programs/Chapter3/Section2/NullString.java">
+         NullString </a> carefully! </li>
+        </ol>
        </li>
        <li> Second hour: Issues with Java-objects. </li>
-       <li> "Identity" and "Equality": All the issues are demonstrated in
-        program
-        <a href="CS-M41_Programs/Chapter3/Section2/EqualityIssues.java">
-         EqualityIssues
-        </a> --- predict its output!
-       </li>
        <li> Understanding "pass-by-value" and "pass-by-reference":
         <ol>
          <li> What is the output of
@@ -1324,7 +1330,7 @@ System.out.println(a);
     </address>
 <!-- Created: Mon Sep 21 13:45:00 BST 2009 -->
 <!-- hhmts start -->
-Last modified: Mon Dec  5 01:48:43 GMT 2016
+Last modified: Thu Dec  8 01:01:13 GMT 2016
 <!-- hhmts end -->
 
    </div>
