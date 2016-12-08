@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 10}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 2/12/2015
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 8/12/2016
 \end{center}
 
 
@@ -33,8 +33,13 @@
 \Java
 
 \begin{enumerate}
-\item Write a class \texttt{Trivial}, which stores two integers, and as member functions (``methods'') allows to compute their sum and their product, and translation into strings. The objects of this class must be immutable.
-\item Furthermore allow equality-comparison, where two \texttt{Trivial}-objects are considered equal if (and only if) the members are equal \emph{independent} of their order.
+\item Write a class \texttt{Trivial}, which stores two integers, and as member functions (``methods'') allows
+  \begin{enumerate}
+  \item to compute their sum and their product,
+  \item and translation into strings.
+  \end{enumerate}
+ The objects of this class must be immutable.
+\item Furthermore allow \emph{equality}-comparison, where two \texttt{Trivial}-objects are considered equal if (and only if) the members are equal \emph{independent} of their order.
 \item And finally write a method \texttt{multiply}, which takes an integer as argument, and multiplies the object with this number. Note that you can't modify the object itself.
 \item Write then a program \texttt{Client}, which reads four integers from the command-line, creates two objects of type Trivial accordingly, and outputs their sums and products and the objects themselves, and whether the two objects are equal, and finally outputs the multiplications of the second object with the sum of the first object.
 \item During the run of \texttt{Client}, how many objects of type \texttt{Trivial} have been created?
