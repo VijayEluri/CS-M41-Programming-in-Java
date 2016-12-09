@@ -30,7 +30,8 @@ class VariousCases {
       if (! found) System.out.println("None.");
       return;
     }
-    if (nargs == 4) {
+    if (nargs == 4) { // Solution 1: fastest.
+      // First sorting:
       int a = Integer.parseInt(args[0]), b = Integer.parseInt(args[1]),
         c = Integer.parseInt(args[2]), d = Integer.parseInt(args[3]);
       if (a > b) {final int t=a;a=b;b=t;}
@@ -42,6 +43,7 @@ class VariousCases {
         if (a > d) {final int t=d;d=c;c=b;b=a;a=t;}
         else {final int t=d;d=c;c=b;b=t;}
       else if (c > d) {final int t=c;c=d;d=t;}
+      // Now just counting the "steps":
       int size = 1;
       if (b > a) ++size;
       if (c > b) ++size;
@@ -49,7 +51,7 @@ class VariousCases {
       System.out.println(size);
       return;
     }
-    if (nargs == 4) {
+    if (nargs == 4) { // Solution 2: Counting disequalities.
       final int[] a = new int[nargs];
       for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
       int diseq = 0;
@@ -63,6 +65,22 @@ class VariousCases {
       else if (3 <= diseq && diseq <= 4) size = 2;
       else if (diseq == 5) size = 3;
       else size = 4;
+      System.out.println(size);
+      return;
+    }
+    if (nargs == 4) { // Solution 3: Finding the different elements.
+      final int[] a = new int[nargs];
+      for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
+      final int[] diff_elem = new int[nargs];
+      int size = 1;
+      diff_elem[0] = a[0];
+      for (int i = 1; i < nargs; ++i) {
+        final int elem = a[i];
+        boolean found = false;
+        for (int j = 0; ! found && j < size; ++j)
+          if (diff_elem[j] == elem) found = true;
+        if (! found) diff_elem[size++] = elem;
+      }
       System.out.println(size);
       return;
     }
