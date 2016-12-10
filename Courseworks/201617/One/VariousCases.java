@@ -84,6 +84,34 @@ class VariousCases {
       System.out.println(size);
       return;
     }
+    if (nargs == 4) { // Solution 4: Discounting when finding equal elements.
+      final int[] a = new int[nargs];
+      for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
+      int size = 4;
+      for (int i = 1; i < nargs; ++i) {
+        final int elem = a[i];
+        boolean found = false;
+        for (int j = 0; ! found && j < i; ++j)
+          if (a[j] == elem) found = true;
+        if (found) --size;
+      }
+      System.out.println(size);
+      return;
+    }
+    if (nargs == 4) { // Solution 5: Counting when all dis-equal.
+      final int[] a = new int[nargs];
+      for (int i = 0; i < nargs; ++i) a[i] = Integer.parseInt(args[i]);
+      int size = 1;
+      for (int i = 1; i < nargs; ++i) {
+        final int elem = a[i];
+        boolean found = false;
+        for (int j = 0; ! found && j < i; ++j)
+          if (a[j] == elem) found = true;
+        if (! found) ++size;
+      }
+      System.out.println(size);
+      return;
+    }
     {
       final int modifier = Integer.parseInt(args[0]);
       if (modifier < 0) {
