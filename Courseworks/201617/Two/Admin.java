@@ -12,8 +12,9 @@ class Admin {
   public static boolean equal_persons(final Person[] a) {
     if (a == null || a.length <= 1) return false;
     for (int i = 0; i < a.length-1; ++i)
-      for (int j = i+1; j < a.length; ++j)
-        if (a[i].equals(a[j])) return true;
+      if (a[i] != null)
+        for (int j = i+1; j < a.length; ++j)
+          if (a[i].equals(a[j])) return true;
     return false;
   }
   
