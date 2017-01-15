@@ -33,7 +33,7 @@ class Person {
   }
   public boolean equals(final Person other) {
     assert(income >= 0);
-    return name.equals(other.name);
+    return other != null && name.equals(other.name);
   }
   
   public static void main(final String[] args) {
