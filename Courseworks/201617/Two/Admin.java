@@ -21,7 +21,8 @@ class Admin {
   public static long sum_income(final Person[] a) {
     if (a == null) return 0;
     long sum = 0;
-    for (int i = 0; i < a.length; ++i) sum += a[i].income();
+    for (int i = 0; i < a.length; ++i)
+      if (a[i] != null) sum += a[i].income();
     return sum;
   }
   
