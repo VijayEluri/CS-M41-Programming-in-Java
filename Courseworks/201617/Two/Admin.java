@@ -59,7 +59,7 @@ class Admin {
       final Person p = new Person(args[0], Integer.parseInt(args[1]));
       final int change = Integer.parseInt(args[2]);
       final boolean success = change_income(p, change);
-      if (! success) System.err.println("Failure.");
+      if (! success) System.out.println("Failure.");
       else System.out.println(p);
       return;
     }
