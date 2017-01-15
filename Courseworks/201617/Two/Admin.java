@@ -29,10 +29,10 @@ class Admin {
   public static String longest_name(final Person[] a) {
     if (a == null) return null;
     if (a.length == 0) return null;
-    String l = a[0].name;
-    int ll = l.length();
-    for (int i = 1; i < a.length; ++i)
-      if (a[i].name.length() > ll) {
+    String l = null;
+    int ll = -1;
+    for (int i = 0; i < a.length; ++i)
+      if (a[i] != null && a[i].name.length() > ll) {
         l = a[i].name;
         ll = l.length();
       }
