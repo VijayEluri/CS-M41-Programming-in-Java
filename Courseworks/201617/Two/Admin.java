@@ -1,6 +1,7 @@
 class Admin {
   
   public static boolean change_income(final Person p, final int change) {
+    assert(p != null);
     if (change >= 0) return p.increase(change);
     else {
       if (change == Integer.MIN_VALUE) p.decrease(Integer.MAX_VALUE);
