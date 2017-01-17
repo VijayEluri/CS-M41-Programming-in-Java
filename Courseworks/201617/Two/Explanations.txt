@@ -1,0 +1,21 @@
+change_income:
+  Since the specification says, that false is only returned if the income is
+  increased too much, we must assume that the Person exists, i.e., p != null.
+  No deduction of marks here for the missing assert, but please reflect
+  about it.
+
+  Integer.MIN_VALUE can NOT be negated (correctly), and thus must be treated
+  separately (try it out!).
+
+equal_persons:
+  One must take into account here that some a[i] may be null!
+  The possibility, that also a[j] is null, needs to be handled by
+  Person.equals (so that is NOT your concern).
+
+sum_income:
+  Return type must be long.
+  Again, a[i] may be null.
+
+longest_name:
+  If a is null or contains no Person, then null must be returned.
+  Again, a[i] may be null.
