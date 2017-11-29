@@ -5,6 +5,7 @@ class Counter {
   public Counter(final String n) {
     assert(bound >= 0);
     assert(bound < Integer.MAX_VALUE);
+    assert(n != null);
     assert(! n.equals(""));
     name = n;
     count = 0;
@@ -13,6 +14,11 @@ class Counter {
     assert(count >= 0);
     assert(count <= bound);
     return count;
+  }
+  public String name() {
+    assert(name != null);
+    assert(! name.equals(""));
+    return name;
   }
   public boolean inc() {
     assert(count >= 0);
@@ -24,12 +30,14 @@ class Counter {
     else return false;
   }
   public String toString() {
+    assert(name != null);
     assert(! name.equals(""));
     assert(count >= 0);
     assert(count <= bound);
     return name + ": " + count;
   }
   public boolean equals(final Counter other) {
+    assert(name != null);
     assert(! name.equals(""));
     assert(count >= 0);
     assert(count <= bound);
