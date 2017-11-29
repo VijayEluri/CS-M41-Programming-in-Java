@@ -6,33 +6,46 @@ class Vote {
   public static long sum_counts(final Counter[] a) {
     if (a == null) return 0;
     long sum = 0;
-    for (int i = 0; i < a.length; ++i) sum += a[i].count();
+    for (int i = 0; i < a.length; ++i)
+      if (a[i] != null) sum += a[i].count();
     return sum;
   }
   public static int count_counters(final Counter[] a) {
     if (a == null) return 0;
     int count = 0;
     final int length = a.length;
+    if (length == 0) return 0;
+    if (a[0] != null) ++count;
     for (int i = 1; i < length; ++i) {
       final Counter c = a[i];
-      int j;
-      for (j = 0; j < i && ! c.equals(a[j]); ++j);
-      if (j == i) ++count;
+      if (c != null) {
+        int j;
+        for (j = 0; j < i && ! c.equals(a[j]); ++j);
+        if (j == i) ++count;
+      }
     }
     return count;
   }
   public static String shortest_name(final Counter[] a) {
-    if (a == null || a.length == 0) return null;
-    int length = a[0].name().length();
-    int shortest = 0;
-    for (int i = 1; i < a.length; ++i) {
-      final int l = a[i].name().length();
-      if (l <= length) {
-        length = l;
-        shortest = i;
+    if (a == null) return null;
+    final int length = a.length;
+    int index_shortest;
+    for (index_shortest = 0;
+         index_shortest < a.length && a[index_shortest] == null;
+         ++index_shortest);
+    if (index_shortest == length) return null;
+    int current_length = a[index_shortest].name().length();
+    for (int i = index_shortest+1; i < length; ++i) {
+      final Counter c = a[i];
+      if (c != null) {
+        final int l = c.name().length();
+        if (l <= current_length) {
+          current_length = l;
+          index_shortest = i;
+        }
       }
     }
-    return a[shortest].name();
+    return a[index_shortest].name();
   }
   
 }
