@@ -1,5 +1,5 @@
 class Counter {
-  public static final int bound = 1000000;
+  public static final int bound = 10;
   public final String name;
   private int count;
   public Counter(final String n) {
