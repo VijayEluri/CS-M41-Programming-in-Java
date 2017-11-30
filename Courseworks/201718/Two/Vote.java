@@ -48,4 +48,39 @@ class Vote {
     return a[index_shortest].name();
   }
   
+  private static boolean increment(final Counter c) {
+    if (c == null) return true;
+    final int l = c.name().length();
+    for (int i = 0; i < l; ++i)
+      if (! c.inc()) return false;
+    return true;
+  }
+
+  public static void main(final String[] args) {
+    final int N = args.length;
+    if (N == 0) {
+      System.out.println(Counter.bound);
+      return;
+    }
+    else if (N == 1) {
+      final String name = args[0];
+      final Counter c = counter_factory(name);
+      if (c == null) System.out.println("ERROR");
+      else {
+        if (! increment(c)) System.out.println("ERROR");
+        else System.out.println(c);
+      }
+      return;
+    }
+    else {
+      Counter[] a = new Counter[N];
+      for (int i = 0; i < N; ++i) a[i] = counter_factory(args[i]);
+      for (int i = 0; i < N; ++i)
+        if (! increment(a[i])) a[i] = null;
+      System.out.println(sum_counts(a));
+      System.out.println(count_counters(a));
+      System.out.println(shortest_name(a));
+      return;
+    }
+  }
 }
