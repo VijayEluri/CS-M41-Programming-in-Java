@@ -9,7 +9,7 @@ set -o nounset
 set -o pipefail
 
 script_name="CompileAll"
-version_number=0.1.3
+version_number=0.1.4
 
 directories=${directories:-*/}
 evaldir="Evaluation"
@@ -18,7 +18,7 @@ logfile="${evaldir}/Log_compilation"
 for D in ${directories}; do
   echo ${D}
   cd ${D}
-  mkdir -p ${evaldir}
+  # mkdir -p ${evaldir}
   echo >> ${logfile}
   date >> ${logfile}
   programs=*.java
