@@ -6,9 +6,10 @@ class SeveralCases_3 {
       return;
     }
     if (nargs == 1) {
-      final int length = args[0].length();
+      final String s = args[0];
+      final int length = s.length();
       System.out.print("\"");
-      for (int i = 0; i < length; ++i) System.out.print(args[0]);
+      for (int i = 0; i < length; ++i) System.out.print(s);
       System.out.println("\"");
       return;
     }
