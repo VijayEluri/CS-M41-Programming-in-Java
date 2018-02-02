@@ -41,16 +41,16 @@ class Vote {
   // shortest name of it (last found), otherwise return null:
   public static String shortest_name(final Counter[] a) {
     if (a == null) return null;
-    final int length = a.length;
+    final int size = a.length;
     int index_shortest;
     // First search for an object:
     for (index_shortest = 0;
          index_shortest < a.length && a[index_shortest] == null;
          ++index_shortest);
     // All a[i] are equal null iff index_shortest == length:
-    if (index_shortest == length) return null;
+    if (index_shortest == size) return null;
     int current_length = a[index_shortest].name().length();
-    for (int i = index_shortest+1; i < length; ++i) {
+    for (int i = index_shortest+1; i < size; ++i) {
       final Counter c = a[i];
       if (c != null) {
         final int l = c.name().length();
@@ -68,6 +68,21 @@ class Vote {
     // Since indices in Java are int's (different from other languages),
     // the return-value -1 (instead of null) could then be used to indicate
     // that there isn't an object there at all.
+  }
+  // More compactly (renamed):
+  public static String shortest_name_2(final Counter[] a) {
+    if (a == null) return null;
+    int min_length = Integer.MAX_VALUE;
+    String shortest = null;
+    for (int i = 0; i < a.length; ++i)
+      if (a[i] != null) {
+        final String name = a[i].name();
+        if (name.length() <= min_length) {
+          min_length = name.length();
+          shortest = name;
+        }
+      }
+    return shortest;
   }
   
   // Returns true iff incrementation by as many characters as are in the
