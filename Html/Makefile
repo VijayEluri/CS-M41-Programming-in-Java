@@ -1,7 +1,7 @@
 # Oliver Kullmann, 4.10.2012 (Swansea)
 
 remote_host="csoliver@cs-svr1.swansea.ac.uk"
-git_dir="~/public_html/ProgrammingJava201718_8PIzztt4tV/CS-M41_Programs"
+git_dir="~/public_html/ProgrammingJava201819_4ptSarewFC/CS-M41_Programs"
 
 .PHONY : all public public-html
 
