@@ -1,7 +1,7 @@
 // Oliver Kullmann, 22.9.2009 (Swansea)
 
 public class Quadratic {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     try {
       final double b = Double.parseDouble(args[0]);
       final double c = Double.parseDouble(args[1]);

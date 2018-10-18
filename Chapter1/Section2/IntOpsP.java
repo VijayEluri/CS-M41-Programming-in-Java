@@ -13,7 +13,8 @@ public class IntOpsP {
   public static final int err_num_par = 1, err_not_int = 2;
   public static void main(final String[] args) {
     if (args.length <= 1) {
-      System.err.println("ERROR[IntOpsP]: Two arguments are needed (two numbers).");
+      System.err.println("ERROR[IntOpsP]: Two arguments are needed " +
+        "(two numbers).");
       System.exit(err_num_par);
     }
     try { // catching parsing errors
@@ -21,9 +22,10 @@ public class IntOpsP {
       final int a = Integer.parseInt(args[0]);
       final int b = Integer.parseInt(args[1]);
       // Computing product, quotient and remainder:
-      final double pd = (double) a*b; // in double two integers can be multiplied
-      final boolean overflow = (pd > Integer.MAX_VALUE) || (pd < Integer.MIN_VALUE);
-      final int p = (! overflow) ? (int) pd : 0;
+      final long pl = (long) (a)*b; // in long two int's' can be multiplied
+      final boolean overflow = (pl > Integer.MAX_VALUE)
+        || (pl < Integer.MIN_VALUE);
+      final int p = (! overflow) ? (int) pl : 0;
       final boolean zero_div = (b == 0);
       final int q = (! zero_div) ? a/b : 0;
       final int r = (! zero_div) ? a%b : 0;
@@ -31,9 +33,10 @@ public class IntOpsP {
       if (! overflow)
         System.out.println(a + " * " + b + " = " + p);
       else {
-	System.out.println("Product overflow in int!");
-	System.out.println("Recall the integer range is from " + Integer.MIN_VALUE + " to " + Integer.MAX_VALUE + ".");
-	System.out.println("The double result is " + pd + ".");
+	System.out.println("Product-overflow in int!");
+	System.out.println("Recall the integer range is from " +
+	  Integer.MIN_VALUE + " to " + Integer.MAX_VALUE + ".");
+	System.out.println("The long result is " + pl + ".");
       }
       if (! zero_div) {
 	System.out.println(a + " / " + b + " = " + q);

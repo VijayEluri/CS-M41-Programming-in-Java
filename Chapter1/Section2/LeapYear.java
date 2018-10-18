@@ -1,9 +1,9 @@
 // Oliver Kullmann, 23.9.2009 (Swansea)
 
 public class LeapYear {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
 
-    int year;
+    final int year;
     try {
       year = Integer.parseInt(args[0]);
     }

@@ -1,7 +1,7 @@
 // Oliver Kullmann, 22.9.2009 (Swansea)
 
 class Ruler {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final String ruler1 = "1";
     final String ruler2 = ruler1 + " 2 " + ruler1;
     final String ruler3 = ruler2 + " 3 " + ruler2;

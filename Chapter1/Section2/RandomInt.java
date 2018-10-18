@@ -1,7 +1,7 @@
 // Oliver Kullmann, 23.9.2009 (Swansea)
 
 public class RandomInt {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
 
     try {
       final int N = Integer.parseInt(args[0]);
