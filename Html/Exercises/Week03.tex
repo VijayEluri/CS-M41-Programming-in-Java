@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 3}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 20/10/2017
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 19/10/2018
 \end{center}
 
 
@@ -64,6 +64,43 @@ Explain each outcome, and then write a test program to see whether that's really
   Check it out!
 \item Write a program that takes two positive integers as command-line arguments, and prints \texttt{true} iff either divides the other. So for example for inputs $2,4$ or $9,3$ we get \texttt{true}, while for inputs $5,7$ we get \texttt{false}.
 \end{enumerate}
+
+
+\section{A bit more advanced}
+\label{sec:advanced}
+
+\begin{enumerate}
+\item Start with writing a program yourself, which takes an \texttt{int} $N$ (precisely that!) as an argument, and computes the sum $1 + \dots + N$.
+
+  Consider the usage of this program as ``internal'', that is, we do not handle missing or wrong command-line arguments (but we want to concentrate on the job of proper summation).
+\item What's wrong with the following program?:
+  \begin{lstlisting}{Sum0}
+class Sum0 {
+  public static void main(final String[] args) {
+    final int N = Integer.parseInt(args[0]);
+    int sum = 0;
+    for (int i = 1; i <= N; ++i) sum += i;
+    System.out.println(sum);
+  }
+}
+  \end{lstlisting}
+\item Alright, then let's try
+  \begin{lstlisting}{Sum1}
+class Sum1 {
+  public static void main(final String[] args) {
+    final int N = Integer.parseInt(args[0]);
+    long sum = 0;
+    for (int i = 1; i <= N; ++i) sum += i;
+    System.out.println(sum);
+  }
+}
+  \end{lstlisting}
+  That does now the job, or?!? (By the way, remember, $10^9$ is a nice number in this context; time the run-time to get a feeling for speed.)
+\item Think harder! There is precisely one input for $N$ where the program doesn't work. By the way, understand the output for $N \le 0$ (which is always correct here).
+\item Write now a correct program, where the loop-variable \texttt{i} still is an \texttt{int}.
+\end{enumerate}
+
+The programs \texttt{Sum0-3.java} you find in \url{\chpbase/CS-M41_Programs/Chapter1/Section2}.
 
 
 \section{Additional exercises}
