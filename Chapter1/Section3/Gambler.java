@@ -1,7 +1,7 @@
 // Oliver Kullmann, 24.9.2009 (Swansea)
 
 class Gambler {
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
 
   try {
     final int stake = Integer.parseInt(args[0]);
