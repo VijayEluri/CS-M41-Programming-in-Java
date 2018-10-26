@@ -2,10 +2,10 @@
 
 class Sum {
 
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     final int N = Integer.parseInt(args[0]);
-    int sum = 0;
-    for (int i = 1; i <= N; ++i) sum += i;
+    long sum = 0;
+    for (int i = 0; i < N; ++i) sum += i+1;
     System.out.println(sum);
   }
 }
