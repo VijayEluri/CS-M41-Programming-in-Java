@@ -13,7 +13,7 @@ class Frequencies {
     }
     final long T = Long.parseLong(args[1]);
     if (T <= 0) return;
-    long[] counts = new long[N];
+    final long[] counts = new long[N];
     for (long i = 0; i < T; ++i) ++counts[(int)(Math.random()*N)];
     for (int i = 0; i < N; ++i)
       System.out.println(i + ": " + counts[i]/(double) T);
