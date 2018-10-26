@@ -1,4 +1,4 @@
-class Gambler {
+class GamblerN {
   public static void main(final String[] args) {
     if (args.length < 3) {
       System.err.println("Three arguments are needed: stake, target and number of trials (with an optional fourth argument p).");
@@ -44,10 +44,14 @@ class Gambler {
       if (steps > max_steps) max_steps = steps;
       sum_steps += steps;
     }
+    assert(wins + losses == num_trials);
     
-    System.out.println("stake=" + stake + ", target=" + target + ", trials=" + num_trials + ", p = " + p + ".");
-    System.out.println("wins=" + wins);
-    System.out.println("losses=" + losses);
+    System.out.println("stake=" + stake + ", target=" + target + ", trials=" +
+      num_trials + ", p = " + p + ".");
+    System.out.println("wins = " + wins + " = " +
+      wins/(double) num_trials + "%");
+    System.out.println("losses = " + losses + " = " +
+      losses/(double) num_trials + "%");
     System.out.println("Number of steps for each games:");
     System.out.println("minimum = " + min_steps);
     System.out.println("maximum = " + max_steps);
