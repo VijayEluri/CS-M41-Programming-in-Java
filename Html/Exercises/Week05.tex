@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 5}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 3/11/2017
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 31/10/2018 + 2/11/2018
 \end{center}
 
 \section{Standard exercises}
@@ -32,7 +32,7 @@
 \Java
 
 \begin{enumerate}
-\item Write a program that declares and initializes an array \texttt{a[]} of size 1000 and accesses \texttt{a[1000]}. Does your program compile? What happens when you run it?
+\item Write a program that declares and initialises an array \texttt{a[]} of size 1000 and accesses \texttt{a[1000]}. Does your program compile? What happens when you run it?
 \item Describe and explain what happens when you compile and run a program with the following statements:
   \begin{lstlisting}{large}
 final int N = 1000;
@@ -43,6 +43,24 @@ final int[] a = new int[N*N*N*N];
 \item Write a program \texttt{Deck32} (recall \texttt{Deck} from the \href{http://cs.swan.ac.uk/~csoliver/ProgrammingJava201415_MgQxuCUrrS/index.html#LecturesWeek05}{lecture}), which uses only a deck of 32 cards, and where the ranks do not include 2 up to 6.
 \item Combine \texttt{Deck} and \texttt{Deck32} into one program, where via a command-line argument it is decided whether 32 or 52 cards are to be used.
 \end{enumerate}
+
+
+\section{A bit more advanced}
+\label{sec:advanced}
+
+Write a program \texttt{Collector}, which takes two command-line arguments
+\begin{enumerate}
+\item an \texttt{int} N,
+\item a \texttt{long} T,
+\item a \texttt{long} k,
+\end{enumerate}
+and which runs the following experiment $T$ times: Create random numbers from $0, \dots, N-1$, until all these numbers have been met at least $k$ times. The output of this program is information on the numbers of steps used in each experiment: the minimum number of steps, the maximum number, and the average number. Example:
+\begin{verbatim}
+Week05> java Collector 100 1000000 2
+min = 371
+max = 2391
+mean = 728.949038
+\end{verbatim}
 
 
 \section{Additional exercises}
