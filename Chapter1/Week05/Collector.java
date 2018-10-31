@@ -40,6 +40,11 @@ class Collector {
         ++num_steps;
         if (num_steps == max_steps) {
           System.err.println("Reached max_steps = " + max_steps + ".");
+          System.err.println(" Current round i = " + i + ", num_values = "
+            + num_values + ".");
+          if (i != 0)
+            System.err.println(" Current minsteps = " + minsteps + ", maxsteps = "
+              + maxsteps + ", mean = " + sum_steps / (double) i);
           System.exit(max_steps_error);
         }
         ++counts[r];
