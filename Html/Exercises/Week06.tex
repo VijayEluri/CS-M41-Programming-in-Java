@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 6}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 6+10/11/2017
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 7+9/11/2018
 \end{center}
 
 
@@ -49,10 +49,45 @@ Always test your programs thoroughly!
   \item For- and while-loops.
   \item Arrays.
   \end{enumerate}
-\item Write a program that reads in integers (as many as the user enters) from standard input and prints out the maximum and minimum values. Before entering the program, make a sketch on paper.
-\item Modify this program by rejecting non-positive entries, asking the user to re-enter the input (until he gets it correct). Before entering the program, extend the previous sketch. Hint: a while-loop is appropriate for testing the input values.
-\item Read $N$ from the command-line and $N$ floating-point number from standard input, and compute their mean value. Create an error message if not enough numbers were entered. Compute also the standard deviation as the square root of the sum of the squares of the differences from these numbers and the average, the whole then divided by $N-1$. Hint: For this computation you could store the numbers in an array.
-\item Read $N$ from the command-line plus $N-1$ integers $1 \le x \le N$ from standard input, ignoring numbers outside that range as well as reapted numbers. Then determine the missing number (from the interval $1 \dots N$).
+\item Write a program \texttt{MinMax} that reads in integers (as many as the user enters) from standard input and prints out the maximum and minimum values. Before entering the program, make a sketch on paper.
+\item Write a program \texttt{Create} which reads the integer $N$ from the command-line and prints out, separated by spaces, the numbers $1, \dots, N$. Use this as input for \texttt{MinMax}. Can you run this chain with $N=10^{10}$ ?!:
+\begin{verbatim}
+> java Create 10000000000 | java MinMax
+1
+10000000000
+\end{verbatim}
+Here ``>'' stands for the command-line prompt. Timing on my rusty laptop:
+\begin{verbatim}
+> time java Create 1000000 | java MinMax
+1
+1000000
+real    0m1.687s
+user    0m3.569s
+sys     0m0.437s
+\end{verbatim}
+So $10^6$ needs roughly 1.5s, and thus $10^{10}$ would need roughly $15000s$, say 4 hours. The lab-machines should be faster; you could run the computation in a separate window.
+\item Modify \texttt{MinMax} by rejecting non-positive entries, asking the user to re-enter the input (until he gets it correct). Before entering the program, extend the previous sketch. Hint: a while-loop is appropriate for testing the input values.
+\item Read $N$ from the command-line and $N$ floating-point numbers from standard input, and compute their mean value. Create an error message if not enough numbers were entered.
+\end{enumerate}
+
+
+\section{A bit more advanced}
+\label{sec:advanced}
+
+\begin{enumerate}
+\item Read $N$ from the command-line plus $N-1$ integers $1 \le x \le N$ from standard input (or less if not available), ignoring repeated numbers or numbers outside of the range. Then determine the first missing number (from the interval $1 \dots N$):
+\begin{verbatim}
+> java Missing 4
+0 0 5 5 1 1 4 4 4
+2
+> java Missing 4
+4 3 2 1
+1
+> java Missing 4
+2 3
+1
+\end{verbatim}
+\item In the above mean-computation, compute also the standard deviation as the square root of the sum of the squares of the differences from these numbers and the average, the whole then divided by $N-1$. Hint: For this computation you could store the numbers in an array. Actually, with some mathematical knowledge you can avoid storing these numbers, but for the exercise it's okay.
 \end{enumerate}
 
 

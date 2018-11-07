@@ -1,8 +1,8 @@
 class MinMax {
   public static void main(final String[] args) {
-    int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+    long min = Long.MAX_VALUE, max = Long.MIN_VALUE;
     while (!StdIn.isEmpty()) {
-      final int x = StdIn.readInt();
+      final long x = StdIn.readLong();
       if (x > max) max = x;
       if (x < min) min = x;
     }

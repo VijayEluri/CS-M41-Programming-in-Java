@@ -6,9 +6,8 @@ class Missing {
       System.err.println(" but N = " + N + ".");
       System.exit(1);
     }
-    int read = 0;
     boolean[] found = new boolean[N];
-    while (read < N-1) {
+    for (int read=0; !StdIn.isEmpty() && read < N-1;) {
       final int x = StdIn.readInt();
       if (x >= 1 && x <= N && !found[x-1]) {
         found[x-1] = true;
