@@ -105,5 +105,11 @@ class Functions {
     assert(fld(0.25) == -2);
     assert(fld(0.24999) == -3);
     assert(fld(Double.MIN_VALUE) == -1074);
+    for (int i = -1072; i <= 1023; ++i) {
+      final double p = Math.pow(2,i);
+      assert(fld(p) == i);
+      assert(fld(p * 1.5) == i);
+      assert(fld(p * 0.8) == i-1);
+    }
   }
 }
