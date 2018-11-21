@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 8}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 20+24/11/2017
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 21+23/11/2018
 \end{center}
 
 
@@ -32,7 +32,7 @@
 
 \Java
 
-If you didn't finish the exercises from last week, then please finish them now (we are still on functions). Always test your programs thoroughly!
+If you didn't finish the exercises from last week, then please finish them now (or until next week; we are still on functions). Always test your programs thoroughly! The following list is quite long, but perhaps you can finish it until next week as well.
 
 \begin{enumerate}
 \item Write a function (static method) \texttt{leq}, taking two \texttt{int}'s $a, b$ and returning \texttt{true} if $a \le b$, and \texttt{false} otherwise.
@@ -43,11 +43,18 @@ If you didn't finish the exercises from last week, then please finish them now (
 \item Write a function \texttt{eqarr}, which takes two \texttt{int}-arrays as arguments and returns \texttt{true}, if they are equal, and \texttt{false} otherwise; your function should return a value in \emph{every case} (even if the arrays are \texttt{null}).
 \item Write a function \texttt{and}, that takes a boolean array as argument, and returns true iff all elements are true; your function should return a value in \emph{every case} (even if the array is \texttt{null}).
 \item Write a function \texttt{xor}, that takes a boolean array as argument, and returns true iff an odd number of elements are true; your function should return a value in \emph{every case}.
+\end{enumerate}
+
+
+\section{A bit more advanced}
+\label{sec:advanced}
+
+\begin{enumerate}
 \item Write a function \texttt{fld} (``floor logarithm dualis''), that takes a floating point number $x > 0$ as input and returns the largest integer $n$ (possibly negative) such that $2^n \le x$ holds. Of course, as usual, do not use any special Java library function -- so implement the function according to definition, via loops.
 
   Recall: $2^0 = 1$, and $2^{-n} = 1 / 2^n$. Perhaps best to start with the test whether $x = 1$, $x > 1$ or $x < 1$ holds. For example $\mathrm{fld}(128) = 7$, $\mathrm{fld}(127) = 6$, $\mathrm{fld}(0.5) = -1$, $\mathrm{fld}(0.4) = -2$.
+\item If you know what a recursive definition is, implement a function computing the \href{https://en.wikipedia.org/wiki/Fibonacci_number}{Fibonacci-numbers}, given as $f(0) = 0$, $f(1) = 1$, and $f(n+2) = f(n) + f(n+1)$ for $n \ge 0$.
 \end{enumerate}
-
 
 \section{Additional exercises}
 \label{sec:addex}
@@ -55,7 +62,7 @@ If you didn't finish the exercises from last week, then please finish them now (
 Use the Pdf-version of this sheet, in order to get the html-links working.
 \begin{itemize}
 \item See \href{\chp#ExercisesWeek08}{Course home page, Week 8}.
-\item Study the \emph{Solutions}, as provided in the program collection for the module, Chapter 2, Section 2, under \texttt{Completed}.
+\item Study the \emph{Solutions}, as provided in the program collection for the module, Chapter 2, Week 08. There \texttt{Functions.java} is the new version, \texttt{Exercises08.java} is an older version, which is also valid (except of not containing \texttt{pow2}), and can be considered for different answers to design-questions.
 \end{itemize}
 
 
