@@ -46,7 +46,7 @@ class Exercises08 {
   }
 
   public static int fld(final double x) {
-    assert(! Double.isNaN(x));
+    assert(x > 0);
     assert(x != Double.POSITIVE_INFINITY);
     assert(x != Double.NEGATIVE_INFINITY);
     int n = 0;
@@ -136,7 +136,6 @@ class Exercises08 {
     assert(fld(0.4) == -2);
     assert(fld(1/64.0) == -6);
     assert(fld(1/65.0) == -7);
-    // fld(Double.NaN) yields nonsensical result -1
     // fld(Double.POSITIVE_INFINITY) yields infinite loop.
     // fld(Double.NEGATIVE_INFINITY) yields infinite loop.
 
