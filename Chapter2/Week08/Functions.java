@@ -165,11 +165,16 @@ class Functions {
     }
 
     assert(fld(1) == 0);
+    assert(fld(2) == 1);
+    assert(fld(4) == 2);
+    assert(fld(2.7) == 1);
     final int im = Integer.MAX_VALUE;
     assert(im == Math.pow(2,31) - 1);
     assert(fld(Double.POSITIVE_INFINITY) == im);
+    assert(fld(256) == 8);
     assert(fld(128) == 7);
     assert(fld(127) == 6);
+    assert(fld(100) == 6);
     assert(fld(Math.pow(2,31)) == 31);
     assert(fld(Math.pow(2,31) + 1) == 31);
     assert(fld(Math.pow(2,31) - 1) == 30);
@@ -187,11 +192,14 @@ class Functions {
     assert(fld(Double.MAX_VALUE) == 1023);
     assert(fld(Math.pow(2,1024)) == im);
     assert(fld(0.9) == -1);
+    assert(fld(0.8) == -1);
     assert(fld(0.5) == -1);
     assert(fld(0.499) == -2);
     assert(fld(0.4) == -2);
     assert(fld(0.25) == -2);
     assert(fld(0.24999) == -3);
+    assert(fld(1/64.0) == -6);
+    assert(fld(1/65.0) == -7);
     assert(fld(Double.MIN_VALUE) == -1074);
     for (int i = -1072; i <= 1023; ++i) {
       final double p = Math.pow(2,i);
