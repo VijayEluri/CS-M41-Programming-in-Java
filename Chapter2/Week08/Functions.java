@@ -69,13 +69,20 @@ class Functions {
     }
   }
 
+  public static long fibonacci(final int n) {
+    assert(n >= 0);
+    if (n <= 1) return n;
+    else return fibonacci(n-2) + fibonacci(n-1);
+  }
+
+
   // The remainder of the file is for TESTING.
 
   public static void main(final String[] args) {
     assert(leq(0,0));
     assert(leq(0,1));
     assert(!leq(1,0));
-    
+
     assert(sgn(1) == 1);
     assert(sgn(-1) == -1);
     assert(sgn(0) == 0);
@@ -207,5 +214,12 @@ class Functions {
       assert(fld(p * 1.5) == i);
       assert(fld(p * 0.8) == i-1);
     }
+
+    assert(fibonacci(0) == 0);
+    assert(fibonacci(1) == 1);
+    assert(fibonacci(2) == 1);
+    assert(fibonacci(3) == 2);
+    assert(fibonacci(20) == 6765);
+
   }
 }
