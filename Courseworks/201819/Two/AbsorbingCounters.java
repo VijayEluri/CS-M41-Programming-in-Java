@@ -8,7 +8,9 @@ class AbsorbingCounter {
     if (max_ < min_) { min = max_; max = min_; }
     else {min = min_; max = max_; }
     assert(min <= max);
-    counter = min + (max - min) / 2;
+    if (min >= 0) counter = min + (max - min) / 2;
+    else if (max < 0) counter = min - (min - max) / 2;
+    else counter = (min + max) / 2;
     assert(min <= counter);
     assert(counter <= max);
     r_min = counter == min;
@@ -44,6 +46,7 @@ class AbsorbingCounter {
       max == other.max;
   }
 
+  // UNIT TESTING:
   public static void main(final String[] args) {
     final AbsorbingCounter c1 = new AbsorbingCounter(0, 10);
     assert(c1.val() == 5);
@@ -61,6 +64,8 @@ class AbsorbingCounter {
     final AbsorbingCounter c2 = new AbsorbingCounter(-10,10);
     assert(c2.val() == 0);
     assert(! c2.equals(c1));
+    assert(c2.equals(new AbsorbingCounter(-10,10)));
+    assert(c2.equals(new AbsorbingCounter(10,-10)));
     for (int i = 0; i < 10; ++i) c2.dec();
     assert(c2.val() == -10);
     assert(c2.reached_min());
@@ -69,8 +74,38 @@ class AbsorbingCounter {
     assert(!c3.equals(c1));
     for (int i = 0; i < 5; ++i, c3.inc());
     assert(c3.equals(c1));
+    final AbsorbingCounter c4 = new AbsorbingCounter(1,6);
+    assert(c4.val() == 3);
+    c4.dec(); c4.inc(); assert(c4.equals(new AbsorbingCounter(1,6)));
+    final AbsorbingCounter c5 = new AbsorbingCounter(0,0);
+    assert(c5.val() == 0);
+    assert(c5.reached_min());
+    assert(c5.reached_max());
+    final AbsorbingCounter c6 = new AbsorbingCounter(Long.MIN_VALUE,Long.MAX_VALUE);
+    assert(c6.val() == 0);
+    AbsorbingCounter c7 = new AbsorbingCounter(Long.MAX_VALUE,Long.MAX_VALUE);
+    assert(c7.val() == Long.MAX_VALUE);
+    assert(c7.reached_min());
+    assert(c7.reached_max());
+    c7 = new AbsorbingCounter(Long.MIN_VALUE,Long.MIN_VALUE);
+    assert(c7.val() == Long.MIN_VALUE);
+    assert(c7.reached_min());
+    assert(c7.reached_max());
+
+    assert(Experiment.get_default_size() == Experiment.orig_default_size);
+    Experiment.add_to_default(1);
+    assert(Experiment.get_default_size() == Experiment.orig_default_size + 1);
+    Experiment.add_to_default(-2);
+    assert(Experiment.get_default_size() == Experiment.orig_default_size - 1);
+    Experiment.add_to_default(- Experiment.orig_default_size);
+    assert(Experiment.get_default_size() == 0);
+    Experiment.add_to_default(Experiment.orig_default_size);
+    assert(Experiment.get_default_size() == Experiment.orig_default_size);
+    Experiment.add_to_default(Integer.MAX_VALUE);
+    assert(Experiment.get_default_size() == Integer.MAX_VALUE);
   }
 }
+
 
 class Stats {
   public long count_min_reached, count_max_reached;
@@ -84,6 +119,7 @@ class Stats {
   }
 }
 
+
 class Experiment {
   private static Random r = new Random(0);
   private static void set_seed(final long seed) {
@@ -91,7 +127,8 @@ class Experiment {
   }
   private static double random() { return r.nextDouble(); }
 
-  private static int default_size = 100;
+  public static final int orig_default_size = 100;
+  private static int default_size = orig_default_size;
   public static int get_default_size() {
     return default_size;
   }
@@ -104,7 +141,7 @@ class Experiment {
     if (y < x) return (int) y; else return x;
   }
   public static void add_to_default(final int x) {
-    final long sum = default_size + x;
+    final long sum = (long)default_size + x;
     if (sum < 0) default_size = 0;
     else default_size = min(Integer.MAX_VALUE, sum);
   }
@@ -140,6 +177,11 @@ class Experiment {
   }
 
   public static void main(final String[] args ) {
+    if (args.length < 3) {
+      System.err.print("ERROR[AbsorbingCounters]: ");
+      System.err.println("Arguments are\n min max T [N] [seed]");
+      System.exit(1);
+    }
     final long min = Long.parseLong(args[0]);
     final long max = Long.parseLong(args[1]);
     final long T = Long.parseLong(args[2]);
@@ -148,8 +190,8 @@ class Experiment {
     set_seed(seed);
     final AbsorbingCounter[] experiment = create_experiment(min, max, N);
     run_experiment(experiment, T);
-    System.out.println("T=" + T + ", N=" + experiment.length +
-      ", seed=" + seed);
+    System.out.println("min=" + min + ", max=" + max + ", T=" + T +
+      ", N=" + experiment.length + ", seed=" + seed);
     System.out.print(evaluate_experiment(experiment));
   }
 }
