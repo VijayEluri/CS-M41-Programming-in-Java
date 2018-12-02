@@ -2,6 +2,7 @@ import java.util.Random;
 
 class AbsorbingCounter {
   long counter;
+  boolean r_min, r_max;
   final long min, max;
   public AbsorbingCounter(final long min_, final long max_) {
     if (max_ < min_) { min = max_; max = min_; }
@@ -10,23 +11,29 @@ class AbsorbingCounter {
     counter = min + (max - min) / 2;
     assert(min <= counter);
     assert(counter <= max);
+    r_min = counter == min;
+    r_max = counter == max;
   }
   public long val() { return counter; }
   public void inc() {
     assert(min <= counter && counter <= max);
+    if (r_min || r_max) return;
     if (counter < max) ++counter;
+    r_max = counter == max;
   }
   public void dec() {
     assert(min <= counter && counter <= max);
-    if (counter > min) -- counter;
+    if (r_min || r_max) return;
+    if (counter > min) --counter;
+    r_min = counter == min;
   }
   public boolean reached_min() {
     assert(min <= counter && counter <= max);
-    return counter == min;
+    return r_min;
   }
   public boolean reached_max() {
     assert(min <= counter && counter <= max);
-    return counter == max;
+    return r_max;
   }
 
   public String toString() {
@@ -36,6 +43,33 @@ class AbsorbingCounter {
     return counter == other.counter && min == other.min &&
       max == other.max;
   }
+
+  public static void main(final String[] args) {
+    final AbsorbingCounter c1 = new AbsorbingCounter(0, 10);
+    assert(c1.val() == 5);
+    assert(! c1.reached_min());
+    assert(! c1.reached_max());
+    assert(c1.toString().equals("[0,5,10]"));
+    assert(c1.equals(new AbsorbingCounter(0,10)));
+    c1.inc(); assert(c1.val() == 6);
+    assert(! c1.equals(new AbsorbingCounter(0,10)));
+    c1.inc(); c1.inc(); c1.inc(); c1.inc(); assert(c1.val() == 10);
+    assert(c1.reached_max());
+    c1.inc(); assert(c1.val() == 10);
+    c1.dec(); assert(c1.val() == 10);
+    assert(c1.reached_max());
+    final AbsorbingCounter c2 = new AbsorbingCounter(-10,10);
+    assert(c2.val() == 0);
+    assert(! c2.equals(c1));
+    for (int i = 0; i < 10; ++i) c2.dec();
+    assert(c2.val() == -10);
+    assert(c2.reached_min());
+    c2.dec(); assert(c2.val() == -10); assert(c2.reached_min());
+    final AbsorbingCounter c3 = new AbsorbingCounter(0,10);
+    assert(!c3.equals(c1));
+    for (int i = 0; i < 5; ++i, c3.inc());
+    assert(c3.equals(c1));
+  }
 }
 
 class Stats {
@@ -43,8 +77,8 @@ class Stats {
   public double average;
   public String toString() {
     String res = "";
-    res += "min: " + count_min_reached + "\n";
-    res += "max: " + count_max_reached + "\n";
+    res += "count min: " + count_min_reached + "\n";
+    res += "count max: " + count_max_reached + "\n";
     res += "mean= " + average + "\n";
     return res;
   }
@@ -108,11 +142,14 @@ class Experiment {
   public static void main(final String[] args ) {
     final long min = Long.parseLong(args[0]);
     final long max = Long.parseLong(args[1]);
-    final int N = Integer.parseInt(args[2]);
-    final long T = Long.parseLong(args[3]);
-    if (args.length > 4) set_seed(Long.parseLong(args[4]));
+    final long T = Long.parseLong(args[2]);
+    final int N = (args.length > 3) ? Integer.parseInt(args[3]) : 0;
+    final long seed = (args.length > 4) ? Long.parseLong(args[4]) : 0;
+    set_seed(seed);
     final AbsorbingCounter[] experiment = create_experiment(min, max, N);
     run_experiment(experiment, T);
-    System.out.println(evaluate_experiment(experiment));
+    System.out.println("T=" + T + ", N=" + experiment.length +
+      ", seed=" + seed);
+    System.out.print(evaluate_experiment(experiment));
   }
 }
