@@ -9,7 +9,7 @@ class AbsorbingCounter {
     else {min = min_; max = max_; }
     assert(min <= max);
     if (min >= 0) counter = min + (max - min) / 2;
-    else if (max < 0) counter = min - (min - max) / 2;
+    else if (max < 0) counter = min - (min - max - 1) / 2;
     else counter = (min + max) / 2;
     assert(min <= counter);
     assert(counter <= max);
@@ -83,14 +83,46 @@ class AbsorbingCounter {
     assert(c5.reached_max());
     final AbsorbingCounter c6 = new AbsorbingCounter(Long.MIN_VALUE,Long.MAX_VALUE);
     assert(c6.val() == 0);
-    AbsorbingCounter c7 = new AbsorbingCounter(Long.MAX_VALUE,Long.MAX_VALUE);
-    assert(c7.val() == Long.MAX_VALUE);
-    assert(c7.reached_min());
-    assert(c7.reached_max());
-    c7 = new AbsorbingCounter(Long.MIN_VALUE,Long.MIN_VALUE);
-    assert(c7.val() == Long.MIN_VALUE);
-    assert(c7.reached_min());
-    assert(c7.reached_max());
+    assert(!c6.equals(c5));
+    AbsorbingCounter cn = new AbsorbingCounter(Long.MAX_VALUE,Long.MAX_VALUE);
+    assert(cn.val() == Long.MAX_VALUE);
+    assert(cn.reached_min());
+    assert(cn.reached_max());
+    cn = new AbsorbingCounter(Long.MAX_VALUE-1, Long.MAX_VALUE);
+    assert(cn.val() == Long.MAX_VALUE-1);
+    assert(cn.reached_min());
+    assert(!cn.reached_max());
+    cn = new AbsorbingCounter(Long.MIN_VALUE,Long.MIN_VALUE);
+    assert(cn.val() == Long.MIN_VALUE);
+    assert(cn.reached_min());
+    assert(cn.reached_max());
+    cn = new AbsorbingCounter(Long.MIN_VALUE+1, Long.MIN_VALUE);
+    assert(cn.val() == Long.MIN_VALUE+1);
+    assert(!cn.reached_min());
+    assert(cn.reached_max());
+    assert(new AbsorbingCounter(10,30).val() == 20);
+    assert(new AbsorbingCounter(10,31).val() == 20);
+    assert(new AbsorbingCounter(11,30).val() == 20);
+    assert(new AbsorbingCounter(9,30).val() == 19);
+    assert(new AbsorbingCounter(10,29).val() == 19);
+    assert(new AbsorbingCounter(10,32).val() == 21);
+    assert(new AbsorbingCounter(12,30).val() == 21);
+    assert(new AbsorbingCounter(-10,10).val() == 0);
+    assert(new AbsorbingCounter(-10,11).val() == 0);
+    assert(new AbsorbingCounter(-11,10).val() == 0);
+    assert(new AbsorbingCounter(-9,10).val() == 0);
+    assert(new AbsorbingCounter(-10,9).val() == 0);
+    assert(new AbsorbingCounter(-10,12).val() == 1);
+    assert(new AbsorbingCounter(-8,10).val() == 1);
+    assert(new AbsorbingCounter(-12,10).val() == -1);
+    assert(new AbsorbingCounter(-10,8).val() == -1);
+    for (int x = -100; x <= 100; ++x)
+      for (int y = -100; y <= 100; ++y) {
+        final AbsorbingCounter c = new AbsorbingCounter(x, y);
+        final double mean = ((double) x + y) / 2;
+        final int mid = (int) mean;
+        assert(c.val() == mid);
+      }
 
     assert(Experiment.get_default_size() == Experiment.orig_default_size);
     Experiment.add_to_default(1);
