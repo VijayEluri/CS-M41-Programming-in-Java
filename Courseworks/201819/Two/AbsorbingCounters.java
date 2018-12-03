@@ -154,7 +154,8 @@ class Stats {
 
 
 class Experiment {
-  private static Random r = new Random(0);
+  public static final long default_seed = 0;
+  private static Random r = new Random(default_seed);
   private static void set_seed(final long seed) {
     r.setSeed(seed);
   }
@@ -181,10 +182,9 @@ class Experiment {
 
   public static AbsorbingCounter[] create_experiment(final long min,
     final long max, final int N) {
-    final int size = make_positive(N);
-    assert(size >= 1);
-    final AbsorbingCounter[] exp = new AbsorbingCounter[size];
-    for (int i = 0; i < size; ++i)
+    assert(N >= 1);
+    final AbsorbingCounter[] exp = new AbsorbingCounter[N];
+    for (int i = 0; i < N; ++i)
       exp[i] = new AbsorbingCounter(min, max);
     return exp;
   }
@@ -219,8 +219,11 @@ class Experiment {
     final long min = Long.parseLong(args[0]);
     final long max = Long.parseLong(args[1]);
     final long T = Long.parseLong(args[2]);
-    final int N = (args.length > 3) ? Integer.parseInt(args[3]) : 0;
-    final long seed = (args.length > 4) ? Long.parseLong(args[4]) : 0;
+    final int N;
+    {final int temp = (args.length > 3) ? Integer.parseInt(args[3]) : 0;
+     N = make_positive(temp);}
+    final long seed = (args.length > 4) ?
+      Long.parseLong(args[4]) : default_seed;
     set_seed(seed);
     final AbsorbingCounter[] experiment = create_experiment(min, max, N);
     run_experiment(experiment, T);
