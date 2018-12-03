@@ -42,6 +42,7 @@ class AbsorbingCounter {
     return "[" + min + "," + counter + "," + max + "]";
   }
   public boolean equals(final AbsorbingCounter other) {
+    if (other == null) return false;
     return counter == other.counter && min == other.min &&
       max == other.max;
   }
@@ -189,6 +190,7 @@ class Experiment {
   }
   public static void run_experiment(final AbsorbingCounter[] e,
     final long T) {
+    if (e == null || e.length == 0) return;
     for (long i = 0; i < T; ++i) {
       final int index = (int)(random() * e.length);
       final boolean dec = random() < 0.5;
@@ -197,7 +199,7 @@ class Experiment {
   }
   public static Stats evaluate_experiment(final AbsorbingCounter[] e) {
     Stats res = new Stats();
-    assert(e.length > 0);
+    if (e == null || e.length == 0) return res;
     for (int i = 0; i < e.length; ++i) {
       final AbsorbingCounter x = e[i];
       if (x.reached_min()) ++res.count_min_reached;
@@ -208,7 +210,7 @@ class Experiment {
     return res;
   }
 
-  public static void main(final String[] args ) {
+  public static void main(final String[] args) {
     if (args.length < 3) {
       System.err.print("ERROR[AbsorbingCounters]: ");
       System.err.println("Arguments are\n min max T [N] [seed]");
