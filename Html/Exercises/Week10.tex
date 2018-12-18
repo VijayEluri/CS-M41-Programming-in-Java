@@ -6,7 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{fullpage}
-\usepackage[scaled]{beramono}
+%\usepackage[scaled]{beramono}
 \usepackage[T1]{fontenc}
 
 \usepackage{listings}
@@ -23,7 +23,7 @@
   \href{http://www.swan.ac.uk/compsci/}{Computer Science Department}\\[1ex]
   \href{\chp}{\module}\\[1ex]
   \textbf{Lab classes - Week 10}\\
-  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 4+8/12/2017
+  \href{http://cs.swan.ac.uk/~csoliver}{Oliver Kullmann} 5+7/12/2018
 \end{center}
 
 
@@ -33,16 +33,26 @@
 \Java
 
 \begin{enumerate}
-\item Write a class \texttt{Trivial}, which stores two integers, and as member functions (``methods'') allows
+\item Write a class \texttt{Trivial}, which stores two \texttt{int}'s, and as member functions (``methods'') allows
   \begin{enumerate}
-  \item to compute their sum and their product,
-  \item and translation into strings.
+  \item to compute their sum and their product (as \texttt{int}),
+  \item and translation into strings (according to your design); note that this method must be named \texttt{toString}.
   \end{enumerate}
  The objects of this class must be immutable.
-\item Furthermore allow \emph{equality}-comparison, where two \texttt{Trivial}-objects are considered equal if (and only if) the members are equal \emph{independent} of their order.
+\item Furthermore allow \emph{equality}-comparison, where two \texttt{Trivial}-objects are considered equal if (and only if) the members are equal \emph{independent} of their order. Note that this method must be named \texttt{equals}.
 \item And finally write a method \texttt{multiply}, which takes an integer as argument, and multiplies the object with this number. Note that you can't modify the object itself.
-\item Write then a program \texttt{Client}, which reads four integers from the command-line, creates two objects of type Trivial accordingly, and outputs their sums and products and the objects themselves, and whether the two objects are equal, and finally outputs the multiplications of the second object with the sum of the first object.
-\item During the run of \texttt{Client}, how many objects of type \texttt{Trivial} have been created?
+\item Write then a program \texttt{Client}, which reads four integers from the command-line, creates two objects of type \texttt{Trivial} accordingly, and outputs their sums and products and the objects themselves, and whether the two objects are equal, and finally outputs the multiplication of the second object with the sum from the first object.
+\item During the run of \texttt{Client}, how many objects of type \texttt{Trivial} have been created? If you are unsure, add temporarily some output to the constructor.
+\end{enumerate}
+
+
+\section{A bit more advanced}
+\label{sec:advanced}
+
+\begin{enumerate}
+\item Add a method, which returns true iff the addition stays within the range of \texttt{int}, without using \texttt{long}.\footnote{So the underlying method can also be applied if the two instance variables would be of type \texttt{long} (where we do not have a bigger type).}
+\item Add a method, which returns true iff the multiplication stays within the range of \texttt{int}.
+\item Write a function, which takes an array of objects of type \texttt{Trivial}, and returns the sum of their products (as reported by the objects).
 \end{enumerate}
 
 
