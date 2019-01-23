@@ -17,7 +17,7 @@ set -o nounset
 set -o pipefail
 
 script_name="RunTests"
-version_number=0.1.0
+version_number=0.1.1
 
 errormsg="ERROR[${script_name}]:"
 
@@ -40,7 +40,7 @@ difffile="${evaldir}/${program}_diff"
 runfile="${evaldir}/runjava"
 
 function writerunjava {
-  echo -n "java ${program} " >> ${runfile}
+  echo -n "java -ea ${program} " >> ${runfile}
   cat $1 | tr -d "\n" >> ${runfile}
   echo "&>$2" >> ${runfile}
   chmod u+x ${runfile}
