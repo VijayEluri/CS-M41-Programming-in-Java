@@ -198,7 +198,7 @@ class Experiment {
     }
   }
   public static Stats evaluate_experiment(final AbsorbingCounter[] e) {
-    Stats res = new Stats();
+    final Stats res = new Stats();
     if (e == null || e.length == 0) return res;
     for (int i = 0; i < e.length; ++i) {
       final AbsorbingCounter x = e[i];
