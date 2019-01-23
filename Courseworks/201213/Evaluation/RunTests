@@ -10,24 +10,26 @@
 # and comparing them with their solutions in dir_with_tests/Testresults.
 # Storing the results in D/Evaluation/program_log_tests.
 # dir_with_tests must be given as an absolute pathname.
+# If the optional third argument is 1, then the inputs are not mirrored.
 
 set -o errexit
 set -o nounset
 set -o pipefail
 
 script_name="RunTests"
-version_number=0.0.8
+version_number=0.1.0
 
 errormsg="ERROR[${script_name}]:"
 
-if [[ $# != 2 ]]; then
+if [[ $# != 2 && $# != 3 ]]; then
   echo "${errormsg} Precisely two arguments are needed:
- program dir_with_tests"
+ program dir_with_tests [show-input=0/1]"
   exit 1
 fi
 
 program=$1
 dir_with_tests=$2
+show_input=${3:-0}
 
 directories=${directories:-*/}
 evaldir="Evaluation"
@@ -35,26 +37,44 @@ evaldir="Evaluation"
 logfile="${evaldir}/${program}_log_tests"
 outputfile="${evaldir}/${program}_output"
 difffile="${evaldir}/${program}_diff"
+runfile="${evaldir}/runjava"
+
+function writerunjava {
+  echo -n "java ${program} " >> ${runfile}
+  cat $1 | tr -d "\n" >> ${runfile}
+  echo "&>$2" >> ${runfile}
+  chmod u+x ${runfile}
+}
 
 for D in ${directories}; do
+
   echo ${D}
   cd ${D}
   date > ${logfile}
-  if [[ ! -f "${program}.java" ]]; then
-    echo " No ${program}.java."
-    echo "No ${program}.java." >> ${logfile}
+  if [[ ! -f "${program}.class" ]]; then
+    echo " No ${program}.class."
+    echo "No ${program}.class." >> ${logfile}
+    date >> ${logfile}
     cd ..
     continue
   fi
+
   for T in ${dir_with_tests}/Testcases/*; do
     B="$(basename $T)"
+    writerunjava $T ${outputfile}
 set +o errexit
-    cat ${T} | xargs java ${program} &>${outputfile}
+    timeout --signal=SIGINT --kill-after=5 5 ${runfile}
     returnval=$?
 set -o errexit
+    rm ${runfile}
     if [[ ${returnval} != 0 ]]; then
       echo " Error running ${program} on ${B}."
-      echo "Runtime error: ${B}" >> ${logfile}
+      echo -e "\nRuntime error: ${B}" >> ${logfile}
+      echo "Return value: ${returnval}" >> ${logfile}
+      if [[ ${show_input} ]]; then
+        echo "Input:" >> ${logfile}
+        cat $T >> ${logfile}
+      fi
     else
       comparison="${dir_with_tests}/Testresults/${B}"
 set +o errexit
@@ -63,11 +83,19 @@ set +o errexit
 set -o errexit
       if [[ ${returnval} != 0 ]]; then
         echo " Testfailure with ${program} on ${B}."
-        echo "Testfailure: ${B}" >> ${logfile}
+        echo -e "\nTestfailure: ${B}" >> ${logfile}
+        echo "Diff-output correct vs this-program:" >> ${logfile}
         cat ${difffile} >> ${logfile}
+        if [[ ${show_input} ]]; then
+          echo "Input:" >> ${logfile}
+          cat $T >> ${logfile}
+        fi
       fi
       rm ${outputfile} ${difffile}
     fi
   done
+
+  date >> ${logfile}
   cd ..
+
 done
