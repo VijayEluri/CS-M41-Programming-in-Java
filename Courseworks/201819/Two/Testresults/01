@@ -1,0 +1,4 @@
+min=0, max=10, T=1000, N=100, seed=0
+count min: 12
+count max: 19
+mean= 5.6
