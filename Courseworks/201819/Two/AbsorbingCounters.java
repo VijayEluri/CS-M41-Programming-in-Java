@@ -193,6 +193,7 @@ class Experiment {
     if (e == null || e.length == 0) return;
     for (long i = 0; i < T; ++i) {
       final int index = (int)(random() * e.length);
+      assert(e[index] != null);
       final boolean dec = random() < 0.5;
       if (dec) e[index].dec(); else e[index].inc();
     }
@@ -201,6 +202,7 @@ class Experiment {
     final Stats res = new Stats();
     if (e == null || e.length == 0) return res;
     for (int i = 0; i < e.length; ++i) {
+      assert(e[i] != null);
       final AbsorbingCounter x = e[i];
       if (x.reached_min()) ++res.count_min_reached;
       if (x.reached_max()) ++res.count_max_reached;
