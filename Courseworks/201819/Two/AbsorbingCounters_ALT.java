@@ -189,9 +189,10 @@ class Experiment {
     if (e == null || e.length == 0) return;
     for (long i = 0; i < T; ++i) {
       final int index = (int)(random() * e.length);
-      if (e[index] == null) continue;
+      final AbsorbingCounter c = e[index];
+      if (c == null) continue;
       final boolean dec = random() < 0.5;
-      if (dec) e[index].dec(); else e[index].inc();
+      if (dec) c.dec(); else c.inc();
     }
   }
   public static Stats evaluate_experiment(final AbsorbingCounter[] e) {
@@ -201,10 +202,10 @@ class Experiment {
     for (int i = 0; i < e.length; ++i) {
       if (e[i] == null) continue;
       ++length;
-      final AbsorbingCounter x = e[i];
-      if (x.reached_min()) ++res.count_min_reached;
-      if (x.reached_max()) ++res.count_max_reached;
-      res.average += x.val();
+      final AbsorbingCounter c = e[i];
+      if (c.reached_min()) ++res.count_min_reached;
+      if (c.reached_max()) ++res.count_max_reached;
+      res.average += c.val();
     }
     res.average /= length;
     return res;
