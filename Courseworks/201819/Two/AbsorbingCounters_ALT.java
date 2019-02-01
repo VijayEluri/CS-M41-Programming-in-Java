@@ -40,7 +40,6 @@ class AbsorbingCounter {
     return "[" + min + "," + counter + "," + max + "]";
   }
   public boolean equals(final AbsorbingCounter other) {
-    if (other == null) return false;
     return other != null && counter == other.counter && min == other.min
       && max == other.max;
   }
